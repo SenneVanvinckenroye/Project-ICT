@@ -30,9 +30,7 @@
         <div class="app">
             <h1>Medecine Planner</h1>                                <!--veranderd-->
             <div id="deviceready" class="blink">
-                <input type="text" id="searchText" value="User Name"/>               <!--toegevoegd-->
-                <input type="submit" id="LoginButton" value="Log In" onClick="Initialize()" />    <!--//toegevoegd-->
-                <a href="index2.html"><button>Visit Page Now</button></a>
+                <button onclick="visitPage();">Visit Page Now</button>
                 <p class="event listening">Connecting to Device</p>
                 <p class="event received">Device is Ready</p>
             </div>
@@ -41,10 +39,10 @@
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
             app.initialize();
-            $("#LoginButton").click(Initialize);
+            
 
-            function Initialize() {
-                var ref = window.open('http://apache.org', '_blank', 'location=yes');
+            function visitPage() {
+                window.location = 'index2.html';
             }
             
 
