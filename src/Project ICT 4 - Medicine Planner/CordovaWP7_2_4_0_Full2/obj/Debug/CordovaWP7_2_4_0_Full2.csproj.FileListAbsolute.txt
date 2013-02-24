@@ -26,3 +26,17 @@ C:\Users\Kevin Heyvaert\Documents\Bestanden Artesis\Semester 4\Project ICT 4\Cor
 C:\Users\Kevin Heyvaert\Documents\Bestanden Artesis\Semester 4\Project ICT 4\CordovaWP7_2_4_0_Full2\CordovaWP7_2_4_0_Full2\obj\Debug\CordovaWP7_2_4_0_Full2.dll
 C:\Users\Kevin Heyvaert\Documents\Bestanden Artesis\Semester 4\Project ICT 4\CordovaWP7_2_4_0_Full2\CordovaWP7_2_4_0_Full2\obj\Debug\CordovaWP7_2_4_0_Full2.pdb
 C:\Users\Kevin Heyvaert\Documents\Bestanden Artesis\Semester 4\Project ICT 4\CordovaWP7_2_4_0_Full2\CordovaWP7_2_4_0_Full2\obj\Debug\XapCacheFile.xml
+C:\Users\Senne\Desktop\Git\src\Project ICT 4 - Medicine Planner\CordovaWP7_2_4_0_Full2\Bin\Debug\ApplicationIcon.png
+C:\Users\Senne\Desktop\Git\src\Project ICT 4 - Medicine Planner\CordovaWP7_2_4_0_Full2\Bin\Debug\Background.png
+C:\Users\Senne\Desktop\Git\src\Project ICT 4 - Medicine Planner\CordovaWP7_2_4_0_Full2\Bin\Debug\CordovaWP7_2_4_0_Full2.dll
+C:\Users\Senne\Desktop\Git\src\Project ICT 4 - Medicine Planner\CordovaWP7_2_4_0_Full2\Bin\Debug\CordovaWP7_2_4_0_Full2.pdb
+C:\Users\Senne\Desktop\Git\src\Project ICT 4 - Medicine Planner\CordovaWP7_2_4_0_Full2\Bin\Debug\AppManifest.xaml
+C:\Users\Senne\Desktop\Git\src\Project ICT 4 - Medicine Planner\CordovaWP7_2_4_0_Full2\Bin\Debug\CordovaWP7_2_4_0_Full2.xap
+C:\Users\Senne\Desktop\Git\src\Project ICT 4 - Medicine Planner\CordovaWP7_2_4_0_Full2\Bin\Debug\WPCordovaClassLib.dll
+C:\Users\Senne\Desktop\Git\src\Project ICT 4 - Medicine Planner\CordovaWP7_2_4_0_Full2\obj\Debug\CordovaWP7_2_4_0_Full2.csprojResolveAssemblyReference.cache
+C:\Users\Senne\Desktop\Git\src\Project ICT 4 - Medicine Planner\CordovaWP7_2_4_0_Full2\obj\Debug\App.g.cs
+C:\Users\Senne\Desktop\Git\src\Project ICT 4 - Medicine Planner\CordovaWP7_2_4_0_Full2\obj\Debug\MainPage.g.cs
+C:\Users\Senne\Desktop\Git\src\Project ICT 4 - Medicine Planner\CordovaWP7_2_4_0_Full2\obj\Debug\CordovaWP7_2_4_0_Full2.g.resources
+C:\Users\Senne\Desktop\Git\src\Project ICT 4 - Medicine Planner\CordovaWP7_2_4_0_Full2\obj\Debug\CordovaWP7_2_4_0_Full2.dll
+C:\Users\Senne\Desktop\Git\src\Project ICT 4 - Medicine Planner\CordovaWP7_2_4_0_Full2\obj\Debug\CordovaWP7_2_4_0_Full2.pdb
+C:\Users\Senne\Desktop\Git\src\Project ICT 4 - Medicine Planner\CordovaWP7_2_4_0_Full2\obj\Debug\XapCacheFile.xml
