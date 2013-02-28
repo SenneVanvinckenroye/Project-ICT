@@ -28,9 +28,9 @@
     </head>
     <body>
         <div class="app">
-            <h1>Medecine Planner</h1>                                <!--veranderd-->
+            <h1>MedAgent</h1>                                <!--veranderd-->
             <div id="deviceready" class="blink">
-                <input type="text" id="searchText" value="User Name"/>               <!--toegevoegd-->
+                <input type="text" id="login_field" value="User Name"/>               <!--toegevoegd 'tester/rien' changed id to login_field-->
                 <input type="submit" id="LoginButton" value="Log In" onClick="Initialize()" />    <!--//toegevoegd-->
 
                 <p class="event listening">Connecting to Device</p>
@@ -44,7 +44,11 @@
             $("#LoginButton").click(Initialize);
 
             function Initialize() {
-                var ref = window.open('http://apache.org', '_blank', 'location=yes');
+                /*var ref = window.open('http://apache.org', '_blank', 'location=yes');
+                var deviceReadyDeferred = $.Deferred();
+                document.addEventListener(*/
+
+                //rien: verbinding database?
             }
             
 
