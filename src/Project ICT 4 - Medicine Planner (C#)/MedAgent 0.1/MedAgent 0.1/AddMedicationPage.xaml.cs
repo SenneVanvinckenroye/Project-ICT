@@ -11,6 +11,12 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 
+// Directives
+using Microsoft.Devices;
+using System.IO;
+using System.IO.IsolatedStorage;
+using Microsoft.Xna.Framework.Media;
+
 namespace MedAgent_0_1
 {
     public partial class AddMedication : PhoneApplicationPage

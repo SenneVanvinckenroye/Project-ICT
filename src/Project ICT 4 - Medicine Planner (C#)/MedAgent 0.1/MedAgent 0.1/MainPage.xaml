@@ -6,7 +6,7 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	xmlns:edc="clr-namespace:Microsoft.Expression.Controls;assembly=Microsoft.Expression.Drawing"
-	mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="800"
+	mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
 	x:Class="MedAgent_0_1.MainPage"
 	FontFamily="{StaticResource PhoneFontFamilyNormal}"
 	FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -37,7 +37,7 @@
 			</Grid.Background>
 			<Button x:Name="PatientButton" Content="Patient" Margin="159,73,165,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" d:LayoutOverrides="Width" Click="PatientButton_Click"/>
 			<Button Content="Doctor" Margin="159,149,168,0" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
-			<Button Content="Nurse" Margin="162,225,165,0" d:LayoutOverrides="Width" VerticalAlignment="Top" Click="Button_Click" />
+			<Button Content="Nurse" Margin="162,225,165,0" d:LayoutOverrides="Width" VerticalAlignment="Top"  />
 		</Grid>
 	</Grid>
 </phone:PhoneApplicationPage>

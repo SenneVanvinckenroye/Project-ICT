@@ -20,6 +20,11 @@ namespace MedAgent_0_1
             InitializeComponent();
         }
 
+        private void LogInButtonPatient_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+        	// TODO: Add event handler implementation here.
+        }
+
 		
     }
 }

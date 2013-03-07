@@ -22,8 +22,8 @@ namespace MedAgent_0_1
 
         private void PatientButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-
-        	// TODO: Add event handler implementation here.
+            NavigationService.Navigate(new Uri(string.Format("/PatientLogInPage.xaml"), UriKind.Relative));
+			
         }
 
     }
