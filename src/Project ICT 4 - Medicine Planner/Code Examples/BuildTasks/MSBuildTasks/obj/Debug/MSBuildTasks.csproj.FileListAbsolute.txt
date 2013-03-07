@@ -1,0 +1,5 @@
+E:\Users\Dries\Documents\Artesis\Project ICT 4\BuildTasks\MSBuildTasks\bin\Debug\MSBuildTasks.dll
+E:\Users\Dries\Documents\Artesis\Project ICT 4\BuildTasks\MSBuildTasks\bin\Debug\MSBuildTasks.pdb
+E:\Users\Dries\Documents\Artesis\Project ICT 4\BuildTasks\MSBuildTasks\obj\Debug\ResolveAssemblyReference.cache
+E:\Users\Dries\Documents\Artesis\Project ICT 4\BuildTasks\MSBuildTasks\obj\Debug\MSBuildTasks.dll
+E:\Users\Dries\Documents\Artesis\Project ICT 4\BuildTasks\MSBuildTasks\obj\Debug\MSBuildTasks.pdb

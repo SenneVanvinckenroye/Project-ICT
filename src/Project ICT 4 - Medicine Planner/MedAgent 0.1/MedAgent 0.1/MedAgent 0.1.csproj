@@ -1,0 +1,449 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements.  See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership.  The ASF licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied.  See the License for the
+ specific language governing permissions and limitations
+ under the License. 
+-->
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F7CD4729-FB5C-4337-8234-9B1CA2E81EBE}</ProjectGuid>
+    <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MedAgent_0._1</RootNamespace>
+    <AssemblyName>MedAgent 0.1</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <TargetFrameworkProfile>WindowsPhone71</TargetFrameworkProfile>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <SilverlightApplication>true</SilverlightApplication>
+    <SupportedCultures>
+    </SupportedCultures>
+    <XapOutputs>true</XapOutputs>
+    <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
+    <XapFilename>MedAgent_0._1.xap</XapFilename>
+    <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
+    <SilverlightAppEntry>MedAgent_0._1.App</SilverlightAppEntry>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Phone" />
+    <Reference Include="Microsoft.Phone.Interop" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WPCordovaClassLib, Version=2.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+    <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="config.xml" />
+    <Content Include="CordovaLib\WPCordovaClassLib.dll" />
+    <Content Include="CordovaSourceDictionary.xml" />
+    <Resource Include="Icons\dark\appbar.add.rest.png" />
+    <Resource Include="Icons\dark\appbar.back.rest.png" />
+    <Resource Include="Icons\dark\appbar.basecircle.rest.png" />
+    <Resource Include="Icons\dark\appbar.cancel.rest.png" />
+    <Resource Include="Icons\dark\appbar.check.rest.png" />
+    <Resource Include="Icons\dark\appbar.close.rest.png" />
+    <Resource Include="Icons\dark\appbar.delete.rest.png" />
+    <Resource Include="Icons\dark\appbar.download.rest.png" />
+    <Resource Include="Icons\dark\appbar.edit.rest.png" />
+    <Resource Include="Icons\dark\appbar.favs.addto.rest.png" />
+    <Resource Include="Icons\dark\appbar.favs.rest.png" />
+    <Resource Include="Icons\dark\appbar.feature.camera.rest.png" />
+    <Resource Include="Icons\dark\appbar.feature.email.rest.png" />
+    <Resource Include="Icons\dark\appbar.feature.search.rest.png" />
+    <Resource Include="Icons\dark\appbar.feature.settings.rest.png" />
+    <Resource Include="Icons\dark\appbar.feature.video.rest.png" />
+    <Resource Include="Icons\dark\appbar.folder.rest.png" />
+    <Resource Include="Icons\dark\appbar.minus.rest.png" />
+    <Resource Include="Icons\dark\appbar.new.rest.png" />
+    <Resource Include="Icons\dark\appbar.next.rest.png" />
+    <Resource Include="Icons\dark\appbar.overflowdots.png" />
+    <Resource Include="Icons\dark\appbar.questionmark.rest.png" />
+    <Resource Include="Icons\dark\appbar.refresh.rest.png" />
+    <Resource Include="Icons\dark\appbar.save.rest.png" />
+    <Resource Include="Icons\dark\appbar.share.rest.png" />
+    <Resource Include="Icons\dark\appbar.stop.rest.png" />
+    <Resource Include="Icons\dark\appbar.sync.rest.png" />
+    <Resource Include="Icons\dark\appbar.transport.ff.rest.png" />
+    <Resource Include="Icons\dark\appbar.transport.pause.rest.png" />
+    <Resource Include="Icons\dark\appbar.transport.play.rest.png" />
+    <Resource Include="Icons\dark\appbar.transport.rew.rest.png" />
+    <Resource Include="Icons\dark\appbar.upload.rest.png" />
+    <Content Include="Icons\dark\DarkIcons.dll" />
+    <Resource Include="www\JQuery\demos\css\themes\default\images\ajax-loader.gif" />
+    <Resource Include="www\JQuery\demos\css\themes\default\images\icons-18-black.png" />
+    <Resource Include="www\JQuery\demos\css\themes\default\images\icons-18-white.png" />
+    <Resource Include="www\JQuery\demos\css\themes\default\images\icons-36-black.png" />
+    <Resource Include="www\JQuery\demos\css\themes\default\images\icons-36-white.png" />
+    <Content Include="www\JQuery\demos\css\themes\default\jquery.mobile-1.3.0.css" />
+    <Content Include="www\JQuery\demos\css\themes\default\jquery.mobile-1.3.0.min.css" />
+    <Content Include="www\JQuery\demos\css\themes\default\jquery.mobile.structure-1.3.0.css" />
+    <Content Include="www\JQuery\demos\css\themes\default\jquery.mobile.structure-1.3.0.min.css" />
+    <Content Include="www\JQuery\demos\css\themes\default\jquery.mobile.theme-1.3.0.css" />
+    <Content Include="www\JQuery\demos\css\themes\default\jquery.mobile.theme-1.3.0.min.css" />
+    <Content Include="www\JQuery\demos\docs\examples\backbone-require\backbone-require.html" />
+    <Content Include="www\JQuery\demos\docs\examples\backbone-require\index.html" />
+    <Content Include="www\JQuery\demos\docs\examples\backbone-require\js\collections\CategoriesCollection.js" />
+    <Content Include="www\JQuery\demos\docs\examples\backbone-require\js\libs\backbone.js" />
+    <Content Include="www\JQuery\demos\docs\examples\backbone-require\js\libs\jquery.js" />
+    <Content Include="www\JQuery\demos\docs\examples\backbone-require\js\libs\jquerymobile.js" />
+    <Content Include="www\JQuery\demos\docs\examples\backbone-require\js\libs\lodash.js" />
+    <Content Include="www\JQuery\demos\docs\examples\backbone-require\js\libs\require.js" />
+    <Content Include="www\JQuery\demos\docs\examples\backbone-require\js\mobile.js" />
+    <Content Include="www\JQuery\demos\docs\examples\backbone-require\js\models\CategoryModel.js" />
+    <Content Include="www\JQuery\demos\docs\examples\backbone-require\js\routers\mobileRouter.js" />
+    <Content Include="www\JQuery\demos\docs\examples\backbone-require\js\views\CategoryView.js" />
+    <Content Include="www\JQuery\demos\docs\examples\collapsibles\dynamic-collapsible.html" />
+    <Content Include="www\JQuery\demos\docs\examples\controlgroups\dynamic-controlgroup.html" />
+    <Content Include="www\JQuery\demos\docs\examples\index.html" />
+    <Content Include="www\JQuery\demos\docs\examples\listviews\autodividers-linkbar-demo.html" />
+    <Content Include="www\JQuery\demos\docs\examples\listviews\autodividers-linkbar.css" />
+    <Content Include="www\JQuery\demos\docs\examples\listviews\autodividers-linkbar.html" />
+    <Content Include="www\JQuery\demos\docs\examples\listviews\autodividers-linkbar.js" />
+    <Content Include="www\JQuery\demos\docs\examples\listviews\autodividers-selector.html" />
+    <Content Include="www\JQuery\demos\docs\examples\listviews\grid-listview-demo.html" />
+    <Content Include="www\JQuery\demos\docs\examples\listviews\grid-listview.css" />
+    <Content Include="www\JQuery\demos\docs\examples\listviews\grid-listview.html" />
+    <Content Include="www\JQuery\demos\docs\examples\panels\panel-styling.html" />
+    <Content Include="www\JQuery\demos\docs\examples\panels\panel-swipe-open.html" />
+    <Content Include="www\JQuery\demos\docs\examples\popups\arrow.html" />
+    <Content Include="www\JQuery\demos\docs\examples\popups\dynamic-popup.html" />
+    <Content Include="www\JQuery\demos\docs\examples\popups\jquery.mobile.popup.arrow.css" />
+    <Content Include="www\JQuery\demos\docs\examples\popups\popup.arrow.js" />
+    <Content Include="www\JQuery\demos\docs\examples\redirect\index.html" />
+    <Content Include="www\JQuery\demos\docs\examples\redirect\redirect-target.html" />
+    <Content Include="www\JQuery\demos\docs\examples\slider\slider.tooltip.css" />
+    <Content Include="www\JQuery\demos\docs\examples\slider\slider.tooltip.js" />
+    <Content Include="www\JQuery\demos\docs\examples\slider\tooltip.html" />
+    <Content Include="www\JQuery\demos\docs\examples\swipe\buenosaires.html" />
+    <Content Include="www\JQuery\demos\docs\examples\swipe\capetown.html" />
+    <Content Include="www\JQuery\demos\docs\examples\swipe\newyork.html" />
+    <Content Include="www\JQuery\demos\docs\examples\swipe\paris.html" />
+    <Content Include="www\JQuery\demos\docs\examples\swipe\seoul.html" />
+    <Content Include="www\JQuery\demos\docs\examples\swipe\swipe-list.html" />
+    <Content Include="www\JQuery\demos\docs\examples\swipe\swipe-page.css" />
+    <Content Include="www\JQuery\demos\docs\examples\swipe\swipe-page.html" />
+    <Content Include="www\JQuery\demos\docs\examples\swipe\swipe-page.js" />
+    <Content Include="www\JQuery\demos\docs\examples\swipe\sydney.html" />
+    <Content Include="www\JQuery\demos\docs\examples\tables\financial-grouped-columns.html" />
+    <Content Include="www\JQuery\demos\docs\examples\tables\financial-grouped-reflow.html" />
+    <Content Include="www\JQuery\demos\docs\examples\tables\movie-list-toggle-options.html" />
+    <Content Include="www\JQuery\demos\docs\examples\tables\movie-list.html" />
+    <Content Include="www\JQuery\demos\docs\examples\tables\phone-compare.html" />
+    <Content Include="www\JQuery\demos\docs\faq\controls-in-header-footer.html" />
+    <Content Include="www\JQuery\demos\docs\faq\disabling-a-button-does-not-work.html" />
+    <Content Include="www\JQuery\demos\docs\faq\dom-ready-not-working.html" />
+    <Content Include="www\JQuery\demos\docs\faq\how-can-i-stop-auto-enhancement-of-a-block-of-elements.html" />
+    <Content Include="www\JQuery\demos\docs\faq\how-can-i-stop-auto-enhancement-of-elements.html" />
+    <Content Include="www\JQuery\demos\docs\faq\how-configure-phonegap-cordova.html" />
+    <Content Include="www\JQuery\demos\docs\faq\how-do-i-control-page-titles.html" />
+    <Content Include="www\JQuery\demos\docs\faq\how-do-i-load-a-page.html" />
+    <Content Include="www\JQuery\demos\docs\faq\how-do-i-scroll-to-a-position.html" />
+    <Content Include="www\JQuery\demos\docs\faq\how-do-i-use-touch-mouse-events.html" />
+    <Content Include="www\JQuery\demos\docs\faq\index.html" />
+    <Content Include="www\JQuery\demos\docs\faq\injected-content-is-not-enhanced.html" />
+    <Content Include="www\JQuery\demos\docs\faq\my-html-5-inputs-look-different-in-browsers.html" />
+    <Content Include="www\JQuery\demos\docs\faq\my-range-search-input-type-is-being-changed.html" />
+    <Content Include="www\JQuery\demos\docs\faq\pass-query-params-to-page.html" />
+    <Content Include="www\JQuery\demos\docs\faq\pass-via-the-hash-to-page.html" />
+    <Content Include="www\JQuery\demos\docs\faq\question-template.html" />
+    <Content Include="www\JQuery\demos\docs\faq\scripts-and-styles-not-loading.html" />
+    <Content Include="www\JQuery\demos\docs\faq\sometimes-custom-select-shows-as-dialog-popup.html" />
+    <Content Include="www\JQuery\demos\docs\faq\the-application-cache-is-not-working.html" />
+    <Content Include="www\JQuery\demos\docs\faq\triggering-create-on-injected-content-does-not-work.html" />
+    <Content Include="www\JQuery\demos\docs\faq\updating-the-value-of-enhanced-form-elements-does-not-work.html" />
+    <Content Include="www\JQuery\demos\docs\faq\why-is-only-the-first-page-loaded.html" />
+    <Content Include="www\JQuery\demos\docs\global-nav.html" />
+    <Content Include="www\JQuery\demos\docs\index.html" />
+    <Content Include="www\JQuery\demos\docs\intro\index.html" />
+    <Content Include="www\JQuery\demos\docs\intro\rwd.html" />
+    <Content Include="www\JQuery\demos\docs\nav-examples.html" />
+    <Content Include="www\JQuery\demos\docs\nav-faq.html" />
+    <Content Include="www\JQuery\demos\docs\nav-widgets.html" />
+    <Content Include="www\JQuery\demos\docs\search-results.html" />
+    <Content Include="www\JQuery\demos\docs\search.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\accordions\index.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\autocomplete\autocomplete-remote.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\autocomplete\index.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\buttons\buttons-grids.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\buttons\index.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\checkbox\index.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\collapsibles\index.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\controlgroups\index.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\dialog\dialog-alt.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\dialog\dialog-buttons.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\dialog\dialog-corners.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\dialog\dialog-noclosebtn.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\dialog\dialog-overlay.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\dialog\dialog-rightclosebtn.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\dialog\dialog-success.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\dialog\dialog-with-select.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\dialog\dialog.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\dialog\index.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\footers\footer-persist-a.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\footers\footer-persist-b.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\footers\footer-persist-c.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\footers\footer-persist-d.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\footers\index.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\forms\form-disabled.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\forms\form-fieldcontain.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\forms\form-hide-label.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\forms\form-label-hidden.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\forms\form.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\forms\index.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\grids\grid-custom.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\grids\index.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\headers\bars-fixed-forms.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\headers\bars-fixed.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\headers\bars-fullscreen.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\headers\index.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\icons\index.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\index.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\links\index.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\listviews\collapsible-listview.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\listviews\index.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\listviews\listview-filter-autocomplete.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\listviews\listview-filter-autodividers.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\listviews\listview-filter-reveal.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\listviews\listview-forms.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\listviews\_OLD_listview.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\loader\index.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\navbar\footer-persist-a.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\navbar\footer-persist-b.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\navbar\footer-persist-c.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\navbar\footer-persist-d.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\navbar\index.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\navigation\demo.js" />
+    <Content Include="www\JQuery\demos\docs\widgets\navigation\index.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\pages\index.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\pages\multipage-template.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\panels\index.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\panels\panel-fixed.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\popup\index.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\popup\map.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\popup\popup-examples.css" />
+    <Content Include="www\JQuery\demos\docs\widgets\popup\popup-examples.js" />
+    <Content Include="www\JQuery\demos\docs\widgets\popup\popup-iframes.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\popup\popup-images.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\radiobuttons\index.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\selects\custom-selects.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\selects\index.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\sliders\index.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\sliders\rangeslider.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\sliders\switch.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\table-column-toggle\index.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\table-reflow\index.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\textinputs\index.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\transitions\index.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\transitions\page-transitions-dialog.html" />
+    <Content Include="www\JQuery\demos\docs\widgets\transitions\page-transitions-page.html" />
+    <Content Include="www\JQuery\demos\docs\_assets\css\jqm-demos.css" />
+    <Resource Include="www\JQuery\demos\docs\_assets\css\jqm_demo-icons-hd.png" />
+    <Resource Include="www\JQuery\demos\docs\_assets\css\jqm_demo-icons-sd.png" />
+    <Content Include="www\JQuery\demos\docs\_assets\favicon.ico" />
+    <Resource Include="www\JQuery\demos\docs\_assets\img\album-af.jpg" />
+    <Resource Include="www\JQuery\demos\docs\_assets\img\album-ag.jpg" />
+    <Resource Include="www\JQuery\demos\docs\_assets\img\album-bb.jpg" />
+    <Resource Include="www\JQuery\demos\docs\_assets\img\album-bk.jpg" />
+    <Resource Include="www\JQuery\demos\docs\_assets\img\album-hc.jpg" />
+    <Resource Include="www\JQuery\demos\docs\_assets\img\album-k.jpg" />
+    <Resource Include="www\JQuery\demos\docs\_assets\img\album-mg.jpg" />
+    <Resource Include="www\JQuery\demos\docs\_assets\img\album-ok.jpg" />
+    <Resource Include="www\JQuery\demos\docs\_assets\img\album-p.jpg" />
+    <Resource Include="www\JQuery\demos\docs\_assets\img\album-rh.jpg" />
+    <Resource Include="www\JQuery\demos\docs\_assets\img\album-ws.jpg" />
+    <Resource Include="www\JQuery\demos\docs\_assets\img\album-xx.jpg" />
+    <Resource Include="www\JQuery\demos\docs\_assets\img\apple.png" />
+    <Resource Include="www\JQuery\demos\docs\_assets\img\bg-pattern.png" />
+    <Resource Include="www\JQuery\demos\docs\_assets\img\bike.jpg" />
+    <Resource Include="www\JQuery\demos\docs\_assets\img\blackberry_10.png" />
+    <Resource Include="www\JQuery\demos\docs\_assets\img\bmw-thumb.jpg" />
+    <Resource Include="www\JQuery\demos\docs\_assets\img\bmw.jpg" />
+    <Resource Include="www\JQuery\demos\docs\_assets\img\buenosaires.jpg" />
+    <Resource Include="www\JQuery\demos\docs\_assets\img\capetown.jpg" />
+    <Resource Include="www\JQuery\demos\docs\_assets\img\de.png" />
+    <Resource Include="www\JQuery\demos\docs\_assets\img\fi.png" />
+    <Resource Include="www\JQuery\demos\docs\_assets\img\firefox-logo.png" />
+    <Resource Include="www\JQuery\demos\docs\_assets\img\firefox_os.png" />
+    <Resource Include="www\JQuery\demos\docs\_assets\img\galaxy_express.png" />
+    <Resource Include="www\JQuery\demos\docs\_assets\img\gb.png" />
+    <Resource Include="www\JQuery\demos\docs\_assets\img\gf.png" />
+    <Resource Include="www\JQuery\demos\docs\_assets\img\glyphish-icons\09-chat2.png" />
+    <Resource Include="www\JQuery\demos\docs\_assets\img\glyphish-icons\100-coffee.png" />
+    <Resource Include="www\JQuery\demos\docs\_assets\img\glyphish-icons\18-envelope.png" />
+    <Resource Include="www\JQuery\demos\docs\_assets\img\glyphish-icons\19-gear.png" />
+    <Resource Include="www\JQuery\demos\docs\_assets\img\glyphish-icons\21-skull.png" />
+    <Resource Include="www\JQuery\demos\docs\_assets\img\glyphish-icons\30-key.png" />
+    <Resource Include="www\JQuery\demos\docs\_assets\img\glyphish-icons\34-coffee.png" />
+    <Resource Include="www\JQuery\demos\docs\_assets\img\glyphish-icons\88-beermug.png" />
+    <Content Include="www\JQuery\demos\docs\_assets\img\glyphish-icons\Read me first - license.txt" />
+    <Resource Include="www\JQuery\demos\docs\_assets\img\jquery-logo.png" />
+    <Resource Include="www\JQuery\demos\docs\_assets\img\landrover-thumb.jpg" />
+    <Resource Include="www\JQuery\demos\docs\_assets\img\landrover.jpg" />
+    <Resource Include="www\JQuery\demos\docs\_assets\img\lumia_800.png" />
+    <Resource Include="www\JQuery\demos\docs\_assets\img\newyork.jpg" />
+    <Resource Include="www\JQuery\demos\docs\_assets\img\nexus_7.png" />
+    <Resource Include="www\JQuery\demos\docs\_assets\img\paris.jpg" />
+    <Resource Include="www\JQuery\demos\docs\_assets\img\phone_galaxy3.png" />
+    <Resource Include="www\JQuery\demos\docs\_assets\img\phone_iphone5.png" />
+    <Resource Include="www\JQuery\demos\docs\_assets\img\phone_lumia920.png" />
+    <Resource Include="www\JQuery\demos\docs\_assets\img\phone_onex.png" />
+    <Resource Include="www\JQuery\demos\docs\_assets\img\photo-landscape.jpg" />
+    <Resource Include="www\JQuery\demos\docs\_assets\img\photo-portrait.jpg" />
+    <Resource Include="www\JQuery\demos\docs\_assets\img\photo-run.jpeg" />
+    <Resource Include="www\JQuery\demos\docs\_assets\img\seoul.jpg" />
+    <Resource Include="www\JQuery\demos\docs\_assets\img\sydney.jpg" />
+    <Resource Include="www\JQuery\demos\docs\_assets\img\tesla-thumb.jpg" />
+    <Resource Include="www\JQuery\demos\docs\_assets\img\tesla.jpg" />
+    <Resource Include="www\JQuery\demos\docs\_assets\img\tizen.png" />
+    <Resource Include="www\JQuery\demos\docs\_assets\img\us.png" />
+    <Content Include="www\JQuery\demos\docs\_assets\js\globalnav.js" />
+    <Content Include="www\JQuery\demos\docs\_assets\js\h2widget.js" />
+    <Content Include="www\JQuery\demos\docs\_assets\js\index.html" />
+    <Content Include="www\JQuery\demos\docs\_assets\js\jqm-demos.js" />
+    <Content Include="www\JQuery\demos\docs\_assets\js\jquery.mobile.demos-1.3.0.js" />
+    <Content Include="www\JQuery\demos\docs\_assets\js\view-source.js" />
+    <Content Include="www\JQuery\demos\index.html" />
+    <Content Include="www\JQuery\demos\js\jquery.js" />
+    <Content Include="www\JQuery\demos\js\jquery.mobile-1.3.0.js" />
+    <Content Include="www\JQuery\demos\js\jquery.mobile-1.3.0.min.js" />
+    <Resource Include="www\JQuery\images\ajax-loader.gif" />
+    <Resource Include="www\JQuery\images\icons-18-black.png" />
+    <Resource Include="www\JQuery\images\icons-18-white.png" />
+    <Resource Include="www\JQuery\images\icons-36-black.png" />
+    <Resource Include="www\JQuery\images\icons-36-white.png" />
+    <Content Include="www\JQuery\jquery.mobile-1.3.0.css" />
+    <Content Include="www\JQuery\jquery.mobile-1.3.0.js" />
+    <Content Include="www\JQuery\jquery.mobile-1.3.0.min.css" />
+    <Content Include="www\JQuery\jquery.mobile-1.3.0.min.js" />
+    <Content Include="www\JQuery\jquery.mobile.structure-1.3.0.css" />
+    <Content Include="www\JQuery\jquery.mobile.structure-1.3.0.min.css" />
+    <Content Include="www\JQuery\jquery.mobile.theme-1.3.0.css" />
+    <Content Include="www\JQuery\jquery.mobile.theme-1.3.0.min.css" />
+    <Content Include="www\cordova-2.4.0.js" />
+    <Content Include="www\img\logo.png" />
+    <Content Include="www\index.html" />
+    <Resource Include="www\JQuery\themes\images\ajax-loader.gif" />
+    <Resource Include="www\JQuery\themes\images\icons-18-black.png" />
+    <Resource Include="www\JQuery\themes\images\icons-18-white.png" />
+    <Resource Include="www\JQuery\themes\images\icons-36-black.png" />
+    <Resource Include="www\JQuery\themes\images\icons-36-white.png" />
+    <Content Include="www\JQuery\themes\Medical.css" />
+    <Content Include="www\JQuery\themes\Medical.min.css" />
+    <Content Include="www\js\index.js" />
+    <None Include="BuildManifestProcessor.js" />
+    <Content Include="www\css\index.css" />
+    <Content Include="www\index2.html">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="cordova\debug.bat" />
+    <None Include="cordova\emulate.bat" />
+    <None Include="www\JQuery\demos\docs\examples\redirect\redirect.php" />
+    <None Include="www\JQuery\demos\docs\examples\redirect\source.php" />
+    <None Include="Properties\AppManifest.xml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\WMAppManifest.xml">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ApplicationIcon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Background.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SplashScreenImage.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Plugins\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions />
+  <PropertyGroup>
+    <PreBuildEvent>CScript "$(ProjectDir)/BuildManifestProcessor.js" "$(ProjectPath)"</PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

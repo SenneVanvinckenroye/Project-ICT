@@ -1,0 +1,103 @@
+ALTER DATABASE [adatum-survey] SET ANSI_NULL_DEFAULT OFF
+ALTER DATABASE [adatum-survey] SET ANSI_NULLS OFF
+ALTER DATABASE [adatum-survey] SET ANSI_PADDING OFF
+ALTER DATABASE [adatum-survey] SET ANSI_WARNINGS OFF
+ALTER DATABASE [adatum-survey] SET ARITHABORT OFF
+ALTER DATABASE [adatum-survey] SET AUTO_CLOSE ON
+ALTER DATABASE [adatum-survey] SET AUTO_CREATE_STATISTICS ON
+ALTER DATABASE [adatum-survey] SET AUTO_SHRINK OFF
+ALTER DATABASE [adatum-survey] SET AUTO_UPDATE_STATISTICS ON
+ALTER DATABASE [adatum-survey] SET CURSOR_CLOSE_ON_COMMIT OFF
+ALTER DATABASE [adatum-survey] SET CURSOR_DEFAULT  GLOBAL
+ALTER DATABASE [adatum-survey] SET CONCAT_NULL_YIELDS_NULL OFF
+ALTER DATABASE [adatum-survey] SET NUMERIC_ROUNDABORT OFF
+ALTER DATABASE [adatum-survey] SET QUOTED_IDENTIFIER OFF
+ALTER DATABASE [adatum-survey] SET RECURSIVE_TRIGGERS OFF
+ALTER DATABASE [adatum-survey] SET  DISABLE_BROKER
+ALTER DATABASE [adatum-survey] SET AUTO_UPDATE_STATISTICS_ASYNC OFF
+ALTER DATABASE [adatum-survey] SET DATE_CORRELATION_OPTIMIZATION OFF
+ALTER DATABASE [adatum-survey] SET ALLOW_SNAPSHOT_ISOLATION OFF
+ALTER DATABASE [adatum-survey] SET PARAMETERIZATION SIMPLE
+ALTER DATABASE [adatum-survey] SET READ_COMMITTED_SNAPSHOT OFF
+ALTER DATABASE [adatum-survey] SET TRUSTWORTHY OFF
+ALTER DATABASE [adatum-survey] SET  READ_WRITE
+ALTER DATABASE [adatum-survey] SET RECOVERY SIMPLE
+ALTER DATABASE [adatum-survey] SET  MULTI_USER
+ALTER DATABASE [adatum-survey] SET PAGE_VERIFY CHECKSUM
+ALTER DATABASE [adatum-survey] SET DB_CHAINING OFF
+
+USE [adatum-survey]
+SET ANSI_NULLS ON
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[Survey](
+  [Id] [nvarchar](50) NOT NULL,
+  [Title] [nvarchar](50) NOT NULL,
+  [CreatedOn] [datetime] NOT NULL,
+CONSTRAINT [PK_Survey] PRIMARY KEY CLUSTERED 
+(
+  [Id] ASC
+)WITH (STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF)
+)
+
+CREATE TABLE [dbo].[Question](
+  [Id] [nvarchar](50) NOT NULL,
+  [SurveyId] [nvarchar](50) NOT NULL,
+  [QuestionText] [nvarchar](255) NOT NULL,
+  [QuestionType] [nvarchar](50) NOT NULL,
+CONSTRAINT [PK_Question] PRIMARY KEY CLUSTERED
+(
+  [Id] ASC
+)WITH (STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF)
+)
+
+ALTER TABLE [dbo].[Question]  WITH CHECK ADD  CONSTRAINT [FK_Question_Survey] FOREIGN KEY([SurveyId])
+  REFERENCES [dbo].[Survey] ([Id])
+  ON DELETE CASCADE
+ALTER TABLE [dbo].[Question] CHECK CONSTRAINT [FK_Question_Survey]
+
+CREATE TABLE [dbo].[PossibleAnswer](
+  [Id] [nvarchar](50) NOT NULL,
+  [QuestionId] [nvarchar](50) NOT NULL,
+  [Answer] [nvarchar](255) NOT NULL,
+CONSTRAINT [PK_PossibleAnswer] PRIMARY KEY CLUSTERED
+(
+  [Id] ASC
+)WITH (STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF)
+)
+
+ALTER TABLE [dbo].[PossibleAnswer]  WITH CHECK ADD  CONSTRAINT [FK_PossibleAnswer_Question] FOREIGN KEY([QuestionId])
+  REFERENCES [dbo].[Question] ([Id])
+  ON DELETE CASCADE
+ALTER TABLE [dbo].[PossibleAnswer] CHECK CONSTRAINT [FK_PossibleAnswer_Question]
+
+CREATE TABLE [dbo].[Response](
+  [Id] [nvarchar](50) NOT NULL,
+  [SurveyId] [nvarchar](50) NOT NULL,
+  [CreatedOn] [datetime] NOT NULL,
+CONSTRAINT [PK_Response] PRIMARY KEY CLUSTERED
+(
+  [Id] ASC
+)WITH (STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF)
+)
+
+ALTER TABLE [dbo].[Response]  WITH CHECK ADD  CONSTRAINT [FK_Response_Survey] FOREIGN KEY([SurveyId])
+  REFERENCES [dbo].[Survey] ([Id])
+  ON DELETE CASCADE
+ALTER TABLE [dbo].[Response] CHECK CONSTRAINT [FK_Response_Survey]
+
+CREATE TABLE [dbo].[QuestionResponse](
+  [ResponseId] [nvarchar](50) NOT NULL,
+  [QuestionId] [nvarchar](50) NOT NULL,
+  [Answer] [nvarchar](255) NOT NULL,
+CONSTRAINT [PK_QuestionResponse] PRIMARY KEY CLUSTERED 
+(
+  [ResponseId] ASC,
+  [QuestionId] ASC
+)WITH (STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF)
+)
+
+ALTER TABLE [dbo].[QuestionResponse]  WITH CHECK ADD  CONSTRAINT [FK_QuestionResponse_Response] FOREIGN KEY([ResponseId])
+  REFERENCES [dbo].[Response] ([Id])
+  ON DELETE CASCADE
+ALTER TABLE [dbo].[QuestionResponse] CHECK CONSTRAINT [FK_QuestionResponse_Response]
