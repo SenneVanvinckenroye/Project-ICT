@@ -1,7 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedAgent 0.1", "MedAgent 0.1\MedAgent 0.1.csproj", "{33c8405b-9b1d-4c26-bf20-019bd3223b3a}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedAgent 0.1", "MedAgent 0.1\MedAgent 0.1.csproj", "{33C8405B-9B1D-4C26-BF20-019BD3223B3A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfService1", "WcfService1\WcfService1.csproj", "{0DCD4084-3AAD-44C2-BFE8-45ACCB65A22E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,5 +17,12 @@ Global
 		{33C8405B-9B1D-4C26-BF20-019BD3223B3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33C8405B-9B1D-4C26-BF20-019BD3223B3A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{33C8405B-9B1D-4C26-BF20-019BD3223B3A}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{0DCD4084-3AAD-44C2-BFE8-45ACCB65A22E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DCD4084-3AAD-44C2-BFE8-45ACCB65A22E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DCD4084-3AAD-44C2-BFE8-45ACCB65A22E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DCD4084-3AAD-44C2-BFE8-45ACCB65A22E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal
