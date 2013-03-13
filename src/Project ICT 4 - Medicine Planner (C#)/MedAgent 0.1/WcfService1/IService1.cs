@@ -12,7 +12,6 @@ namespace WcfService1
     [ServiceContract]
     public interface IService1
     {
-
         [OperationContract]
         [WebGet(UriTemplate = "getidforuser/{email}", BodyStyle = WebMessageBodyStyle.Bare, ResponseFormat = WebMessageFormat.Xml)]
         int GetIdForUser(string email);

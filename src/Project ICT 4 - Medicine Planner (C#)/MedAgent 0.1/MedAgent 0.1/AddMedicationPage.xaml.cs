@@ -25,5 +25,10 @@ namespace MedAgent_0_1
         {
             InitializeComponent();
         }
+
+        private void NextButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+        	NavigationService.Navigate(new Uri(string.Format("/AddMedPlanPage.xaml"), UriKind.Relative));// TODO: Add event handler implementation here.
+        }
     }
 }

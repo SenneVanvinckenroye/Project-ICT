@@ -69,6 +69,9 @@
     <Compile Include="AddMedicationPage.xaml.cs">
       <DependentUpon>AddMedicationPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddMedPlanPage.xaml.cs">
+      <DependentUpon>AddMedPlanPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
@@ -86,6 +89,10 @@
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
     <Page Include="AddMedicationPage.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AddMedPlanPage.xaml">
       <Generator>MSBuild:MarkupCompilePass1</Generator>
       <SubType>Designer</SubType>
     </Page>
