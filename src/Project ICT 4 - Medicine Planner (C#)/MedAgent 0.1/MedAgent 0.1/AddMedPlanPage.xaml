@@ -41,9 +41,9 @@
 			</Canvas>
 			<TextBox x:Name="endDate" Margin="19,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="#BFB6B6B6" InputScope="Date" HorizontalAlignment="Left" Height="58" Width="197"/>
 			<TextBlock HorizontalAlignment="Left" Margin="32,118,0,0" TextWrapping="Wrap" Text="end-date" VerticalAlignment="Top"/>
-			<TextBlock HorizontalAlignment="Right" Margin="0,80,135,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Course"/><Run Text=":"/></TextBlock>
-			<Slider x:Name="course" HorizontalAlignment="Right" Height="20" Margin="0,118,94,0" VerticalAlignment="Top" Width="107" RenderTransformOrigin="0.5,0.5"/>
-			<TextBlock HorizontalAlignment="Right" Height="20" Margin="0,118,53,0" TextWrapping="Wrap" Text="Daily" VerticalAlignment="Top" Width="41" FontSize="13.333"/>
+			<TextBlock HorizontalAlignment="Left" Margin="37,219,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Course"/><Run Text=":"/></TextBlock>
+			<Slider x:Name="course" Height="27" Margin="37,257,151,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Background="Black" BorderBrush="#FFC84A4A" Value="10" HorizontalAlignment="Left" Foreground="#FF1BA1E2" SmallChange="1"/>
+			<TextBlock HorizontalAlignment="Right" Height="27" Margin="0,257,16,0" TextWrapping="Wrap" Text="Daily" VerticalAlignment="Top" Width="135" FontSize="18.667"/>
 		</Grid>
 	</Grid>
 </phone:PhoneApplicationPage>
