@@ -6,7 +6,7 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	xmlns:es="clr-namespace:Microsoft.Expression.Shapes;assembly=Microsoft.Expression.Drawing"
-	mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="800"
+	mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
 	x:Class="MedAgent_0_1.AddMedPlanPage"
 	FontFamily="{StaticResource PhoneFontFamilyNormal}"
 	FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -29,21 +29,25 @@
 
 		<!--ContentPanel - place additional content here-->
 		<Grid x:Name="ContentPanel" Grid.Row="1" Margin="8,0,16,0">
-			<TextBox x:Name="startDate" Margin="19,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="#BFB6B6B6" InputScope="Date" HorizontalAlignment="Left" Height="58" Width="197"/>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="0.649*"/>
+				<ColumnDefinition Width="0.351*"/>
+			</Grid.ColumnDefinitions>
+			<TextBox x:Name="startDate" Margin="19,51,80,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="#BFB6B6B6" InputScope="Date" Height="58"/>
 			<TextBlock HorizontalAlignment="Left" Margin="32,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="start"/><Run Text="-date"/></TextBlock>
-			<Button x:Name="NextButton" Content="Next" Margin="0,0,94,52" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
-			<es:BlockArrow Fill="#FFF4F4F5" HorizontalAlignment="Right" Height="50" Margin="0,0,53,61" Orientation="Right" Stroke="Black" UseLayoutRounding="False" VerticalAlignment="Bottom" Width="41" RenderTransformOrigin="0.25,0.06"/>
-			<Canvas x:Name="viewfinderCanvas" Height="180" Margin="32,0,204,52" VerticalAlignment="Bottom">
+			<Button x:Name="NextButton" Content="Next" Margin="-37,0,0,52" VerticalAlignment="Bottom" HorizontalAlignment="Left" Grid.Column="1"/>
+			<es:BlockArrow Fill="#FFF4F4F5" Height="50" Margin="66,0,53,61" Orientation="Right" Stroke="Black" UseLayoutRounding="False" VerticalAlignment="Bottom" RenderTransformOrigin="0.25,0.06" Grid.Column="1"/>
+			<Canvas x:Name="viewfinderCanvas" Height="180" Margin="32,0,44,52" VerticalAlignment="Bottom">
 				<!--Camera viewfinder -->
 				<Canvas.Background>
 					<VideoBrush x:Name="viewfinderBrush" />
 				</Canvas.Background>
 			</Canvas>
-			<TextBox x:Name="endDate" Margin="19,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="#BFB6B6B6" InputScope="Date" HorizontalAlignment="Left" Height="58" Width="197"/>
+			<TextBox x:Name="endDate" Margin="19,145,80,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="#BFB6B6B6" InputScope="Date" Height="58"/>
 			<TextBlock HorizontalAlignment="Left" Margin="32,118,0,0" TextWrapping="Wrap" Text="end-date" VerticalAlignment="Top"/>
 			<TextBlock HorizontalAlignment="Left" Margin="37,219,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Course"/><Run Text=":"/></TextBlock>
-			<Slider x:Name="course" Height="27" Margin="37,257,151,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Background="Black" BorderBrush="#FFC84A4A" Value="10" HorizontalAlignment="Left" Foreground="#FF1BA1E2" SmallChange="1"/>
-			<TextBlock HorizontalAlignment="Right" Height="27" Margin="0,257,16,0" TextWrapping="Wrap" Text="Daily" VerticalAlignment="Top" Width="135" FontSize="18.667"/>
+			<Slider x:Name="course" Margin="0,257,0,272" Background="#FF5087F3" BorderBrush="#FFEF6D6D" Foreground="#FF1BA1E2" HorizontalAlignment="Left" Width="296" ValueChanged="course_ValueChanged" SmallChange="1" Maximum="5" />
+			<TextBlock x:Name="repeatInfo_txt" Margin="0,257,0,272" TextWrapping="Wrap" Text="Daily" FontSize="24" Grid.Column="1" HorizontalAlignment="Left" TextAlignment="Center" LineHeight="8"/>
 		</Grid>
 	</Grid>
 </phone:PhoneApplicationPage>
