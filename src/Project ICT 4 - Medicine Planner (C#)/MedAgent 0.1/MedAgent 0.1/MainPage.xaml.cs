@@ -23,7 +23,6 @@ namespace MedAgent_0_1
         private void PatientButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri(string.Format("/PatientLogInPage.xaml"), UriKind.Relative));
-			
         }
 
     }
