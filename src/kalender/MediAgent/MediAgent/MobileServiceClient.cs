@@ -22,7 +22,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
 
-namespace PhoneApp1
+namespace MediAgent
 {
     public class MobileServiceTable<TItem> : MobileServiceTable
     {

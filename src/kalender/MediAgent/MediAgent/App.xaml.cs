@@ -13,7 +13,7 @@ using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 
-namespace PhoneApp1
+namespace MediAgent
 {
     public partial class App : Application
     {
@@ -22,24 +22,18 @@ namespace PhoneApp1
         /// </summary>
         /// <returns>The root frame of the Phone Application.</returns>
         public PhoneApplicationFrame RootFrame { get; private set; }
+        public static Patient Pat = new Patient();
 
         /// <summary>
         /// Constructor for the Application object.
         /// </summary>
-        /// 
-        /// 
-        /// 
 
-        public static readonly MobileServiceClient MobileServiceClient= new MobileServiceClient(
-            "https://medims.azure-mobile.net/",
-            "ZzIcMDAMEfWGlgyOiUoCZQCPBTOvZD73");
-
-
+        public static readonly MobileServiceClient MobileServiceClient = new MobileServiceClient(
+             "https://medims.azure-mobile.net/",
+             "ZzIcMDAMEfWGlgyOiUoCZQCPBTOvZD73");
         
-
         public App()
         {
-
             // Global handler for uncaught exceptions. 
             UnhandledException += Application_UnhandledException;
 

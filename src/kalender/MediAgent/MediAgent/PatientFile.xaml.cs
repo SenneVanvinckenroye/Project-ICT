@@ -8,13 +8,14 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 
-namespace PhoneApp1
+namespace MediAgent
 {
-    public partial class Page1 : PhoneApplicationPage
+    public partial class PatientFile : PhoneApplicationPage
     {
-        public Page1()
+        public PatientFile()
         {
             InitializeComponent();
+            PatName.Text = App.Pat.FirstName + " " + App.Pat.LastName;
         }
     }
 }

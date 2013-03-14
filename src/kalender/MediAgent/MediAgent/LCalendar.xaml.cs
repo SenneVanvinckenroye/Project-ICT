@@ -169,7 +169,6 @@ namespace CalendarControl
         private void InitializeObjects()
         {
             mEvents = new Dictionary<ShortDateString, List<CalendarEvent>>();
-            mDefaultHolidayBrush = new SolidColorBrush(Colors.Red);
             mDefaultEventsForegroundBrush = new SolidColorBrush(Colors.White);
             mDefaultEventsBackgroundBrush = (SolidColorBrush)Resources["PhoneAccentBrush"];
         }
@@ -227,11 +226,6 @@ namespace CalendarControl
                 if (dateTime.Year == DateTime.Now.Year && dateTime.Month == DateTime.Now.Month && ba.Content.ToString() == DateTime.Now.Day.ToString())
                 {
                     ba.Background = new SolidColorBrush(Colors.Orange);
-                }
-
-                if (colonna > 4) // giorno festivo
-                {
-                    ba.Foreground = HolidayBrush;
                 }
 
                 //controllo sull'evento esistente

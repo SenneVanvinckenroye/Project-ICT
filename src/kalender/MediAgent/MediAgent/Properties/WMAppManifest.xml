@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2009/deployment" AppPlatformVersion="7.1">
-  <App xmlns="" ProductID="{7e28f4fe-bbb0-43ae-aed7-43417cba69b8}" Title="PhoneApp1" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal"  Author="PhoneApp1 author" Description="Sample description" Publisher="PhoneApp1">
+  <App xmlns="" ProductID="{541639a5-df96-47e0-927e-7ffa15172c6d}" Title="MediAgent" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal"  Author="MediAgent author" Description="Sample description" Publisher="MediAgent">
     <IconPath IsRelative="true" IsResource="false">ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_GAMERSERVICES"/>
@@ -23,11 +23,11 @@
       <DefaultTask  Name ="_default" NavigationPage="MainPage.xaml"/>
     </Tasks>
     <Tokens>
-      <PrimaryToken TokenID="PhoneApp1Token" TaskName="_default">
+      <PrimaryToken TokenID="MediAgentToken" TaskName="_default">
         <TemplateType5>
           <BackgroundImageURI IsRelative="true" IsResource="false">Background.png</BackgroundImageURI>
           <Count>0</Count>
-          <Title>PhoneApp1</Title>
+          <Title>MediAgent</Title>
         </TemplateType5>
       </PrimaryToken>
     </Tokens>
