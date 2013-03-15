@@ -50,6 +50,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Coding4Fun.Toolkit.Controls">
+      <HintPath>.\Coding4Fun.Toolkit.Controls.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Advertising.Mobile" />
     <Reference Include="Microsoft.Advertising.Mobile.UI" />
     <Reference Include="Microsoft.Expression.Drawing" />
@@ -72,11 +75,11 @@
     <Compile Include="AddMedPlanPage.xaml.cs">
       <DependentUpon>AddMedPlanPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AnimatedSplashScreen.xaml.cs">
+      <DependentUpon>AnimatedSplashScreen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="PatientLogInPage.xaml.cs">
-      <DependentUpon>PatientLogInPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -93,12 +96,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="AddMedPlanPage.xaml">
-      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="PatientLogInPage.xaml">
-      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    <Page Include="AnimatedSplashScreen.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainPage.xaml">
       <SubType>Designer</SubType>

@@ -23,6 +23,14 @@ namespace MedAgent_0_1
         private void LogInButtonPatient_Click(object sender, System.Windows.RoutedEventArgs e)
         {
         	// TODO: Add event handler implementation here.
+            ServiceReference1.MedPlanServiceClient client = new ServiceReference1.MedPlanServiceClient();
+            client.GetAllUsersAsync();
+            client.GetAllUsersCompleted += new EventHandler<ServiceReference1.GetAllUsersCompletedEventArgs>(client_GetAllUsersCompleted);
+        }
+
+        void client_GetAllUsersCompleted(object sender, ServiceReference1.GetAllUsersCompletedEventArgs e)
+        {
+            email_txb.Text = e.Result.First().Name;
         }
 
 		private void nextButton_Click(object sender, System.Windows.RoutedEventArgs e)

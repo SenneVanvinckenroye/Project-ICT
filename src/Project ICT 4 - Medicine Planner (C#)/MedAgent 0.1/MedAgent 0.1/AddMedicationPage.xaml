@@ -15,33 +15,44 @@
 	shell:SystemTray.IsVisible="True">
 
 	<!--LayoutRoot is the root grid where all page content is placed-->
-	<Grid x:Name="LayoutRoot" Background="Transparent">
+	<Grid x:Name="LayoutRoot" Margin="0,0,0,1">
+		<Grid.Background>
+			<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+				<GradientStop Color="#FFE56464" Offset="0"/>
+				<GradientStop Color="#FF001C23" Offset="1"/>
+				<GradientStop Color="#FF7ECEFD" Offset="0.6"/>
+			</LinearGradientBrush>
+		</Grid.Background>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="Auto"/>
-			<RowDefinition Height="*"/>
+			<RowDefinition/>
 		</Grid.RowDefinitions>
 		
 		<!--TitlePanel contains the name of the application and page title-->
-		<StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+		<StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,29">
 			<TextBlock x:Name="ApplicationTitle" Text="MED AGENT" Style="{StaticResource PhoneTextNormalStyle}"/>
 			<TextBlock x:Name="PageTitle" Text="Add Medication" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" FontSize="64"/>
 		</StackPanel>
 
 		<!--ContentPanel - place additional content here-->
-		<Grid x:Name="ContentPanel" Grid.Row="1" Margin="8,0,16,0">
-			<TextBox x:Name="medicineName" Margin="19,51,193,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="#BFB6B6B6" InputScope="Text"/>
+		<Grid x:Name="ContentPanel" Grid.Row="1" Margin="0,-1,0,1">
+			<TextBox x:Name="medicineName" Margin="19,51,217,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="{x:Null}" InputScope="Text" Foreground="White"/>
 			<TextBlock HorizontalAlignment="Left" Margin="32,20,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top"/>
-			<TextBox Margin="19,175,26,259" TextWrapping="Wrap" Foreground="Black" Background="#BFB6B6B6" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Text="l"/>
+			<TextBox Margin="19,175,50,259" TextWrapping="Wrap" Foreground="White" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Background="{x:Null}"/>
 			<TextBlock HorizontalAlignment="Left" Margin="32,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="28" Width="101"><Run Text="Description"/><LineBreak/><Run/><LineBreak/><Run/><LineBreak/><Run/><LineBreak/><Run/></TextBlock>
-			<Button x:Name="AddPhotoButton" Content="Add Photo" HorizontalAlignment="Right" Margin="0,0,26,148" VerticalAlignment="Bottom" d:LayoutOverrides="HorizontalAlignment"/>
-			<Button x:Name="NextButton" Content="Next" Margin="0,0,94,52" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="NextButton_Click"/>
-			<es:BlockArrow Fill="#FFF4F4F5" HorizontalAlignment="Right" Height="50" Margin="0,0,53,61" Orientation="Right" Stroke="Black" UseLayoutRounding="False" VerticalAlignment="Bottom" Width="41" RenderTransformOrigin="0.25,0.06"/>
-			<Canvas x:Name="viewfinderCanvas" Height="180" Margin="32,0,204,52" VerticalAlignment="Bottom">
+			<Button x:Name="AddPhotoButton" Content="Add Photo" HorizontalAlignment="Right" Margin="0,0,50,148" VerticalAlignment="Bottom" d:LayoutOverrides="HorizontalAlignment" Click="AddPhotoButton_Click" />
+			<Button x:Name="NextButton" Content="Next" Margin="0,0,96,52" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="128" Click="NextButton_Click"/>
+			<es:BlockArrow Fill="#FFF4F4F5" HorizontalAlignment="Right" Height="50" Margin="0,0,55,64" Orientation="Right" Stroke="Black" UseLayoutRounding="False" VerticalAlignment="Bottom" Width="41" RenderTransformOrigin="0.25,0.06" StrokeThickness="0"/>
+			<Canvas x:Name="viewfinderCanvas" Height="180" Margin="32,0,228,52" VerticalAlignment="Bottom">
 				<!--Camera viewfinder -->
             	<Canvas.Background>
                 	<VideoBrush x:Name="viewfinderBrush" />
             	</Canvas.Background>
 			</Canvas>
-		</Grid>
+<Button x:Name="ShutterButton" Content="SH" Click="ShutterButton_Click" FontSize="26" FontWeight="ExtraBold" Height="75" Margin="32,271,228,271" />
+            <!--Used for debugging >-->
+            <TextBlock Height="46" HorizontalAlignment="Left" Margin="32,571,0,0" x:Name="txtDebug" VerticalAlignment="Top" FontSize="24" FontWeight="ExtraBold" Width="398" />
+        </Grid>
+		<Border BorderBrush="White" BorderThickness="0,0,0,4" Margin="0,10,0,-10"/>
 	</Grid>
 </phone:PhoneApplicationPage>
