@@ -1,0 +1,17 @@
+﻿<configuration>
+    <system.serviceModel>
+        <bindings>
+            <basicHttpBinding>
+                <binding name="BasicHttpBinding_IMedPlanService" maxBufferSize="2147483647"
+                    maxReceivedMessageSize="2147483647">
+                    <security mode="None" />
+                </binding>
+            </basicHttpBinding>
+        </bindings>
+        <client>
+            <endpoint address="../MedPlanService.svc" binding="basicHttpBinding"
+                bindingConfiguration="BasicHttpBinding_IMedPlanService" contract="ServiceReference1.IMedPlanService"
+                name="BasicHttpBinding_IMedPlanService" />
+        </client>
+    </system.serviceModel>
+</configuration>
