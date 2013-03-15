@@ -59,11 +59,19 @@
         			<TextBlock Margin="12,0,40,0" TextWrapping="Wrap" Text="Email" d:LayoutOverrides="Width"/>
         			<TextBox x:Name="EmailBox" Margin="0,20,27,0" TextWrapping="Wrap" Background="#BFB6B6B6" InputScope="EmailSmtpAddress"/>
         			<TextBlock Margin="12,0,5,0" TextWrapping="Wrap" Text="Password" d:LayoutOverrides="Width" />
-        			<PasswordBox Margin="0,20,0,0" Foreground="Black" Background="#BFB6B6B6" HorizontalAlignment="Left" VerticalAlignment="Top" Width="370"/>
+        			<PasswordBox x:Name="Paswoord_pswdbx" Margin="0,20,0,0" Foreground="Black" Background="#BFB6B6B6" HorizontalAlignment="Left" VerticalAlignment="Top" Width="370"/>
         			<Button x:Name="LogInButtonPatient" Content="Log In" Margin="35,20,0,0" Click="LogInButtonPatient_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Height="72"/>
         			<Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Right" VerticalAlignment="Top" Height="72" Width="139" Margin="0,-72,74,0" Background="Transparent" Click="CancelButton_Click"/>
         		</StackPanel>
         	</Border>
+        </Popup>
+        <Popup x:Name="ErrorPopup" VerticalOffset="300" HorizontalOffset="100" d:IsHidden="True" OpacityMask="#B1FF0707">
+            <Border BorderThickness="2" Height="200" Width="250" Background="#FFF16C6C" BorderBrush="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel HorizontalAlignment="Center">
+                    <TextBlock x:Name="error_txblck" Text="ErrorValueTest"></TextBlock>
+                    <Button x:Name="Confirm_btn" Content="OK" HorizontalAlignment="Center" VerticalAlignment="Top" Background="Transparent" Click="confirmButton_Click"/>
+                </StackPanel>
+            </Border>
         </Popup>
     </Grid>
 

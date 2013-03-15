@@ -17,9 +17,12 @@ namespace MedAgent_0_1
 {
     public partial class MainPage : PhoneApplicationPage
     {
+        MedPlanServiceReference.MedPlanServiceClient client;
         public MainPage()
         {
             InitializeComponent();
+            //initialize wcf service client
+            client = new MedPlanServiceReference.MedPlanServiceClient();
         }
 
         private void PatientButton_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -35,20 +38,38 @@ namespace MedAgent_0_1
             Mypopup.IsOpen = true;*/
 
             LogInPopup.IsOpen = true;
-            
-
-
         }
 
         private void LogInButtonPatient_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-        	NavigationService.Navigate(new Uri(string.Format("/AddMedicationPage.xaml"), UriKind.Relative));
-            LogInPopup.IsOpen = false;
+            if (EmailBox.Text != "" && Paswoord_pswdbx.Password != "")
+            {
+                client.LoginAsync(EmailBox.Text, Paswoord_pswdbx.Password);
+                client.LoginCompleted += new EventHandler<MedPlanServiceReference.LoginCompletedEventArgs>(client_LoginCompleted);
+            }
+        }
+
+        void client_LoginCompleted(object sender, MedPlanServiceReference.LoginCompletedEventArgs e)
+        {
+            if (e.Result != "")//voornaam returned door login functie
+            {
+                NavigationService.Navigate(new Uri(string.Format("/AddMedicationPage.xaml"), UriKind.Relative));
+                LogInPopup.IsOpen = false;
+            }
+            else
+            {
+                ErrorPopup.IsOpen = true;
+            }
         }
 
         private void CancelButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
         	LogInPopup.IsOpen = false;
+        }
+
+        private void confirmButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            ErrorPopup.IsOpen = false;
         }
 
     }

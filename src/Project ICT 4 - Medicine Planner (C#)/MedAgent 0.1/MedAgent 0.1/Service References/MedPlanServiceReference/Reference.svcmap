@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="7090fcf4-82d7-403e-9cdf-6a127909d24e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.ObjectModel.ObservableCollection`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>false</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:10372/MedPlanService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="MedPlanService.xsd" MetadataType="Schema" ID="6a549272-9097-4de9-b35d-1b14ddb7602b" SourceId="1" SourceUrl="http://localhost:10372/MedPlanService.svc?xsd=xsd2" />
+    <MetadataFile FileName="MedPlanService1.xsd" MetadataType="Schema" ID="9114939c-878e-4604-8ae0-f04bfed60715" SourceId="1" SourceUrl="http://localhost:10372/MedPlanService.svc?xsd=xsd1" />
+    <MetadataFile FileName="MedPlanService.disco" MetadataType="Disco" ID="2966a5da-a34f-46b2-ae1a-90481884d785" SourceId="1" SourceUrl="http://localhost:10372/MedPlanService.svc?disco" />
+    <MetadataFile FileName="MedPlanService2.xsd" MetadataType="Schema" ID="29e3c998-c6fa-41fa-90d2-e0deff587a90" SourceId="1" SourceUrl="http://localhost:10372/MedPlanService.svc?xsd=xsd0" />
+    <MetadataFile FileName="MedPlanService.wsdl" MetadataType="Wsdl" ID="2dc3df51-a648-4350-ac55-104cbec6d019" SourceId="1" SourceUrl="http://localhost:10372/MedPlanService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
