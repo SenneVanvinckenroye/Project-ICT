@@ -15,14 +15,7 @@
 	shell:SystemTray.IsVisible="True">
 
 	<!--LayoutRoot is the root grid where all page content is placed-->
-	<Grid x:Name="LayoutRoot" Margin="0,0,0,1">
-		<Grid.Background>
-			<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-				<GradientStop Color="#FFE56464" Offset="0"/>
-				<GradientStop Color="#FF001C23" Offset="1"/>
-				<GradientStop Color="#FF7ECEFD" Offset="0.6"/>
-			</LinearGradientBrush>
-		</Grid.Background>
+	<Grid x:Name="LayoutRoot" Margin="0,0,0,1" Background="#F7F7F7F7">
 		<Grid.RowDefinitions>
 			<RowDefinition Height="Auto"/>
 			<RowDefinition/>
@@ -30,18 +23,18 @@
 		
 		<!--TitlePanel contains the name of the application and page title-->
 		<StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,29">
-			<TextBlock x:Name="ApplicationTitle" Text="MED AGENT" Style="{StaticResource PhoneTextNormalStyle}"/>
-			<TextBlock x:Name="PageTitle" Text="Add Medication" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" FontSize="64"/>
+			<TextBlock x:Name="ApplicationTitle" Text="MED AGENT" Style="{StaticResource PhoneTextNormalStyle}" Foreground="#FF556193"/>
+			<TextBlock x:Name="PageTitle" Text="Add Medication" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" FontSize="64" Foreground="#FF556193"/>
 		</StackPanel>
 
 		<!--ContentPanel - place additional content here-->
 		<Grid x:Name="ContentPanel" Grid.Row="1" Margin="0,-1,0,1">
-			<TextBox x:Name="medicineName" Margin="19,51,217,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="{x:Null}" InputScope="Text" Foreground="White"/>
-			<TextBlock HorizontalAlignment="Left" Margin="32,20,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top"/>
-			<TextBox Margin="19,175,50,259" TextWrapping="Wrap" Foreground="White" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Background="{x:Null}"/>
-			<TextBlock HorizontalAlignment="Left" Margin="32,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="28" Width="101"><Run Text="Description"/><LineBreak/><Run/><LineBreak/><Run/><LineBreak/><Run/><LineBreak/><Run/></TextBlock>
-			<Button x:Name="AddPhotoButton" Content="Add Photo" HorizontalAlignment="Right" Margin="0,0,50,148" VerticalAlignment="Bottom" d:LayoutOverrides="HorizontalAlignment" Click="AddPhotoButton_Click" />
-			<Button x:Name="NextButton" Content="Next" Margin="0,0,96,52" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="128" Click="NextButton_Click"/>
+			<TextBox x:Name="medicineName" Margin="19,51,217,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="{x:Null}" InputScope="Text" Foreground="White" BorderBrush="#FF3FC1DF"/>
+			<TextBlock HorizontalAlignment="Left" Margin="32,20,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Foreground="#FF556193"/>
+			<TextBox Margin="19,175,50,259" TextWrapping="Wrap" Foreground="White" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Background="{x:Null}" BorderBrush="#FF3FC1DF"/>
+			<TextBlock HorizontalAlignment="Left" Margin="32,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="28" Width="101" Foreground="#FF556193"><Run Text="Description"/><LineBreak/><Run/><LineBreak/><Run/><LineBreak/><Run/><LineBreak/><Run/></TextBlock>
+			<Button x:Name="AddPhotoButton" Content="Add Photo" HorizontalAlignment="Right" Margin="0,0,58,150" VerticalAlignment="Bottom" d:LayoutOverrides="HorizontalAlignment" Click="AddPhotoButton_Click" BorderBrush="#FFCAE756" Foreground="#FF556193" />
+			<Button x:Name="NextButton" Content="Next" Margin="0,0,100,52" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="128" Click="NextButton_Click" BorderBrush="#FFCAE756" Foreground="#FF556193"/>
 			<es:BlockArrow Fill="#FFF4F4F5" HorizontalAlignment="Right" Height="50" Margin="0,0,55,64" Orientation="Right" Stroke="Black" UseLayoutRounding="False" VerticalAlignment="Bottom" Width="41" RenderTransformOrigin="0.25,0.06" StrokeThickness="0"/>
 			<Canvas x:Name="viewfinderCanvas" Height="180" Margin="32,0,228,52" VerticalAlignment="Bottom">
 				<!--Camera viewfinder -->
@@ -49,7 +42,7 @@
                 	<VideoBrush x:Name="viewfinderBrush" />
             	</Canvas.Background>
 			</Canvas>
-<Button x:Name="ShutterButton" Content="SH" Click="ShutterButton_Click" FontSize="26" FontWeight="ExtraBold" Height="75" Margin="32,271,228,271" />
+<Button x:Name="ShutterButton" Content="SH" Click="ShutterButton_Click" FontSize="26" FontWeight="ExtraBold" Height="75" Margin="32,271,228,271" BorderBrush="#FF3FC1DF" Foreground="Black" />
             <!--Used for debugging >-->
             <TextBlock Height="46" HorizontalAlignment="Left" Margin="32,571,0,0" x:Name="txtDebug" VerticalAlignment="Top" FontSize="24" FontWeight="ExtraBold" Width="398" />
         </Grid>

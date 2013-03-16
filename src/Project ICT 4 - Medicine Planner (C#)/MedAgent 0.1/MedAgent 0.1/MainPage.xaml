@@ -17,14 +17,7 @@
 
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-	<Grid x:Name="LayoutRoot" Margin="0,0,0,1">
-		<Grid.Background>
-			<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-				<GradientStop Color="#FFE56464" Offset="0"/>
-				<GradientStop Color="#FF001C23" Offset="1"/>
-				<GradientStop Color="#FF7ECEFD" Offset="0.6"/>
-			</LinearGradientBrush>
-		</Grid.Background>
+	<Grid x:Name="LayoutRoot" Margin="0,0,0,1" Background="#FFF7F7F7">
 		<Grid.RowDefinitions>
 			<RowDefinition Height="Auto"/>
 			<RowDefinition/>
@@ -35,8 +28,8 @@
 
 		<!--TitlePanel contains the name of the application and page title-->
 		<StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,29">
-			<TextBlock x:Name="ApplicationTitle" Text="MED AGENT" Style="{StaticResource PhoneTextNormalStyle}"/>
-			<TextBlock x:Name="PageTitle" Text="Welcome" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+			<TextBlock x:Name="ApplicationTitle" Text="MED AGENT" Style="{StaticResource PhoneTextNormalStyle}" Foreground="#FF556193"/>
+			<TextBlock x:Name="PageTitle" Text="Welcome" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" Foreground="#FF556193"/>
 		</StackPanel>
 
 		<!--ContentPanel - place additional content here-->
@@ -45,9 +38,9 @@
 				<StackPanel.RenderTransform>
 					<CompositeTransform/>
 				</StackPanel.RenderTransform>
-				<Button x:Name="PatientButton" Content="Patient" RenderTransformOrigin="0.5,0.5" Click="PatientButton_Click" Height="80" Margin="0,20,0,0" Background="#FF59A8BC"/>
-				<Button Content="Doctor" Height="80" Margin="0,20" Background="#FF59A8BC"/>
-				<Button Content="Nurse" Height="80" Background="#FF59A8BC"  />
+                <Button x:Name="PatientButton" Content="Patient" RenderTransformOrigin="0.5,0.5" Click="PatientButton_Click" Height="80" Margin="0,20,0,0" Background="#CAE756"/>
+                <Button Content="Doctor" Height="80" Margin="0,20" Background="#CAE756"/>
+                <Button Content="Nurse" Height="80" Background="#CAE756"  />
 			</StackPanel>
 		</Grid>
         <Popup x:Name="LogInPopup" Grid.Row="1" d:LayoutOverrides="GridBox" Margin="0.009,40.37,0.016,80.63" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" VerticalOffset="6" d:IsHidden="True">

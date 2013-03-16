@@ -15,14 +15,7 @@
 	shell:SystemTray.IsVisible="True">
 
 	<!--LayoutRoot is the root grid where all page content is placed-->
-	<Grid x:Name="LayoutRoot">
-		<Grid.Background>
-			<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-				<GradientStop Color="#FFE56464"/>
-				<GradientStop Color="#FF001C23" Offset="1"/>
-				<GradientStop Color="#FF7ECEFD" Offset="0.6"/>
-			</LinearGradientBrush>
-		</Grid.Background>
+	<Grid x:Name="LayoutRoot" Background="#FFF7F7F7">
 		<Grid.RowDefinitions>
 			<RowDefinition Height="Auto"/>
 			<RowDefinition Height="0.002*"/>
@@ -31,8 +24,8 @@
 		
 		<!--TitlePanel contains the name of the application and page title-->
 		<StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,16,28">
-			<TextBlock x:Name="ApplicationTitle" Text="MED AGENT" Style="{StaticResource PhoneTextNormalStyle}"/>
-			<TextBlock x:Name="PageTitle" Text="Add Medication" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" FontSize="64"/>
+			<TextBlock x:Name="ApplicationTitle" Text="MED AGENT" Style="{StaticResource PhoneTextNormalStyle}" Foreground="#FF556193"/>
+			<TextBlock x:Name="PageTitle" Text="Add Medication" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" FontSize="64" Foreground="#FF556193"/>
 		</StackPanel>
 
 		<!--ContentPanel - place additional content here-->
@@ -41,9 +34,9 @@
 				<ColumnDefinition Width="0.627*"/>
 				<ColumnDefinition Width="0.373*"/>
 			</Grid.ColumnDefinitions>
-			<TextBox x:Name="startDate" Margin="19,51,80,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="{x:Null}" InputScope="Date" Height="58"/>
-			<TextBlock HorizontalAlignment="Left" Margin="32,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Start date"/>
-			<Button x:Name="NextButton" Content="Next" Margin="-37,0,0,27" VerticalAlignment="Bottom" HorizontalAlignment="Left" Grid.Column="1"/>
+			<TextBox x:Name="startDate" Margin="19,51,80,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="{x:Null}" InputScope="Date" Height="58" BorderBrush="#FF3FC1DF"/>
+			<TextBlock HorizontalAlignment="Left" Margin="32,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Start date" Foreground="#FF556193"/>
+			<Button x:Name="NextButton" Content="Next" Margin="-37,0,0,27" VerticalAlignment="Bottom" HorizontalAlignment="Left" Grid.Column="1" BorderBrush="#FFCAE756" Foreground="#FF556193"/>
 			<es:BlockArrow Fill="#FFF4F4F5" Height="50" Margin="65.776,0,69,36" Orientation="Right" Stroke="Black" UseLayoutRounding="False" VerticalAlignment="Bottom" RenderTransformOrigin="0.25,0.06" Grid.Column="1" StrokeThickness="0"/>
 			<Canvas x:Name="viewfinderCanvas" Height="180" Margin="32,0,44,27" VerticalAlignment="Bottom">
 				<!--Camera viewfinder -->
@@ -51,11 +44,11 @@
 					<VideoBrush x:Name="viewfinderBrush" />
 				</Canvas.Background>
 			</Canvas>
-			<TextBox x:Name="endDate" Margin="19,145,80,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="{x:Null}" InputScope="Date" Height="58" Foreground="White"/>
-			<TextBlock HorizontalAlignment="Left" Margin="32,118,0,0" TextWrapping="Wrap" Text="End date" VerticalAlignment="Top"/>
-			<TextBlock HorizontalAlignment="Left" Margin="37,219,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Course"/><Run Text=":"/></TextBlock>
-			<Slider x:Name="course" Margin="0,257,0,247" BorderBrush="#FF060000" Foreground="White" HorizontalAlignment="Left" Width="296" ValueChanged="course_ValueChanged" SmallChange="1" Maximum="5" Background="Black" OpacityMask="{x:Null}" Opacity="100"></Slider>
-            <TextBlock x:Name="repeatInfo_txt" Margin="0,257,0,247" TextWrapping="Wrap" Text="Daily" FontSize="24" Grid.Column="1" HorizontalAlignment="Left" TextAlignment="Center" LineHeight="8"/>
+			<TextBox x:Name="endDate" Margin="19,145,80,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="{x:Null}" InputScope="Date" Height="58" Foreground="White" BorderBrush="#FF3FC1DF"/>
+			<TextBlock HorizontalAlignment="Left" Margin="32,118,0,0" TextWrapping="Wrap" Text="End date" VerticalAlignment="Top" Foreground="#FF556193"/>
+			<TextBlock HorizontalAlignment="Left" Margin="37,219,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF556193"><Run Text="Course"/><Run Text=":"/></TextBlock>
+			<Slider x:Name="course" Margin="19,257,0,247" BorderBrush="#FF3FC1DF" Foreground="#FFCAE756" HorizontalAlignment="Left" Width="296" ValueChanged="course_ValueChanged" SmallChange="1" Maximum="5" Background="#FFCAE756" OpacityMask="{x:Null}" Opacity="100"></Slider>
+            <TextBlock x:Name="repeatInfo_txt" Margin="23,272,8,288" TextWrapping="Wrap" Text="Daily" FontSize="24" Grid.Column="1" TextAlignment="Center" LineHeight="8" d:LayoutOverrides="Height" Foreground="#FFF1DC30"/>
 		</Grid>
 		<Border BorderBrush="White" BorderThickness="0,0,0,4" Grid.RowSpan="2"/>
 	</Grid>
