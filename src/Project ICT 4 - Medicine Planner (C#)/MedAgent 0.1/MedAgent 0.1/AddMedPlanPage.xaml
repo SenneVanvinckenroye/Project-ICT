@@ -37,7 +37,7 @@
 			<TextBox x:Name="startDate" Margin="19,51,80,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="{x:Null}" InputScope="Date" Height="58" BorderBrush="#FF3FC1DF"/>
 			<TextBlock HorizontalAlignment="Left" Margin="32,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Start date" Foreground="#FF556193"/>
 			<Button x:Name="NextButton" Content="Next" Margin="-37,0,0,27" VerticalAlignment="Bottom" HorizontalAlignment="Left" Grid.Column="1" BorderBrush="#FFCAE756" Foreground="#FF556193"/>
-			<es:BlockArrow Fill="#FFF4F4F5" Height="50" Margin="65.776,0,69,36" Orientation="Right" Stroke="Black" UseLayoutRounding="False" VerticalAlignment="Bottom" RenderTransformOrigin="0.25,0.06" Grid.Column="1" StrokeThickness="0"/>
+			<es:BlockArrow Fill="#FFCAE756" Height="50" Margin="65.776,0,69,36" Orientation="Right" Stroke="Black" UseLayoutRounding="False" VerticalAlignment="Bottom" RenderTransformOrigin="0.25,0.06" Grid.Column="1" StrokeThickness="0"/>
 			<Canvas x:Name="viewfinderCanvas" Height="180" Margin="32,0,44,27" VerticalAlignment="Bottom">
 				<!--Camera viewfinder -->
 				<Canvas.Background>

@@ -58,7 +58,7 @@ namespace MedAgent_0_1
             }
             else
             {
-                error_txblck.Text = "Email and or password not found";
+                error_txblck.Text = "Email and or password \n not found";
                 ErrorPopup.IsOpen = true;
             }
         }
