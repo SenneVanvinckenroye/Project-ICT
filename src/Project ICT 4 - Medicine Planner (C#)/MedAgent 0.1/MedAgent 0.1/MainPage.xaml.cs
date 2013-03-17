@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
+using System.ServiceModel;
 
 
 namespace MedAgent_0_1
@@ -22,6 +23,7 @@ namespace MedAgent_0_1
         {
             InitializeComponent();
             //initialize wcf service client
+
             client = new MedPlanServiceReference.MedPlanServiceClient();
         }
 
@@ -44,8 +46,17 @@ namespace MedAgent_0_1
         {
             if (EmailBox.Text != "" && Paswoord_pswdbx.Password != "")
             {
-                client.LoginAsync(EmailBox.Text, Paswoord_pswdbx.Password);
-                client.LoginCompleted += new EventHandler<MedPlanServiceReference.LoginCompletedEventArgs>(client_LoginCompleted);
+                //using wcf service to login
+                try
+                {
+                    client.LoginAsync(EmailBox.Text, Paswoord_pswdbx.Password);
+                    client.LoginCompleted += new EventHandler<MedPlanServiceReference.LoginCompletedEventArgs>(client_LoginCompleted);
+                }
+                catch(EndpointNotFoundException)
+                {
+                    error_txblck.Text = "[Error]\nService problems";
+                    ErrorPopup.IsOpen = true;
+                }
             }
         }
 
