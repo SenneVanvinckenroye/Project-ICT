@@ -17,7 +17,7 @@
 
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-	<Grid x:Name="LayoutRoot" Margin="0,0,0,1" Background="#FFF7F7F7" d:IsHidden="True">
+	<Grid x:Name="LayoutRoot" Margin="0,0,0,1" Background="#FFF7F7F7">
 		<Grid.RowDefinitions>
 			<RowDefinition Height="Auto"/>
 			<RowDefinition/>
@@ -26,16 +26,16 @@
 		<!--TitlePanel contains the name of the application and page title-->
 
 		<!--TitlePanel contains the name of the application and page title-->
-		<Border BorderBrush="#FFF1DC30" BorderThickness="0,0,0,4" Margin="0,10,0,0" d:IsLocked="True" d:IsHidden="True"/>
+		<Border BorderBrush="#FFF1DC30" BorderThickness="0,0,0,4" Margin="0,10,0,0"/>
 
 		<!--TitlePanel contains the name of the application and page title-->
-		<StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,29" d:IsLocked="True" d:IsHidden="True">
+		<StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,29">
 			<TextBlock x:Name="ApplicationTitle" Text="MED AGENT" Style="{StaticResource PhoneTextNormalStyle}" Foreground="#FF556193"/>
 			<TextBlock x:Name="PageTitle" Text="Welcome" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" Foreground="#FF556193"/>
 		</StackPanel>
 
 		<!--ContentPanel - place additional content here-->
-		<Grid x:Name="ContentPanel" Grid.Row="1" Margin="0,-1,0,1" d:IsLocked="True" d:IsHidden="True">
+		<Grid x:Name="ContentPanel" Grid.Row="1" Margin="0,-1,0,1">
 			<StackPanel Margin="148,80,172,208" RenderTransformOrigin="0.5,0.5">
 				<StackPanel.RenderTransform>
 					<CompositeTransform/>
@@ -45,16 +45,16 @@
                 <Button Content="Nurse" Height="80" Background="#CAE756" BorderBrush="#FF3FC1DF"  />
 			</StackPanel>
 		</Grid>
-        <Popup x:Name="LogInPopup" Grid.Row="1" d:LayoutOverrides="GridBox" Margin="0.009,40.37,0.016,80.63" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" VerticalOffset="6" d:IsHidden="True" d:IsLocked="True">
+        <Popup x:Name="LogInPopup" Grid.Row="1" d:LayoutOverrides="GridBox" Margin="0.009,40.37,0.016,80.63" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" VerticalOffset="6">
         	<Popup.RenderTransform>
         		<CompositeTransform SkewX="0.117" TranslateX="0.498"/>
         	</Popup.RenderTransform>
-        	<Border BorderThickness="2" Height="446" Width="435" Background="#FFCAE756" BorderBrush="#FFF1DC30" Margin="23,34,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+        	<Border BorderThickness="5" Height="446" Width="435" Background="#FFCAE756" BorderBrush="#FFF1DC30" Margin="23,34,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">
         		<StackPanel Height="360" Width="400" Margin="40,33,0,0">
         			<TextBlock Margin="12,0,40,0" TextWrapping="Wrap" Text="Email" d:LayoutOverrides="Width" Foreground="#FF556193"/>
-        			<TextBox x:Name="EmailBox" Margin="0,20,27,0" TextWrapping="Wrap" Background="#BFB6B6B6" InputScope="EmailSmtpAddress" BorderBrush="#FF3FC1DF"/>
+        			<TextBox x:Name="EmailBox" Margin="0,20,27,0" TextWrapping="Wrap" Background="#BFFFFFFF" InputScope="EmailSmtpAddress" BorderBrush="#FF3FC1DF"/>
         			<TextBlock Margin="12,0,5,0" TextWrapping="Wrap" Text="Password" d:LayoutOverrides="Width" Foreground="#FF556193" />
-        			<PasswordBox x:Name="Paswoord_pswdbx" Margin="0,20,0,0" Foreground="Black" Background="#BFB6B6B6" HorizontalAlignment="Left" VerticalAlignment="Top" Width="370" BorderBrush="#FF3FC1DF"/>
+        			<PasswordBox x:Name="Paswoord_pswdbx" Margin="0,20,0,0" Foreground="Black" Background="#BFFFFFFF" HorizontalAlignment="Left" VerticalAlignment="Top" Width="370" BorderBrush="#FF3FC1DF"/>
         			<Button x:Name="LogInButtonPatient" Content="Log In" Margin="35,20,0,0" Click="LogInButtonPatient_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Height="72" Foreground="#FF556193"/>
         			<Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Right" VerticalAlignment="Top" Height="72" Width="139" Margin="0,-72,74,0" Background="Transparent" Click="CancelButton_Click" Foreground="#FF556193"/>
         		</StackPanel>
