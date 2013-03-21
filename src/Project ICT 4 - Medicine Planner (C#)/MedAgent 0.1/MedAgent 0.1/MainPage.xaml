@@ -41,7 +41,7 @@
 					<CompositeTransform/>
 				</StackPanel.RenderTransform>
                 <Button x:Name="PatientButton" Content="Patient" RenderTransformOrigin="0.5,0.5" Click="PatientButton_Click" Height="80" Margin="0,20,0,0" Background="#CAE756" BorderBrush="#FF3FC1DF"/>
-                <Button Content="Doctor" Height="80" Margin="0,20" Background="#CAE756" BorderBrush="#FF3FC1DF"/>
+                <Button Content="Doctor" Height="80" Margin="0,20" Background="#CAE756" BorderBrush="#FF3FC1DF" Click="Button_Click"/>
                 <Button Content="Nurse" Height="80" Background="#CAE756" BorderBrush="#FF3FC1DF"  />
 			</StackPanel>
 		</Grid>
