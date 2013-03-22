@@ -64,7 +64,7 @@ namespace MedAgent_0_1
         {
             if (e.Result != "")//voornaam returned door login functie
             {
-                NavigationService.Navigate(new Uri(string.Format("/DoctorView1.xaml"), UriKind.Relative));
+                NavigationService.Navigate(new Uri(string.Format("/AddMedicationPage.xaml"), UriKind.Relative));
                 LogInPopup.IsOpen = false;
             }
             else
