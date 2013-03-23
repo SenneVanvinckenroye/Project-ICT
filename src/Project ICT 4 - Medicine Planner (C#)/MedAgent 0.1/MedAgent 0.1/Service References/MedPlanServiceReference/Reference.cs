@@ -34,6 +34,8 @@ namespace MedAgent_0_1.MedPlanServiceReference {
         
         private char sexField;
         
+        private string userTypeField;
+        
         [System.Runtime.Serialization.DataMemberAttribute()]
         public string FirstName {
             get {
@@ -121,6 +123,19 @@ namespace MedAgent_0_1.MedPlanServiceReference {
                 if ((this.sexField.Equals(value) != true)) {
                     this.sexField = value;
                     this.RaisePropertyChanged("sex");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string userType {
+            get {
+                return this.userTypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.userTypeField, value) != true)) {
+                    this.userTypeField = value;
+                    this.RaisePropertyChanged("userType");
                 }
             }
         }

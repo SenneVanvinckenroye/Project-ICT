@@ -36,30 +36,18 @@
 
 		<!--ContentPanel - place additional content here-->
 		<Grid x:Name="ContentPanel" Grid.Row="1" Margin="0,-1,0,1">
-			<StackPanel Margin="148,80,172,208" RenderTransformOrigin="0.5,0.5">
-				<StackPanel.RenderTransform>
-					<CompositeTransform/>
-				</StackPanel.RenderTransform>
-                <Button x:Name="PatientButton" Content="Patient" RenderTransformOrigin="0.5,0.5" Click="PatientButton_Click" Height="80" Margin="0,20,0,0" Background="#CAE756" BorderBrush="#FF3FC1DF"/>
-                <Button Content="Doctor" Height="80" Margin="0,20" Background="#CAE756" BorderBrush="#FF3FC1DF" Click="Button_Click"/>
-                <Button Content="Nurse" Height="80" Background="#CAE756" BorderBrush="#FF3FC1DF"  />
-			</StackPanel>
-		</Grid>
-        <Popup x:Name="LogInPopup" Grid.Row="1" d:LayoutOverrides="GridBox" Margin="0.009,40.37,0.016,80.63" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" VerticalOffset="6">
-        	<Popup.RenderTransform>
-        		<CompositeTransform SkewX="0.117" TranslateX="0.498"/>
-        	</Popup.RenderTransform>
-        	<Border BorderThickness="5" Height="446" Width="435" Background="#FFCAE756" BorderBrush="#FFF1DC30" Margin="23,34,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">
-        		<StackPanel Height="360" Width="400" Margin="40,33,0,0">
-        			<TextBlock Margin="12,0,40,0" TextWrapping="Wrap" Text="Email" d:LayoutOverrides="Width" Foreground="#FF556193"/>
-        			<TextBox x:Name="EmailBox" Margin="0,20,27,0" TextWrapping="Wrap" Background="#BFFFFFFF" InputScope="EmailSmtpAddress" BorderBrush="#FF3FC1DF"/>
-        			<TextBlock Margin="12,0,5,0" TextWrapping="Wrap" Text="Password" d:LayoutOverrides="Width" Foreground="#FF556193" />
-        			<PasswordBox x:Name="Paswoord_pswdbx" Margin="0,20,0,0" Foreground="Black" Background="#BFFFFFFF" HorizontalAlignment="Left" VerticalAlignment="Top" Width="370" BorderBrush="#FF3FC1DF"/>
-        			<Button x:Name="LogInButtonPatient" Content="Log In" Margin="35,20,0,0" Click="LogInButtonPatient_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Height="72" Foreground="#FF556193"/>
-        			<Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Right" VerticalAlignment="Top" Height="72" Width="139" Margin="0,-72,74,0" Background="Transparent" Click="CancelButton_Click" Foreground="#FF556193"/>
-        		</StackPanel>
-        	</Border>
-        </Popup>
+            <Border BorderThickness="5" Height="503" Width="435" Background="#FFCAE756" BorderBrush="#FFF1DC30" Margin="23,96,0,6" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel Height="399" Width="350" Margin="40,33,0,0">
+                    <TextBlock Margin="12,0,40,0" TextWrapping="Wrap" Text="Email" d:LayoutOverrides="Width" Foreground="#FF556193"/>
+                    <TextBox x:Name="EmailBox" Margin="0,20,27,0" TextWrapping="Wrap" Background="#BFFFFFFF" InputScope="EmailSmtpAddress" BorderBrush="#FF3FC1DF"/>
+                    <TextBlock Margin="12,0,5,0" TextWrapping="Wrap" Text="Password" d:LayoutOverrides="Width" Foreground="#FF556193" />
+                    <PasswordBox x:Name="Paswoord_pswdbx" Margin="0,20,0,0" Foreground="Black" Background="#BFFFFFFF" HorizontalAlignment="Left" VerticalAlignment="Top" Width="324" BorderBrush="#FF3FC1DF"/>
+                    <Button x:Name="LogInButtonPatient" Content="Log In"  Click="LogInButtonPatient_Click" VerticalAlignment="Top" Height="72" Foreground="#FF556193"/>
+                    <Button x:Name="byPass" Content="offline" Height="74" Width="336" Click="byPass_Click"></Button>
+                </StackPanel>
+            </Border>
+        </Grid>
+        
 		<Popup x:Name="ErrorPopup" VerticalOffset="300" HorizontalOffset="100" OpacityMask="#B1FF0707">
 			<Border BorderThickness="2" Height="200" Width="250" Background="#FFF16C6C" BorderBrush="#FFCAE756" HorizontalAlignment="Center" VerticalAlignment="Center">
 				<StackPanel HorizontalAlignment="Center">

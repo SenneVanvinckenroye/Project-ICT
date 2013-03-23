@@ -16,7 +16,7 @@ namespace SilverlightApplication3.Web.Model
         public string FirstName { get; set; }
 
         [DataMember]
-        public int memberID { get; set; }
+        public Int32 memberID { get; set; }
 
         [DataMember]
         public string psw_hash { get; set; }
@@ -29,5 +29,8 @@ namespace SilverlightApplication3.Web.Model
 
         [DataMember]
         public DateTime date { get; set; }
+
+        [DataMember]
+        private string userType { get; set; }
     }
 }

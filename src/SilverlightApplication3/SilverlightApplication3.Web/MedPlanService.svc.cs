@@ -38,17 +38,38 @@ namespace SilverlightApplication3.Web
             DataClasses1DataContext dc = new DataClasses1DataContext();
             List<Model.User> alist = new List<Model.User>();
 
-            var user = from u in dc.Users
-                       where u.email == email && u.pass_hash == CreateMD5Hash(pswd_hash)
-                       select new { u.FName };
+            var patient = from p in dc.Patients
+                          where p.MemberID.Equals(
+                              from u in dc.Users where u.email == email && u.pass_hash == pswd_hash select u.MemberID)
+                          select new { p.MemberID };
 
-            foreach (var item in user)
+            var doctor = from d in dc.Doctors where d.MemberID.Equals(
+                       from u in dc.Users where u.email == email && u.pass_hash == pswd_hash select u.MemberID)
+                       select new { d.MemberID };
+
+            var nurse = from n in dc.Nurses
+                        where n.MemberID.Equals(
+                            from u in dc.Users where u.email == email && u.pass_hash == pswd_hash select u.MemberID)
+                        select new { n.MemberID };
+
+            if (patient != null)
             {
-                alist.Add(new Model.User() { FirstName = item.FName });
+                foreach (var i in patient)
+                {
+                    alist.Add(new Model.User() { memberID = i.MemberID });
+                }
+                
+                return "patient";
             }
-            if (alist.Count > 0)
+            else if (doctor != null)
             {
-                return alist.First().FirstName;
+                alist.Add(new Model.User() { memberID = doctor.First().MemberID });
+                return "doctor";
+            }
+            else if (nurse != null)
+            {
+                alist.Add(new Model.User() { memberID = nurse.First().MemberID });
+                return "nurse";
             }
             else
                 return "";

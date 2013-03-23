@@ -27,21 +27,6 @@ namespace MedAgent_0_1
             client = new MedPlanServiceReference.MedPlanServiceClient();
         }
 
-        private void PatientButton_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-            //NavigationService.Navigate(new Uri(string.Format("/PatientLogInPage.xaml"), UriKind.Relative));
-
-            /*Popup Mypopup = new Popup();
-            Mypopup.Height = 300;
-            Mypopup.Width = 400;
-            Mypopup.VerticalOffset = 100;
-            PopUpUserControl Mycontrol = new PopUpUserControl();
-            Mypopup.Child = Mycontrol;
-            Mypopup.IsOpen = true;*/
-
-            LogInPopup.IsOpen = true;
-        }
-
         private void LogInButtonPatient_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             if (EmailBox.Text != "" && Paswoord_pswdbx.Password != "")
@@ -62,21 +47,30 @@ namespace MedAgent_0_1
 
         void client_LoginCompleted(object sender, MedPlanServiceReference.LoginCompletedEventArgs e)
         {
-            if (e.Result != "")//voornaam returned door login functie
+            switch(e.Result)
             {
-                NavigationService.Navigate(new Uri(string.Format("/AddMedicationPage.xaml"), UriKind.Relative));
-                LogInPopup.IsOpen = false;
+                case "":
+                    {
+                        error_txblck.Text = "Email and or password \n not found";
+                        ErrorPopup.IsOpen = true;
+                        break;
+                    }
+                case "patient":
+                    {
+                        NavigationService.Navigate(new Uri(string.Format("/PatientFile.xaml"), UriKind.Relative));
+                        break;
+                    }
+                case "doctor":
+                    {
+                        NavigationService.Navigate(new Uri(string.Format("/DoctorView1.xaml"), UriKind.Relative));
+                        break;
+                    }
+                case "nurse":
+                    {
+                        NavigationService.Navigate(new Uri(string.Format("/DoctorView1.xaml"), UriKind.Relative));
+                        break;
+                    }
             }
-            else
-            {
-                error_txblck.Text = "Email and or password \n not found";
-                ErrorPopup.IsOpen = true;
-            }
-        }
-
-        private void CancelButton_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-        	LogInPopup.IsOpen = false;
         }
 
         private void confirmButton_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -85,6 +79,11 @@ namespace MedAgent_0_1
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri(string.Format("/DoctorView1.xaml"), UriKind.Relative));
+        }
+
+        private void byPass_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri(string.Format("/DoctorView1.xaml"), UriKind.Relative));
         }
