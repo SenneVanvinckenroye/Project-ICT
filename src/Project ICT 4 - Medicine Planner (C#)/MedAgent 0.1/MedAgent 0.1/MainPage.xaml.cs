@@ -85,7 +85,7 @@ namespace MedAgent_0_1
 
         private void byPass_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri(string.Format("/DoctorView1.xaml"), UriKind.Relative));
+            NavigationService.Navigate(new Uri(string.Format("/AddMedicationPage.xaml"), UriKind.Relative));
         }
 
     }
