@@ -21,6 +21,7 @@ namespace MediAgent
             InitializeComponent();
             //Service.DownloadDone += Service_DownloadDone;
             //Service.Query(null, "lastName");
+            PatientLst.Items.Add(new Patient() { FirstName = "Dries", LastName = "Crauwels", Id = 4 });
         }
 
         void Service_DownloadDone(object sender, EventArgs e)

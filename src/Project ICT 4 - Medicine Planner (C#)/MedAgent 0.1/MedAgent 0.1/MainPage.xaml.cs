@@ -56,17 +56,17 @@ namespace MedAgent_0_1
                         ErrorPopup.IsOpen = true;
                         break;
                     }
-                case "patient":
+                case "p":
                     {
                         NavigationService.Navigate(new Uri(string.Format("/PatientFile.xaml"), UriKind.Relative));
                         break;
                     }
-                case "doctor":
+                case "d":
                     {
                         NavigationService.Navigate(new Uri(string.Format("/DoctorView1.xaml"), UriKind.Relative));
                         break;
                     }
-                case "nurse":
+                case "n":
                     {
                         NavigationService.Navigate(new Uri(string.Format("/DoctorView1.xaml"), UriKind.Relative));
                         break;

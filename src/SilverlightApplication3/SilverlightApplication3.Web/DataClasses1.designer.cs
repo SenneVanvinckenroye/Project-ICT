@@ -22,7 +22,7 @@ namespace SilverlightApplication3.Web
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="medplanner")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="medplanner-2013-3-15-11-53")]
 	public partial class DataClasses1DataContext : System.Data.Linq.DataContext
 	{
 		
@@ -953,7 +953,9 @@ namespace SilverlightApplication3.Web
 		
 		private System.DateTime _bday;
 		
-		private string _ssn;
+		private System.Nullable<int> _ssn;
+		
+		private System.Nullable<char> _UserType;
 		
 		private EntitySet<Branch> _Branches;
 		
@@ -981,8 +983,10 @@ namespace SilverlightApplication3.Web
     partial void OnemailChanged();
     partial void OnbdayChanging(System.DateTime value);
     partial void OnbdayChanged();
-    partial void OnssnChanging(string value);
+    partial void OnssnChanging(System.Nullable<int> value);
     partial void OnssnChanged();
+    partial void OnUserTypeChanging(System.Nullable<char> value);
+    partial void OnUserTypeChanged();
     #endregion
 		
 		public User()
@@ -1134,8 +1138,8 @@ namespace SilverlightApplication3.Web
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ssn", DbType="VarChar(50)")]
-		public string ssn
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ssn", DbType="Int")]
+		public System.Nullable<int> ssn
 		{
 			get
 			{
@@ -1150,6 +1154,26 @@ namespace SilverlightApplication3.Web
 					this._ssn = value;
 					this.SendPropertyChanged("ssn");
 					this.OnssnChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserType", DbType="Char(1)")]
+		public System.Nullable<char> UserType
+		{
+			get
+			{
+				return this._UserType;
+			}
+			set
+			{
+				if ((this._UserType != value))
+				{
+					this.OnUserTypeChanging(value);
+					this.SendPropertyChanging();
+					this._UserType = value;
+					this.SendPropertyChanged("UserType");
+					this.OnUserTypeChanged();
 				}
 			}
 		}

@@ -10,10 +10,10 @@ namespace SilverlightApplication3.Web.Model
     public class Patient
     {
         [DataMember]
-        public string PatientID { get; set; }
+        public int PatientID { get; set; }
 
         [DataMember]
-        public string MemberID { get; set; }
+        public int MemberID { get; set; }
 
         [DataMember]
         public int DocID { get; set; }

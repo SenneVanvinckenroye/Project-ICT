@@ -31,6 +31,6 @@ namespace SilverlightApplication3.Web.Model
         public DateTime date { get; set; }
 
         [DataMember]
-        private string userType { get; set; }
+        public char UserType { get; set; }
     }
 }

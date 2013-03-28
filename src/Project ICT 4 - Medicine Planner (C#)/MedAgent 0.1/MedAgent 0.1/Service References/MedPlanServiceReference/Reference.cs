@@ -24,6 +24,8 @@ namespace MedAgent_0_1.MedPlanServiceReference {
         
         private string NameField;
         
+        private char UserTypeField;
+        
         private System.DateTime dateField;
         
         private string emailField;
@@ -33,8 +35,6 @@ namespace MedAgent_0_1.MedPlanServiceReference {
         private string psw_hashField;
         
         private char sexField;
-        
-        private string userTypeField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public string FirstName {
@@ -58,6 +58,19 @@ namespace MedAgent_0_1.MedPlanServiceReference {
                 if ((object.ReferenceEquals(this.NameField, value) != true)) {
                     this.NameField = value;
                     this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public char UserType {
+            get {
+                return this.UserTypeField;
+            }
+            set {
+                if ((this.UserTypeField.Equals(value) != true)) {
+                    this.UserTypeField = value;
+                    this.RaisePropertyChanged("UserType");
                 }
             }
         }
@@ -123,19 +136,6 @@ namespace MedAgent_0_1.MedPlanServiceReference {
                 if ((this.sexField.Equals(value) != true)) {
                     this.sexField = value;
                     this.RaisePropertyChanged("sex");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string userType {
-            get {
-                return this.userTypeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.userTypeField, value) != true)) {
-                    this.userTypeField = value;
-                    this.RaisePropertyChanged("userType");
                 }
             }
         }

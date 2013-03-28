@@ -36,54 +36,27 @@ namespace SilverlightApplication3.Web
         public string Login(string email, string pswd_hash)
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
-            List<Model.User> alist = new List<Model.User>();
+            List<Model.User> Ulist = new List<Model.User>();
 
-            var patient = from u in dc.Users
-                          join p in dc.Patients on u.MemberID equals p.MemberID
+            pswd_hash = CreateMD5Hash(pswd_hash);
+
+            /*var user = from u in dc.Users
+                       where u.email == email && u.pass_hash == pswd_hash
+                       select new { u.FName, u.LName };*/
+
+            var user = from u in dc.Users
                           where u.email == email && u.pass_hash == pswd_hash
-                          select new { p.PatientID };
+                          select new { u.UserType };
 
-            var doctor = from u in dc.Users
-                         join d in dc.Doctors on u.MemberID equals d.MemberID
-                         where u.email == email && u.pass_hash == pswd_hash
-                         select new { d.DocID };
-
-            var nurse = from u in dc.Users
-                        join n in dc.Nurses on u.MemberID equals n.MemberID
-                        where u.email == email && u.pass_hash == pswd_hash
-                        select new { n.NurseID };
-
-            if (patient.FirstOrDefault().PatientID != 0)
+            foreach (var i in user)
             {
-                foreach (var i in patient)
-                {
-                    alist.Add(new Model.User() { memberID = i.PatientID });
-                }
-                
-                return "patient";
+                Ulist.Add(new Model.User() { UserType = i.UserType.Value });
             }
-            else if (doctor.FirstOrDefault().DocID != 0)
+            if (Ulist.Count() > 0)
             {
-                foreach (var i in doctor)
-                {
-                    alist.Add(new Model.User() { memberID = i.DocID });
-                }
-
-                return "doctor";
+                return user.First().UserType.Value.ToString();
             }
-            else if (nurse.FirstOrDefault().NurseID != 0)
-            {
-                foreach (var i in nurse)
-                {
-                    alist.Add(new Model.User() { memberID = i.NurseID });
-                }
-
-                return "nurse";
-            }
-            else
-            {
-                return "";
-            }
+            return "";
         }
 
         public string CreateMD5Hash(string input)

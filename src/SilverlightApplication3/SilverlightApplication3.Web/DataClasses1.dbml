@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="medplanner" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=p1c7pkmd7y.database.windows.net;Initial Catalog=medplanner;User ID=medagent" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="medplannerConnectionString" Provider="System.Data.SqlClient" />
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="medplanner-2013-3-15-11-53" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=kqayqahno5.database.windows.net;Initial Catalog=medplanner-2013-3-15-11-53;User ID=medagent" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="medplannerConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Branches" Member="Branches">
     <Type Name="Branch">
       <Column Name="BranchID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -50,7 +50,8 @@
       <Column Name="sex" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
       <Column Name="email" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="bday" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="ssn" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ssn" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserType" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
       <Association Name="User_Branch" Member="Branches" ThisKey="MemberID" OtherKey="AdminID" Type="Branch" />
       <Association Name="User_Doctor" Member="Doctors" ThisKey="MemberID" OtherKey="MemberID" Type="Doctor" />
       <Association Name="User_Nurse" Member="Nurses" ThisKey="MemberID" OtherKey="MemberID" Type="Nurse" />
