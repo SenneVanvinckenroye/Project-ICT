@@ -142,6 +142,9 @@
   <ItemGroup>
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml" />
+    <None Include="Service References\MedCareCloudServiceReference\MedAgent_0_1.MedCareCloudServiceReference.Patient.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\MedCareCloudServiceReference\MedAgent_0_1.MedCareCloudServiceReference.User.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -154,6 +157,9 @@
     </None>
     <None Include="Service References\MedCareCloudServiceReference\MedPlanService2.xsd">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MedPlanServiceReference\MedAgent_0_1.MedPlanServiceReference.Patient.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\MedPlanServiceReference\MedAgent_0_1.MedPlanServiceReference.User.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>

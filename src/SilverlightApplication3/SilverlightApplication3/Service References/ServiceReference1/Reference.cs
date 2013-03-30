@@ -24,6 +24,18 @@ namespace SilverlightApplication3.ServiceReference1 {
         
         private string NameField;
         
+        private char UserTypeField;
+        
+        private System.DateTime dateField;
+        
+        private string emailField;
+        
+        private int memberIDField;
+        
+        private string psw_hashField;
+        
+        private char sexField;
+        
         [System.Runtime.Serialization.DataMemberAttribute()]
         public string FirstName {
             get {
@@ -46,6 +58,84 @@ namespace SilverlightApplication3.ServiceReference1 {
                 if ((object.ReferenceEquals(this.NameField, value) != true)) {
                     this.NameField = value;
                     this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public char UserType {
+            get {
+                return this.UserTypeField;
+            }
+            set {
+                if ((this.UserTypeField.Equals(value) != true)) {
+                    this.UserTypeField = value;
+                    this.RaisePropertyChanged("UserType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime date {
+            get {
+                return this.dateField;
+            }
+            set {
+                if ((this.dateField.Equals(value) != true)) {
+                    this.dateField = value;
+                    this.RaisePropertyChanged("date");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string email {
+            get {
+                return this.emailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.emailField, value) != true)) {
+                    this.emailField = value;
+                    this.RaisePropertyChanged("email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int memberID {
+            get {
+                return this.memberIDField;
+            }
+            set {
+                if ((this.memberIDField.Equals(value) != true)) {
+                    this.memberIDField = value;
+                    this.RaisePropertyChanged("memberID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string psw_hash {
+            get {
+                return this.psw_hashField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.psw_hashField, value) != true)) {
+                    this.psw_hashField = value;
+                    this.RaisePropertyChanged("psw_hash");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public char sex {
+            get {
+                return this.sexField;
+            }
+            set {
+                if ((this.sexField.Equals(value) != true)) {
+                    this.sexField = value;
+                    this.RaisePropertyChanged("sex");
                 }
             }
         }
@@ -73,6 +163,11 @@ namespace SilverlightApplication3.ServiceReference1 {
         System.IAsyncResult BeginGetAllUsers(System.AsyncCallback callback, object asyncState);
         
         System.Collections.ObjectModel.ObservableCollection<SilverlightApplication3.ServiceReference1.User> EndGetAllUsers(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IMedPlanService/Login", ReplyAction="http://tempuri.org/IMedPlanService/LoginResponse")]
+        System.IAsyncResult BeginLogin(string email, string pswd_hash, System.AsyncCallback callback, object asyncState);
+        
+        string EndLogin(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -100,6 +195,25 @@ namespace SilverlightApplication3.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class LoginCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public LoginCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public string Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class MedPlanServiceClient : System.ServiceModel.ClientBase<SilverlightApplication3.ServiceReference1.IMedPlanService>, SilverlightApplication3.ServiceReference1.IMedPlanService {
         
         private BeginOperationDelegate onBeginDoWorkDelegate;
@@ -113,6 +227,12 @@ namespace SilverlightApplication3.ServiceReference1 {
         private EndOperationDelegate onEndGetAllUsersDelegate;
         
         private System.Threading.SendOrPostCallback onGetAllUsersCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginLoginDelegate;
+        
+        private EndOperationDelegate onEndLoginDelegate;
+        
+        private System.Threading.SendOrPostCallback onLoginCompletedDelegate;
         
         private BeginOperationDelegate onBeginOpenDelegate;
         
@@ -170,6 +290,8 @@ namespace SilverlightApplication3.ServiceReference1 {
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> DoWorkCompleted;
         
         public event System.EventHandler<GetAllUsersCompletedEventArgs> GetAllUsersCompleted;
+        
+        public event System.EventHandler<LoginCompletedEventArgs> LoginCompleted;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> OpenCompleted;
         
@@ -260,6 +382,54 @@ namespace SilverlightApplication3.ServiceReference1 {
                 this.onGetAllUsersCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetAllUsersCompleted);
             }
             base.InvokeAsync(this.onBeginGetAllUsersDelegate, null, this.onEndGetAllUsersDelegate, this.onGetAllUsersCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult SilverlightApplication3.ServiceReference1.IMedPlanService.BeginLogin(string email, string pswd_hash, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginLogin(email, pswd_hash, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        string SilverlightApplication3.ServiceReference1.IMedPlanService.EndLogin(System.IAsyncResult result) {
+            return base.Channel.EndLogin(result);
+        }
+        
+        private System.IAsyncResult OnBeginLogin(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string email = ((string)(inValues[0]));
+            string pswd_hash = ((string)(inValues[1]));
+            return ((SilverlightApplication3.ServiceReference1.IMedPlanService)(this)).BeginLogin(email, pswd_hash, callback, asyncState);
+        }
+        
+        private object[] OnEndLogin(System.IAsyncResult result) {
+            string retVal = ((SilverlightApplication3.ServiceReference1.IMedPlanService)(this)).EndLogin(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnLoginCompleted(object state) {
+            if ((this.LoginCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.LoginCompleted(this, new LoginCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void LoginAsync(string email, string pswd_hash) {
+            this.LoginAsync(email, pswd_hash, null);
+        }
+        
+        public void LoginAsync(string email, string pswd_hash, object userState) {
+            if ((this.onBeginLoginDelegate == null)) {
+                this.onBeginLoginDelegate = new BeginOperationDelegate(this.OnBeginLogin);
+            }
+            if ((this.onEndLoginDelegate == null)) {
+                this.onEndLoginDelegate = new EndOperationDelegate(this.OnEndLogin);
+            }
+            if ((this.onLoginCompletedDelegate == null)) {
+                this.onLoginCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnLoginCompleted);
+            }
+            base.InvokeAsync(this.onBeginLoginDelegate, new object[] {
+                        email,
+                        pswd_hash}, this.onEndLoginDelegate, this.onLoginCompletedDelegate, userState);
         }
         
         private System.IAsyncResult OnBeginOpen(object[] inValues, System.AsyncCallback callback, object asyncState) {
@@ -358,6 +528,20 @@ namespace SilverlightApplication3.ServiceReference1 {
             public System.Collections.ObjectModel.ObservableCollection<SilverlightApplication3.ServiceReference1.User> EndGetAllUsers(System.IAsyncResult result) {
                 object[] _args = new object[0];
                 System.Collections.ObjectModel.ObservableCollection<SilverlightApplication3.ServiceReference1.User> _result = ((System.Collections.ObjectModel.ObservableCollection<SilverlightApplication3.ServiceReference1.User>)(base.EndInvoke("GetAllUsers", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginLogin(string email, string pswd_hash, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[2];
+                _args[0] = email;
+                _args[1] = pswd_hash;
+                System.IAsyncResult _result = base.BeginInvoke("Login", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public string EndLogin(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                string _result = ((string)(base.EndInvoke("Login", _args, result)));
                 return _result;
             }
         }

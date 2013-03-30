@@ -18,5 +18,11 @@ namespace SilverlightApplication3.Web.Model
         [DataMember]
         public int DocID { get; set; }
 
+        [DataMember]
+        public string LastName { get; set; }
+
+        [DataMember]
+        public string FirstName { get; set; }
+
     }
 }

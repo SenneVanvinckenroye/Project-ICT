@@ -33,6 +33,24 @@ namespace SilverlightApplication3.Web
             return alist;
         }
 
+        public List<Model.Patient> GetAllPatients()
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            List<Model.Patient> alist = new List<Model.Patient>();
+
+            var us = from p in dc.Patients
+                     join u in dc.Users on p.MemberID equals u.MemberID
+                     select new { p.PatientID, u.FName, u.LName };
+
+            foreach (var item in us)
+            {
+                alist.Add(new Model.Patient() { PatientID = item.PatientID, FirstName = item.FName, LastName = item.LName });
+            }
+
+            return alist;
+        }
+
+
         public string Login(string email, string pswd_hash)
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();

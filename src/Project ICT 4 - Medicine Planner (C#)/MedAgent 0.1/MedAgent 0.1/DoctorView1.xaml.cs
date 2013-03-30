@@ -16,12 +16,25 @@ namespace MediAgent
     public partial class DoctorView1 : PhoneApplicationPage
     {
         public List<Patient> TestList;
+        MedAgent_0_1.MedCareCloudServiceReference.MedPlanServiceClient client;
         public DoctorView1()
         {
             InitializeComponent();
             //Service.DownloadDone += Service_DownloadDone;
             //Service.Query(null, "lastName");
-            PatientLst.Items.Add(new Patient() { FirstName = "Dries", LastName = "Crauwels", Id = 4 });
+            client = new MedAgent_0_1.MedCareCloudServiceReference.MedPlanServiceClient();
+
+            client.GetAllPatientsAsync();
+            client.GetAllPatientsCompleted += new EventHandler<MedAgent_0_1.MedCareCloudServiceReference.GetAllPatientsCompletedEventArgs>(client_GetAllPatientsCompleted);
+            
+        }
+
+        void client_GetAllPatientsCompleted(object sender, MedAgent_0_1.MedCareCloudServiceReference.GetAllPatientsCompletedEventArgs e)
+        {
+            foreach (var item in e.Result)
+            {
+                PatientLst.Items.Add(new Patient() { FirstName = item.FirstName, LastName = item.LastName, Id = item.PatientID });
+            }
         }
 
         void Service_DownloadDone(object sender, EventArgs e)
