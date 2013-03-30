@@ -18,13 +18,13 @@ namespace MedAgent_0_1
 {
     public partial class MainPage : PhoneApplicationPage
     {
-        MedPlanServiceReference.MedPlanServiceClient client;
+        MedCareCloudServiceReference.MedPlanServiceClient client;
         public MainPage()
         {
             InitializeComponent();
             //initialize wcf service client
 
-            client = new MedPlanServiceReference.MedPlanServiceClient();
+            client = new MedCareCloudServiceReference.MedPlanServiceClient();
         }
 
         private void LogInButtonPatient_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -35,7 +35,7 @@ namespace MedAgent_0_1
                 try
                 {
                     client.LoginAsync(EmailBox.Text, Paswoord_pswdbx.Password);
-                    client.LoginCompleted += new EventHandler<MedPlanServiceReference.LoginCompletedEventArgs>(client_LoginCompleted);
+                    client.LoginCompleted += new EventHandler<MedCareCloudServiceReference.LoginCompletedEventArgs>(client_LoginCompleted);
                 }
                 catch(EndpointNotFoundException)
                 {
@@ -46,7 +46,7 @@ namespace MedAgent_0_1
         }
 
 
-        void client_LoginCompleted(object sender, MedPlanServiceReference.LoginCompletedEventArgs e)
+        void client_LoginCompleted(object sender, MedCareCloudServiceReference.LoginCompletedEventArgs e)
         {
             switch(e.Result)
             {

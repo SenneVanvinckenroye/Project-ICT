@@ -10,6 +10,10 @@
                     maxReceivedMessageSize="2147483647">
                     <security mode="None" />
                 </binding>
+                <binding name="BasicHttpBinding_IMedPlanService2" maxBufferSize="2147483647"
+                    maxReceivedMessageSize="2147483647">
+                    <security mode="None" />
+                </binding>
             </basicHttpBinding>
         </bindings>
         <client>
@@ -19,6 +23,9 @@
             <endpoint address="http://localhost:10372/MedPlanService.svc"
                 binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IMedPlanService1"
                 contract="MedPlanServiceReference.IMedPlanService" name="BasicHttpBinding_IMedPlanService1" />
+            <endpoint address="http://medcarecloudservice.cloudapp.net/MedPlanService.svc"
+                binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IMedPlanService2"
+                contract="MedCareCloudServiceReference.IMedPlanService" name="BasicHttpBinding_IMedPlanService2" />
         </client>
     </system.serviceModel>
 </configuration>

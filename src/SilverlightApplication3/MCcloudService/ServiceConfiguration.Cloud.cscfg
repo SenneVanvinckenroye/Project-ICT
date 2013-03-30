@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ServiceConfiguration serviceName="MCcloudService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="3" osVersion="*" schemaVersion="2012-10.1.8">
+  <Role name="SilverlightApplication3.Web">
+    <Instances count="1" />
+    <ConfigurationSettings>
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=medcarecloudservice;AccountKey=6B1lymSpbxonrOmO0GuGkhIvsYv3aTcj6DjBx3rnuqoGzPVw1iFSvqYXBhrwycFpX9SDzXwbpPNodBhkzgw/Tg==" />
+    </ConfigurationSettings>
+  </Role>
+</ServiceConfiguration>
