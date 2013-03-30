@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using MedAgent_0_1;
 
 namespace MediAgent
 {
@@ -16,6 +17,7 @@ namespace MediAgent
         {
             InitializeComponent();
             //PatName.Text = App.Pat.FirstName + " " + App.Pat.LastName;
+            PatName.Text = MainPage.userFName+" "+MainPage.userLName;
         }
     }
 }

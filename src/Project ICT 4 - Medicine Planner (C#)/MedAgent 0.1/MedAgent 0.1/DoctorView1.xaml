@@ -29,16 +29,16 @@
             <!--Panorama item two-->
             <controls:PanoramaItem Header="Add Patient" >
                 <Grid>
-                    <TextBox x:Name="TxtboxFirstName" HorizontalAlignment="Left" Height="72" Margin="124,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="296"/>
-                    <TextBox x:Name="TxtboxLastName" HorizontalAlignment="Left" Height="72" Margin="124,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="296"/>
-                    <TextBox x:Name="TxtboxTelephone" InputScope="TelephoneNumber" HorizontalAlignment="Left" Height="72" Margin="124,154,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="296"/>
-                    <TextBox x:Name="TxtboxAdres" HorizontalAlignment="Left" Height="72" Margin="124,226,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="296"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="20,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="First Name"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="20,102,0,0" TextWrapping="Wrap" Text="Last Name" VerticalAlignment="Top"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="20,176,0,0" TextWrapping="Wrap" Text="Telephone" VerticalAlignment="Top"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="20,245,0,0" TextWrapping="Wrap" Text="Adres" VerticalAlignment="Top"/>
+                    <TextBox x:Name="TxtboxFirstName" HorizontalAlignment="Left" Height="72" Margin="124,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="296" Background="White" BorderBrush="#FF3FC1DF" />
+                    <TextBox x:Name="TxtboxLastName" HorizontalAlignment="Left" Height="72" Margin="124,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="296" Background="White" BorderBrush="#FF3FC1DF" />
+                    <TextBox x:Name="TxtboxTelephone" InputScope="TelephoneNumber" HorizontalAlignment="Left" Height="72" Margin="124,154,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="296" Background="White" BorderBrush="#FF3FC1DF" />
+                    <TextBox x:Name="TxtboxAdres" HorizontalAlignment="Left" Height="72" Margin="124,226,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="296" Background="White" BorderBrush="#FF3FC1DF" />
+                    <TextBlock HorizontalAlignment="Left" Margin="20,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="First Name" Foreground="#FF556193" />
+                    <TextBlock HorizontalAlignment="Left" Margin="20,102,0,0" TextWrapping="Wrap" Text="Last Name" VerticalAlignment="Top" Foreground="#FF556193" />
+                    <TextBlock HorizontalAlignment="Left" Margin="20,176,0,0" TextWrapping="Wrap" Text="Telephone" VerticalAlignment="Top" Foreground="#FF556193" />
+                    <TextBlock HorizontalAlignment="Left" Margin="20,245,0,0" TextWrapping="Wrap" Text="Adres" VerticalAlignment="Top" Foreground="#FF556193" />
                     
-                    <Button Content="Save" HorizontalAlignment="Left" Margin="78,378,0,0" VerticalAlignment="Top" Width="260" Click="Button_Click_1"/>
+                    <Button Content="Save" HorizontalAlignment="Left" Margin="78,378,0,0" VerticalAlignment="Top" Width="260" Click="Button_Click_1" Background="Transparent" BorderBrush="#FFC7DA1B" Foreground="#FF3FC1DF" />
 
                 </Grid>
             </controls:PanoramaItem>

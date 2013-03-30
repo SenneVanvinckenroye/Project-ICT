@@ -23,15 +23,17 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetAllPatients">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetAllPatientsResponse">
+  <xs:element name="GetAllPatientsForDocter">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/SilverlightApplication3.Web.Model" minOccurs="0" name="GetAllPatientsResult" nillable="true" type="q2:ArrayOfPatient" />
+        <xs:element minOccurs="0" name="DocID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllPatientsForDocterResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/SilverlightApplication3.Web.Model" minOccurs="0" name="GetAllPatientsForDocterResult" nillable="true" type="q2:ArrayOfPatient" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -46,7 +48,7 @@
   <xs:element name="LoginResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="LoginResult" nillable="true" type="xs:string" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/SilverlightApplication3.Web.Model" minOccurs="0" name="LoginResult" nillable="true" type="q3:User" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

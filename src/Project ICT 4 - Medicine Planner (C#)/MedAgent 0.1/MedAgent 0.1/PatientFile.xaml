@@ -13,22 +13,22 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d"
-    shell:SystemTray.IsVisible="True">
+    shell:SystemTray.IsVisible="True" d:DesignHeight="768" d:DesignWidth="480">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot">
-        <controls:Panorama Title="MediAgent">
+    <Grid x:Name="LayoutRoot" Background="#FFF7F7F7">
+        <controls:Panorama Title="MediAgent" Foreground="#FF3FC1DF">
 
             <!--Panorama item one-->
-            <controls:PanoramaItem Header="Patient file">
+            <controls:PanoramaItem Header="Patient file" Foreground="#FF3FC1DF">
                 <Grid>
                     <TextBlock x:Name="PatName" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Patient Name" VerticalAlignment="Top"/>
                 </Grid>
             </controls:PanoramaItem>
 
             <controls:PanoramaItem Header="Medicine">
-                <Grid>
-                    <calendarControl:LCalendar/>
+                <Grid Background="#B25E549E">
+                    <calendarControl:LCalendar Foreground="#FFCAE756" HolidayBrush="#FFF1DC30" EventsForegroundBrush="#FF556193" ButtonBorderBrush="#FF3FC1DF" ButtonBackground="#00FF7A00"/>
                 </Grid>
             </controls:PanoramaItem>
         </controls:Panorama>

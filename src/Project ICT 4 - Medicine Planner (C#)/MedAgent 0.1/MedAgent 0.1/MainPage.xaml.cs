@@ -45,32 +45,43 @@ namespace MedAgent_0_1
             }
         }
 
-
+        public static string userFName,userLName,userEmail;//global vars to reach userdata in other pages
         void client_LoginCompleted(object sender, MedCareCloudServiceReference.LoginCompletedEventArgs e)
         {
-            switch(e.Result)
+            if(e.Result == null)
             {
-                case "":
-                    {
-                        error_txblck.Text = "Email and or password \n not found";
-                        ErrorPopup.IsOpen = true;
-                        break;
-                    }
-                case "p":
+                error_txblck.Text = "Email and or password \n not found";
+                ErrorPopup.IsOpen = true;
+            }
+            else
+            {
+                userFName = e.Result.FirstName;
+                userLName = e.Result.Name;
+                userEmail = e.Result.email;
+                switch(e.Result.UserType)
+                {
+                    case 'p'://patient
                     {
                         NavigationService.Navigate(new Uri(string.Format("/PatientFile.xaml"), UriKind.Relative));
                         break;
                     }
-                case "d":
+                    case 'd'://dokter
                     {
                         NavigationService.Navigate(new Uri(string.Format("/DoctorView1.xaml"), UriKind.Relative));
                         break;
                     }
-                case "n":
+                    case 'n'://verpleger
                     {
                         NavigationService.Navigate(new Uri(string.Format("/DoctorView1.xaml"), UriKind.Relative));
                         break;
                     }
+                    default:
+                    {
+                        error_txblck.Text = "~Error~ in usertype";
+                        ErrorPopup.IsOpen = true;
+                        break;
+                    }
+                }
             }
         }
 

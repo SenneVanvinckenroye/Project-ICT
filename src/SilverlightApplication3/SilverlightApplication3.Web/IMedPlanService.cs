@@ -19,9 +19,9 @@ namespace SilverlightApplication3.Web
         List<Model.User> GetAllUsers();
 
         [OperationContract]
-        List<Model.Patient> GetAllPatients();
+        List<Model.Patient> GetAllPatientsForDocter(int DocID);
 
         [OperationContract]
-        string Login(string email, string pswd_hash);
+        Model.User Login(string email, string pswd_hash);
     }
 }

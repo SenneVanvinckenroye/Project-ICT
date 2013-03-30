@@ -24,12 +24,12 @@ namespace MediAgent
             //Service.Query(null, "lastName");
             client = new MedAgent_0_1.MedCareCloudServiceReference.MedPlanServiceClient();
 
-            client.GetAllPatientsAsync();
-            client.GetAllPatientsCompleted += new EventHandler<MedAgent_0_1.MedCareCloudServiceReference.GetAllPatientsCompletedEventArgs>(client_GetAllPatientsCompleted);
+            client.GetAllPatientsForDocterAsync(1);//change 1 to DocID from login
+            client.GetAllPatientsForDocterCompleted += new EventHandler<MedAgent_0_1.MedCareCloudServiceReference.GetAllPatientsForDocterCompletedEventArgs>(client_GetAllPatientsCompleted);
             
         }
 
-        void client_GetAllPatientsCompleted(object sender, MedAgent_0_1.MedCareCloudServiceReference.GetAllPatientsCompletedEventArgs e)
+        void client_GetAllPatientsCompleted(object sender, MedAgent_0_1.MedCareCloudServiceReference.GetAllPatientsForDocterCompletedEventArgs e)
         {
             foreach (var item in e.Result)
             {

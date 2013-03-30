@@ -33,13 +33,14 @@ namespace SilverlightApplication3.Web
             return alist;
         }
 
-        public List<Model.Patient> GetAllPatients()
+        public List<Model.Patient> GetAllPatientsForDocter(int DocID)
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
             List<Model.Patient> alist = new List<Model.Patient>();
 
             var us = from p in dc.Patients
                      join u in dc.Users on p.MemberID equals u.MemberID
+                     where p.DocID == DocID
                      select new { p.PatientID, u.FName, u.LName };
 
             foreach (var item in us)
@@ -51,7 +52,7 @@ namespace SilverlightApplication3.Web
         }
 
 
-        public string Login(string email, string pswd_hash)
+        public Model.User Login(string email, string pswd_hash)
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
             List<Model.User> Ulist = new List<Model.User>();
@@ -64,17 +65,16 @@ namespace SilverlightApplication3.Web
 
             var user = from u in dc.Users
                           where u.email == email && u.pass_hash == pswd_hash
-                          select new { u.UserType };
+                          select new { u.FName,u.LName,u.MemberID,u.UserType,u.sex,u.email };
 
             foreach (var i in user)
             {
-                Ulist.Add(new Model.User() { UserType = i.UserType.Value });
+                Ulist.Add(new Model.User() { UserType = i.UserType.Value,FirstName = i.FName,Name = i.LName,sex = i.sex,email = i.email,memberID = i.MemberID });
             }
             if (Ulist.Count() > 0)
-            {
-                return user.First().UserType.Value.ToString();
-            }
-            return "";
+                return Ulist.First();//altijd maar 1 gebruiker in Ulist mits email uniek is
+            else
+                return null;
         }
 
         public string CreateMD5Hash(string input)
