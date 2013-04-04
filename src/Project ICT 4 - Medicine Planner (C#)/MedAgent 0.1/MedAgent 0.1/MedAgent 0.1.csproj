@@ -50,8 +50,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Coding4Fun.Toolkit.Audio">
+      <HintPath>..\..\..\..\..\..\..\..\..\..\Desktop\Coding4Fun.Toolkit.Audio.dll</HintPath>
+    </Reference>
     <Reference Include="Coding4Fun.Toolkit.Controls">
       <HintPath>.\Coding4Fun.Toolkit.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Coding4Fun.Toolkit.Net">
+      <HintPath>..\..\..\..\..\..\..\..\..\..\Desktop\Coding4Fun.Toolkit.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="Coding4Fun.Toolkit.Storage">
+      <HintPath>..\..\..\..\..\..\..\..\..\..\Desktop\Coding4Fun.Toolkit.Storage.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Advertising.Mobile" />
     <Reference Include="Microsoft.Advertising.Mobile.UI" />

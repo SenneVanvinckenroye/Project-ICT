@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ServiceConfiguration serviceName="SilverlightAirwaysInTheCloud.Cloud" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="1" osVersion="*" schemaVersion="2012-05.1.7">
+  <Role name="SilverlightApplication3.Web">
+    <Instances count="1" />
+    <ConfigurationSettings>
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.Enabled" value="true" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountUsername" value="medagent" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountEncryptedPassword" value="MIIBnQYJKoZIhvcNAQcDoIIBjjCCAYoCAQAxggFOMIIBSgIBADAyMB4xHDAaBgNVBAMME1dpbmRvd3MgQXp1cmUgVG9vbHMCECJdE43co2G6QN5m33m98cIwDQYJKoZIhvcNAQEBBQAEggEAoVN/b4fdkMvcYyLP7NAtIKDyIbvAthnc9IQQqJXdH3+M74Ib8d7DvTetePKSGrtEodaCqGn4ES/yz0NNFeeKTyBst6YHUK9X9alREx/HjwtD0vUpWFpgBBiZp/T9lIl7aBVjMJB0uAKc21D32UUCHJaBtJekaE/Q9S5hmPGKy9Ui5ojrUG5cPzXnyBrnvGOxeelBB4tvCNTcbI10nMRrc/gP4VQXdWAObjzbTiKLs4npPckYGFrtO0ItfvX1RVu10mxCMFEMhUIdhMjXhWbREEXII/AWvqt0bLclhAaJwFHXXS5lhAR49GBI+kCbhEw7e/AaaAYz8lfWIwxO/4fKMTAzBgkqhkiG9w0BBwEwFAYIKoZIhvcNAwcECDwzPrfUM8QdgBDWoL6v7iNdQfqNztqzQKre" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountExpiration" value="2014-03-28T23:59:59.0000000+01:00" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteForwarder.Enabled" value="true" />
+    </ConfigurationSettings>
+    <Certificates>
+      <Certificate name="Microsoft.WindowsAzure.Plugins.RemoteAccess.PasswordEncryption" thumbprint="E7BDA4CD1F71803BE674C2010CF0151412D74E31" thumbprintAlgorithm="sha1" />
+    </Certificates>
+  </Role>
+</ServiceConfiguration>
