@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
+using MedAgent_0_1;
 using Microsoft.Phone.Controls;
 
 namespace MediAgent
@@ -33,7 +34,7 @@ namespace MediAgent
         {
             foreach (var item in e.Result)
             {
-                PatientLst.Items.Add(new Patient() { FirstName = item.FirstName, LastName = item.LastName, Id = item.PatientID });
+                PatientLst.Items.Add(new Patient() { FirstName = item.FirstName, LastName = item.LastName, Id = item.PatientID});
             }
         }
 
@@ -49,19 +50,34 @@ namespace MediAgent
 
         private void PatientList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            
+            if (PatientLst.SelectedItem != null && PatientLst.SelectedItem.ToString() == "    Patient's file")
+            {
+                MainPage.PublicPatient = PatientLst.Items.ElementAt(PatientLst.SelectedIndex - 2) as Patient;
+                //PatientLst.SelectedIndex = PatientLst.SelectedIndex - 2;
+                NavigationService.Navigate(new Uri("/PatientFile.xaml", UriKind.Relative));
+            }
+            else if (PatientLst.SelectedItem != null && PatientLst.SelectedItem.ToString() == "    Course of medication")
+            {
+                //App.Pat = PatientLst.Items.ElementAt(PatientLst.SelectedIndex - 2) as Patient;
+                MainPage.PublicPatient = PatientLst.Items.ElementAt(PatientLst.SelectedIndex - 1) as Patient;
+                NavigationService.Navigate(new Uri("/AddMedicationPage.xaml", UriKind.Relative));
+            }
+
+            while (!(PatientLst.SelectedItem is Patient))
+            {
+                PatientLst.SelectedIndex--;
+            }
+
             for (int i = 0; i < PatientLst.Items.Count; i++)
             {
-                if (!(PatientLst.Items.ElementAt(i) is Patient) && (PatientLst.SelectedItem is Patient))
+                if (!(PatientLst.Items.ElementAt(i) is Patient))
                 {
                     PatientLst.Items.RemoveAt(i);
                     PatientLst.Items.RemoveAt(i);
                 }
             }
-            if (PatientLst.SelectedItem != null && PatientLst.SelectedItem.ToString() == "    Patient's file")
-            {
-                //App.Pat = PatientLst.Items.ElementAt(PatientLst.SelectedIndex - 2) as Patient;
-                NavigationService.Navigate(new Uri("/PatientFile.xaml", UriKind.Relative));
-            }
+
             if (PatientLst.SelectedItem is Patient)
             {
                 PatientLst.Items.Insert(PatientLst.SelectedIndex + 1, "    Patient's file");
@@ -70,39 +86,13 @@ namespace MediAgent
             
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            PatientLst.Items.Clear();
-            //foreach (Patient patient in Service.Load())
-            //{
-            //    PatientLst.Items.Add(patient);
-            //}
-        }
-
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            int temp;
-            if (TxtboxFirstName.Text.Length >= 2 && TxtboxLastName.Text.Length >= 2 && TxtboxTelephone.Text.Length >= 9 && TxtboxTelephone.Text.Length <= 10 && TxtboxAdres.Text.Length >= 2 && Int32.TryParse(TxtboxTelephone.Text,out temp))
+            if (TxtboxFirstName.Text.Length >= 2 && TxtboxLastName.Text.Length >= 2 && TxtboxEmail.Text.Length >= 2 && TxtboxEmail.Text.Length <= 50) // input check
             {
                 //Service.Insert(TxtboxFirstName.Text, TxtboxLastName.Text, temp, TxtboxAdres.Text);
             }
             
-        }
-    }
-
-    public class Patient
-    {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public int Id { get; set; }
-        public int Telephone { get; set; }
-        public string Address { get; set; }
-        public string MedicineHistory { get; set; }
-        public List<string> Symptoms { get; set; }
-
-        public override string ToString()
-        {
-            return LastName + ", " + FirstName + ",  Id: " + Id;
         }
     }
 }

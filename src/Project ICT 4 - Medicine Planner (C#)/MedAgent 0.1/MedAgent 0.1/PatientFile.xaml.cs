@@ -16,8 +16,35 @@ namespace MediAgent
         public PatientFile()
         {
             InitializeComponent();
-            //PatName.Text = App.Pat.FirstName + " " + App.Pat.LastName;
-            PatName.Text = MainPage.userFName+" "+MainPage.userLName;
+
+            PatName.Text = MainPage.PublicPatient.FirstName + " " + MainPage.PublicPatient.LastName;
+            PatAge.Text = MainPage.PublicPatient.Bday != new DateTime() ? DateTime.Now.Date.Subtract(MainPage.PublicPatient.Bday.Date).ToString() : "NA";
+            PatSex.Text = MainPage.PublicPatient.Sex != '\0' ? MainPage.PublicPatient.Sex.ToString() : "NA";
+            PatEmail.Text = MainPage.PublicPatient.Email ?? "NA";
+            PatBday.Text = MainPage.PublicPatient.Bday != new DateTime() ? MainPage.PublicPatient.Bday.Date.ToString() : "NA";
+            PatSsn.Text = MainPage.PublicPatient.SSN != 0 ? MainPage.PublicPatient.SSN.ToString() : "NA";
+
+            PatNameEdit.Text = PatName.Text;
+            PatAgeEdit.Text = PatAge.Text;
+            PatSexEdit.Text = PatSex.Text;
+            PatEmailEdit.Text = PatEmail.Text;
+            PatBdayEdit.Text = PatBday.Text;
+            PatSsnEdit.Text = PatSsn.Text;
+
+        }
+
+        private void ApplicationBarMenuItem_OnClick(object sender, EventArgs e)
+        {
+            if (StkEdit.Visibility == Visibility.Visible)
+            {
+                StkNoEdit.Visibility = Visibility.Visible;
+                StkEdit.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                StkNoEdit.Visibility = Visibility.Collapsed;
+                StkEdit.Visibility = Visibility.Visible;
+            }
         }
     }
 }

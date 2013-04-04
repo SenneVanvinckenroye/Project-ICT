@@ -8,8 +8,11 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Globalization;
+using MedAgent_0_1;
+using MediAgent;
 
 namespace CalendarControl
 {
@@ -21,6 +24,12 @@ namespace CalendarControl
         private event EventHandler<DayClickedEventArgs> dayClicked;
         #endregion
 
+        int testTaken = 0;
+        int testTotal = 0;
+        DateTime PreDate = new DateTime(1, 1, 1);
+        Course course = new Course(); // TEMP TEMP TEMP
+
+
         #region Costruttore
 
         public LCalendar()
@@ -28,6 +37,8 @@ namespace CalendarControl
             InitializeComponent();
             InitializeObjects();
             PopulateDaysTextBlock();
+
+            course.MedSoort = new MedSoort[2] { new MedSoort() { Name = "test1Med", MedAlarm = new MedAlarm[2] { new MedAlarm() { DateTime = new DateTime(2013, 03, 1), Taken = true }, new MedAlarm() { DateTime = new DateTime(2013, 03, 1), Taken = false } } }, new MedSoort() { Name = "test1Med", MedAlarm = new MedAlarm[2] { new MedAlarm() { DateTime = new DateTime(2013, 03, 29), Taken = true }, new MedAlarm() { DateTime = new DateTime(2013, 03, 27) } } } }; // test (database vervanging)
         }
 
         #endregion
@@ -155,11 +166,22 @@ namespace CalendarControl
 
         private void ba_Click(object sender, RoutedEventArgs e)
         {
-            if (sender is Button && dayClicked != null)
+            if (sender is Button) //&& dayClicked != null
             {
                 DateTime date = new DateTime(mCurrentDate.Year, mCurrentDate.Month, (int)(sender as Button).Tag);
-                dayClicked(sender, new DayClickedEventArgs(date, FindEventsByDate(date)));
+                //dayClicked(sender, new DayClickedEventArgs(date, FindEventsByDate(date)));
+                foreach (MedSoort soort in course.MedSoort)
+                {
+                    foreach (MedAlarm alarm in soort.MedAlarm)
+                    {
+                        if (alarm.DateTime == date)
+                        {
+                            //App.lstItems.Add(new Items() {MedName = soort.Name, Time = alarm.DateTime.ToString()});
+                        }
+                    }
+                }
             }
+            //PatientFile.UpdateLst();
         }
 
         #endregion
@@ -169,7 +191,6 @@ namespace CalendarControl
         private void InitializeObjects()
         {
             mEvents = new Dictionary<ShortDateString, List<CalendarEvent>>();
-            mDefaultHolidayBrush = new SolidColorBrush(Colors.Red);
             mDefaultEventsForegroundBrush = new SolidColorBrush(Colors.White);
             mDefaultEventsBackgroundBrush = (SolidColorBrush)Resources["PhoneAccentBrush"];
         }
@@ -224,10 +245,69 @@ namespace CalendarControl
                 ba.Content = (i + 1).ToString();
                 ba.Click += new RoutedEventHandler(ba_Click);
 
-                if (colonna > 4) // giorno festivo
+                //color current day
+                
+
+
+
+
+                foreach (MedSoort soort in course.MedSoort)
                 {
-                    ba.Foreground = HolidayBrush;
+                    foreach (MedAlarm alarm in soort.MedAlarm)
+                    {
+
+                        if (alarm.DateTime.Day.ToString() == ba.Content.ToString() && alarm.DateTime.Day > DateTime.Now.Day)
+                        {
+                            ba.Background = new SolidColorBrush(Colors.Blue); // dit moet een andere kleur
+                        }
+                        else if (alarm.DateTime.Day.ToString() == ba.Content.ToString() && alarm.DateTime.Day < DateTime.Now.Day)
+                        {
+                            if (alarm.DateTime.Day != PreDate.Day)
+                            {
+                                testTaken = 0;
+                                testTotal = 0;
+                            }
+                            if (alarm.Taken)
+                            {
+                                testTaken++;
+                            }
+
+                            testTotal++;
+
+
+                            if (testTaken < testTotal && testTaken != 0)
+                            {
+                                ba.Background = new SolidColorBrush(Colors.Orange);
+                            }
+                            if (testTaken == testTotal && testTotal != 0)
+                            {
+                                ba.Background = new SolidColorBrush(Colors.Green);
+                            }
+                            if (testTaken == 0 && testTotal > 0)
+                            {
+                                ba.Background = new SolidColorBrush(Colors.Red);
+                            }
+
+
+
+
+
+                            PreDate = alarm.DateTime;
+
+                        }
+
+                    }
+
+
                 }
+                if (dateTime.Year == DateTime.Now.Year && dateTime.Month == DateTime.Now.Month && ba.Content.ToString() == DateTime.Now.Day.ToString())
+                {
+                    ba.Background = new SolidColorBrush(Colors.Magenta);
+                }
+
+
+
+
 
                 //controllo sull'evento esistente
 
@@ -445,4 +525,21 @@ namespace CalendarControl
         }
         #endregion
     }
+
+    public class Course
+    {
+        public MedSoort[] MedSoort { get; set; }
+    }
+    public class MedSoort
+    {
+        public MedAlarm[] MedAlarm { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+    }
+    public class MedAlarm
+    {
+        public DateTime DateTime { get; set; }
+        public bool Taken { get; set; }
+    }
+
 }
