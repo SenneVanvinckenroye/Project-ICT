@@ -22,7 +22,7 @@ namespace MedAgent_0_1
         /// </summary>
         /// <returns>The root frame of the Phone Application.</returns>
         public PhoneApplicationFrame RootFrame { get; private set; }
-
+        public string TimeReminder1 { get; set; }
         /// <summary>
         /// Constructor for the Application object.
         /// </summary>

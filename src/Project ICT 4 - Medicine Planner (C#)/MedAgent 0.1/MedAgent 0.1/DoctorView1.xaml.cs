@@ -61,7 +61,7 @@ namespace MediAgent
             {
                 //App.Pat = PatientLst.Items.ElementAt(PatientLst.SelectedIndex - 2) as Patient;
                 MainPage.PublicPatient = PatientLst.Items.ElementAt(PatientLst.SelectedIndex - 1) as Patient;
-                NavigationService.Navigate(new Uri("/AddMedicationPage.xaml", UriKind.Relative));
+                NavigationService.Navigate(new Uri("/AddMedPage.xaml", UriKind.Relative));
             }
 
             while (!(PatientLst.SelectedItem is Patient))

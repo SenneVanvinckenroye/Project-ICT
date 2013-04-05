@@ -1,0 +1,574 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Animation;
+using System.Windows.Shapes;
+using Microsoft.Phone.Controls;
+using Microsoft.Phone.Tasks;
+using Microsoft.Phone;
+
+namespace MedAgent_0_1
+{
+    public partial class PanoramaPage1 : PhoneApplicationPage
+    {
+        public PanoramaPage1()
+        {
+            InitializeComponent();
+            camTask = new CameraCaptureTask();
+            camTask.Completed += camTaskCompleted;
+            
+        }
+
+
+        /// <summary>
+        /// WARNING MONSTERVEEL CODE INCOMING
+        /// </summary>
+        
+
+
+        //Panorama Item 1 
+
+        private int savedCounter = 0;
+
+        private CameraCaptureTask camTask;
+
+        private void AddPhotoButton_Click(object sender, RoutedEventArgs e)
+        {
+            camTask.Show();
+        }
+
+        private void camTaskCompleted(object sender, PhotoResult pr)
+        {
+            byte[] imgLocal;
+            if (pr.ChosenPhoto != null)
+            {
+                imgLocal = new byte[(int)pr.ChosenPhoto.Length];
+                pr.ChosenPhoto.Read(imgLocal, 0, imgLocal.Length);
+                pr.ChosenPhoto.Seek(0, System.IO.SeekOrigin.Begin);
+                var bitmapImage = PictureDecoder.DecodeJpeg(pr.ChosenPhoto);
+                CameraImage.Source = bitmapImage;
+            }
+        }
+        
+   
+
+        //Panorama Item 2
+
+        private void course_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            switch ((int)(CourseSlider.Value))
+            {
+                case 0: repeatInfo_txt.Text = "Daily";
+                    break;
+                case 1: repeatInfo_txt.Text = "Every 2 days";
+                    break;
+                case 2: repeatInfo_txt.Text = "Every 3 days";
+                    break;
+                case 3: repeatInfo_txt.Text = "Every 4 days";
+                    break;
+                case 4: repeatInfo_txt.Text = "Every 5 days";
+                    break;
+                case 5: repeatInfo_txt.Text = "Weekly";
+                    break;
+                default: repeatInfo_txt.Text = "error";
+                    break;
+            }
+        }
+
+
+        //Panorama Item 3
+
+        public int Tablets1 = 0;
+        public int Tablets2 = 0;
+        public int Tablets3 = 0;
+        public int Tablets4 = 0;
+        public int Tablets5 = 0;
+        public int Tablets6 = 0;
+
+
+
+
+        private void ToggleButton2_Checked(object sender, System.Windows.RoutedEventArgs e)
+        {
+
+
+
+
+            TimeText2.Opacity = 1;
+            TabletsText2.Opacity = 1;
+
+            Time2.Opacity = 1;
+            Time2.IsEnabled = true;
+            AddTabletsButton2.Opacity = 1;
+            AddTabletsButton2.IsEnabled = true;
+        }
+
+        private void ToggleButton2_Unchecked(object sender, RoutedEventArgs e)
+        {
+            TimeText2.Opacity = 0.4;
+            TabletsText2.Opacity = 0.4;
+
+            Time2.Opacity = 1;
+            Time2.IsEnabled = false;
+            AddTabletsButton2.Opacity = 1;
+            AddTabletsButton2.IsEnabled = false;
+
+            AddTabletsButton2.Content = 0;
+            Tablets2 = 0;
+        }
+
+        private void ToggleButton3_Checked(object sender, RoutedEventArgs e)
+        {
+            TimeText3.Opacity = 1;
+            TabletsText3.Opacity = 1;
+
+            Time3.Opacity = 1;
+            Time3.IsEnabled = true;
+            AddTabletsButton3.Opacity = 1;
+            AddTabletsButton3.IsEnabled = true;
+
+
+        }
+
+        private void ToggleButton3_Unchecked(object sender, RoutedEventArgs e)
+        {
+            TimeText3.Opacity = 0.4;
+            TabletsText3.Opacity = 0.4;
+
+            Time3.Opacity = 1;
+            Time3.IsEnabled = false;
+            AddTabletsButton3.Opacity = 1;
+            AddTabletsButton3.IsEnabled = false;
+
+            AddTabletsButton3.Content = 0;
+            Tablets3 = 0;
+        }
+
+        private void ToggleButton4_Checked(object sender, RoutedEventArgs e)
+        {
+            TimeText4.Opacity = 1;
+            TabletsText4.Opacity = 1;
+
+            Time4.Opacity = 1;
+            Time4.IsEnabled = true;
+            AddTabletsButton4.Opacity = 1;
+            AddTabletsButton4.IsEnabled = true;
+        }
+
+        private void ToggleButton4_Unchecked(object sender, RoutedEventArgs e)
+        {
+            TimeText4.Opacity = 0.4;
+            TabletsText4.Opacity = 0.4;
+
+            Time4.Opacity = 1;
+            Time4.IsEnabled = false;
+            AddTabletsButton4.Opacity = 1;
+            AddTabletsButton4.IsEnabled = false;
+
+            AddTabletsButton4.Content = 0;
+            Tablets4 = 0;
+        }
+
+        private void ToggleButton5_Checked(object sender, RoutedEventArgs e)
+        {
+            TimeText5.Opacity = 1;
+            TabletsText5.Opacity = 1;
+
+            Time5.Opacity = 1;
+            Time5.IsEnabled = true;
+            AddTabletsButton5.Opacity = 1;
+            AddTabletsButton5.IsEnabled = true;
+        }
+
+        private void ToggleButton5_Unchecked(object sender, RoutedEventArgs e)
+        {
+            TimeText5.Opacity = 0.4;
+            TabletsText5.Opacity = 0.4;
+
+            Time5.Opacity = 1;
+            Time5.IsEnabled = false;
+            AddTabletsButton5.Opacity = 1;
+            AddTabletsButton5.IsEnabled = false;
+
+            AddTabletsButton5.Content = 0;
+            Tablets5 = 0;
+        }
+
+        private void ToggleButton6_Checked(object sender, RoutedEventArgs e)
+        {
+            TimeText6.Opacity = 1;
+            TabletsText6.Opacity = 1;
+
+            Time6.Opacity = 1;
+            Time6.IsEnabled = true;
+            AddTabletsButton6.Opacity = 1;
+            AddTabletsButton6.IsEnabled = true;
+
+            AddTabletsButton6.Content = 0;
+            Tablets6 = 0;
+        }
+
+        private void ToggleButton6_Unchecked(object sender, RoutedEventArgs e)
+        {
+            TimeText6.Opacity = 0.4;
+            TabletsText6.Opacity = 0.4;
+
+            Time6.Opacity = 1;
+            Time6.IsEnabled = false;
+            AddTabletsButton6.Opacity = 1;
+            AddTabletsButton6.IsEnabled = false;
+
+            AddTabletsButton6.Content = 0;
+            Tablets6 = 0;
+        }
+
+
+        private void TabletsSlider1_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+
+            switch ((int)(TabletsSlider1.Value))
+            {
+                case 0: AddTabletsButton1.Content = "0";
+                    Tablets1 = 0;
+                    break;
+                case 1: AddTabletsButton1.Content = "1";
+                    Tablets1 = 1;
+                    break;
+                case 2: AddTabletsButton1.Content = "2";
+                    Tablets1 = 2;
+                    break;
+                case 3: AddTabletsButton1.Content = "3";
+                    Tablets1 = 3;
+                    break;
+                case 4: AddTabletsButton1.Content = "4";
+                    Tablets1 = 4;
+                    break;
+                case 5: AddTabletsButton1.Content = "5";
+                    Tablets1 = 5;
+                    break;
+                case 6: AddTabletsButton1.Content = "6";
+                    Tablets1 = 6;
+                    break;
+                case 7: AddTabletsButton1.Content = "7";
+                    Tablets1 = 7;
+                    break;
+                case 8: AddTabletsButton1.Content = "8";
+                    Tablets1 = 8;
+                    break;
+                case 9: AddTabletsButton1.Content = "9";
+                    Tablets1 = 9;
+                    break;
+                case 10: AddTabletsButton1.Content = "10";
+                    Tablets1 = 10;
+                    break;
+                default: AddTabletsButton1.Content = "WTF??";
+                    break;
+            }
+        }
+
+        private void TabletsSlider2_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+
+            switch ((int)(TabletsSlider2.Value))
+            {
+                case 0: AddTabletsButton2.Content = "0";
+                    Tablets2 = 0;
+                    break;
+                case 1: AddTabletsButton2.Content = "1";
+                    Tablets2 = 1;
+                    break;
+                case 2: AddTabletsButton2.Content = "2";
+                    Tablets2 = 2;
+                    break;
+                case 3: AddTabletsButton2.Content = "3";
+                    Tablets2 = 3;
+                    break;
+                case 4: AddTabletsButton2.Content = "4";
+                    Tablets2 = 4;
+                    break;
+                case 5: AddTabletsButton2.Content = "5";
+                    Tablets2 = 5;
+                    break;
+                case 6: AddTabletsButton2.Content = "6";
+                    Tablets2 = 6;
+                    break;
+                case 7: AddTabletsButton2.Content = "7";
+                    Tablets2 = 7;
+                    break;
+                case 8: AddTabletsButton2.Content = "8";
+                    Tablets2 = 8;
+                    break;
+                case 9: AddTabletsButton2.Content = "9";
+                    Tablets2 = 9;
+                    break;
+                case 10: AddTabletsButton2.Content = "10";
+                    Tablets2 = 10;
+                    break;
+                default: AddTabletsButton2.Content = "WTF??";
+                    break;
+            }
+        }
+
+        private void TabletsSlider3_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+
+            switch ((int)(TabletsSlider3.Value))
+            {
+                case 0: AddTabletsButton3.Content = "0";
+                    Tablets3 = 0;
+                    break;
+                case 1: AddTabletsButton3.Content = "1";
+                    Tablets3 = 1;
+                    break;
+                case 2: AddTabletsButton3.Content = "2";
+                    Tablets3 = 2;
+                    break;
+                case 3: AddTabletsButton3.Content = "3";
+                    Tablets3 = 3;
+                    break;
+                case 4: AddTabletsButton3.Content = "4";
+                    Tablets3 = 4;
+                    break;
+                case 5: AddTabletsButton3.Content = "5";
+                    Tablets3 = 5;
+                    break;
+                case 6: AddTabletsButton3.Content = "6";
+                    Tablets3 = 6;
+                    break;
+                case 7: AddTabletsButton3.Content = "7";
+                    Tablets3 = 7;
+                    break;
+                case 8: AddTabletsButton3.Content = "8";
+                    Tablets3 = 8;
+                    break;
+                case 9: AddTabletsButton3.Content = "9";
+                    Tablets3 = 9;
+                    break;
+                case 10: AddTabletsButton3.Content = "10";
+                    Tablets3 = 10;
+                    break;
+                default: AddTabletsButton3.Content = "WTF??";
+                    break;
+            }
+        }
+
+        private void TabletsSlider4_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+
+            switch ((int)(TabletsSlider4.Value))
+            {
+                case 0: AddTabletsButton4.Content = "0";
+                    Tablets4 = 0;
+                    break;
+                case 1: AddTabletsButton4.Content = "1";
+                    Tablets4 = 1;
+                    break;
+                case 2: AddTabletsButton4.Content = "2";
+                    Tablets4 = 2;
+                    break;
+                case 3: AddTabletsButton4.Content = "3";
+                    Tablets4 = 3;
+                    break;
+                case 4: AddTabletsButton4.Content = "4";
+                    Tablets4 = 4;
+                    break;
+                case 5: AddTabletsButton4.Content = "5";
+                    Tablets4 = 5;
+                    break;
+                case 6: AddTabletsButton4.Content = "6";
+                    Tablets4 = 6;
+                    break;
+                case 7: AddTabletsButton4.Content = "7";
+                    Tablets4 = 7;
+                    break;
+                case 8: AddTabletsButton4.Content = "8";
+                    Tablets4 = 8;
+                    break;
+                case 9: AddTabletsButton4.Content = "9";
+                    Tablets4 = 9;
+                    break;
+                case 10: AddTabletsButton4.Content = "10";
+                    Tablets4 = 10;
+                    break;
+                default: AddTabletsButton4.Content = "WTF??";
+                    break;
+            }
+        }
+
+        private void TabletsSlider5_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+
+            switch ((int)(TabletsSlider5.Value))
+            {
+                case 0: AddTabletsButton5.Content = "0";
+                    Tablets5 = 0;
+                    break;
+                case 1: AddTabletsButton5.Content = "1";
+                    Tablets5 = 1;
+                    break;
+                case 2: AddTabletsButton5.Content = "2";
+                    Tablets5 = 2;
+                    break;
+                case 3: AddTabletsButton5.Content = "3";
+                    Tablets5 = 3;
+                    break;
+                case 4: AddTabletsButton5.Content = "4";
+                    Tablets5 = 4;
+                    break;
+                case 5: AddTabletsButton5.Content = "5";
+                    Tablets5 = 5;
+                    break;
+                case 6: AddTabletsButton5.Content = "6";
+                    Tablets5 = 6;
+                    break;
+                case 7: AddTabletsButton5.Content = "7";
+                    Tablets5 = 7;
+                    break;
+                case 8: AddTabletsButton5.Content = "8";
+                    Tablets5 = 8;
+                    break;
+                case 9: AddTabletsButton5.Content = "9";
+                    Tablets5 = 9;
+                    break;
+                case 10: AddTabletsButton5.Content = "10";
+                    Tablets5 = 10;
+                    break;
+                default: AddTabletsButton5.Content = "WTF??";
+                    break;
+            }
+        }
+
+        private void TabletsSlider6_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+
+            switch ((int)(TabletsSlider6.Value))
+            {
+                case 0: AddTabletsButton6.Content = "0";
+                    Tablets6 = 0;
+                    break;
+                case 1: AddTabletsButton6.Content = "1";
+                    Tablets6 = 1;
+                    break;
+                case 2: AddTabletsButton6.Content = "2";
+                    Tablets6 = 2;
+                    break;
+                case 3: AddTabletsButton6.Content = "3";
+                    Tablets6 = 3;
+                    break;
+                case 4: AddTabletsButton6.Content = "4";
+                    Tablets6 = 3;
+                    break;
+                case 5: AddTabletsButton6.Content = "5";
+                    Tablets6 = 4;
+                    break;
+                case 6: AddTabletsButton6.Content = "6";
+                    Tablets6 = 5;
+                    break;
+                case 7: AddTabletsButton6.Content = "7";
+                    Tablets6 = 7;
+                    break;
+                case 8: AddTabletsButton6.Content = "8";
+                    Tablets6 = 8;
+                    break;
+                case 9: AddTabletsButton6.Content = "9";
+                    Tablets6 = 9;
+                    break;
+                case 10: AddTabletsButton6.Content = "10";
+                    Tablets6 = 10;
+                    break;
+                default: AddTabletsButton6.Content = "WTF??";
+                    break;
+            }
+        }
+
+
+        private void AddTabletsButton1_OnClick(object sender, RoutedEventArgs e)
+        {
+            SliderPanel1.Visibility = Visibility.Visible;
+        }
+
+        private void ConfirmTabletsButton1_OnClick(object sender, RoutedEventArgs e)
+        {
+            SliderPanel1.Visibility = Visibility.Collapsed;
+        }
+
+        private void AddTabletsButton2_OnClick(object sender, RoutedEventArgs e)
+        {
+            SliderPanel2.Visibility = Visibility.Visible;
+        }
+
+        private void ConfirmTabletsButton2_OnClick(object sender, RoutedEventArgs e)
+        {
+            SliderPanel2.Visibility = Visibility.Collapsed;
+        }
+
+        private void AddTabletsButton3_OnClick(object sender, RoutedEventArgs e)
+        {
+            SliderPanel3.Visibility = Visibility.Visible;
+        }
+
+        private void ConfirmTabletsButton3_OnClick(object sender, RoutedEventArgs e)
+        {
+            SliderPanel3.Visibility = Visibility.Collapsed;
+        }
+
+        private void AddTabletsButton4_OnClick(object sender, RoutedEventArgs e)
+        {
+            SliderPanel4.Visibility = Visibility.Visible;
+        }
+
+        private void ConfirmTabletsButton4_OnClick(object sender, RoutedEventArgs e)
+        {
+            SliderPanel4.Visibility = Visibility.Collapsed;
+        }
+
+        private void AddTabletsButton5_OnClick(object sender, RoutedEventArgs e)
+        {
+            SliderPanel5.Visibility = Visibility.Visible;
+        }
+
+        private void ConfirmTabletsButton5_OnClick(object sender, RoutedEventArgs e)
+        {
+            SliderPanel5.Visibility = Visibility.Collapsed;
+        }
+
+        private void AddTabletsButton6_OnClick(object sender, RoutedEventArgs e)
+        {
+            SliderPanel6.Visibility = Visibility.Visible;
+        }
+
+        private void ConfirmTabletsButton6_OnClick(object sender, RoutedEventArgs e)
+        {
+            SliderPanel6.Visibility = Visibility.Collapsed;
+        }
+
+
+
+        private void Time1_ValueChanged(object sender, DateTimeValueChangedEventArgs e)
+        {
+            var obj = App.Current as App;
+            obj.TimeReminder1 = Time1.Value.ToString();
+        }
+
+        private void CourseSlider_Hold(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            Item1.IsEnabled = false;
+            Item3.IsEnabled = false;
+        }
+
+        private void CourseSlider_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Item1.IsEnabled = true;
+            Item3.IsEnabled = true;
+        }
+
+
+
+    }
+}
