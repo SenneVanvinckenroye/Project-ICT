@@ -38,7 +38,7 @@
                     <TextBlock HorizontalAlignment="Left" Margin="20,102,0,0" TextWrapping="Wrap" Text="Last Name" VerticalAlignment="Top" Foreground="#FF556193" />
                     <TextBlock HorizontalAlignment="Left" Margin="20,176,0,0" TextWrapping="Wrap" Text="Email" VerticalAlignment="Top" Foreground="#FF556193" />
 
-                    <Button Content="Details" HorizontalAlignment="Left" Margin="78,378,0,0" VerticalAlignment="Top" Width="260" Click="Button_Click_1" Background="Transparent" BorderBrush="#FFC7DA1B" Foreground="#FF3FC1DF" />
+                    <Button Content="Continue" HorizontalAlignment="Left" Margin="78,341,0,0" VerticalAlignment="Top" Width="260" Click="Button_Click_1" Background="Transparent" BorderBrush="#FFC7DA1B" Foreground="#FF3FC1DF" Height="85" />
 
                 </Grid>
             </controls:PanoramaItem>

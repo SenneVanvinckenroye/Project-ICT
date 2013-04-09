@@ -23,5 +23,8 @@ namespace SilverlightApplication3.Web
 
         [OperationContract]
         Model.User Login(string email, string pswd_hash);
+
+        /*[OperationContract]
+        bool CreateNewPatient(string FName,string LName, string email, char sex, char type = 'p');*/
     }
 }

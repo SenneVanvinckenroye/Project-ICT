@@ -88,7 +88,8 @@ namespace MediAgent
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            if (TxtboxFirstName.Text.Length >= 2 && TxtboxLastName.Text.Length >= 2 && TxtboxEmail.Text.Length >= 2 && TxtboxEmail.Text.Length <= 50) // input check
+            bool EmailIsValid = Validator.EmailIsValid(TxtboxEmail.Text);
+            if (TxtboxFirstName.Text.Length >= 2 && TxtboxLastName.Text.Length >= 2 && EmailIsValid) // input check
             {
                 //Service.Insert(TxtboxFirstName.Text, TxtboxLastName.Text, temp, TxtboxAdres.Text);
             }

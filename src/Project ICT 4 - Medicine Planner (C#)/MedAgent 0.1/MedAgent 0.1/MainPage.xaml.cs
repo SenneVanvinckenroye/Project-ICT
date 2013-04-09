@@ -34,7 +34,7 @@ namespace MedAgent_0_1
                 //using wcf service to login
                 try
                 {
-                    client.LoginAsync(EmailBox.Text, Paswoord_pswdbx.Password);
+                    client.LoginAsync(EmailBox.Text, MD5Core.GetHashString(Paswoord_pswdbx.Password));
                     client.LoginCompleted += new EventHandler<MedCareCloudServiceReference.LoginCompletedEventArgs>(client_LoginCompleted);
                 }
                 catch(EndpointNotFoundException)
