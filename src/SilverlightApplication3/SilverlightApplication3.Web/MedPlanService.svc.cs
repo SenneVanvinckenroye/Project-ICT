@@ -33,7 +33,7 @@ namespace SilverlightApplication3.Web
             return alist;
         }
 
-        public List<Model.Patient> GetAllPatientsForDocter(int DocID)
+        public List<Model.Patient> GetAllPatientsForDoctor(int DocID)
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
             List<Model.Patient> alist = new List<Model.Patient>();
@@ -41,11 +41,11 @@ namespace SilverlightApplication3.Web
             var us = from p in dc.Patients
                      join u in dc.Users on p.MemberID equals u.MemberID
                      where p.DocID == DocID
-                     select new { p.PatientID, u.FName, u.LName };
+                     select new { p.PatientID, u.FName, u.LName, u.sex, u.bday, u.email, u.ssn };
 
             foreach (var item in us)
             {
-                alist.Add(new Model.Patient() { PatientID = item.PatientID, FirstName = item.FName, LastName = item.LName });
+                alist.Add(new Model.Patient() { PatientID = item.PatientID, FirstName = item.FName, LastName = item.LName, bDay = item.bday, Sex = item.sex, Ssn = (int)item.ssn, Email = item.email });
             }
 
             return alist;

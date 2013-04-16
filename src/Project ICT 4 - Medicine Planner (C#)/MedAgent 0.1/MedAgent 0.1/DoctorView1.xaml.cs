@@ -25,16 +25,17 @@ namespace MediAgent
             //Service.Query(null, "lastName");
             client = new MedAgent_0_1.MedCareCloudServiceReference.MedPlanServiceClient();
 
-            client.GetAllPatientsForDocterAsync(1);//change 1 to DocID from login
-            client.GetAllPatientsForDocterCompleted += new EventHandler<MedAgent_0_1.MedCareCloudServiceReference.GetAllPatientsForDocterCompletedEventArgs>(client_GetAllPatientsCompleted);
+            client.GetAllPatientsForDoctorAsync(1);//change 1 to DocID from login
+            client.GetAllPatientsForDoctorCompleted += new EventHandler<MedAgent_0_1.MedCareCloudServiceReference.GetAllPatientsForDoctorCompletedEventArgs>(client_GetAllPatientsCompleted);
             
         }
 
-        void client_GetAllPatientsCompleted(object sender, MedAgent_0_1.MedCareCloudServiceReference.GetAllPatientsForDocterCompletedEventArgs e)
+        void client_GetAllPatientsCompleted(object sender, MedAgent_0_1.MedCareCloudServiceReference.GetAllPatientsForDoctorCompletedEventArgs e)
         {
-            foreach (var item in e.Result)
+            foreach (var patient in e.Result)
             {
-                PatientLst.Items.Add(new Patient() { FirstName = item.FirstName, LastName = item.LastName, Id = item.PatientID});
+                MainPage.PublicPatient = patient;
+                PatientLst.Items.Add(new Patient() { FirstName = patient.FirstName, LastName = patient.LastName, Id = patient.PatientID });
             }
         }
 
@@ -53,14 +54,14 @@ namespace MediAgent
             
             if (PatientLst.SelectedItem != null && PatientLst.SelectedItem.ToString() == "    Patient's file")
             {
-                MainPage.PublicPatient = PatientLst.Items.ElementAt(PatientLst.SelectedIndex - 2) as Patient;
+                //MainPage.PublicPatient = PatientLst.Items.ElementAt(PatientLst.SelectedIndex - 2) as Patient;
                 //PatientLst.SelectedIndex = PatientLst.SelectedIndex - 2;
                 NavigationService.Navigate(new Uri("/PatientFile.xaml", UriKind.Relative));
             }
             else if (PatientLst.SelectedItem != null && PatientLst.SelectedItem.ToString() == "    Course of medication")
             {
                 //App.Pat = PatientLst.Items.ElementAt(PatientLst.SelectedIndex - 2) as Patient;
-                MainPage.PublicPatient = PatientLst.Items.ElementAt(PatientLst.SelectedIndex - 1) as Patient;
+                //MainPage.PublicPatient = PatientLst.Items.ElementAt(PatientLst.SelectedIndex - 1) as Patient;
                 NavigationService.Navigate(new Uri("/AddMedPage.xaml", UriKind.Relative));
             }
 

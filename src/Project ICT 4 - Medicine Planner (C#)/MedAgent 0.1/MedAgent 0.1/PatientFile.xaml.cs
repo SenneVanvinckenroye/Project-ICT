@@ -18,11 +18,11 @@ namespace MediAgent
             InitializeComponent();
 
             PatName.Text = MainPage.PublicPatient.FirstName + " " + MainPage.PublicPatient.LastName;
-            PatAge.Text = MainPage.PublicPatient.Bday != new DateTime() ? DateTime.Now.Date.Subtract(MainPage.PublicPatient.Bday.Date).ToString() : "NA";
+            PatAge.Text = MainPage.PublicPatient.bDay != new DateTime() ? DateTime.Now.Date.Subtract(MainPage.PublicPatient.bDay.Date).ToString() : "NA";
             PatSex.Text = MainPage.PublicPatient.Sex != '\0' ? MainPage.PublicPatient.Sex.ToString() : "NA";
             PatEmail.Text = MainPage.PublicPatient.Email ?? "NA";
-            PatBday.Text = MainPage.PublicPatient.Bday != new DateTime() ? MainPage.PublicPatient.Bday.Date.ToString() : "NA";
-            PatSsn.Text = MainPage.PublicPatient.SSN != 0 ? MainPage.PublicPatient.SSN.ToString() : "NA";
+            PatBday.Text = MainPage.PublicPatient.bDay != new DateTime() ? MainPage.PublicPatient.bDay.Date.ToString() : "NA";
+            PatSsn.Text = MainPage.PublicPatient.Ssn != 0 ? MainPage.PublicPatient.Ssn.ToString() : "NA";
 
             PatNameEdit.Text = PatName.Text;
             PatAgeEdit.Text = PatAge.Text;

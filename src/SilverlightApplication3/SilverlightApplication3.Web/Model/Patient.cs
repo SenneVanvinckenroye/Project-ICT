@@ -24,5 +24,16 @@ namespace SilverlightApplication3.Web.Model
         [DataMember]
         public string FirstName { get; set; }
 
+        [DataMember]
+        public DateTime bDay { get; set; }
+
+        [DataMember]
+        public char Sex { get; set; }
+
+        [DataMember]
+        public int Ssn { get; set; }
+
+        [DataMember]
+        public string Email { get; set; }
     }
 }

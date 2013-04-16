@@ -29,10 +29,14 @@
   <xs:complexType name="Patient">
     <xs:sequence>
       <xs:element minOccurs="0" name="DocID" type="xs:int" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="MemberID" type="xs:int" />
       <xs:element minOccurs="0" name="PatientID" type="xs:int" />
+      <xs:element minOccurs="0" name="Sex" type="ser:char" />
+      <xs:element minOccurs="0" name="Ssn" type="xs:int" />
+      <xs:element minOccurs="0" name="bDay" type="xs:dateTime" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Patient" nillable="true" type="tns:Patient" />
