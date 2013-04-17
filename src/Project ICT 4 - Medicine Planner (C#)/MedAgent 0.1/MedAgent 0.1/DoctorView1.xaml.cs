@@ -37,7 +37,7 @@ namespace MediAgent
                 App.PublicPatient.FirstName = patient.FirstName;
                 App.PublicPatient.LastName = patient.LastName;
                 App.PublicPatient.Id = patient.PatientID;
-                PatientLst.Items.Add(App.PublicPatient.ToString());
+                PatientLst.Items.Add(App.PublicPatient);
             }
         }
 
