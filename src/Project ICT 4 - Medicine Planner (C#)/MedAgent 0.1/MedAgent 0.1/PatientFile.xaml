@@ -42,13 +42,14 @@
                 <ScrollViewer>
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="1.1*"/>
                             <ColumnDefinition Width="2*"/>
                         </Grid.ColumnDefinitions>
                         <Border BorderBrush="OrangeRed" BorderThickness="0,0,2,0">
                             <!-- verander kleur -->
                             <StackPanel Grid.Column="0" Margin="30,0,0,0">
                                 <TextBlock Text="Name" Margin="0,18,0,18"></TextBlock>
+                                <TextBlock Text="Firstname" Margin="0,18,0,18"></TextBlock>
                                 <TextBlock Text="Age" Margin="0,18,0,18"></TextBlock>
                                 <TextBlock Text="Sex" Margin="0,18,0,18"></TextBlock>
                                 <TextBlock Text="Email" Margin="0,18,0,18"></TextBlock>
@@ -59,6 +60,7 @@
 
                         <StackPanel x:Name="StkNoEdit" Grid.Column="1" Margin="5,0,0,0" Visibility="Visible">
                             <TextBlock x:Name="PatName" Text="Patient Name" Margin="0,18,0,18"></TextBlock>
+                            <TextBlock x:Name="PatFirstname" Text="Patient Firstname" Margin="0,18,0,18"></TextBlock>
                             <TextBlock x:Name="PatAge" Text="Patient Age" Margin="0,18,0,18"></TextBlock>
                             <TextBlock x:Name="PatSex" Text="Patient Sex" Margin="0,18,0,18"></TextBlock>
                             <TextBlock x:Name="PatEmail" Text="Patient Email" Margin="0,18,0,18"></TextBlock>
@@ -68,6 +70,7 @@
 
                         <StackPanel x:Name="StkEdit" Grid.Column="1" Margin="5,0,0,0" Visibility="Collapsed">
                             <TextBox x:Name="PatNameEdit" Text="Patient Name"></TextBox>
+                            <TextBox x:Name="PatFirstnameEdit" Text="Patient Firstname"></TextBox>
                             <TextBox x:Name="PatAgeEdit" Text="Patient Age"></TextBox>
                             <TextBox x:Name="PatSexEdit" Text="Patient Sex"></TextBox>
                             <TextBox x:Name="PatEmailEdit" Text="Patient Email"></TextBox>

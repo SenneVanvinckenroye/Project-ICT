@@ -166,10 +166,10 @@ namespace CalendarControl
 
         private void ba_Click(object sender, RoutedEventArgs e)
         {
-            if (sender is Button) //&& dayClicked != null
+            if (sender is Button && dayClicked != null)
             {
                 DateTime date = new DateTime(mCurrentDate.Year, mCurrentDate.Month, (int)(sender as Button).Tag);
-                //dayClicked(sender, new DayClickedEventArgs(date, FindEventsByDate(date)));
+                dayClicked(sender, new DayClickedEventArgs(date, FindEventsByDate(date)));
                 foreach (MedSoort soort in course.MedSoort)
                 {
                     foreach (MedAlarm alarm in soort.MedAlarm)
@@ -245,12 +245,6 @@ namespace CalendarControl
                 ba.Content = (i + 1).ToString();
                 ba.Click += new RoutedEventHandler(ba_Click);
 
-                //color current day
-                
-
-
-
-
                 foreach (MedSoort soort in course.MedSoort)
                 {
                     foreach (MedAlarm alarm in soort.MedAlarm)
@@ -274,7 +268,6 @@ namespace CalendarControl
 
                             testTotal++;
 
-
                             if (testTaken < testTotal && testTaken != 0)
                             {
                                 ba.Background = new SolidColorBrush(Colors.Orange);
@@ -288,16 +281,9 @@ namespace CalendarControl
                                 ba.Background = new SolidColorBrush(Colors.Red);
                             }
 
-
-
-
-
                             PreDate = alarm.DateTime;
-
                         }
-
                     }
-
 
                 }
                 if (dateTime.Year == DateTime.Now.Year && dateTime.Month == DateTime.Now.Month && ba.Content.ToString() == DateTime.Now.Day.ToString())
