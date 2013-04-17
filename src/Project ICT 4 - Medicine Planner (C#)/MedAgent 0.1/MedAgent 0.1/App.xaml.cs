@@ -27,7 +27,7 @@ namespace MedAgent_0_1
         /// Constructor for the Application object.
         /// </summary>
 
-        public static Patient PublicPatient = new Patient();
+        public static Patient PublicPatient = new Patient(); 
 
         public App()
         {
