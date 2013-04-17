@@ -5,6 +5,7 @@ using System.Net;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
+using CalendarControl;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using MedAgent_0_1;
@@ -38,6 +39,15 @@ namespace MediAgent
             InitializeComponent();
 
             PatName.Text = App.PublicPatient.FirstName + " " + App.PublicPatient.LastName;
+=======
+            
+            testCalendar.OnDayClicked += testCalendar_OnDayClicked;
+
+
+
+            PatName.Text = MainPage.PublicPatient.LastName;
+            PatFirstname.Text = MainPage.PublicPatient.FirstName;
+>>>>>>> b93d031... LCalendar bezig met dayclick event
             
             if (App.PublicPatient.Bday != new DateTime())
             {
