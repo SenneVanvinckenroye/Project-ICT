@@ -34,8 +34,10 @@ namespace MediAgent
         {
             foreach (var patient in e.Result)
             {
-                MainPage.PublicPatient = patient;
-                PatientLst.Items.Add(new Patient() { FirstName = patient.FirstName, LastName = patient.LastName, Id = patient.PatientID });
+                App.PublicPatient.FirstName = patient.FirstName;
+                App.PublicPatient.LastName = patient.LastName;
+                App.PublicPatient.Id = patient.PatientID;
+                PatientLst.Items.Add(App.PublicPatient.ToString());
             }
         }
 
@@ -51,17 +53,17 @@ namespace MediAgent
 
         private void PatientList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
+            //
             if (PatientLst.SelectedItem != null && PatientLst.SelectedItem.ToString() == "    Patient's file")
             {
-                //MainPage.PublicPatient = PatientLst.Items.ElementAt(PatientLst.SelectedIndex - 2) as Patient;
+                //App.PublicPatient = PatientLst.Items.ElementAt(PatientLst.SelectedIndex - 2) as Patient;
                 //PatientLst.SelectedIndex = PatientLst.SelectedIndex - 2;
                 NavigationService.Navigate(new Uri("/PatientFile.xaml", UriKind.Relative));
             }
             else if (PatientLst.SelectedItem != null && PatientLst.SelectedItem.ToString() == "    Course of medication")
             {
                 //App.Pat = PatientLst.Items.ElementAt(PatientLst.SelectedIndex - 2) as Patient;
-                //MainPage.PublicPatient = PatientLst.Items.ElementAt(PatientLst.SelectedIndex - 1) as Patient;
+                //App.PublicPatient = PatientLst.Items.ElementAt(PatientLst.SelectedIndex - 1) as Patient;
                 NavigationService.Navigate(new Uri("/AddMedPage.xaml", UriKind.Relative));
             }
 
@@ -93,6 +95,11 @@ namespace MediAgent
             if (TxtboxFirstName.Text.Length >= 2 && TxtboxLastName.Text.Length >= 2 && EmailIsValid) // input check
             {
                 //Service.Insert(TxtboxFirstName.Text, TxtboxLastName.Text, temp, TxtboxAdres.Text);
+                NavigationService.Navigate(new Uri("/PatientFile.xaml?addPatient=true", UriKind.Relative));
+            }
+            else
+            {
+                MessageBox.Show("Wrong input detected!");
             }
             
         }

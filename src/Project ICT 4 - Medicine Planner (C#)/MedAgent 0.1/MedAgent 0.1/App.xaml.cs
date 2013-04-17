@@ -26,8 +26,12 @@ namespace MedAgent_0_1
         /// <summary>
         /// Constructor for the Application object.
         /// </summary>
+
+        public static Patient PublicPatient = new Patient();
+
         public App()
         {
+
             // Global handler for uncaught exceptions. 
             // Note that exceptions thrown by ApplicationBarItem.Click will not get caught here.
             UnhandledException += Application_UnhandledException;

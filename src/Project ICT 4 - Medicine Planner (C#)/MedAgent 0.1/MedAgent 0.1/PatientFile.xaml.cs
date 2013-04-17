@@ -13,16 +13,36 @@ namespace MediAgent
 {
     public partial class PatientFile : PhoneApplicationPage
     {
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            string addPatient = "false";
+            if (this.NavigationContext.QueryString.TryGetValue("addPatient", out addPatient))
+            {
+                if (addPatient == "true")
+                {
+                    PatName.Text = App.PublicPatient.FirstName + " " + App.PublicPatient.LastName;
+                    StkEdit.Visibility = Visibility.Visible;
+                    StkEdit.Visibility = Visibility.Collapsed;
+                }
+                else
+                {
+                    MessageBox.Show("Something went wrong\n\rRedirecting...");
+                    NavigationService.GoBack();
+                }
+            }
+
+        }
+
         public PatientFile()
         {
             InitializeComponent();
 
-            PatName.Text = MainPage.PublicPatient.FirstName + " " + MainPage.PublicPatient.LastName;
+            PatName.Text = App.PublicPatient.FirstName + " " + App.PublicPatient.LastName;
             
-            if (MainPage.PublicPatient.bDay != new DateTime())
+            if (App.PublicPatient.Bday != new DateTime())
             {
-                int age = DateTime.Today.Year - MainPage.PublicPatient.bDay.Year;
-                if (MainPage.PublicPatient.bDay > DateTime.Today.AddYears(-age)) age--;
+                int age = DateTime.Today.Year - App.PublicPatient.Bday.Year;
+                if (App.PublicPatient.Bday > DateTime.Today.AddYears(-age)) age--;
                 PatAge.Text = age.ToString();
             }
             else
@@ -30,10 +50,10 @@ namespace MediAgent
                 PatAge.Text = "NA";
             }
             
-            PatSex.Text = MainPage.PublicPatient.Sex != '\0' ? MainPage.PublicPatient.Sex.ToString() : "NA";
-            PatEmail.Text = MainPage.PublicPatient.Email ?? "NA";
-            PatBday.Text = MainPage.PublicPatient.bDay != new DateTime() ? MainPage.PublicPatient.bDay.Date.ToString() : "NA";
-            PatSsn.Text = MainPage.PublicPatient.Ssn != 0 ? MainPage.PublicPatient.Ssn.ToString() : "NA";
+            PatSex.Text = App.PublicPatient.Sex != '\0' ? App.PublicPatient.Sex.ToString() : "NA";
+            PatEmail.Text = App.PublicPatient.Email ?? "NA";
+            PatBday.Text = App.PublicPatient.Bday != new DateTime() ? App.PublicPatient.Bday.Date.ToString() : "NA";
+            PatSsn.Text = App.PublicPatient.SSN != 0 ? App.PublicPatient.SSN.ToString() : "NA";
 
             PatNameEdit.Text = PatName.Text;
             PatAgeEdit.Text = PatAge.Text;

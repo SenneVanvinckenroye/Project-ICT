@@ -34,7 +34,7 @@ namespace MedAgent_0_1
 
         //Panorama Item 1 
 
-        private int savedCounter = 0;
+        //private int savedCounter = 0;
 
         private CameraCaptureTask camTask;
 

@@ -45,7 +45,6 @@ namespace MedAgent_0_1
             }
         }
         
-        public static MedCareCloudServiceReference.Patient PublicPatient;
         public static string userFName, userLName, userEmail;//global vars to reach userdata in other pages
 
         void client_LoginCompleted(object sender, MedCareCloudServiceReference.LoginCompletedEventArgs e)
