@@ -27,28 +27,33 @@ namespace MediAgent
 
             client.GetAllPatientsForDoctorAsync(1);//change 1 to DocID from login
             client.GetAllPatientsForDoctorCompleted += new EventHandler<MedAgent_0_1.MedCareCloudServiceReference.GetAllPatientsForDoctorCompletedEventArgs>(client_GetAllPatientsCompleted);
-            
+
         }
 
         void client_GetAllPatientsCompleted(object sender, MedAgent_0_1.MedCareCloudServiceReference.GetAllPatientsForDoctorCompletedEventArgs e)
         {
-            foreach (var patient in e.Result)
+            Patient[] test = new Patient[e.Result.Count];
+            for (int i = 0; i < e.Result.Count; i++)
             {
-                App.PublicPatient.FirstName = patient.FirstName;
-                App.PublicPatient.LastName = patient.LastName;
-                App.PublicPatient.Id = patient.PatientID;
-                PatientLst.Items.Add(App.PublicPatient);
+                test[i] = new Patient();
+                test[i].FirstName = e.Result[i].FirstName;
+                test[i].LastName = e.Result[i].LastName;
+                test[i].Id = e.Result[i].PatientID;
+            }
+            foreach (Patient patient in test)
+            {
+                PatientLst.Items.Add(patient);
             }
         }
 
-        void Service_DownloadDone(object sender, EventArgs e)
-        {
-            PatientLst.Items.Clear();
-            //foreach (Patient patient in Service.Load())
-            //{
-            //    PatientLst.Items.Add(patient);
-            //}
-        }
+        //void Service_DownloadDone(object sender, EventArgs e)
+        //{
+        //    PatientLst.Items.Clear();
+        //foreach (Patient patient in Service.Load())
+        //{
+        //    PatientLst.Items.Add(patient);
+        //}
+        //}
 
 
         private void PatientList_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -86,7 +91,7 @@ namespace MediAgent
                 PatientLst.Items.Insert(PatientLst.SelectedIndex + 1, "    Patient's file");
                 PatientLst.Items.Insert(PatientLst.SelectedIndex + 1, "    Course of medication");
             }
-            
+
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -95,13 +100,16 @@ namespace MediAgent
             if (TxtboxFirstName.Text.Length >= 2 && TxtboxLastName.Text.Length >= 2 && EmailIsValid) // input check
             {
                 //Service.Insert(TxtboxFirstName.Text, TxtboxLastName.Text, temp, TxtboxAdres.Text);
+                App.PublicPatient.FirstName = TxtboxFirstName.Text;
+                App.PublicPatient.LastName = TxtboxLastName.Text;
+                App.PublicPatient.Email = TxtboxEmail.Text;
                 NavigationService.Navigate(new Uri("/PatientFile.xaml?addPatient=true", UriKind.Relative));
             }
             else
             {
                 MessageBox.Show("Wrong input detected!");
             }
-            
+
         }
     }
 }

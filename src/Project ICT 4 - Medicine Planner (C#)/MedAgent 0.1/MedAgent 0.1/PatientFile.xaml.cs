@@ -23,7 +23,7 @@ namespace MediAgent
                 {
                     PatName.Text = App.PublicPatient.FirstName + " " + App.PublicPatient.LastName;
                     StkEdit.Visibility = Visibility.Visible;
-                    StkEdit.Visibility = Visibility.Collapsed;
+                    StkNoEdit.Visibility = Visibility.Collapsed;
                 }
                 else
                 {
@@ -38,17 +38,9 @@ namespace MediAgent
         {
             InitializeComponent();
 
-            PatName.Text = App.PublicPatient.FirstName + " " + App.PublicPatient.LastName;
-=======
-            
-            testCalendar.OnDayClicked += testCalendar_OnDayClicked;
+            PatName.Text = App.PublicPatient.LastName;
+            PatFirstname.Text = App.PublicPatient.FirstName;
 
-
-
-            PatName.Text = MainPage.PublicPatient.LastName;
-            PatFirstname.Text = MainPage.PublicPatient.FirstName;
->>>>>>> b93d031... LCalendar bezig met dayclick event
-            
             if (App.PublicPatient.Bday != new DateTime())
             {
                 int age = DateTime.Today.Year - App.PublicPatient.Bday.Year;
@@ -66,6 +58,7 @@ namespace MediAgent
             PatSsn.Text = App.PublicPatient.SSN != 0 ? App.PublicPatient.SSN.ToString() : "NA";
 
             PatNameEdit.Text = PatName.Text;
+            PatFirstnameEdit.Text = PatFirstname.Text;
             PatAgeEdit.Text = PatAge.Text;
             PatSexEdit.Text = PatSex.Text;
             PatEmailEdit.Text = PatEmail.Text;
