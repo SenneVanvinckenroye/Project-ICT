@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Runtime.Serialization;
 using System.Security.Cryptography;
 using System.ServiceModel;
@@ -49,6 +50,37 @@ namespace SilverlightApplication3.Web
             }
 
             return alist;
+        }
+
+        public bool SendEmail(string PatientEmail, string PatientFName, string DoctorFName, string PatientPass)
+        {
+            bool success = false;
+
+            try
+            {
+                MailMessage msg = new MailMessage();
+                msg.From = new MailAddress("projectict4@outlook.com");
+                msg.To.Add(new MailAddress(PatientEmail));
+                msg.Subject = "Welcome to MedCare!";
+                msg.Body = "Welcome! " + PatientFName + "!<br/>Dr. "+DoctorFName+" added you to his MedCare application.<br/>You can now also use this as your personal medication reminder!<br/><br/>Keep in mind that your password is: "+PatientPass+". Make sure to keep it safe!<br><br><br>Greetings from the MedCare Team!";
+                msg.IsBodyHtml = true;
+
+                SmtpClient smtp = new SmtpClient();
+                smtp.Host = "smtp.live.com"; // Replace with your servers IP address 
+                smtp.Port = 587;
+                smtp.UseDefaultCredentials = false;
+                smtp.Credentials = new System.Net.NetworkCredential("projectict4@outlook.com", "Finland1!");
+                smtp.EnableSsl = true;
+                smtp.Timeout = 5000;
+                smtp.Send(msg);
+                success = true;
+            }
+
+            catch
+            {
+                success = false;
+            }
+            return success;
         }
 
 

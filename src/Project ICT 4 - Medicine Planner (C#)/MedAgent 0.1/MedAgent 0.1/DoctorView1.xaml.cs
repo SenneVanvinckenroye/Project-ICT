@@ -39,6 +39,11 @@ namespace MediAgent
                 test[i].FirstName = e.Result[i].FirstName;
                 test[i].LastName = e.Result[i].LastName;
                 test[i].Id = e.Result[i].PatientID;
+                test[i].Email = e.Result[i].Email;
+                test[i].Bday = e.Result[i].bDay;
+                test[i].Sex = e.Result[i].Sex;
+                test[i].SSN = e.Result[i].Ssn;
+
             }
             foreach (Patient patient in test)
             {
@@ -88,6 +93,7 @@ namespace MediAgent
 
             if (PatientLst.SelectedItem is Patient)
             {
+                App.PublicPatient = (Patient)PatientLst.SelectedItem;
                 PatientLst.Items.Insert(PatientLst.SelectedIndex + 1, "    Patient's file");
                 PatientLst.Items.Insert(PatientLst.SelectedIndex + 1, "    Course of medication");
             }
@@ -103,7 +109,7 @@ namespace MediAgent
                 App.PublicPatient.FirstName = TxtboxFirstName.Text;
                 App.PublicPatient.LastName = TxtboxLastName.Text;
                 App.PublicPatient.Email = TxtboxEmail.Text;
-                NavigationService.Navigate(new Uri("/PatientFile.xaml?addPatient=true", UriKind.Relative));
+                NavigationService.Navigate(new Uri("/AddPatientFile.xaml?addPatient=true", UriKind.Relative));
             }
             else
             {

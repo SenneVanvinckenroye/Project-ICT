@@ -52,4 +52,21 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="SendEmail">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PatientEmail" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="PatientFName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="DoctorLName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="PatientPass" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendEmailResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SendEmailResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

@@ -90,12 +90,16 @@
     <Compile Include="AddMedPlanPage.xaml.cs">
       <DependentUpon>AddMedPlanPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddPatientFile.xaml.cs">
+      <DependentUpon>AddPatientFile.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AnimatedSplashScreen.xaml.cs">
       <DependentUpon>AnimatedSplashScreen.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Course.cs" />
     <Compile Include="DoctorView1.xaml.cs">
       <DependentUpon>DoctorView1.xaml</DependentUpon>
     </Compile>
@@ -104,6 +108,7 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="MD5.cs" />
+    <Compile Include="PasswordGenerator.cs" />
     <Compile Include="Patient.cs" />
     <Compile Include="PatientFile.xaml.cs">
       <DependentUpon>PatientFile.xaml</DependentUpon>
@@ -137,6 +142,10 @@
     <Page Include="AddMedPlanPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AddPatientFile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AnimatedSplashScreen.xaml">
       <SubType>Designer</SubType>

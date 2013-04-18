@@ -26,5 +26,8 @@ namespace SilverlightApplication3.Web
 
         /*[OperationContract]
         bool CreateNewPatient(string FName,string LName, string email, char sex, char type = 'p');*/
+
+        [OperationContract]
+        bool SendEmail(string PatientEmail, string PatientFName, string DoctorLName, string PatientPass);
     }
 }

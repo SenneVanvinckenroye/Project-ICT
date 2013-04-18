@@ -16,28 +16,14 @@ namespace MediAgent
     {
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            string addPatient = "false";
-            if (this.NavigationContext.QueryString.TryGetValue("addPatient", out addPatient))
-            {
-                if (addPatient == "true")
-                {
-                    PatName.Text = App.PublicPatient.FirstName + " " + App.PublicPatient.LastName;
-                    StkEdit.Visibility = Visibility.Visible;
-                    StkNoEdit.Visibility = Visibility.Collapsed;
-                }
-                else
-                {
-                    MessageBox.Show("Something went wrong\n\rRedirecting...");
-                    NavigationService.GoBack();
-                }
-            }
+            PFilePano.DefaultItem = PFilePano.Items[1];
 
+            PatName.Text = App.PublicPatient.FirstName + " " + App.PublicPatient.LastName;
         }
-
         public PatientFile()
         {
             InitializeComponent();
-
+            Calendar.OnDayClicked += Calendar_OnDayClicked;
             PatName.Text = App.PublicPatient.LastName;
             PatFirstname.Text = App.PublicPatient.FirstName;
 
@@ -51,7 +37,7 @@ namespace MediAgent
             {
                 PatAge.Text = "NA";
             }
-            
+
             PatSex.Text = App.PublicPatient.Sex != '\0' ? App.PublicPatient.Sex.ToString() : "NA";
             PatEmail.Text = App.PublicPatient.Email ?? "NA";
             PatBday.Text = App.PublicPatient.Bday != new DateTime() ? App.PublicPatient.Bday.Date.ToString() : "NA";
@@ -65,6 +51,12 @@ namespace MediAgent
             PatBdayEdit.Text = PatBday.Text;
             PatSsnEdit.Text = PatSsn.Text;
 
+        }
+
+        void Calendar_OnDayClicked(object sender, LCalendar.DayClickedEventArgs e)
+        {
+            Button temp = (Button) sender;
+            MessageBox.Show(temp.Tag.ToString());
         }
 
         private void ApplicationBarMenuItem_OnClick(object sender, EventArgs e)

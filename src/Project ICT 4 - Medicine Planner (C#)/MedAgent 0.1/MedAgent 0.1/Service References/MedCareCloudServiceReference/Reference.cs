@@ -323,6 +323,11 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
         System.IAsyncResult BeginLogin(string email, string pswd_hash, System.AsyncCallback callback, object asyncState);
         
         MedAgent_0_1.MedCareCloudServiceReference.User EndLogin(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IMedPlanService/SendEmail", ReplyAction="http://tempuri.org/IMedPlanService/SendEmailResponse")]
+        System.IAsyncResult BeginSendEmail(string PatientEmail, string PatientFName, string DoctorLName, string PatientPass, System.AsyncCallback callback, object asyncState);
+        
+        bool EndSendEmail(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -388,6 +393,25 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class SendEmailCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public SendEmailCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public bool Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class MedPlanServiceClient : System.ServiceModel.ClientBase<MedAgent_0_1.MedCareCloudServiceReference.IMedPlanService>, MedAgent_0_1.MedCareCloudServiceReference.IMedPlanService {
         
         private BeginOperationDelegate onBeginDoWorkDelegate;
@@ -413,6 +437,12 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
         private EndOperationDelegate onEndLoginDelegate;
         
         private System.Threading.SendOrPostCallback onLoginCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginSendEmailDelegate;
+        
+        private EndOperationDelegate onEndSendEmailDelegate;
+        
+        private System.Threading.SendOrPostCallback onSendEmailCompletedDelegate;
         
         private BeginOperationDelegate onBeginOpenDelegate;
         
@@ -474,6 +504,8 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
         public event System.EventHandler<GetAllPatientsForDoctorCompletedEventArgs> GetAllPatientsForDoctorCompleted;
         
         public event System.EventHandler<LoginCompletedEventArgs> LoginCompleted;
+        
+        public event System.EventHandler<SendEmailCompletedEventArgs> SendEmailCompleted;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> OpenCompleted;
         
@@ -660,6 +692,58 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
                         pswd_hash}, this.onEndLoginDelegate, this.onLoginCompletedDelegate, userState);
         }
         
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult MedAgent_0_1.MedCareCloudServiceReference.IMedPlanService.BeginSendEmail(string PatientEmail, string PatientFName, string DoctorLName, string PatientPass, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginSendEmail(PatientEmail, PatientFName, DoctorLName, PatientPass, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        bool MedAgent_0_1.MedCareCloudServiceReference.IMedPlanService.EndSendEmail(System.IAsyncResult result) {
+            return base.Channel.EndSendEmail(result);
+        }
+        
+        private System.IAsyncResult OnBeginSendEmail(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string PatientEmail = ((string)(inValues[0]));
+            string PatientFName = ((string)(inValues[1]));
+            string DoctorLName = ((string)(inValues[2]));
+            string PatientPass = ((string)(inValues[3]));
+            return ((MedAgent_0_1.MedCareCloudServiceReference.IMedPlanService)(this)).BeginSendEmail(PatientEmail, PatientFName, DoctorLName, PatientPass, callback, asyncState);
+        }
+        
+        private object[] OnEndSendEmail(System.IAsyncResult result) {
+            bool retVal = ((MedAgent_0_1.MedCareCloudServiceReference.IMedPlanService)(this)).EndSendEmail(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnSendEmailCompleted(object state) {
+            if ((this.SendEmailCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.SendEmailCompleted(this, new SendEmailCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void SendEmailAsync(string PatientEmail, string PatientFName, string DoctorLName, string PatientPass) {
+            this.SendEmailAsync(PatientEmail, PatientFName, DoctorLName, PatientPass, null);
+        }
+        
+        public void SendEmailAsync(string PatientEmail, string PatientFName, string DoctorLName, string PatientPass, object userState) {
+            if ((this.onBeginSendEmailDelegate == null)) {
+                this.onBeginSendEmailDelegate = new BeginOperationDelegate(this.OnBeginSendEmail);
+            }
+            if ((this.onEndSendEmailDelegate == null)) {
+                this.onEndSendEmailDelegate = new EndOperationDelegate(this.OnEndSendEmail);
+            }
+            if ((this.onSendEmailCompletedDelegate == null)) {
+                this.onSendEmailCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnSendEmailCompleted);
+            }
+            base.InvokeAsync(this.onBeginSendEmailDelegate, new object[] {
+                        PatientEmail,
+                        PatientFName,
+                        DoctorLName,
+                        PatientPass}, this.onEndSendEmailDelegate, this.onSendEmailCompletedDelegate, userState);
+        }
+        
         private System.IAsyncResult OnBeginOpen(object[] inValues, System.AsyncCallback callback, object asyncState) {
             return ((System.ServiceModel.ICommunicationObject)(this)).BeginOpen(callback, asyncState);
         }
@@ -783,6 +867,22 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
             public MedAgent_0_1.MedCareCloudServiceReference.User EndLogin(System.IAsyncResult result) {
                 object[] _args = new object[0];
                 MedAgent_0_1.MedCareCloudServiceReference.User _result = ((MedAgent_0_1.MedCareCloudServiceReference.User)(base.EndInvoke("Login", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginSendEmail(string PatientEmail, string PatientFName, string DoctorLName, string PatientPass, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[4];
+                _args[0] = PatientEmail;
+                _args[1] = PatientFName;
+                _args[2] = DoctorLName;
+                _args[3] = PatientPass;
+                System.IAsyncResult _result = base.BeginInvoke("SendEmail", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public bool EndSendEmail(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                bool _result = ((bool)(base.EndInvoke("SendEmail", _args, result)));
                 return _result;
             }
         }
