@@ -16,7 +16,21 @@ namespace MediAgent
     {
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            PFilePano.DefaultItem = PFilePano.Items[1];
+            string addPatient = "false";
+            if (this.NavigationContext.QueryString.TryGetValue("addPatient", out addPatient))
+            {
+                if (addPatient == "true")
+                {
+                    PatName.Text = App.PublicPatient.FirstName;
+                    StkEdit.Visibility = Visibility.Visible;
+                    StkNoEdit.Visibility = Visibility.Collapsed;
+                }
+                else
+                {
+                    MessageBox.Show("Something went wrong\n\rRedirecting...");
+                    NavigationService.GoBack();
+                }
+            }
 
             PatName.Text = App.PublicPatient.FirstName + " " + App.PublicPatient.LastName;
         }
