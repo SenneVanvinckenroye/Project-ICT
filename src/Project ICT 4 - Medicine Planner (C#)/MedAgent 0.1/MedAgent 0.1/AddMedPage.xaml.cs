@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
+using Microsoft.Phone.Scheduler;
 using Microsoft.Phone.Tasks;
 using Microsoft.Phone;
 
@@ -22,19 +23,21 @@ namespace MedAgent_0_1
             InitializeComponent();
             camTask = new CameraCaptureTask();
             camTask.Completed += camTaskCompleted;
-            
+
+
+
         }
 
 
         /// <summary>
         /// WARNING MONSTERVEEL CODE INCOMING
         /// </summary>
-        
+
 
 
         //Panorama Item 1 
 
-        //private int savedCounter = 0;
+        private int savedCounter = 0;
 
         private CameraCaptureTask camTask;
 
@@ -53,10 +56,13 @@ namespace MedAgent_0_1
                 pr.ChosenPhoto.Seek(0, System.IO.SeekOrigin.Begin);
                 var bitmapImage = PictureDecoder.DecodeJpeg(pr.ChosenPhoto);
                 CameraImage.Source = bitmapImage;
+
+                //Put the image in the list data
+                App.MedList[App.MedID].MedPhoto = CameraImage.Source;
             }
         }
-        
-   
+
+
 
         //Panorama Item 2
 
@@ -93,13 +99,8 @@ namespace MedAgent_0_1
 
 
 
-
         private void ToggleButton2_Checked(object sender, System.Windows.RoutedEventArgs e)
         {
-
-
-
-
             TimeText2.Opacity = 1;
             TabletsText2.Opacity = 1;
 
@@ -107,6 +108,7 @@ namespace MedAgent_0_1
             Time2.IsEnabled = true;
             AddTabletsButton2.Opacity = 1;
             AddTabletsButton2.IsEnabled = true;
+
         }
 
         private void ToggleButton2_Unchecked(object sender, RoutedEventArgs e)
@@ -121,6 +123,7 @@ namespace MedAgent_0_1
 
             AddTabletsButton2.Content = 0;
             Tablets2 = 0;
+
         }
 
         private void ToggleButton3_Checked(object sender, RoutedEventArgs e)
@@ -270,6 +273,8 @@ namespace MedAgent_0_1
                 default: AddTabletsButton1.Content = "WTF??";
                     break;
             }
+
+            TabletsTextBlock1.Text = Convert.ToString(Tablets1);
         }
 
         private void TabletsSlider2_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -490,12 +495,35 @@ namespace MedAgent_0_1
 
         private void AddTabletsButton1_OnClick(object sender, RoutedEventArgs e)
         {
+
+            //Al de rest disablen
+
+            Item1.IsEnabled = false;
+
+            Item2.IsEnabled = false;
+
+            Item3.IsEnabled = false;
+
             SliderPanel1.Visibility = Visibility.Visible;
+
+
+
+
         }
 
         private void ConfirmTabletsButton1_OnClick(object sender, RoutedEventArgs e)
         {
+
+            //Al de rest disablen
+
+            Item1.IsEnabled = true;
+
+            Item2.IsEnabled = true;
+
+            Item3.IsEnabled = true;
+
             SliderPanel1.Visibility = Visibility.Collapsed;
+
         }
 
         private void AddTabletsButton2_OnClick(object sender, RoutedEventArgs e)
@@ -548,14 +576,6 @@ namespace MedAgent_0_1
             SliderPanel6.Visibility = Visibility.Collapsed;
         }
 
-
-
-        private void Time1_ValueChanged(object sender, DateTimeValueChangedEventArgs e)
-        {
-            var obj = App.Current as App;
-            obj.TimeReminder1 = Time1.Value.ToString();
-        }
-
         private void CourseSlider_Hold(object sender, System.Windows.Input.GestureEventArgs e)
         {
             Item1.IsEnabled = false;
@@ -569,6 +589,153 @@ namespace MedAgent_0_1
         }
 
 
+        //private Medication med1 = new Medication();
+
+        //Put all values in a global variabel when their values are changed
+
+
+
+        //Panorama Item 1
+
+        private void NameTxtBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+            App.MedList[App.MedID].Name = NameTxtBox.Text;
+
+        }
+
+
+
+        private void DescrTxtBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+            App.MedList[App.MedID].Description = DescrTxtBox.Text;
+
+        }
+
+        //Panorama Item 2
+
+        private void StartDate_ValueChanged(object sender, DateTimeValueChangedEventArgs e)
+        {
+
+            App.MedList[App.MedID].StartDate = (DateTime)StartDate.Value;
+
+        }
+
+        //Panorama Item 3
+
+        private void Time1_ValueChanged(object sender, DateTimeValueChangedEventArgs e)
+        {
+
+            App.MedList[App.MedID].Time2 = (DateTime)Time2.Value;
+
+        }
+
+        private void Time2_ValueChanged(object sender, DateTimeValueChangedEventArgs e)
+        {
+
+            App.MedList[App.MedID].Time2 = (DateTime)Time2.Value;
+
+        }
+
+
+
+        private void DoneButton_Click(object sender, RoutedEventArgs e)
+        {
+            App.MedID++;
+            for (int i = 0; i < 6; i++)
+            {
+                if (ScheduledActionService.Find("rem" + (i + 1)) != null)
+                {
+                    ScheduledActionService.Remove("rem" + (i + 1));
+                }
+            }
+            
+
+            if ((bool)ToggleButton1.IsChecked)
+            {
+                App.MedList[App.MedID].reminder1 = new Reminder("rem1")
+                {
+                    BeginTime = (DateTime)Time1.Value,
+                    Content = "Take pills",  // welke med toevoegen hier
+                    ExpirationTime = ((DateTime)Time1.Value).AddDays(1),
+                    NavigationUri = new Uri("/TestPage1.xaml", UriKind.Relative),
+                    RecurrenceType = RecurrenceInterval.Daily,
+                    Title = "Take med title" // change this
+                };
+                ScheduledActionService.Add(App.MedList[App.MedID].reminder1);
+            }
+            if ((bool)ToggleButton2.IsChecked)
+            {
+                App.MedList[App.MedID].reminder2 = new Reminder("rem2")
+                {
+                    BeginTime = (DateTime)Time2.Value,
+                    Content = "Take pills",  // welke med toevoegen hier
+                    ExpirationTime = ((DateTime)Time2.Value).AddDays(1),
+                    NavigationUri = new Uri("/TestPage1.xaml", UriKind.Relative),
+                    RecurrenceType = RecurrenceInterval.Daily,
+                    Title = "Take med title" // change this
+                };
+                ScheduledActionService.Add(App.MedList[App.MedID].reminder2);
+            }
+            if ((bool)ToggleButton3.IsChecked)
+            {
+                App.MedList[App.MedID].reminder3 = new Reminder("rem3")
+                    {
+                        BeginTime = (DateTime)Time3.Value,
+                        Content = "Take pills", // welke med toevoegen hier
+                        ExpirationTime = ((DateTime)Time3.Value).AddDays(1),
+                        NavigationUri = new Uri("/TestPage1.xaml", UriKind.Relative),
+                        RecurrenceType = RecurrenceInterval.Daily,
+                        Title = "Take med title" // change this
+                    };
+                ScheduledActionService.Add(App.MedList[App.MedID].reminder3);
+            }
+            if ((bool)ToggleButton4.IsChecked)
+            {
+                App.MedList[App.MedID].reminder4 = new Reminder("rem4")
+                {
+                    BeginTime = (DateTime)Time4.Value,
+                    Content = "Take pills", // welke med toevoegen hier
+                    ExpirationTime = ((DateTime)Time4.Value).AddDays(1),
+                    NavigationUri = new Uri("/TestPage1.xaml", UriKind.Relative),
+                    RecurrenceType = RecurrenceInterval.Daily,
+                    Title = "Take med title" // change this
+                };
+                ScheduledActionService.Add(App.MedList[App.MedID].reminder4);
+            }
+            if ((bool)ToggleButton5.IsChecked)
+            {
+                App.MedList[App.MedID].reminder5 = new Reminder("rem5")
+                {
+                    BeginTime = (DateTime)Time5.Value,
+                    Content = "Take pills", // welke med toevoegen hier
+                    ExpirationTime = ((DateTime)Time5.Value).AddDays(1),
+                    NavigationUri = new Uri("/TestPage1.xaml", UriKind.Relative),
+                    RecurrenceType = RecurrenceInterval.Daily,
+                    Title = "Take med title" // change this
+                };
+                ScheduledActionService.Add(App.MedList[App.MedID].reminder5);
+            }
+            if ((bool)ToggleButton6.IsChecked)
+            {
+                App.MedList[App.MedID].reminder6 = new Reminder("rem6")
+                {
+                    BeginTime = (DateTime)Time6.Value,
+                    Content = "Take pills", // welke med toevoegen hier
+                    ExpirationTime = ((DateTime)Time6.Value).AddDays(1),
+                    NavigationUri = new Uri("/TestPage1.xaml", UriKind.Relative),
+                    RecurrenceType = RecurrenceInterval.Daily,
+                    Title = "Take med title" // change this
+                };
+                ScheduledActionService.Add(App.MedList[App.MedID].reminder6);
+            }
+
+
+
+
+            NavigationService.Navigate(new Uri(string.Format("/MedListOverview.xaml"), UriKind.Relative));
+        }
 
     }
 }
