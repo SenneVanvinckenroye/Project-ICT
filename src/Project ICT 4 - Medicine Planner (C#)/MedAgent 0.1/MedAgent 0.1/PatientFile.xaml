@@ -17,7 +17,7 @@
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="#FFF7F7F7">
-        <controls:Panorama Name="PFilePano"  Title="MediAgent" Foreground="#FF3FC1DF">
+        <controls:Panorama Title="MediAgent" Foreground="#FF3FC1DF">
 
             <!--Panorama item one-->
             <controls:PanoramaItem Header="Med List" Foreground="#FF3FC1DF">

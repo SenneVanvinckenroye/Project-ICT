@@ -27,7 +27,7 @@ namespace CalendarControl
         int testTaken = 0;
         int testTotal = 0;
         DateTime PreDate = new DateTime(1, 1, 1);
-        Course course = new Course(); // TEMP TEMP TEMP
+        //Course course = new Course(); // TEMP TEMP TEMP
 
 
         #region Costruttore
@@ -38,7 +38,8 @@ namespace CalendarControl
             InitializeObjects();
             PopulateDaysTextBlock();
 
-            course.MedSoort = new MedSoort[2] { new MedSoort() { Name = "test1Med", MedAlarm = new MedAlarm[2] { new MedAlarm() { DateTime = new DateTime(2013, 03, 1), Taken = true }, new MedAlarm() { DateTime = new DateTime(2013, 03, 1), Taken = false } } }, new MedSoort() { Name = "test1Med", MedAlarm = new MedAlarm[2] { new MedAlarm() { DateTime = new DateTime(2013, 03, 29), Taken = true }, new MedAlarm() { DateTime = new DateTime(2013, 03, 27) } } } }; // test (database vervanging)
+            //course.MedSoort = new MedSoort[2] { new MedSoort() { Name = "test1Med", MedAlarm = new MedAlarm[2] { new MedAlarm() { DateTime = new DateTime(2013, 03, 1), Taken = true }, new MedAlarm() { DateTime = new DateTime(2013, 03, 1), Taken = false } } }, new MedSoort() { Name = "test1Med", MedAlarm = new MedAlarm[2] { new MedAlarm() { DateTime = new DateTime(2013, 03, 29), Taken = true }, new MedAlarm() { DateTime = new DateTime(2013, 03, 27) } } } }; // test (database vervanging)
+
         }
 
         #endregion
@@ -170,16 +171,16 @@ namespace CalendarControl
             {
                 DateTime date = new DateTime(mCurrentDate.Year, mCurrentDate.Month, (int)(sender as Button).Tag);
                 dayClicked(sender, new DayClickedEventArgs(date, FindEventsByDate(date)));
-                foreach (MedSoort soort in course.MedSoort)
-                {
-                    foreach (MedAlarm alarm in soort.MedAlarm)
-                    {
-                        if (alarm.DateTime == date)
-                        {
-                            //App.lstItems.Add(new Items() {MedName = soort.Name, Time = alarm.DateTime.ToString()});
-                        }
-                    }
-                }
+                //foreach (MedSoort soort in course.MedSoort)
+                //{
+                //    foreach (MedAlarm alarm in soort.MedAlarm)
+                //    {
+                //        if (alarm.DateTime == date)
+                //        {
+                //            //App.lstItems.Add(new Items() {MedName = soort.Name, Time = alarm.DateTime.ToString()});
+                //        }
+                //    }
+                //}
             }
             //PatientFile.UpdateLst();
         }
@@ -229,7 +230,7 @@ namespace CalendarControl
                 Border bord = new Border();
                 bord.Name = "brd" + (i + 1).ToString();
 
-                bord.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
+                bord.HorizontalAlignment = HorizontalAlignment.Center;
                 bord.Margin = new Thickness(0);
 
                 Button ba = new Button();
@@ -238,62 +239,83 @@ namespace CalendarControl
                 ba.Height = 99;
                 ba.Tag = (i + 1);
                 ba.Margin = new Thickness(0);
-                ba.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
-                ba.HorizontalContentAlignment = System.Windows.HorizontalAlignment.Center;
-                ba.VerticalAlignment = System.Windows.VerticalAlignment.Center;
-                ba.VerticalContentAlignment = System.Windows.VerticalAlignment.Center;
+                ba.HorizontalAlignment = HorizontalAlignment.Center;
+                ba.HorizontalContentAlignment = HorizontalAlignment.Center;
+                ba.VerticalAlignment = VerticalAlignment.Center;
+                ba.VerticalContentAlignment = VerticalAlignment.Center;
                 ba.Content = (i + 1).ToString();
                 ba.Click += new RoutedEventHandler(ba_Click);
 
-                foreach (MedSoort soort in course.MedSoort)
-                {
-                    foreach (MedAlarm alarm in soort.MedAlarm)
-                    {
 
-                        if (alarm.DateTime.Day.ToString() == ba.Content.ToString() && alarm.DateTime.Day > DateTime.Now.Day)
-                        {
-                            ba.Background = new SolidColorBrush(Colors.Blue); // dit moet een andere kleur
-                        }
-                        else if (alarm.DateTime.Day.ToString() == ba.Content.ToString() && alarm.DateTime.Day < DateTime.Now.Day)
-                        {
-                            if (alarm.DateTime.Day != PreDate.Day)
-                            {
-                                testTaken = 0;
-                                testTotal = 0;
-                            }
-                            if (alarm.Taken)
-                            {
-                                testTaken++;
-                            }
+                //foreach (Medication medication in App.MedList)
+                //{
+                //    Medication tempMed = medication;
+                //    if (tempMed.start.Date < DateTime.Now.Date && tempMed.end.Date > DateTime.Now.Date)
+                //    {
+                //        while (tempMed.start.Date != DateTime.Now.Date)
+                //        {
+                //            tempMed.start.AddDays(medication.interval);
+                //            int tempDay = tempMed.start.Day + tempMed.interval;
+                //            if (tempDay <= DateTime.DaysInMonth(tempMed.start.Year, tempMed.start.Month))
+                //            {
 
-                            testTotal++;
+                //            }
+                //            else
+                //            {
+                //                DateTime temp = new DateTime(tempMed.start.Year, tempMed.start.Month, tempDay - DateTime.DaysInMonth(tempMed.start.Year, tempMed.start.Month));
+                //                tempMed.start = temp;
+                //                tempMed.start = tempMed.start.AddMonths(1);
+                //            }
+                //        }
+                //    }
+                //}
 
-                            if (testTaken < testTotal && testTaken != 0)
-                            {
-                                ba.Background = new SolidColorBrush(Colors.Orange);
-                            }
-                            if (testTaken == testTotal && testTotal != 0)
-                            {
-                                ba.Background = new SolidColorBrush(Colors.Green);
-                            }
-                            if (testTaken == 0 && testTotal > 0)
-                            {
-                                ba.Background = new SolidColorBrush(Colors.Red);
-                            }
 
-                            PreDate = alarm.DateTime;
-                        }
-                    }
+                //foreach (MedSoort soort in course.MedSoort)
+                //{
+                //    foreach (MedAlarm alarm in soort.MedAlarm)
+                //    {
 
-                }
+                //        if (alarm.DateTime.Day.ToString() == ba.Content.ToString() && alarm.DateTime.Day > DateTime.Now.Day)
+                //        {
+                //            ba.Background = new SolidColorBrush(Colors.Blue); // dit moet een andere kleur
+                //        }
+                //        else if (alarm.DateTime.Day.ToString() == ba.Content.ToString() && alarm.DateTime.Day < DateTime.Now.Day)
+                //        {
+                //            if (alarm.DateTime.Day != PreDate.Day)
+                //            {
+                //                testTaken = 0;
+                //                testTotal = 0;
+                //            }
+                //            if (alarm.Taken)
+                //            {
+                //                testTaken++;
+                //            }
+
+                //            testTotal++;
+
+                //            if (testTaken < testTotal && testTaken != 0)
+                //            {
+                //                ba.Background = new SolidColorBrush(Colors.Orange);
+                //            }
+                //            if (testTaken == testTotal && testTotal != 0)
+                //            {
+                //                ba.Background = new SolidColorBrush(Colors.Green);
+                //            }
+                //            if (testTaken == 0 && testTotal > 0)
+                //            {
+                //                ba.Background = new SolidColorBrush(Colors.Red);
+                //            }
+
+                //            PreDate = alarm.DateTime;
+                //        }
+                //    }
+
+                //}
                 if (dateTime.Year == DateTime.Now.Year && dateTime.Month == DateTime.Now.Month && ba.Content.ToString() == DateTime.Now.Day.ToString())
                 {
                     ba.Background = new SolidColorBrush(Colors.Magenta);
                 }
-
-
-
-
 
                 //controllo sull'evento esistente
 

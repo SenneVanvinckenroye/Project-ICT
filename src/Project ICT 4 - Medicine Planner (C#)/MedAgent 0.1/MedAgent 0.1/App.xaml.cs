@@ -22,16 +22,46 @@ namespace MedAgent_0_1
         /// </summary>
         /// <returns>The root frame of the Phone Application.</returns>
         public PhoneApplicationFrame RootFrame { get; private set; }
-        public string TimeReminder1 { get; set; }
+
+
+        ///Global variables
+        /// 
+        /// 
+        /// 
+        public static Patient PublicPatient = new Patient(); 
+
+        public static List<Medication> MedList = new List<Medication>();
+
+        public static int MedID = 0;
+
+        public DateTime Time1 { get; set; }
+        public DateTime Time2 { get; set; }
+        public DateTime Time3 { get; set; }
+        public DateTime Time4 { get; set; }
+        public DateTime Time5 { get; set; }
+        public DateTime Time6 { get; set; }
+
+        public string MedName { get; set; }
+
+        public string Description { get; set; }
+
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+
+
+        public int Amount1 { get; set; }
+        public int Amount2 { get; set; }
+        public int Amount3 { get; set; }
+        public int Amount4 { get; set; }
+        public int Amount5 { get; set; }
+        public int Amount6 { get; set; }
+
+
         /// <summary>
         /// Constructor for the Application object.
         /// </summary>
-
-        public static Patient PublicPatient = new Patient(); 
-
         public App()
         {
-
             // Global handler for uncaught exceptions. 
             // Note that exceptions thrown by ApplicationBarItem.Click will not get caught here.
             UnhandledException += Application_UnhandledException;

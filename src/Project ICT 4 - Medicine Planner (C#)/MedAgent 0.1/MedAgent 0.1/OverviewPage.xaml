@@ -1,0 +1,119 @@
+﻿<phone:PhoneApplicationPage 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+	xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+	mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
+	x:Class="MedAgent_0_1.OverviewPage"
+	Orientation="Portrait"
+	shell:SystemTray.IsVisible="True">
+
+	<phone:PhoneApplicationPage.Resources>
+		<Style x:Key="PanoramaItemStyle3" TargetType="controls:PanoramaItem">
+			<Setter Property="CacheMode" Value="BitmapCache"/>
+			<Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+			<Setter Property="VerticalContentAlignment" Value="Stretch"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="controls:PanoramaItem">
+						<Grid Background="{TemplateBinding Background}" Margin="12,0,0,0">
+							<Grid.RowDefinitions>
+								<RowDefinition Height="auto"/>
+								<RowDefinition Height="*"/>
+							</Grid.RowDefinitions>
+							<ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" Grid.Row="1" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+	</phone:PhoneApplicationPage.Resources>
+	<phone:PhoneApplicationPage.FontFamily>
+		<StaticResource ResourceKey="PhoneFontFamilyNormal"/>
+	</phone:PhoneApplicationPage.FontFamily>
+	<phone:PhoneApplicationPage.FontSize>
+		<StaticResource ResourceKey="PhoneFontSizeNormal"/>
+	</phone:PhoneApplicationPage.FontSize>
+	<phone:PhoneApplicationPage.Foreground>
+		<StaticResource ResourceKey="PhoneForegroundBrush"/>
+	</phone:PhoneApplicationPage.Foreground>
+
+	<!--LayoutRoot is the root grid where all page content is placed-->
+	<Grid x:Name="LayoutRoot" Background="Black">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+		
+		<!--TitlePanel contains the name of the application and page title-->
+		<StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+			<TextBlock x:Name="ApplicationTitle" Text="MED CARE" Style="{StaticResource PhoneTextNormalStyle}">
+				<TextBlock.Foreground>
+					<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+				</TextBlock.Foreground>
+			</TextBlock>
+			<TextBlock x:Name="PageTitle" Text="Med Overview" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}">
+				<TextBlock.Foreground>
+					<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+				</TextBlock.Foreground>
+			</TextBlock>
+		</StackPanel>
+
+		<!--ContentPanel - place additional content here-->
+		<Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0" Background="Black">
+			<Grid Margin="8">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="0.413*"/>
+					<ColumnDefinition Width="0.212*"/>
+					<ColumnDefinition Width="0.375*"/>
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="0.068*"/>
+					<RowDefinition Height="0.08*"/>
+					<RowDefinition Height="0.095*"/>
+					<RowDefinition Height="0.068*"/>
+					<RowDefinition Height="0.068*"/>
+					<RowDefinition Height="0.068*"/>
+					<RowDefinition Height="0.068*"/>
+					<RowDefinition Height="0.069*"/>
+					<RowDefinition Height="0.066*"/>
+					<RowDefinition Height="0.069*"/>
+					<RowDefinition Height="0.283*"/>
+				</Grid.RowDefinitions>
+				<TextBlock x:Name="NameTextBlock" HorizontalAlignment="Left" Margin="8,8,0,0" TextWrapping="Wrap" Text="Name:" VerticalAlignment="Top">
+					<TextBlock.Foreground>
+						<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+					</TextBlock.Foreground>
+				</TextBlock>
+				<TextBlock x:Name="EndDateTextBlock" Margin="8,8,68,8" TextWrapping="Wrap" Text="End Date:" Grid.Row="1" Grid.Column="2" d:LayoutOverrides="HorizontalAlignment, VerticalAlignment" Foreground="#FF6D5592"/>
+				<TextBlock x:Name="StartDateTextBlock" Margin="8,8,74,8" Grid.Row="1" TextWrapping="Wrap" Text="Start Date:" d:LayoutOverrides="VerticalAlignment" Foreground="#FF6D5592"/>
+				<TextBlock x:Name="Time1TextBlock" Margin="8,8,0,8" Grid.Row="4" TextWrapping="Wrap" HorizontalAlignment="Left" Foreground="#FF6D5592" Width="68"><Run Text="Time 1"/><Run Text=":"/></TextBlock>
+				<TextBlock x:Name="Time2TextBlock" Margin="8,8,0,8" Grid.Row="5" TextWrapping="Wrap" Foreground="#FF6D5592" HorizontalAlignment="Left" Width="68"><Run Text="Time "/><Run Text="2"/><Run Text=":"/><LineBreak/><Run/></TextBlock>
+				<TextBlock x:Name="Time3TextBlock" Margin="8,8,0,8" Grid.Row="6" TextWrapping="Wrap" Foreground="#FF6D5592" RenderTransformOrigin="0.786,2.963" HorizontalAlignment="Left" Width="68"><Run Text="Time "/><Run Text="3"/><Run Text=":"/><LineBreak/><Run/></TextBlock>
+				<TextBlock Text="{Binding Name}" x:Name="MedName" Margin="69,8,8,8" TextWrapping="Wrap" Grid.ColumnSpan="3" />
+				<TextBlock x:Name="TabletsTextBlock" Margin="8" Grid.Row="3" TextWrapping="Wrap" Grid.Column="1" Text="Tablets" Foreground="#FF6D5592"/>
+				<TextBlock x:Name="Time4TextBlock" Margin="8,8,0,8" Grid.Row="7" TextWrapping="Wrap" Foreground="#FF6D5592" HorizontalAlignment="Left" Width="68"><Run Text="Time "/><Run Text="4"/><Run Text=":"/></TextBlock>
+				<TextBlock x:Name="Time6TextBlock" Margin="8,8,0,0" Grid.Row="9" TextWrapping="Wrap" Foreground="#FF6D5592" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="68"><Run Text="Time "/><Run Text="6"/><Run Text=":"/></TextBlock>
+				<TextBlock x:Name="Time5TextBlock" Margin="8,8,0,0" Grid.Row="8" TextWrapping="Wrap" Foreground="#FF6D5592" Height="23" VerticalAlignment="Top" HorizontalAlignment="Left" Width="68"><Run Text="Time "/><Run Text="5"/><Run Text=":"/><LineBreak/><Run/><Run/><LineBreak/><Run/><LineBreak/><Run Text=":"/></TextBlock>
+				<TextBlock x:Name="Tablets1" Grid.Column="1" HorizontalAlignment="Right" Margin="0,8,8,8" Grid.Row="4" TextWrapping="Wrap" Width="76"/>
+				<TextBlock x:Name="Tablets2" Grid.Column="1" HorizontalAlignment="Right" Margin="0,8,8,8" Grid.Row="5" TextWrapping="Wrap" Width="76"/>
+				<TextBlock x:Name="Tablets3" Grid.Column="1" HorizontalAlignment="Right" Margin="0,8,8,8" Grid.Row="6" TextWrapping="Wrap" Width="76"/>
+				<TextBlock x:Name="Tablets4" Grid.Column="1" HorizontalAlignment="Right" Margin="0,8,9,8" Grid.Row="7" TextWrapping="Wrap" Width="76"/>
+				<TextBlock x:Name="Tablets5" Grid.Column="1" HorizontalAlignment="Right" Margin="0,8,9,8" Grid.Row="8" TextWrapping="Wrap" Width="76"/>
+				<TextBlock x:Name="Tablets6" Grid.Column="1" HorizontalAlignment="Right" Margin="0,8,9,8" Grid.Row="9" TextWrapping="Wrap" Width="76"/>
+				<TextBlock x:Name="Time1" Margin="80,8,19,5" Grid.Row="4" TextWrapping="Wrap" d:LayoutOverrides="Width, Height"/>
+				<TextBlock x:Name="Time2" Margin="80,6,19,8" Grid.Row="5" TextWrapping="Wrap" d:LayoutOverrides="Width, Height"/>
+				<TextBlock x:Name="Time3" Margin="80,8,19,5" Grid.Row="6" TextWrapping="Wrap" d:LayoutOverrides="Width, Height"/>
+				<TextBlock x:Name="Time4" Margin="80,8,19,6" Grid.Row="7" TextWrapping="Wrap" d:LayoutOverrides="Width, Height"/>
+				<TextBlock x:Name="Time5" Margin="80,6,19,8" Grid.Row="8" TextWrapping="Wrap" d:LayoutOverrides="Width, Height"/>
+				<TextBlock x:Name="Time6" Margin="80,8,19,11" Grid.Row="9" TextWrapping="Wrap" d:LayoutOverrides="Width, Height"/>
+				<TextBlock x:Name="StartDate" Margin="0,8,8,8" Grid.Row="2" TextWrapping="Wrap" HorizontalAlignment="Right" Width="166"/>
+				<TextBlock x:Name="EndDate" Margin="0,8,8,8" Grid.Row="2" TextWrapping="Wrap" HorizontalAlignment="Right" Width="149" Grid.Column="2"/>
+				<Button Content="Close" Grid.Column="1" Margin="-27,55,-9,40" Grid.Row="10" d:LayoutOverrides="Width, Height" Click="Button_Click" />
+			</Grid>
+		</Grid>
+	</Grid>
+</phone:PhoneApplicationPage>

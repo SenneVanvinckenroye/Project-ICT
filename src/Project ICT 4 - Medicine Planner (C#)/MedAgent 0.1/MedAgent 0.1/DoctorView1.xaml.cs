@@ -109,7 +109,7 @@ namespace MediAgent
                 App.PublicPatient.FirstName = TxtboxFirstName.Text;
                 App.PublicPatient.LastName = TxtboxLastName.Text;
                 App.PublicPatient.Email = TxtboxEmail.Text;
-                NavigationService.Navigate(new Uri("/AddPatientFile.xaml?addPatient=true", UriKind.Relative));
+                NavigationService.Navigate(new Uri("/PatientFile.xaml?addPatient=true", UriKind.Relative));
             }
             else
             {
