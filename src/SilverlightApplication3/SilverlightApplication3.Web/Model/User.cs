@@ -10,16 +10,16 @@ namespace SilverlightApplication3.Web.Model
     public class User
     {
         [DataMember]
-        public string Name { get; set; }
+        public string LName { get; set; }
 
         [DataMember]
-        public string FirstName { get; set; }
+        public string FName { get; set; }
 
         [DataMember]
-        public Int32 memberID { get; set; }
+        public Int32 MemberID { get; set; }
 
         [DataMember]
-        public string psw_hash { get; set; }
+        public string pass_hash { get; set; }
 
         [DataMember]
         public char sex { get; set; }
@@ -28,7 +28,10 @@ namespace SilverlightApplication3.Web.Model
         public string email { get; set; }
 
         [DataMember]
-        public DateTime date { get; set; }
+        public DateTime bday { get; set; }
+
+        [DataMember]
+        public int ssn { get; set; }
 
         [DataMember]
         public char UserType { get; set; }

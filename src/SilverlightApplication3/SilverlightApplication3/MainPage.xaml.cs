@@ -21,6 +21,10 @@ namespace SilverlightApplication3
             ServiceReference1.MedPlanServiceClient client = new ServiceReference1.MedPlanServiceClient();
             client.GetAllUsersCompleted += client_GetAllUsersCompleted;
             client.GetAllUsersAsync();
+
+            DateTime bday = DateTime.Now;
+            
+            //client.CreateNewUserAsync("Joost", "maghetweten", "joost@mhw.be", 'm', 1, 'p', bday, "lippenslaan 20 8300 Knokke");
         }
 
         void client_GetAllUsersCompleted(object sender, ServiceReference1.GetAllUsersCompletedEventArgs e)

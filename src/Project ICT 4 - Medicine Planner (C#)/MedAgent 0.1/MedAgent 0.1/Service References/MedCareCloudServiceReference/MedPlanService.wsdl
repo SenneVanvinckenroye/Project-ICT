@@ -31,6 +31,12 @@
   <wsdl:message name="IMedPlanService_Login_OutputMessage">
     <wsdl:part name="parameters" element="tns:LoginResponse" />
   </wsdl:message>
+  <wsdl:message name="IMedPlanService_CreateNewUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateNewUser" />
+  </wsdl:message>
+  <wsdl:message name="IMedPlanService_CreateNewUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateNewUserResponse" />
+  </wsdl:message>
   <wsdl:message name="IMedPlanService_SendEmail_InputMessage">
     <wsdl:part name="parameters" element="tns:SendEmail" />
   </wsdl:message>
@@ -53,6 +59,10 @@
     <wsdl:operation name="Login">
       <wsdl:input wsaw:Action="http://tempuri.org/IMedPlanService/Login" message="tns:IMedPlanService_Login_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IMedPlanService/LoginResponse" message="tns:IMedPlanService_Login_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateNewUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMedPlanService/CreateNewUser" message="tns:IMedPlanService_CreateNewUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMedPlanService/CreateNewUserResponse" message="tns:IMedPlanService_CreateNewUser_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="SendEmail">
       <wsdl:input wsaw:Action="http://tempuri.org/IMedPlanService/SendEmail" message="tns:IMedPlanService_SendEmail_InputMessage" />
@@ -90,6 +100,15 @@
     </wsdl:operation>
     <wsdl:operation name="Login">
       <soap:operation soapAction="http://tempuri.org/IMedPlanService/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateNewUser">
+      <soap:operation soapAction="http://tempuri.org/IMedPlanService/CreateNewUser" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

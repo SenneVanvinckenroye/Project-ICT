@@ -24,8 +24,8 @@ namespace SilverlightApplication3.Web
         [OperationContract]
         Model.User Login(string email, string pswd_hash);
 
-        /*[OperationContract]
-        bool CreateNewPatient(string FName,string LName, string email, char sex, char type = 'p');*/
+        [OperationContract]
+        string CreateNewUser(string FName,string LName, string pass_hash, string email, char sex, int docID, char type, DateTime bday, string address, int ssn);//return type char for debugging
 
         [OperationContract]
         bool SendEmail(string PatientEmail, string PatientFName, string DoctorLName, string PatientPass);

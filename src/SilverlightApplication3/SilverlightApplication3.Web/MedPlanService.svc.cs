@@ -6,6 +6,10 @@ using System.Runtime.Serialization;
 using System.Security.Cryptography;
 using System.ServiceModel;
 using System.Text;
+using System.Collections.Generic; // For generic collections like List.
+using System.Data.SqlClient;      // For the database connections and objects.
+
+
 
 namespace SilverlightApplication3.Web
 {
@@ -15,11 +19,13 @@ namespace SilverlightApplication3.Web
     {
         public void DoWork()
         {
+            
         }
 
 
         public List<Model.User> GetAllUsers()
         {
+            
             DataClasses1DataContext dc = new DataClasses1DataContext();
             List<Model.User> alist = new List<Model.User>();
             
@@ -28,7 +34,8 @@ namespace SilverlightApplication3.Web
 
             foreach (var item in us)
             {
-                alist.Add(new Model.User() { FirstName = item.FName, Name = item.LName});
+                alist.Add(new Model.User() { FName = item.FName, LName = item.LName});
+                
             }
 
             return alist;
@@ -62,7 +69,17 @@ namespace SilverlightApplication3.Web
                 msg.From = new MailAddress("projectict4@outlook.com");
                 msg.To.Add(new MailAddress(PatientEmail));
                 msg.Subject = "Welcome to MedCare!";
-                msg.Body = "Welcome! " + PatientFName + "!<br/>Dr. "+DoctorFName+" added you to his MedCare application.<br/>You can now also use this as your personal medication reminder!<br/><br/>Keep in mind that your password is: "+PatientPass+". Make sure to keep it safe!<br><br><br>Greetings from the MedCare Team!";
+                string body = "<h1>Welcome! " + PatientFName + "!</h1><br/>Dr. " + DoctorFName + " added you to his MedCare application.<br/>You can now also use this as your personal medication reminder!<br/><br/>Keep in mind that your password is: " + PatientPass + ". Make sure to keep it safe!<br><br><br>Greetings from the MedCare Team!";
+                string html = @"
+<html>
+<head>
+</head>
+<body>
+"+body+@"
+</body>
+</html>
+";
+                msg.Body = html;
                 msg.IsBodyHtml = true;
 
                 SmtpClient smtp = new SmtpClient();
@@ -95,12 +112,101 @@ namespace SilverlightApplication3.Web
 
             foreach (var i in user)
             {
-                Ulist.Add(new Model.User() { UserType = i.UserType.Value,FirstName = i.FName,Name = i.LName,sex = i.sex,email = i.email,memberID = i.MemberID });
+                Ulist.Add(new Model.User() { UserType = i.UserType.Value,FName = i.FName,LName = i.LName,sex = i.sex,email = i.email,MemberID = i.MemberID });
             }
             if (Ulist.Count() > 0)
                 return Ulist.First();//altijd maar 1 gebruiker in Ulist mits email uniek is
             else
                 return null;
+        }
+
+        public string CreateNewUser(string FName, string LName, string pass_hash, string email, char sex, int docID, char type, DateTime bday, string address, int ssn)
+        {
+            ///using SQL to insert new user
+            using (SqlConnection con = new SqlConnection("Server=tcp:kqayqahno5.database.windows.net;Database=medplanner-2013-3-15-11-53;User ID=medagent@kqayqahno5;Password=Finland1!;Trusted_Connection=False;"))
+            {
+                try
+                {
+                    con.Open();
+                }
+                catch
+                {
+                    return "o";
+                }
+                try
+                {
+                    using (SqlCommand command = new SqlCommand(
+                    "INSERT INTO Users (FName, LName, pass_hash, sex, email, bday, ssn, UserType, address) VALUES (@FName, @LName, @pass_hash, @sex, @email, @bday, @ssn, @UserType, @address)", con))
+                    {
+                        command.Parameters.Add(new SqlParameter("@FName", FName));
+                        command.Parameters.Add(new SqlParameter("@LName", LName));
+                        command.Parameters.Add(new SqlParameter("@pass_hash", pass_hash));
+                        command.Parameters.Add(new SqlParameter("@email", email));
+                        command.Parameters.Add(new SqlParameter("@sex", sex));
+                        command.Parameters.Add(new SqlParameter("@UserType", type));
+                        command.Parameters.Add(new SqlParameter("@bday", bday));
+                        command.Parameters.Add(new SqlParameter("@address", address));
+                        command.Parameters.Add(new SqlParameter("@ssn", ssn));
+                        command.ExecuteNonQuery();
+                        con.Close();
+                    }
+                }
+                catch (SqlException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
+
+
+
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            User usr = new User();
+            usr.FName = FName;
+            /*usr.LName = LName;
+            usr.email = email;
+            usr.sex = sex;
+            usr.UserType = type;
+            usr.bday = bday;
+
+            dc.Users.InsertOnSubmit(usr);
+            try
+            {
+                dc.SubmitChanges();
+            }
+            catch
+            {
+                return 'u';
+            }*/
+            //nu gebruiker selecteren om memberID terug te halen
+            try
+            {
+                var users = from u in dc.Users
+                            where u.email == email
+                            select new { u.MemberID };
+                foreach (var user in users)
+                {
+                    usr.MemberID = user.MemberID;//get memberID
+                }
+            }
+            catch
+            {
+                return "m";
+            }
+            //nu patient toevoegen met memberID en docID
+            /*Patient ptnt = new Patient();
+            ptnt.DocID = docID;
+            ptnt.MemberID = usr.MemberID;
+            dc.Patients.InsertOnSubmit(ptnt);
+            try
+            {
+                dc.SubmitChanges();//patient toevoegen
+                return 'k';
+            }
+            catch
+            {
+                return 'p';
+            }*/
+            return "k";
         }
     }
 }

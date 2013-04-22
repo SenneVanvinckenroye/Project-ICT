@@ -56,8 +56,9 @@ namespace MedAgent_0_1
             }
             else
             {
-                userFName = e.Result.FirstName;
-                userLName = e.Result.Name;
+                
+                userFName = e.Result.FName;
+                userLName = e.Result.LName;
                 userEmail = e.Result.email;
                 switch(e.Result.UserType)
                 {

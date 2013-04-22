@@ -56,6 +56,15 @@ namespace MedAgent_0_1
             App.PublicPatient.FirstName = PatFirstnameEdit.Text;
             App.PublicPatient.LastName = PatNameEdit.Text;
             App.PublicPatient.Email = PatEmailEdit.Text;
+            App.PublicPatient.Sex = PatSexEdit.Text.ToCharArray().FirstOrDefault();//field male/female -> m/f
+
+            DateTime MyDateTime;
+            MyDateTime = new DateTime();
+            MyDateTime = DateTime.ParseExact(PatBdayEdit.Text, "dd/MM/yyyy",
+                                  null);
+            App.PublicPatient.Bday = MyDateTime;
+
+
             //data needed:
             //current docter ID
 
@@ -63,11 +72,21 @@ namespace MedAgent_0_1
             PasswordGenerator pGen = new PasswordGenerator();
             string randomPass = pGen.GenPassWithCap(8);
             //email paswoord en hashen naar database
-            sendMail(App.PublicPatient.Email,App.PublicPatient.FirstName,randomPass);
-            //FName
-            //LName
-            //email
-            //
+            //sendMail(App.PublicPatient.Email,App.PublicPatient.FirstName,randomPass);
+            string randomPassHash = MD5Core.GetHashString(randomPass);
+            randomPass = null;
+            
+            client = new MedAgent_0_1.MedCareCloudServiceReference.MedPlanServiceClient();
+            client.CreateNewUserAsync(App.PublicPatient.FirstName, App.PublicPatient.LastName, randomPassHash, App.PublicPatient.Email, App.PublicPatient.Sex, 1, 'p', App.PublicPatient.Bday, "lippenslaan knokke", App.PublicPatient.SSN);
+            client.CreateNewUserCompleted += new EventHandler<MedCareCloudServiceReference.CreateNewUserCompletedEventArgs>(client_CreateNewUserCompleted);
+        }
+
+        void client_CreateNewUserCompleted(object sender, MedCareCloudServiceReference.CreateNewUserCompletedEventArgs e)
+        {
+            if (e.Result == "k")
+                MessageBox.Show("User succesfully added to db");
+            else
+                MessageBox.Show("Failed to add user to db\n\rError: "+e.Result);
         }
         //bool mailstatus;
         private void sendMail(string email,string FName,string randomPass)
@@ -79,15 +98,15 @@ namespace MedAgent_0_1
 
         void client_SendEmailCompleted(object sender, MedCareCloudServiceReference.SendEmailCompletedEventArgs e)
         {
-            MessageBox.Show("Email to patient send");
-            /*if (e.Result == true)//returned true? / succesfull email?
+            
+            if (e.Result == true)//returned true? / succesfull email?
             {
                 MessageBox.Show("Email to patient send");
             }
             else
             {
                 MessageBox.Show("Failed to send email to patient!");
-            }*/
+            }
         }
 
     }

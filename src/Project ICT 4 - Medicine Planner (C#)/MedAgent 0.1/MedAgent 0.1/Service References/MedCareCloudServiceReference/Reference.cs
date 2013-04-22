@@ -20,44 +20,59 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
     [System.Runtime.Serialization.DataContractAttribute(Name="User", Namespace="http://schemas.datacontract.org/2004/07/SilverlightApplication3.Web.Model")]
     public partial class User : object, System.ComponentModel.INotifyPropertyChanged {
         
-        private string FirstNameField;
+        private string FNameField;
         
-        private string NameField;
+        private string LNameField;
+        
+        private int MemberIDField;
         
         private char UserTypeField;
         
-        private System.DateTime dateField;
+        private System.DateTime bdayField;
         
         private string emailField;
         
-        private int memberIDField;
-        
-        private string psw_hashField;
+        private string pass_hashField;
         
         private char sexField;
         
+        private int ssnField;
+        
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string FirstName {
+        public string FName {
             get {
-                return this.FirstNameField;
+                return this.FNameField;
             }
             set {
-                if ((object.ReferenceEquals(this.FirstNameField, value) != true)) {
-                    this.FirstNameField = value;
-                    this.RaisePropertyChanged("FirstName");
+                if ((object.ReferenceEquals(this.FNameField, value) != true)) {
+                    this.FNameField = value;
+                    this.RaisePropertyChanged("FName");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
+        public string LName {
             get {
-                return this.NameField;
+                return this.LNameField;
             }
             set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
+                if ((object.ReferenceEquals(this.LNameField, value) != true)) {
+                    this.LNameField = value;
+                    this.RaisePropertyChanged("LName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int MemberID {
+            get {
+                return this.MemberIDField;
+            }
+            set {
+                if ((this.MemberIDField.Equals(value) != true)) {
+                    this.MemberIDField = value;
+                    this.RaisePropertyChanged("MemberID");
                 }
             }
         }
@@ -76,14 +91,14 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime date {
+        public System.DateTime bday {
             get {
-                return this.dateField;
+                return this.bdayField;
             }
             set {
-                if ((this.dateField.Equals(value) != true)) {
-                    this.dateField = value;
-                    this.RaisePropertyChanged("date");
+                if ((this.bdayField.Equals(value) != true)) {
+                    this.bdayField = value;
+                    this.RaisePropertyChanged("bday");
                 }
             }
         }
@@ -102,27 +117,14 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int memberID {
+        public string pass_hash {
             get {
-                return this.memberIDField;
+                return this.pass_hashField;
             }
             set {
-                if ((this.memberIDField.Equals(value) != true)) {
-                    this.memberIDField = value;
-                    this.RaisePropertyChanged("memberID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string psw_hash {
-            get {
-                return this.psw_hashField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.psw_hashField, value) != true)) {
-                    this.psw_hashField = value;
-                    this.RaisePropertyChanged("psw_hash");
+                if ((object.ReferenceEquals(this.pass_hashField, value) != true)) {
+                    this.pass_hashField = value;
+                    this.RaisePropertyChanged("pass_hash");
                 }
             }
         }
@@ -136,6 +138,19 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
                 if ((this.sexField.Equals(value) != true)) {
                     this.sexField = value;
                     this.RaisePropertyChanged("sex");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ssn {
+            get {
+                return this.ssnField;
+            }
+            set {
+                if ((this.ssnField.Equals(value) != true)) {
+                    this.ssnField = value;
+                    this.RaisePropertyChanged("ssn");
                 }
             }
         }
@@ -324,6 +339,11 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
         
         MedAgent_0_1.MedCareCloudServiceReference.User EndLogin(System.IAsyncResult result);
         
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IMedPlanService/CreateNewUser", ReplyAction="http://tempuri.org/IMedPlanService/CreateNewUserResponse")]
+        System.IAsyncResult BeginCreateNewUser(string FName, string LName, string pass_hash, string email, char sex, int docID, char type, System.DateTime bday, string address, int ssn, System.AsyncCallback callback, object asyncState);
+        
+        string EndCreateNewUser(System.IAsyncResult result);
+        
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IMedPlanService/SendEmail", ReplyAction="http://tempuri.org/IMedPlanService/SendEmailResponse")]
         System.IAsyncResult BeginSendEmail(string PatientEmail, string PatientFName, string DoctorLName, string PatientPass, System.AsyncCallback callback, object asyncState);
         
@@ -393,6 +413,25 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class CreateNewUserCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public CreateNewUserCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public string Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class SendEmailCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
@@ -437,6 +476,12 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
         private EndOperationDelegate onEndLoginDelegate;
         
         private System.Threading.SendOrPostCallback onLoginCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginCreateNewUserDelegate;
+        
+        private EndOperationDelegate onEndCreateNewUserDelegate;
+        
+        private System.Threading.SendOrPostCallback onCreateNewUserCompletedDelegate;
         
         private BeginOperationDelegate onBeginSendEmailDelegate;
         
@@ -504,6 +549,8 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
         public event System.EventHandler<GetAllPatientsForDoctorCompletedEventArgs> GetAllPatientsForDoctorCompleted;
         
         public event System.EventHandler<LoginCompletedEventArgs> LoginCompleted;
+        
+        public event System.EventHandler<CreateNewUserCompletedEventArgs> CreateNewUserCompleted;
         
         public event System.EventHandler<SendEmailCompletedEventArgs> SendEmailCompleted;
         
@@ -693,6 +740,70 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult MedAgent_0_1.MedCareCloudServiceReference.IMedPlanService.BeginCreateNewUser(string FName, string LName, string pass_hash, string email, char sex, int docID, char type, System.DateTime bday, string address, int ssn, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginCreateNewUser(FName, LName, pass_hash, email, sex, docID, type, bday, address, ssn, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        string MedAgent_0_1.MedCareCloudServiceReference.IMedPlanService.EndCreateNewUser(System.IAsyncResult result) {
+            return base.Channel.EndCreateNewUser(result);
+        }
+        
+        private System.IAsyncResult OnBeginCreateNewUser(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string FName = ((string)(inValues[0]));
+            string LName = ((string)(inValues[1]));
+            string pass_hash = ((string)(inValues[2]));
+            string email = ((string)(inValues[3]));
+            char sex = ((char)(inValues[4]));
+            int docID = ((int)(inValues[5]));
+            char type = ((char)(inValues[6]));
+            System.DateTime bday = ((System.DateTime)(inValues[7]));
+            string address = ((string)(inValues[8]));
+            int ssn = ((int)(inValues[9]));
+            return ((MedAgent_0_1.MedCareCloudServiceReference.IMedPlanService)(this)).BeginCreateNewUser(FName, LName, pass_hash, email, sex, docID, type, bday, address, ssn, callback, asyncState);
+        }
+        
+        private object[] OnEndCreateNewUser(System.IAsyncResult result) {
+            string retVal = ((MedAgent_0_1.MedCareCloudServiceReference.IMedPlanService)(this)).EndCreateNewUser(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnCreateNewUserCompleted(object state) {
+            if ((this.CreateNewUserCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.CreateNewUserCompleted(this, new CreateNewUserCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void CreateNewUserAsync(string FName, string LName, string pass_hash, string email, char sex, int docID, char type, System.DateTime bday, string address, int ssn) {
+            this.CreateNewUserAsync(FName, LName, pass_hash, email, sex, docID, type, bday, address, ssn, null);
+        }
+        
+        public void CreateNewUserAsync(string FName, string LName, string pass_hash, string email, char sex, int docID, char type, System.DateTime bday, string address, int ssn, object userState) {
+            if ((this.onBeginCreateNewUserDelegate == null)) {
+                this.onBeginCreateNewUserDelegate = new BeginOperationDelegate(this.OnBeginCreateNewUser);
+            }
+            if ((this.onEndCreateNewUserDelegate == null)) {
+                this.onEndCreateNewUserDelegate = new EndOperationDelegate(this.OnEndCreateNewUser);
+            }
+            if ((this.onCreateNewUserCompletedDelegate == null)) {
+                this.onCreateNewUserCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnCreateNewUserCompleted);
+            }
+            base.InvokeAsync(this.onBeginCreateNewUserDelegate, new object[] {
+                        FName,
+                        LName,
+                        pass_hash,
+                        email,
+                        sex,
+                        docID,
+                        type,
+                        bday,
+                        address,
+                        ssn}, this.onEndCreateNewUserDelegate, this.onCreateNewUserCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         System.IAsyncResult MedAgent_0_1.MedCareCloudServiceReference.IMedPlanService.BeginSendEmail(string PatientEmail, string PatientFName, string DoctorLName, string PatientPass, System.AsyncCallback callback, object asyncState) {
             return base.Channel.BeginSendEmail(PatientEmail, PatientFName, DoctorLName, PatientPass, callback, asyncState);
         }
@@ -867,6 +978,28 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
             public MedAgent_0_1.MedCareCloudServiceReference.User EndLogin(System.IAsyncResult result) {
                 object[] _args = new object[0];
                 MedAgent_0_1.MedCareCloudServiceReference.User _result = ((MedAgent_0_1.MedCareCloudServiceReference.User)(base.EndInvoke("Login", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginCreateNewUser(string FName, string LName, string pass_hash, string email, char sex, int docID, char type, System.DateTime bday, string address, int ssn, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[10];
+                _args[0] = FName;
+                _args[1] = LName;
+                _args[2] = pass_hash;
+                _args[3] = email;
+                _args[4] = sex;
+                _args[5] = docID;
+                _args[6] = type;
+                _args[7] = bday;
+                _args[8] = address;
+                _args[9] = ssn;
+                System.IAsyncResult _result = base.BeginInvoke("CreateNewUser", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public string EndCreateNewUser(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                string _result = ((string)(base.EndInvoke("CreateNewUser", _args, result)));
                 return _result;
             }
             
