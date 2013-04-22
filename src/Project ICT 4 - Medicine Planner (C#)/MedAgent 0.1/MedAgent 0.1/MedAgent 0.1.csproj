@@ -108,6 +108,7 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="MD5.cs" />
+    <Compile Include="Medication.cs" />
     <Compile Include="PasswordGenerator.cs" />
     <Compile Include="Patient.cs" />
     <Compile Include="PatientFile.xaml.cs">

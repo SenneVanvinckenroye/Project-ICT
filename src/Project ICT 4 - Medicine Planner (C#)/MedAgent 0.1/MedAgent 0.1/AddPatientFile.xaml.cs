@@ -60,8 +60,7 @@ namespace MedAgent_0_1
 
             DateTime MyDateTime;
             MyDateTime = new DateTime();
-            MyDateTime = DateTime.ParseExact(PatBdayEdit.Text, "dd/MM/yyyy",
-                                  null);
+            MyDateTime = (DateTime)PatBdayEdit.Value;
             App.PublicPatient.Bday = MyDateTime;
 
 

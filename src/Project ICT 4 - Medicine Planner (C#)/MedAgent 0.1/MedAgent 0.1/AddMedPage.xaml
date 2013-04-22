@@ -46,7 +46,7 @@
 							</controlsPrimitives:PanningBackgroundLayer>
 							<controlsPrimitives:PanningTitleLayer x:Name="TitleLayer" CacheMode="BitmapCache" ContentTemplate="{TemplateBinding TitleTemplate}" Content="{TemplateBinding Title}" FontSize="64" FontFamily="{StaticResource PhoneFontFamilyLight}" HorizontalAlignment="Left" Margin="8,-2,0,0" Grid.Row="1" Height="128" VerticalAlignment="Top">
 								<controlsPrimitives:PanningTitleLayer.Foreground>
-									<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+									<SolidColorBrush Color="#FF6D5592"/>
 								</controlsPrimitives:PanningTitleLayer.Foreground>
 							</controlsPrimitives:PanningTitleLayer>
 							<controlsPrimitives:PanningLayer x:Name="ItemsLayer" HorizontalAlignment="Left" Grid.Row="1" Margin="0,130,0,0">
@@ -113,35 +113,35 @@
                 <Grid x:Name="ContentPanel" Margin="-8,2,4,0">
             		<TextBox x:Name="NameTxtBox" Margin="19,51,217,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="{x:Null}" InputScope="Text" Foreground="Black" TextChanged="NameTxtBox_TextChanged">
             			<TextBox.BorderBrush>
-            				<SolidColorBrush Color="{StaticResource Borders}"/>
+            				<SolidColorBrush Color="#FF7AC843"/>
             			</TextBox.BorderBrush>
             		</TextBox>
             		<TextBlock x:Name="NameTxtBlock" HorizontalAlignment="Left" Margin="32,20,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top">
             			<TextBlock.Foreground>
-            				<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+            				<SolidColorBrush Color="#FF6D5592"/>
             			</TextBlock.Foreground>
             		</TextBlock>
             		<TextBox x:Name="DescrTxtBox" Margin="19,175,38,224" TextWrapping="Wrap" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Background="{x:Null}" Foreground="Black" TextChanged="DescrTxtBox_TextChanged">
             			<TextBox.BorderBrush>
-            				<SolidColorBrush Color="{StaticResource Borders}"/>
+            				<SolidColorBrush Color="#FF7AC843"/>
             			</TextBox.BorderBrush>
             		</TextBox>
             		<TextBlock x:Name="DescrTxtBlock" HorizontalAlignment="Left" Margin="32,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="28" Width="101"><TextBlock.Foreground>
-            				<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+            				<SolidColorBrush Color="#FF6D5592"/>
             			</TextBlock.Foreground><Run Text="Description"/><LineBreak/><Run/><LineBreak/><Run/><LineBreak/><Run/><LineBreak/><Run/></TextBlock>
             		<Button x:Name="AddPhotoButton" Content="Add Photo" HorizontalAlignment="Right" Margin="0,0,38,136" VerticalAlignment="Bottom" d:LayoutOverrides="HorizontalAlignment" Click="AddPhotoButton_Click" Foreground="White" >
             			<Button.Background>
-            				<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+            				<SolidColorBrush Color="#FF6D5592"/>
             			</Button.Background>
             			<Button.BorderBrush>
-            				<SolidColorBrush Color="{StaticResource Borders}"/>
+            				<SolidColorBrush Color="#FF7AC843"/>
             			</Button.BorderBrush>
             		</Button>
             		<Border BorderThickness="4" Height="162" VerticalAlignment="Bottom" Margin="32,0,236,46">
             			<Border.BorderBrush>
             				<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-            					<GradientStop Color="{StaticResource Backgrounds and Texts}" Offset="0"/>
-            					<GradientStop Color="{StaticResource Borders}" Offset="1"/>
+            					<GradientStop Color="#FF6D5592" Offset="0"/>
+            					<GradientStop Color="#FF7AC843" Offset="1"/>
             				</LinearGradientBrush>
             			</Border.BorderBrush>
             			<Image x:Name="CameraImage" Stretch="Fill" Margin="7" />
@@ -158,37 +158,37 @@
             		</Grid.ColumnDefinitions>
             		<Slider x:Name="CourseSlider" Margin="0,264,0,240" ValueChanged="course_ValueChanged" SmallChange="1" Maximum="5" HorizontalAlignment="Left" Width="293" Foreground="White" Style="{StaticResource SliderStyle1}" Grid.Column="1" Hold="CourseSlider_Hold" MouseLeave="CourseSlider_MouseLeave">
             			<Slider.Background>
-            				<SolidColorBrush Color="{StaticResource Borders}"/>
+            				<SolidColorBrush Color="#FF7AC843"/>
             			</Slider.Background>
             		</Slider>
             		<TextBlock x:Name="StartDateTxtBlock" HorizontalAlignment="Left" Margin="0,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Start date" Grid.Column="1">
             			<TextBlock.Foreground>
-            				<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+            				<SolidColorBrush Color="#FF6D5592"/>
             			</TextBlock.Foreground>
             		</TextBlock>
             		<TextBlock x:Name="EndDateTxtBlock" HorizontalAlignment="Left" Margin="0,116,0,0" TextWrapping="Wrap" Text="End date" VerticalAlignment="Top" Grid.Column="1">
             			<TextBlock.Foreground>
-            				<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+            				<SolidColorBrush Color="#FF6D5592"/>
             			</TextBlock.Foreground>
             		</TextBlock>
             		<TextBlock x:Name="CourseTxtBlock" HorizontalAlignment="Left" Margin="0,245,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Course" Grid.Column="1">
             			<TextBlock.Foreground>
-            				<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+            				<SolidColorBrush Color="#FF6D5592"/>
             			</TextBlock.Foreground>
             		</TextBlock>
             		<TextBlock x:Name="repeatInfo_txt" Margin="0,288,31,272" TextWrapping="Wrap" Text="Daily" FontSize="24" TextAlignment="Center" LineHeight="8" HorizontalAlignment="Right" Width="145" Grid.Column="1" d:LayoutOverrides="Height">
             			<TextBlock.Foreground>
-            				<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+            				<SolidColorBrush Color="#FF6D5592"/>
             			</TextBlock.Foreground>
             		</TextBlock>
             		<toolkit:DatePicker x:Name="StartDate" Margin="0,51,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="1" BorderThickness="0" BorderBrush="Black" Foreground="White" ValueChanged="StartDate_ValueChanged">
             			<toolkit:DatePicker.Background>
-            				<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+            				<SolidColorBrush Color="#FF6D5592"/>
             			</toolkit:DatePicker.Background>
             		</toolkit:DatePicker>
             		<toolkit:DatePicker x:Name="EndDate" Margin="0,147,0,0" VerticalAlignment="Top" Foreground="White" HorizontalAlignment="Left" Grid.Column="1" BorderThickness="0" BorderBrush="Black">
             			<toolkit:DatePicker.Background>
-            				<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+            				<SolidColorBrush Color="#FF6D5592"/>
             			</toolkit:DatePicker.Background>
             		</toolkit:DatePicker>
             
@@ -223,164 +223,164 @@
 			
             				<TextBlock x:Name="TimeText1" TextWrapping="Wrap" Text="Time 1" HorizontalAlignment="Left" Width="68" Margin="12,0,0,22" FontFamily="Segoe UI" Height="27" VerticalAlignment="Bottom">
             					<TextBlock.Foreground>
-            						<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+            						<SolidColorBrush Color="#FF6D5592"/>
             					</TextBlock.Foreground>
             				</TextBlock>
             				<TextBlock x:Name="TimeText2" TextWrapping="Wrap" Width="72" HorizontalAlignment="Left" Grid.Row="1" Margin="8,24,0,28" Opacity="0.4" Visibility="Visible"><TextBlock.Foreground>
-            						<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+            						<SolidColorBrush Color="#FF6D5592"/>
             					</TextBlock.Foreground><Run Text="Time "/><Run Text="2"/></TextBlock>
             				<TextBlock x:Name="TimeText3" TextWrapping="Wrap" HorizontalAlignment="Left" Width="60" Grid.Row="2" RenderTransformOrigin="0.533,1.276" Margin="8,24,0,30" Opacity="0.395"><TextBlock.Foreground>
-            						<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+            						<SolidColorBrush Color="#FF6D5592"/>
             					</TextBlock.Foreground><Run Text="Time "/><Run Text="3"/></TextBlock>
             				<TextBlock x:Name="TimeText4" TextWrapping="Wrap" Grid.Row="3" HorizontalAlignment="Left" Width="60" Margin="8,23,0,30" Opacity="0.395"><TextBlock.Foreground>
-            						<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+            						<SolidColorBrush Color="#FF6D5592"/>
             					</TextBlock.Foreground><Run Text="Time "/><Run Text="4"/></TextBlock>
             				<TextBlock x:Name="TimeText5" TextWrapping="Wrap" Grid.Row="4" HorizontalAlignment="Left" Width="60" Margin="8,22,0,30" Opacity="0.395"><TextBlock.Foreground>
-            						<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+            						<SolidColorBrush Color="#FF6D5592"/>
             					</TextBlock.Foreground><Run Text="Time "/><Run Text="5"/></TextBlock>
             				<TextBlock x:Name="TimeText6" TextWrapping="Wrap" Grid.Row="5" HorizontalAlignment="Left" Width="60" Margin="8,26,0,26" Opacity="0.395"><TextBlock.Foreground>
-            						<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+            						<SolidColorBrush Color="#FF6D5592"/>
             					</TextBlock.Foreground><Run Text="Time "/><Run Text="6"/></TextBlock>
             				<Coding4Fun_Toolkit_Controls:RoundToggleButton x:Name="ToggleButton4" Grid.Column="2" Margin="8,0,4,10" VerticalAlignment="Bottom" Grid.Row="3" Height="64" Unchecked="ToggleButton4_Unchecked" Checked="ToggleButton4_Checked" Foreground="White">
             					<Coding4Fun_Toolkit_Controls:RoundToggleButton.CheckedBrush>
-            						<SolidColorBrush Color="{StaticResource Borders}"/>
+            						<SolidColorBrush Color="#FF7AC843"/>
             					</Coding4Fun_Toolkit_Controls:RoundToggleButton.CheckedBrush>
             					<Coding4Fun_Toolkit_Controls:RoundToggleButton.BorderBrush>
-            						<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+            						<SolidColorBrush Color="#FF6D5592"/>
             					</Coding4Fun_Toolkit_Controls:RoundToggleButton.BorderBrush>
             					<Coding4Fun_Toolkit_Controls:RoundToggleButton.Background>
-            						<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+            						<SolidColorBrush Color="#FF6D5592"/>
             					</Coding4Fun_Toolkit_Controls:RoundToggleButton.Background>
             				</Coding4Fun_Toolkit_Controls:RoundToggleButton>
             				<Coding4Fun_Toolkit_Controls:RoundToggleButton x:Name="ToggleButton5" Grid.Column="2" Margin="8,0,4,14" VerticalAlignment="Bottom" Grid.Row="4" Height="61" Checked="ToggleButton5_Checked" Unchecked="ToggleButton5_Unchecked" Foreground="White">
             					<Coding4Fun_Toolkit_Controls:RoundToggleButton.CheckedBrush>
-            						<SolidColorBrush Color="{StaticResource Borders}"/>
+            						<SolidColorBrush Color="#FF7AC843"/>
             					</Coding4Fun_Toolkit_Controls:RoundToggleButton.CheckedBrush>
             					<Coding4Fun_Toolkit_Controls:RoundToggleButton.BorderBrush>
-            						<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+            						<SolidColorBrush Color="#FF6D5592"/>
             					</Coding4Fun_Toolkit_Controls:RoundToggleButton.BorderBrush>
             					<Coding4Fun_Toolkit_Controls:RoundToggleButton.Background>
-            						<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+            						<SolidColorBrush Color="#FF6D5592"/>
             					</Coding4Fun_Toolkit_Controls:RoundToggleButton.Background>
             				</Coding4Fun_Toolkit_Controls:RoundToggleButton>
             				<Coding4Fun_Toolkit_Controls:RoundToggleButton x:Name="ToggleButton6" Grid.Column="2" Margin="8,0,4,14" VerticalAlignment="Bottom" Grid.Row="5" Height="64" Checked="ToggleButton6_Checked" Unchecked="ToggleButton6_Unchecked" Foreground="White">
             					<Coding4Fun_Toolkit_Controls:RoundToggleButton.BorderBrush>
-            						<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+            						<SolidColorBrush Color="#FF6D5592"/>
             					</Coding4Fun_Toolkit_Controls:RoundToggleButton.BorderBrush>
             					<Coding4Fun_Toolkit_Controls:RoundToggleButton.CheckedBrush>
-            						<SolidColorBrush Color="{StaticResource Borders}"/>
+            						<SolidColorBrush Color="#FF7AC843"/>
             					</Coding4Fun_Toolkit_Controls:RoundToggleButton.CheckedBrush>
             					<Coding4Fun_Toolkit_Controls:RoundToggleButton.Background>
-            						<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+            						<SolidColorBrush Color="#FF6D5592"/>
             					</Coding4Fun_Toolkit_Controls:RoundToggleButton.Background>
             				</Coding4Fun_Toolkit_Controls:RoundToggleButton>
             				<Coding4Fun_Toolkit_Controls:RoundToggleButton x:Name="ToggleButton1" Margin="8,18,0,0" VerticalAlignment="Top" Grid.Column="2" Height="63" RenderTransformOrigin="0.533,0.437" HorizontalAlignment="Left" Width="68" IsChecked="True" Foreground="White" Background="#FF6D5592">
             					<Coding4Fun_Toolkit_Controls:RoundToggleButton.BorderBrush>
-            						<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+            						<SolidColorBrush Color="#FF6D5592"/>
             					</Coding4Fun_Toolkit_Controls:RoundToggleButton.BorderBrush>
             					<Coding4Fun_Toolkit_Controls:RoundToggleButton.CheckedBrush>
-            						<SolidColorBrush Color="{StaticResource Borders}"/>
+            						<SolidColorBrush Color="#FF7AC843"/>
             					</Coding4Fun_Toolkit_Controls:RoundToggleButton.CheckedBrush>
             				</Coding4Fun_Toolkit_Controls:RoundToggleButton>
             				<Coding4Fun_Toolkit_Controls:RoundToggleButton x:Name="ToggleButton2" Grid.Column="2" Grid.Row="1" Margin="8,16,4,0" Checked="ToggleButton2_Checked" Foreground="White" Unchecked="ToggleButton2_Unchecked">
             					<Coding4Fun_Toolkit_Controls:RoundToggleButton.BorderBrush>
-            						<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+            						<SolidColorBrush Color="#FF6D5592"/>
             					</Coding4Fun_Toolkit_Controls:RoundToggleButton.BorderBrush>
             					<Coding4Fun_Toolkit_Controls:RoundToggleButton.CheckedBrush>
-            						<SolidColorBrush Color="{StaticResource Borders}"/>
+            						<SolidColorBrush Color="#FF7AC843"/>
             					</Coding4Fun_Toolkit_Controls:RoundToggleButton.CheckedBrush>
             					<Coding4Fun_Toolkit_Controls:RoundToggleButton.Background>
-            						<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+            						<SolidColorBrush Color="#FF6D5592"/>
             					</Coding4Fun_Toolkit_Controls:RoundToggleButton.Background>
             				</Coding4Fun_Toolkit_Controls:RoundToggleButton>
             				<Coding4Fun_Toolkit_Controls:RoundToggleButton x:Name="ToggleButton3" Margin="8,0,4,6" VerticalAlignment="Bottom" Grid.Column="2" Grid.Row="2" Height="64" Checked="ToggleButton3_Checked" Unchecked="ToggleButton3_Unchecked" Foreground="White">
             					<Coding4Fun_Toolkit_Controls:RoundToggleButton.CheckedBrush>
-            						<SolidColorBrush Color="{StaticResource Borders}"/>
+            						<SolidColorBrush Color="#FF7AC843"/>
             					</Coding4Fun_Toolkit_Controls:RoundToggleButton.CheckedBrush>
             					<Coding4Fun_Toolkit_Controls:RoundToggleButton.BorderBrush>
-            						<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+            						<SolidColorBrush Color="#FF6D5592"/>
             					</Coding4Fun_Toolkit_Controls:RoundToggleButton.BorderBrush>
             					<Coding4Fun_Toolkit_Controls:RoundToggleButton.Background>
-            						<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+            						<SolidColorBrush Color="#FF6D5592"/>
             					</Coding4Fun_Toolkit_Controls:RoundToggleButton.Background>
             				</Coding4Fun_Toolkit_Controls:RoundToggleButton>
             				<toolkit:TimePicker x:Name="Time1" Margin="72,8,0,8" Foreground="White" FontSize="18.667" ValueChanged="Time1_ValueChanged">
             					<toolkit:TimePicker.Background>
-            						<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+            						<SolidColorBrush Color="#FF6D5592"/>
             					</toolkit:TimePicker.Background>
             				</toolkit:TimePicker>
             				<toolkit:TimePicker x:Name="Time2" Margin="72,0,0,16" Grid.Row="1" Foreground="White" Opacity="0.4" IsEnabled="False" ValueChanged="Time2_ValueChanged">
             					<toolkit:TimePicker.Background>
-            						<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+            						<SolidColorBrush Color="#FF6D5592"/>
             					</toolkit:TimePicker.Background>
             				</toolkit:TimePicker>
             				<toolkit:TimePicker x:Name="Time3" Margin="72,0,0,16" Grid.Row="2" Foreground="White" Opacity="0.395" IsEnabled="False">
             					<toolkit:TimePicker.Background>
-            						<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+            						<SolidColorBrush Color="#FF6D5592"/>
             					</toolkit:TimePicker.Background>
             				</toolkit:TimePicker>
             				<toolkit:TimePicker x:Name="Time4" Margin="72,-1,0,17" Grid.Row="3" Foreground="White" Opacity="0.395" IsEnabled="False">
             					<toolkit:TimePicker.Background>
-            						<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+            						<SolidColorBrush Color="#FF6D5592"/>
             					</toolkit:TimePicker.Background>
             				</toolkit:TimePicker>
             				<toolkit:TimePicker x:Name="Time5" Margin="72,0,0,17" Grid.Row="4" Foreground="White" Opacity="0.395" IsEnabled="False">
             					<toolkit:TimePicker.Background>
-            						<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+            						<SolidColorBrush Color="#FF6D5592"/>
             					</toolkit:TimePicker.Background>
             				</toolkit:TimePicker>
             				<toolkit:TimePicker x:Name="Time6" Margin="72,2,0,14" Grid.Row="5" Foreground="White" Opacity="0.395" IsEnabled="False">
             					<toolkit:TimePicker.Background>
-            						<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+            						<SolidColorBrush Color="#FF6D5592"/>
             					</toolkit:TimePicker.Background>
             				</toolkit:TimePicker>
             				<TextBlock x:Name="TabletsText1" TextWrapping="Wrap" Margin="8,32,87,22" FontFamily="Segoe UI" Grid.Column="1" RenderTransformOrigin="0.444,0.556"><TextBlock.Foreground>
-            						<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+            						<SolidColorBrush Color="#FF6D5592"/>
             					</TextBlock.Foreground><Run Text="Tablets"/><LineBreak/><Run/></TextBlock>
             				<TextBlock x:Name="TabletsText2" TextWrapping="Wrap" Margin="8,24,0,30" FontFamily="Segoe UI" Grid.Column="1" HorizontalAlignment="Left" Width="72" Grid.Row="1" RenderTransformOrigin="0,0.519" Opacity="0.4"><TextBlock.Foreground>
-            						<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+            						<SolidColorBrush Color="#FF6D5592"/>
             					</TextBlock.Foreground><Run Text="Tablets"/><LineBreak/><Run/></TextBlock>
             				<TextBlock x:Name="TabletsText3" TextWrapping="Wrap" Margin="8,24,0,30" FontFamily="Segoe UI" Grid.Column="1" HorizontalAlignment="Left" Width="72" Grid.Row="2" Opacity="0.395"><TextBlock.Foreground>
-            						<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+            						<SolidColorBrush Color="#FF6D5592"/>
             					</TextBlock.Foreground><Run Text="Tablets"/><LineBreak/><Run/></TextBlock>
             				<TextBlock x:Name="TabletsText4" TextWrapping="Wrap" Margin="8,23,0,31" FontFamily="Segoe UI" Grid.Column="1" HorizontalAlignment="Left" Width="72" Grid.Row="3" Opacity="0.395"><TextBlock.Foreground>
-            						<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+            						<SolidColorBrush Color="#FF6D5592"/>
             					</TextBlock.Foreground><Run Text="Tablets"/><LineBreak/><Run/></TextBlock>
             				<TextBlock x:Name="TabletsText5" TextWrapping="Wrap" Margin="8,24,0,30" FontFamily="Segoe UI" Grid.Column="1" HorizontalAlignment="Left" Width="72" Grid.Row="4" RenderTransformOrigin="0.667,0.407" Opacity="0.395"><TextBlock.Foreground>
-            						<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+            						<SolidColorBrush Color="#FF6D5592"/>
             					</TextBlock.Foreground><Run Text="Tablets"/><LineBreak/><Run/></TextBlock>
             				<TextBlock x:Name="TabletsText6" TextWrapping="Wrap" Margin="8,26,0,28" FontFamily="Segoe UI" Grid.Column="1" HorizontalAlignment="Left" Width="72" Grid.Row="5" RenderTransformOrigin="0.667,0.407" Opacity="0.395"><TextBlock.Foreground>
-            						<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+            						<SolidColorBrush Color="#FF6D5592"/>
             					</TextBlock.Foreground><Run Text="Tablets"/><LineBreak/><Run/></TextBlock>
               
             				<Button x:Name="AddTabletsButton1" Click="AddTabletsButton1_OnClick" Content="1" FontSize="18.667" Height="77" Margin="84,5,0,0" VerticalAlignment="Top" Grid.Column="1" BorderBrush="{x:Null}">
             					<Button.Background>
-            						<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+            						<SolidColorBrush Color="#FF6D5592"/>
             					</Button.Background>
             				</Button>
             				<Button x:Name="AddTabletsButton2" Click="AddTabletsButton2_OnClick" Content="1" FontSize="18.667" Height="77" Margin="84,0,0,0" VerticalAlignment="Top" Grid.Column="1" BorderBrush="{x:Null}" Grid.Row="1" Opacity="0.4" IsEnabled="False">
             					<Button.Background>
-            						<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+            						<SolidColorBrush Color="#FF6D5592"/>
             					</Button.Background>
             				</Button>
             				<Button x:Name="AddTabletsButton3" Click="AddTabletsButton3_OnClick" Content="1" FontSize="18.667" Height="77" Margin="84,0,0,0" VerticalAlignment="Top" Grid.Column="1" BorderBrush="{x:Null}" Grid.Row="2" Opacity="0.395" IsEnabled="False">
             					<Button.Background>
-            						<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+            						<SolidColorBrush Color="#FF6D5592"/>
             					</Button.Background>
             				</Button>
             				<Button x:Name="AddTabletsButton4" Click="AddTabletsButton4_OnClick" Content="1" FontSize="18.667" Height="77" Margin="84,0,0,0" VerticalAlignment="Top" Grid.Column="1" BorderBrush="{x:Null}" Grid.Row="3" Opacity="0.395" IsEnabled="False">
             					<Button.Background>
-            						<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+            						<SolidColorBrush Color="#FF6D5592"/>
             					</Button.Background>
             				</Button>
             				<Button x:Name="AddTabletsButton5" Click="AddTabletsButton5_OnClick" Content="1" FontSize="18.667" Height="77" Margin="84,0,0,0" VerticalAlignment="Top" Grid.Column="1" BorderBrush="{x:Null}" Grid.Row="4" Opacity="0.395" IsEnabled="False">
             					<Button.Background>
-            						<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+            						<SolidColorBrush Color="#FF6D5592"/>
             					</Button.Background>
             				</Button>
             				<Button x:Name="AddTabletsButton6" Click="AddTabletsButton6_OnClick" Content="1" FontSize="18.667" Height="77" Margin="84,0,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Grid.Row="5" Grid.Column="1" Opacity="0.395" IsEnabled="False">
             					<Button.Background>
-            						<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+            						<SolidColorBrush Color="#FF6D5592"/>
             					</Button.Background>
             				</Button>
             			</Grid>
@@ -397,18 +397,18 @@
             				</Grid.ColumnDefinitions>
             				<Coding4Fun_Toolkit_Controls:RoundButton Click="ConfirmTabletsButton2_OnClick" x:Name="ConfirmTabletsButton2" HorizontalAlignment="Right" RenderTransformOrigin="-0.529,0.85" PressedBrush="White" VerticalAlignment="Bottom" Margin="0,0,104,36" Grid.Row="1" Width="80">
             					<Coding4Fun_Toolkit_Controls:RoundButton.Foreground>
-            						<SolidColorBrush Color="{StaticResource Borders}"/>
+            						<SolidColorBrush Color="#FF7AC843"/>
             					</Coding4Fun_Toolkit_Controls:RoundButton.Foreground>
             					<Coding4Fun_Toolkit_Controls:RoundButton.Background>
-            						<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+            						<SolidColorBrush Color="#FF6D5592"/>
             					</Coding4Fun_Toolkit_Controls:RoundButton.Background>
             					<Coding4Fun_Toolkit_Controls:RoundButton.BorderBrush>
-            						<SolidColorBrush Color="{StaticResource Borders}"/>
+            						<SolidColorBrush Color="#FF7AC843"/>
             					</Coding4Fun_Toolkit_Controls:RoundButton.BorderBrush>
             				</Coding4Fun_Toolkit_Controls:RoundButton>
             				<Slider ValueChanged="TabletsSlider2_OnValueChanged" x:Name="TabletsSlider2"  SmallChange="1" Maximum="10" HorizontalAlignment="Left" Width="300" Foreground="White" Style="{StaticResource SliderStyle1}" Height="80" VerticalAlignment="Top" Margin="13,8,0,0" >
             					<Slider.Background>
-            						<SolidColorBrush Color="{StaticResource Borders}"/>
+            						<SolidColorBrush Color="#FF7AC843"/>
             					</Slider.Background>
             				</Slider>
             			</Grid>
@@ -424,18 +424,18 @@
             				</Grid.ColumnDefinitions>
             				<Coding4Fun_Toolkit_Controls:RoundButton Click="ConfirmTabletsButton3_OnClick" x:Name="ConfirmTabletsButton3" RenderTransformOrigin="-0.529,0.85" PressedBrush="White" VerticalAlignment="Bottom" Grid.Row="1" Margin="114,0,0,47" HorizontalAlignment="Left" Width="78" Height="65">
             					<Coding4Fun_Toolkit_Controls:RoundButton.Foreground>
-            						<SolidColorBrush Color="{StaticResource Borders}"/>
+            						<SolidColorBrush Color="#FF7AC843"/>
             					</Coding4Fun_Toolkit_Controls:RoundButton.Foreground>
             					<Coding4Fun_Toolkit_Controls:RoundButton.Background>
-            						<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+            						<SolidColorBrush Color="#FF6D5592"/>
             					</Coding4Fun_Toolkit_Controls:RoundButton.Background>
             					<Coding4Fun_Toolkit_Controls:RoundButton.BorderBrush>
-            						<SolidColorBrush Color="{StaticResource Borders}"/>
+            						<SolidColorBrush Color="#FF7AC843"/>
             					</Coding4Fun_Toolkit_Controls:RoundButton.BorderBrush>
             				</Coding4Fun_Toolkit_Controls:RoundButton>
             				<Slider ValueChanged="TabletsSlider3_OnValueChanged" x:Name="TabletsSlider3"  SmallChange="1" Maximum="10" HorizontalAlignment="Left" Width="300" Foreground="White" Style="{StaticResource SliderStyle1}" Height="90" VerticalAlignment="Top" Margin="8,8,0,0" RenderTransformOrigin="0.595,-0.875" Grid.RowSpan="2" >
             					<Slider.Background>
-            						<SolidColorBrush Color="{StaticResource Borders}"/>
+            						<SolidColorBrush Color="#FF7AC843"/>
             					</Slider.Background>
             				</Slider>
             			</Grid>
@@ -451,18 +451,18 @@
             				</Grid.ColumnDefinitions>
             				<Coding4Fun_Toolkit_Controls:RoundButton Click="ConfirmTabletsButton4_OnClick" x:Name="ConfirmTabletsButton4" RenderTransformOrigin="-0.529,0.85" PressedBrush="White" VerticalAlignment="Bottom" Grid.Row="1" Margin="114,0,0,47" HorizontalAlignment="Left" Width="78" Height="65">
             					<Coding4Fun_Toolkit_Controls:RoundButton.Foreground>
-            						<SolidColorBrush Color="{StaticResource Borders}"/>
+            						<SolidColorBrush Color="#FF7AC843"/>
             					</Coding4Fun_Toolkit_Controls:RoundButton.Foreground>
             					<Coding4Fun_Toolkit_Controls:RoundButton.Background>
-            						<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+            						<SolidColorBrush Color="#FF6D5592"/>
             					</Coding4Fun_Toolkit_Controls:RoundButton.Background>
             					<Coding4Fun_Toolkit_Controls:RoundButton.BorderBrush>
-            						<SolidColorBrush Color="{StaticResource Borders}"/>
+            						<SolidColorBrush Color="#FF7AC843"/>
             					</Coding4Fun_Toolkit_Controls:RoundButton.BorderBrush>
             				</Coding4Fun_Toolkit_Controls:RoundButton>
             				<Slider ValueChanged="TabletsSlider4_OnValueChanged" x:Name="TabletsSlider4"  SmallChange="1" Maximum="10" HorizontalAlignment="Left" Width="300" Foreground="White" Style="{StaticResource SliderStyle1}" Height="90" VerticalAlignment="Top" Margin="8,8,0,0" RenderTransformOrigin="0.595,-0.875" Grid.RowSpan="2" >
             					<Slider.Background>
-            						<SolidColorBrush Color="{StaticResource Borders}"/>
+            						<SolidColorBrush Color="#FF7AC843"/>
             					</Slider.Background>
             				</Slider>
             			</Grid>
@@ -478,18 +478,18 @@
             				</Grid.ColumnDefinitions>
             				<Coding4Fun_Toolkit_Controls:RoundButton Click="ConfirmTabletsButton5_OnClick" x:Name="ConfirmTabletsButton5" RenderTransformOrigin="-0.529,0.85" PressedBrush="White" VerticalAlignment="Bottom" Grid.Row="1" Margin="114,0,0,47" HorizontalAlignment="Left" Width="78" Height="65">
             					<Coding4Fun_Toolkit_Controls:RoundButton.Foreground>
-            						<SolidColorBrush Color="{StaticResource Borders}"/>
+            						<SolidColorBrush Color="#FF7AC843"/>
             					</Coding4Fun_Toolkit_Controls:RoundButton.Foreground>
             					<Coding4Fun_Toolkit_Controls:RoundButton.Background>
-            						<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+            						<SolidColorBrush Color="#FF6D5592"/>
             					</Coding4Fun_Toolkit_Controls:RoundButton.Background>
             					<Coding4Fun_Toolkit_Controls:RoundButton.BorderBrush>
-            						<SolidColorBrush Color="{StaticResource Borders}"/>
+            						<SolidColorBrush Color="#FF7AC843"/>
             					</Coding4Fun_Toolkit_Controls:RoundButton.BorderBrush>
             				</Coding4Fun_Toolkit_Controls:RoundButton>
             				<Slider ValueChanged="TabletsSlider5_OnValueChanged" x:Name="TabletsSlider5"  SmallChange="1" Maximum="10" HorizontalAlignment="Left" Width="300" Foreground="White" Style="{StaticResource SliderStyle1}" Height="90" VerticalAlignment="Top" Margin="8,8,0,0" RenderTransformOrigin="0.595,-0.875" Grid.RowSpan="2" >
             					<Slider.Background>
-            						<SolidColorBrush Color="{StaticResource Borders}"/>
+            						<SolidColorBrush Color="#FF7AC843"/>
             					</Slider.Background>
             				</Slider>
             			</Grid>
@@ -505,18 +505,18 @@
             				</Grid.ColumnDefinitions>
             				<Coding4Fun_Toolkit_Controls:RoundButton Click="ConfirmTabletsButton6_OnClick" x:Name="ConfirmTabletsButton6" RenderTransformOrigin="-0.529,0.85" PressedBrush="White" VerticalAlignment="Bottom" Grid.Row="1" Margin="114,0,0,47" HorizontalAlignment="Left" Width="78" Height="65">
             					<Coding4Fun_Toolkit_Controls:RoundButton.Foreground>
-            						<SolidColorBrush Color="{StaticResource Borders}"/>
+            						<SolidColorBrush Color="#FF7AC843"/>
             					</Coding4Fun_Toolkit_Controls:RoundButton.Foreground>
             					<Coding4Fun_Toolkit_Controls:RoundButton.Background>
-            						<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+            						<SolidColorBrush Color="#FF6D5592"/>
             					</Coding4Fun_Toolkit_Controls:RoundButton.Background>
             					<Coding4Fun_Toolkit_Controls:RoundButton.BorderBrush>
-            						<SolidColorBrush Color="{StaticResource Borders}"/>
+            						<SolidColorBrush Color="#FF7AC843"/>
             					</Coding4Fun_Toolkit_Controls:RoundButton.BorderBrush>
             				</Coding4Fun_Toolkit_Controls:RoundButton>
             				<Slider ValueChanged="TabletsSlider6_OnValueChanged" x:Name="TabletsSlider6"  SmallChange="1" Maximum="10" HorizontalAlignment="Left" Width="300" Foreground="White" Style="{StaticResource SliderStyle1}" Height="90" VerticalAlignment="Top" Margin="8,8,0,0" RenderTransformOrigin="0.595,-0.875" Grid.RowSpan="2" >
             					<Slider.Background>
-            						<SolidColorBrush Color="{StaticResource Borders}"/>
+            						<SolidColorBrush Color="#FF7AC843"/>
             					</Slider.Background>
             				</Slider>
             			</Grid>
@@ -528,10 +528,10 @@
             	<Grid Margin="0,0,-12,0">
             		<Button x:Name="DoneButton" Content="Done" Margin="139,262,164,0" d:LayoutOverrides="Width" VerticalAlignment="Top" Click="DoneButton_Click">
             			<Button.BorderBrush>
-            				<SolidColorBrush Color="{StaticResource Borders}"/>
+            				<SolidColorBrush Color="#FF7AC843"/>
             			</Button.BorderBrush>
             			<Button.Background>
-            				<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+            				<SolidColorBrush Color="#FF6D5592"/>
             			</Button.Background>
             		</Button>
             	</Grid>
@@ -542,7 +542,7 @@
             	<Border.BorderBrush>
             		<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             			<GradientStop Color="Black" Offset="1"/>
-            			<GradientStop Color="{StaticResource Backgrounds and Texts}"/>
+            			<GradientStop Color="#FF6D5592"/>
             		</LinearGradientBrush>
             	</Border.BorderBrush>
                 <Grid Height="176">
@@ -556,24 +556,24 @@
         		</Grid.ColumnDefinitions>
         		<Coding4Fun_Toolkit_Controls:RoundButton Click="ConfirmTabletsButton1_OnClick" x:Name="ConfirmTabletsButton1" RenderTransformOrigin="-0.529,0.85" PressedBrush="White" Margin="112,8,120,8" Grid.Row="1" d:LayoutOverrides="GridBox">
         			<Coding4Fun_Toolkit_Controls:RoundButton.Foreground>
-        				<SolidColorBrush Color="{StaticResource Borders}"/>
+        				<SolidColorBrush Color="#FF7AC843"/>
         			</Coding4Fun_Toolkit_Controls:RoundButton.Foreground>
         			<Coding4Fun_Toolkit_Controls:RoundButton.Background>
-        				<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+        				<SolidColorBrush Color="#FF6D5592"/>
         			</Coding4Fun_Toolkit_Controls:RoundButton.Background>
         			<Coding4Fun_Toolkit_Controls:RoundButton.BorderBrush>
-        				<SolidColorBrush Color="{StaticResource Borders}"/>
+        				<SolidColorBrush Color="#FF7AC843"/>
         			</Coding4Fun_Toolkit_Controls:RoundButton.BorderBrush>
         		</Coding4Fun_Toolkit_Controls:RoundButton>
         		<Slider ValueChanged="TabletsSlider1_OnValueChanged" x:Name="TabletsSlider1"  SmallChange="1" Maximum="10" HorizontalAlignment="Left" Width="296" Foreground="White" Style="{StaticResource SliderStyle1}" Height="90" VerticalAlignment="Top" Margin="8,8,0,0" >
         			<Slider.Background>
-        				<SolidColorBrush Color="{StaticResource Borders}"/>
+        				<SolidColorBrush Color="#FF7AC843"/>
         			</Slider.Background>
         		</Slider>
         		<TextBlock TextWrapping="Wrap" Text="Tablets" Foreground="#FF6D5592" Margin="40,37,40,40" d:LayoutOverrides="Height" Grid.Column="1"/>
         		<TextBlock x:Name="TabletsTextBlock1" Grid.Column="1" Margin="8" Grid.Row="1" TextWrapping="Wrap" Text="0" HorizontalAlignment="Center" VerticalAlignment="Center">
         			<TextBlock.Foreground>
-        				<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+        				<SolidColorBrush Color="#FF6D5592"/>
         			</TextBlock.Foreground>
         		</TextBlock>
         	</Grid>

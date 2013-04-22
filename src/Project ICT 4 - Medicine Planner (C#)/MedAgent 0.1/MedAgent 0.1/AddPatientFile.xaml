@@ -6,6 +6,7 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -49,7 +50,7 @@
                 <StackPanel x:Name="StkEdit" Grid.Column="1" Margin="5,0,0,0">
                     <TextBox x:Name="PatNameEdit" Text="Patient Name" Foreground="#FF0BD47C" BorderBrush="#FF1BA1E2"></TextBox>
                     <TextBox x:Name="PatFirstnameEdit" Text="Patient Firstname" Foreground="#FF0BD47C" BorderBrush="#FF1BA1E2"></TextBox>
-                    <TextBox x:Name="PatBdayEdit" Text="DD/MM/YYY" Foreground="#FF0BD47C" BorderBrush="#FF1BA1E2"></TextBox>
+                    <toolkit:DatePicker x:Name="PatBdayEdit"></toolkit:DatePicker>
                     <TextBox x:Name="PatSexEdit" Text="type: m or f" Foreground="#FF0BD47C" BorderBrush="#FF1BA1E2"></TextBox>
                     <TextBox x:Name="PatEmailEdit" Text="Patient Email" Foreground="#FF0BD47C" BorderBrush="#FF1BA1E2"></TextBox>
                     <TextBox x:Name="PatSsnEdit" Text="Patient SSN" Foreground="#FF0BD47C" BorderBrush="#FF1BA1E2"></TextBox>

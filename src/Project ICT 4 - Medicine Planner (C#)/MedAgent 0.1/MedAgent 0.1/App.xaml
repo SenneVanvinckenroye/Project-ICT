@@ -47,7 +47,7 @@
 								</Grid.ColumnDefinitions>
 								<Rectangle x:Name="HorizontalFill" Height="12" IsHitTestVisible="False" Margin="0,30,0,40">
 									<Rectangle.Fill>
-										<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+										<SolidColorBrush Color="#FF6D5592"/>
 									</Rectangle.Fill>
 								</Rectangle>
 								<Rectangle x:Name="HorizontalTrack" Grid.Column="2" Fill="{TemplateBinding Background}" Height="12" IsHitTestVisible="False" Margin="0,30,12,40" d:LayoutOverrides="VerticalAlignment"/>
@@ -58,7 +58,7 @@
 										<ControlTemplate>
 											<Canvas Height="22" Width="22" Margin="0,-5,-10,-5">
 												<Canvas.Background>
-													<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+													<SolidColorBrush Color="#FF6D5592"/>
 												</Canvas.Background>
 												<Rectangle Height="72" IsHitTestVisible="True" Canvas.Left="-24" Canvas.Top="-25" Width="70" Fill="Transparent"/>
 												<Border BorderBrush="Black" BorderThickness="2" Height="22" Width="22"/>
