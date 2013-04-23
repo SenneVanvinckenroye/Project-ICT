@@ -8,7 +8,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:system="clr-namespace:System;assembly=mscorlib"
-    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="728"
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="800"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -24,7 +24,7 @@
             <!--Panorama item one-->
             <controls:PanoramaItem Header="Patient list" Foreground="#FFC7DA1D" FontSize="26">
                 <Grid>
-                    <ListBox Margin="30,0,0,0" FontSize="30" x:Name="PatientLst" SelectionChanged="PatientList_SelectionChanged" Foreground="#FF2895DA"></ListBox>
+                    <ListBox Margin="30,0,0,0" FontSize="35" x:Name="PatientLst" SelectionChanged="PatientList_SelectionChanged" Foreground="#FF2895DA"></ListBox>
                 </Grid>
             </controls:PanoramaItem>
 
@@ -44,15 +44,15 @@
             </controls:PanoramaItem>
         </controls:Panorama>
     </Grid>
-    <phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+    <!--<phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">-->
             <!--<shell:ApplicationBarIconButton IconUri="/Images/appbar_button1.png" Text="Button 1"/>
             <shell:ApplicationBarIconButton IconUri="/Images/appbar_button2.png" Text="Button 2"/>-->
-            <shell:ApplicationBar.MenuItems>
+            <!--<shell:ApplicationBar.MenuItems>
                 <shell:ApplicationBarMenuItem Text="MenuItem 1"/>
                 <shell:ApplicationBarMenuItem Text="MenuItem 2"/>
             </shell:ApplicationBar.MenuItems>
         </shell:ApplicationBar>
-    </phone:PhoneApplicationPage.ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>-->
 </phone:PhoneApplicationPage>
     
