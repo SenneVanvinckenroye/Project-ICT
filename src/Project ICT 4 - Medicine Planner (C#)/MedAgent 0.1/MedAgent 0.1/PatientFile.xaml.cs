@@ -108,7 +108,6 @@ namespace MediAgent
             PatEmailEdit.Text = PatEmail.Text;
             PatBdayEdit.Text = PatBday.Text;
             PatSsnEdit.Text = PatSsn.Text;
-
         }
 
 

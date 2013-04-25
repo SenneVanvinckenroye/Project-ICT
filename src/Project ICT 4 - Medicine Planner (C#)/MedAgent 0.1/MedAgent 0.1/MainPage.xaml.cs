@@ -23,25 +23,42 @@ namespace MedAgent_0_1
         {
             InitializeComponent();
             //initialize wcf service client
-
-            client = new MedCareCloudServiceReference.MedPlanServiceClient();
+            if (App.InternetOn())
+            {
+                client = new MedCareCloudServiceReference.MedPlanServiceClient();
+            }
+            else
+            {
+                App.ConnectErrorMsg();
+            }
         }
 
         private void LogInButtonPatient_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             if (EmailBox.Text != "" && Paswoord_pswdbx.Password != "")
             {
-                //using wcf service to login
-                try
+                if (App.InternetOn())
                 {
-                    client.LoginAsync(EmailBox.Text, MD5Core.GetHashString(Paswoord_pswdbx.Password));
-                    client.LoginCompleted += new EventHandler<MedCareCloudServiceReference.LoginCompletedEventArgs>(client_LoginCompleted);
+                    //using wcf service to login
+                    try
+                    {
+                        client.LoginAsync(EmailBox.Text, MD5Core.GetHashString(Paswoord_pswdbx.Password));
+                        client.LoginCompleted += new EventHandler<MedCareCloudServiceReference.LoginCompletedEventArgs>(client_LoginCompleted);
+                    }
+                    catch (EndpointNotFoundException)
+                    {
+                        error_txblck.Text = "[Error]\nService problems";
+                        ErrorPopup.IsOpen = true;
+                    }
                 }
-                catch(EndpointNotFoundException)
+                else
                 {
-                    error_txblck.Text = "[Error]\nService problems";
-                    ErrorPopup.IsOpen = true;
+                    App.ConnectErrorMsg();
                 }
+            }
+            else
+            {
+                MessageBox.Show("Missing entries!");
             }
         }
         

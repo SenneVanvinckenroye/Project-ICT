@@ -12,6 +12,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using Microsoft.Phone.Tasks;
 
 namespace MedAgent_0_1
 {
@@ -131,6 +132,30 @@ namespace MedAgent_0_1
             }
         }
 
+        public static bool InternetOn()
+        {
+            if (Microsoft.Phone.Net.NetworkInformation.NetworkInterface.NetworkInterfaceType !=
+ Microsoft.Phone.Net.NetworkInformation.NetworkInterfaceType.None)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public static void ConnectErrorMsg()
+        {
+            MessageBoxResult m = MessageBox.Show("Verify your internet connection!", "Cannot connect!", MessageBoxButton.OK);
+            if (m == MessageBoxResult.OK)
+            {
+                if (!InternetOn())
+                {
+                    ConnectionSettingsTask connSettingsTask = new ConnectionSettingsTask();
+                    connSettingsTask.ConnectionSettingsType = ConnectionSettingsType.WiFi;
+                    connSettingsTask.Show();
+                }
+            }
+            //MessageBox.Show("Cannot connect!\n\rVerify your internet connection!");
+        }
         #region Phone application initialization
 
         // Avoid double-initialization
