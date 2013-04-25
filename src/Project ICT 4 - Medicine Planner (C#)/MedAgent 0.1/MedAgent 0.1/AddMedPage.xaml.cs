@@ -683,8 +683,6 @@ namespace MedAgent_0_1
 
         private void DoneButton_Click(object sender, RoutedEventArgs e)
         {
-
-<<<<<<< HEAD
             
 
             //First check if all fields are filled in except the photo and the time reminders.
@@ -711,10 +709,8 @@ namespace MedAgent_0_1
 
 
             //Werkt van geen kante ='((
-            /*
-=======
-            App.MedID++;
->>>>>>> 2a21007... Kalender is af
+
+           
             for (int i = 0; i < 6; i++)
             {
                 if (ScheduledActionService.Find("rem" + (i + 1)) != null)
@@ -745,7 +741,7 @@ namespace MedAgent_0_1
                     App.MedList[App.MedID].Reminder[i] = new Reminder("rem" + (i + 1))
                         {
                             BeginTime = Time[i],
-                            Content = "Take pills",  // welke med toevoegen hier
+                            Content = App.MedList[App.MedID].Name,  // welke med toevoegen hier
                             ExpirationTime = Time[i].AddDays(1),
                             NavigationUri = new Uri("/TestPage1.xaml", UriKind.Relative),
                             RecurrenceType = RecurrenceInterval.Daily,
@@ -755,12 +751,7 @@ namespace MedAgent_0_1
                 }
             }
 
-<<<<<<< HEAD
-            */
 
-
-
-=======
             #region hardcode reminder
             //    if ((bool)ToggleButton1.IsChecked)
             //    {
@@ -843,7 +834,7 @@ namespace MedAgent_0_1
 
             //    NavigationService.Navigate(new Uri(string.Format("/MedListOverview.xaml"), UriKind.Relative));
             #endregion
->>>>>>> 2a21007... Kalender is af
+//>>>>>>> 2a21007... Kalender is af
         }
 
 

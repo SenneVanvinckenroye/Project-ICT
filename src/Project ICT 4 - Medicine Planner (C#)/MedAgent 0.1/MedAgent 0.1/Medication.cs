@@ -30,11 +30,9 @@ namespace MedAgent_0_1
 
         public ImageSource MedPhoto { get; set; }
 
-<<<<<<< HEAD
         public string Course { get; set; }
-=======
+
         public int[] Amount { get; set; }
->>>>>>> 2a21007... Kalender is af
 
         public Reminder[] Reminder { get; set; }
     }

@@ -21,15 +21,7 @@ namespace MediAgent
 {
     public partial class PatientFile : PhoneApplicationPage
     {
-        //Helper Class for showing some of the data we pull from the MedList in the ListBox
-        public class MedData
-        {
-            public string Name { get; set; }
-            //public string Description { get; set; }
-            public ImageSource ImageSource { get; set; }
-            public string StartDate { get; set; }
 
-        }
       
         //WTF DOET DEES???
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -59,25 +51,10 @@ namespace MediAgent
             InitializeComponent();
 
 
-            MedData tempMedData = new MedData();
-
             //Load all medication
             foreach (Medication item in App.MedList)
             {
-                //If there was no photo taken for this Medication show the default picture
-                if (item.MedPhoto == null)
-                {
 
-                    tempMedData.ImageSource = item.MedPhoto;
-
-                }
-
-                tempMedData.ImageSource = item.MedPhoto;
-
-
-                //Assign the values from the MedList to the right item that is databound to it
-                tempMedData.Name = item.Name;
-                tempMedData.StartDate = item.StartDate.ToShortDateString();
                 MedListBox.Items.Add(item);
 
             
