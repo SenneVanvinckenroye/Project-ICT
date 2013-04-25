@@ -24,7 +24,22 @@
             <!--Panorama item one-->
             <controls:PanoramaItem Header="Patient list" Foreground="#FFC7DA1D" FontSize="26">
                 <Grid>
-                    <ListBox Margin="30,0,0,0" FontSize="35" x:Name="PatientLst" SelectionChanged="PatientList_SelectionChanged" Foreground="#FF2895DA"></ListBox>
+                    <ListBox DataContext="{Binding}" Margin="30,0,0,0" FontSize="35" x:Name="PatientLst" SelectionChanged="PatientList_SelectionChanged" Foreground="#FF2895DA">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Height="132" >
+                                    <Image Source="{Binding ImageSource}" Name="MedImage"  Height="73" Width="73" VerticalAlignment="Top" Margin="0,10,8,0">
+
+                                    </Image>
+                                    <StackPanel Width="370">
+                                        <TextBlock Text="{Binding FirstName}" Foreground="DarkTurquoise" FontSize="28" />
+                                        <TextBlock Text="{Binding LastName}" Foreground="Black" TextWrapping="Wrap" FontSize="24" />
+                                        <TextBlock Text="{Binding Id}" Foreground="Black" TextWrapping="Wrap" FontSize="24"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
                 </Grid>
             </controls:PanoramaItem>
 
@@ -46,9 +61,9 @@
     </Grid>
     <!--<phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">-->
-            <!--<shell:ApplicationBarIconButton IconUri="/Images/appbar_button1.png" Text="Button 1"/>
+    <!--<shell:ApplicationBarIconButton IconUri="/Images/appbar_button1.png" Text="Button 1"/>
             <shell:ApplicationBarIconButton IconUri="/Images/appbar_button2.png" Text="Button 2"/>-->
-            <!--<shell:ApplicationBar.MenuItems>
+    <!--<shell:ApplicationBar.MenuItems>
                 <shell:ApplicationBarMenuItem Text="MenuItem 1"/>
                 <shell:ApplicationBarMenuItem Text="MenuItem 2"/>
             </shell:ApplicationBar.MenuItems>

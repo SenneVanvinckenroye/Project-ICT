@@ -25,6 +25,9 @@ namespace MediAgent
             //Service.Query(null, "lastName");
             client = new MedAgent_0_1.MedCareCloudServiceReference.MedPlanServiceClient();
 
+            //Databinding yo
+            PatientLst.DataContext = typeof (Patient);
+
             client.GetAllPatientsForDoctorAsync(1);//change 1 to DocID from login
             client.GetAllPatientsForDoctorCompleted += new EventHandler<MedAgent_0_1.MedCareCloudServiceReference.GetAllPatientsForDoctorCompletedEventArgs>(client_GetAllPatientsCompleted);
 

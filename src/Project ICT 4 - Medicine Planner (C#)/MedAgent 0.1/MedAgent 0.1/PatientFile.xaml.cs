@@ -172,11 +172,6 @@ namespace MediAgent
         }
 
 
-
-
-
-
-
         //Go to the AddMedPage and create a new Medication object
         private void ApplicationBarAddButton_OnClick(object sender, EventArgs e)
         {
@@ -184,12 +179,6 @@ namespace MediAgent
             App.MedList.Add(new Medication());
 
             NavigationService.Navigate(new Uri(string.Format("/AddMedPage.xaml"), UriKind.Relative));
-
-        }
-
-       
-        private void ApplicationBarDeleteButton_OnClick(object sender, EventArgs e)
-        {
 
         }
         #endregion
