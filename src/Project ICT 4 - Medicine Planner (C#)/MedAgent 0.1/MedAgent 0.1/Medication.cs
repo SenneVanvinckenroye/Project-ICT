@@ -37,6 +37,7 @@ namespace MedAgent_0_1
         public int Amount5 { get; set; }
         public int Amount6 { get; set; }
 
+        public string Course { get; set; }
 
         public Reminder reminder1;
         public Reminder reminder2;

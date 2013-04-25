@@ -14,6 +14,7 @@ using Microsoft.Phone.Scheduler;
 using Microsoft.Phone.Tasks;
 using Microsoft.Phone;
 
+
 namespace MedAgent_0_1
 {
     public partial class PanoramaPage1 : PhoneApplicationPage
@@ -24,9 +25,21 @@ namespace MedAgent_0_1
             camTask = new CameraCaptureTask();
             camTask.Completed += camTaskCompleted;
 
+            /*Touch.FrameReported += (s, e) =>
+            {
+                if (e.GetPrimaryTouchPoint(CourseSlider).Action == TouchAction.Up)
+                {
+                    Item1.IsHitTestVisible = true;
+                    Item2.IsHitTestVisible = true;
+                    Item3.IsHitTestVisible = true;
+                    Item4.IsHitTestVisible = true;
+                }
+            };*/
+
 
 
         }
+
 
 
         /// <summary>
@@ -36,8 +49,6 @@ namespace MedAgent_0_1
 
 
         //Panorama Item 1 
-
-        private int savedCounter = 0;
 
         private CameraCaptureTask camTask;
 
@@ -71,23 +82,44 @@ namespace MedAgent_0_1
             switch ((int)(CourseSlider.Value))
             {
                 case 0: repeatInfo_txt.Text = "Daily";
+                    App.MedList[App.MedID].Course = "Daily";
                     break;
                 case 1: repeatInfo_txt.Text = "Every 2 days";
+                    App.MedList[App.MedID].Course = "Every 2 days";
                     break;
                 case 2: repeatInfo_txt.Text = "Every 3 days";
+                    App.MedList[App.MedID].Course = "Every 3 days";
                     break;
                 case 3: repeatInfo_txt.Text = "Every 4 days";
+                    App.MedList[App.MedID].Course = "Every 4 days";
                     break;
                 case 4: repeatInfo_txt.Text = "Every 5 days";
+                    App.MedList[App.MedID].Course = "Every 5 days";
                     break;
                 case 5: repeatInfo_txt.Text = "Weekly";
+                    App.MedList[App.MedID].Course = "Weekly";
                     break;
                 default: repeatInfo_txt.Text = "error";
+                    App.MedList[App.MedID].Course = "N/A";
                     break;
             }
         }
 
+        private void CourseSlider_ManipulationStarted(object sender, ManipulationStartedEventArgs e)
+        {
+            Item4.IsHitTestVisible = false;
+            Item3.IsHitTestVisible = false;
+            Item2.IsHitTestVisible = false;
+            Item1.IsHitTestVisible = false;
+        }
 
+        private void CourseSlider_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Item1.IsHitTestVisible = true;
+            Item2.IsHitTestVisible = true;
+            Item3.IsHitTestVisible = true;
+            Item4.IsHitTestVisible = true;
+        }
         //Panorama Item 3
 
         public int Tablets1 = 0;
@@ -576,21 +608,17 @@ namespace MedAgent_0_1
             SliderPanel6.Visibility = Visibility.Collapsed;
         }
 
-        private void CourseSlider_Hold(object sender, System.Windows.Input.GestureEventArgs e)
-        {
-            Item1.IsEnabled = false;
-            Item3.IsEnabled = false;
-        }
 
-        private void CourseSlider_MouseLeave(object sender, MouseEventArgs e)
-        {
-            Item1.IsEnabled = true;
-            Item3.IsEnabled = true;
-        }
 
 
         //private Medication med1 = new Medication();
 
+
+
+        ////////////////////////////////////////////////<-----------EVENTS------------>///////////////////////////////////////////////////////
+        /// 
+        /// 
+        /// 
         //Put all values in a global variabel when their values are changed
 
 
@@ -601,6 +629,7 @@ namespace MedAgent_0_1
         {
 
             App.MedList[App.MedID].Name = NameTxtBox.Text;
+            
 
         }
 
@@ -613,12 +642,23 @@ namespace MedAgent_0_1
 
         }
 
+
+
+
         //Panorama Item 2
 
         private void StartDate_ValueChanged(object sender, DateTimeValueChangedEventArgs e)
         {
 
             App.MedList[App.MedID].StartDate = (DateTime)StartDate.Value;
+
+
+        }
+
+        private void EndDate_ValueChanged(object sender, DateTimeValueChangedEventArgs e)
+        {
+
+            App.MedList[App.MedID].EndDate = (DateTime)EndDate.Value;
 
         }
 
@@ -642,12 +682,39 @@ namespace MedAgent_0_1
 
         private void DoneButton_Click(object sender, RoutedEventArgs e)
         {
-            App.MedID++;
+
+            
+
+            //First check if all fields are filled in except the photo and the time reminders.
+            if (App.MedList[App.MedID].Name != null && App.MedList[App.MedID].StartDate != null &&
+                App.MedList[App.MedID].EndDate != null && App.MedList[App.MedID].Description != null
+                && App.MedList[App.MedID].Course != null)
+            {
+                //The current value of the startdate is always the current date so when we don't change it we have to assign its value still
+                App.MedList[App.MedID].StartDate = (DateTime) StartDate.Value;
+
+                //Write the variables medication in the medlist with the current ID to the database.
+
+                App.MedID++;
+
+                NavigationService.Navigate(new Uri(string.Format("/PatientFile.xaml"), UriKind.Relative));
+
+            }
+
+            else
+            {
+                MessageBox.Show("Not all fields have been filled in yet.");
+            }
+
+
+
+            //Werkt van geen kante ='((
+            /*
             for (int i = 0; i < 6; i++)
             {
                 if (ScheduledActionService.Find("rem" + (i + 1)) != null)
                 {
-                    ScheduledActionService.Remove("rem" + (i + 1));
+                    ScheduledActionService.Remove("rem" + (i + 1)); 
                 }
             }
             
@@ -731,11 +798,13 @@ namespace MedAgent_0_1
                 ScheduledActionService.Add(App.MedList[App.MedID].reminder6);
             }
 
+            */
 
 
 
-            NavigationService.Navigate(new Uri(string.Format("/MedListOverview.xaml"), UriKind.Relative));
         }
+
+
 
     }
 }

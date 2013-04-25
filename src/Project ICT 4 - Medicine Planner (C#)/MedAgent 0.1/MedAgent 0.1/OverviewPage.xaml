@@ -71,48 +71,29 @@
 					<ColumnDefinition Width="0.375*"/>
 				</Grid.ColumnDefinitions>
 				<Grid.RowDefinitions>
-					<RowDefinition Height="0.068*"/>
-					<RowDefinition Height="0.08*"/>
-					<RowDefinition Height="0.095*"/>
-					<RowDefinition Height="0.068*"/>
-					<RowDefinition Height="0.068*"/>
-					<RowDefinition Height="0.068*"/>
-					<RowDefinition Height="0.068*"/>
-					<RowDefinition Height="0.069*"/>
-					<RowDefinition Height="0.066*"/>
-					<RowDefinition Height="0.069*"/>
-					<RowDefinition Height="0.283*"/>
+					<RowDefinition Height="48*"/>
+					<RowDefinition Height="39*"/>
+					<RowDefinition Height="56*"/>
+					<RowDefinition Height="40*"/>
+					<RowDefinition Height="40*"/>
+					<RowDefinition Height="40*"/>
+					<RowDefinition Height="40*"/>
+					<RowDefinition Height="41*"/>
+					<RowDefinition Height="39*"/>
+					<RowDefinition Height="41*"/>
+					<RowDefinition Height="167*"/>
 				</Grid.RowDefinitions>
 				<TextBlock x:Name="NameTextBlock" HorizontalAlignment="Left" Margin="8,8,0,0" TextWrapping="Wrap" Text="Name:" VerticalAlignment="Top">
 					<TextBlock.Foreground>
 						<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
 					</TextBlock.Foreground>
 				</TextBlock>
-				<TextBlock x:Name="EndDateTextBlock" Margin="8,8,68,8" TextWrapping="Wrap" Text="End Date:" Grid.Row="1" Grid.Column="2" d:LayoutOverrides="HorizontalAlignment, VerticalAlignment" Foreground="#FF6D5592"/>
-				<TextBlock x:Name="StartDateTextBlock" Margin="8,8,74,8" Grid.Row="1" TextWrapping="Wrap" Text="Start Date:" d:LayoutOverrides="VerticalAlignment" Foreground="#FF6D5592"/>
-				<TextBlock x:Name="Time1TextBlock" Margin="8,8,0,8" Grid.Row="4" TextWrapping="Wrap" HorizontalAlignment="Left" Foreground="#FF6D5592" Width="68"><Run Text="Time 1"/><Run Text=":"/></TextBlock>
-				<TextBlock x:Name="Time2TextBlock" Margin="8,8,0,8" Grid.Row="5" TextWrapping="Wrap" Foreground="#FF6D5592" HorizontalAlignment="Left" Width="68"><Run Text="Time "/><Run Text="2"/><Run Text=":"/><LineBreak/><Run/></TextBlock>
-				<TextBlock x:Name="Time3TextBlock" Margin="8,8,0,8" Grid.Row="6" TextWrapping="Wrap" Foreground="#FF6D5592" RenderTransformOrigin="0.786,2.963" HorizontalAlignment="Left" Width="68"><Run Text="Time "/><Run Text="3"/><Run Text=":"/><LineBreak/><Run/></TextBlock>
-				<TextBlock Text="{Binding Name}" x:Name="MedName" Margin="69,8,8,8" TextWrapping="Wrap" Grid.ColumnSpan="3" />
-				<TextBlock x:Name="TabletsTextBlock" Margin="8" Grid.Row="3" TextWrapping="Wrap" Grid.Column="1" Text="Tablets" Foreground="#FF6D5592"/>
-				<TextBlock x:Name="Time4TextBlock" Margin="8,8,0,8" Grid.Row="7" TextWrapping="Wrap" Foreground="#FF6D5592" HorizontalAlignment="Left" Width="68"><Run Text="Time "/><Run Text="4"/><Run Text=":"/></TextBlock>
-				<TextBlock x:Name="Time6TextBlock" Margin="8,8,0,0" Grid.Row="9" TextWrapping="Wrap" Foreground="#FF6D5592" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="68"><Run Text="Time "/><Run Text="6"/><Run Text=":"/></TextBlock>
-				<TextBlock x:Name="Time5TextBlock" Margin="8,8,0,0" Grid.Row="8" TextWrapping="Wrap" Foreground="#FF6D5592" Height="23" VerticalAlignment="Top" HorizontalAlignment="Left" Width="68"><Run Text="Time "/><Run Text="5"/><Run Text=":"/><LineBreak/><Run/><Run/><LineBreak/><Run/><LineBreak/><Run Text=":"/></TextBlock>
-				<TextBlock x:Name="Tablets1" Grid.Column="1" HorizontalAlignment="Right" Margin="0,8,8,8" Grid.Row="4" TextWrapping="Wrap" Width="76"/>
-				<TextBlock x:Name="Tablets2" Grid.Column="1" HorizontalAlignment="Right" Margin="0,8,8,8" Grid.Row="5" TextWrapping="Wrap" Width="76"/>
-				<TextBlock x:Name="Tablets3" Grid.Column="1" HorizontalAlignment="Right" Margin="0,8,8,8" Grid.Row="6" TextWrapping="Wrap" Width="76"/>
-				<TextBlock x:Name="Tablets4" Grid.Column="1" HorizontalAlignment="Right" Margin="0,8,9,8" Grid.Row="7" TextWrapping="Wrap" Width="76"/>
-				<TextBlock x:Name="Tablets5" Grid.Column="1" HorizontalAlignment="Right" Margin="0,8,9,8" Grid.Row="8" TextWrapping="Wrap" Width="76"/>
-				<TextBlock x:Name="Tablets6" Grid.Column="1" HorizontalAlignment="Right" Margin="0,8,9,8" Grid.Row="9" TextWrapping="Wrap" Width="76"/>
-				<TextBlock x:Name="Time1" Margin="80,8,19,5" Grid.Row="4" TextWrapping="Wrap" d:LayoutOverrides="Width, Height"/>
-				<TextBlock x:Name="Time2" Margin="80,6,19,8" Grid.Row="5" TextWrapping="Wrap" d:LayoutOverrides="Width, Height"/>
-				<TextBlock x:Name="Time3" Margin="80,8,19,5" Grid.Row="6" TextWrapping="Wrap" d:LayoutOverrides="Width, Height"/>
-				<TextBlock x:Name="Time4" Margin="80,8,19,6" Grid.Row="7" TextWrapping="Wrap" d:LayoutOverrides="Width, Height"/>
-				<TextBlock x:Name="Time5" Margin="80,6,19,8" Grid.Row="8" TextWrapping="Wrap" d:LayoutOverrides="Width, Height"/>
-				<TextBlock x:Name="Time6" Margin="80,8,19,11" Grid.Row="9" TextWrapping="Wrap" d:LayoutOverrides="Width, Height"/>
-				<TextBlock x:Name="StartDate" Margin="0,8,8,8" Grid.Row="2" TextWrapping="Wrap" HorizontalAlignment="Right" Width="166"/>
-				<TextBlock x:Name="EndDate" Margin="0,8,8,8" Grid.Row="2" TextWrapping="Wrap" HorizontalAlignment="Right" Width="149" Grid.Column="2"/>
-				<Button Content="Close" Grid.Column="1" Margin="-27,55,-9,40" Grid.Row="10" d:LayoutOverrides="Width, Height" Click="Button_Click" />
+				<TextBlock x:Name="EndDateTextBlock" Margin="8,0,68,8" TextWrapping="Wrap" Text="End Date:" Grid.Row="1" Grid.Column="2" d:LayoutOverrides="HorizontalAlignment, VerticalAlignment" Foreground="#FF6D5592"/>
+				<TextBlock x:Name="StartDateTextBlock" Margin="8,0,74,8" Grid.Row="1" TextWrapping="Wrap" Text="Start Date:" d:LayoutOverrides="VerticalAlignment" Foreground="#FF6D5592"/>
+                <TextBlock Text="{Binding Name}" x:Name="MedName" Margin="69,8,8,16" TextWrapping="Wrap" Grid.ColumnSpan="3" />
+                <TextBlock Text="{Binding StartDate, StringFormat='dd/MM/yyyy'}" x:Name="StartDate" Margin="0,8,8,8" Grid.Row="2" TextWrapping="Wrap" HorizontalAlignment="Right" Width="166"/>
+                <TextBlock Text="{Binding EndDate, StringFormat='dd/MM/yyyy'}" x:Name="EndDate" Margin="0,8,8,8" Grid.Row="2" TextWrapping="Wrap" HorizontalAlignment="Right" Width="149" Grid.Column="2"/>
+                <Button Content="Close" Grid.Column="1" Margin="-27,55,-9,40" Grid.Row="10" d:LayoutOverrides="Width, Height" Click="Button_Click" />
 			</Grid>
 		</Grid>
 	</Grid>
