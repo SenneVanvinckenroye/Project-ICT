@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Windows;
 using System.Windows.Controls;
@@ -14,12 +15,9 @@ namespace MedAgent_0_1
 {
     public class Medication
     {
-        public DateTime Time1 { get; set; }
-        public DateTime Time2 { get; set; }
-        public DateTime Time3 { get; set; }
-        public DateTime Time4 { get; set; }
-        public DateTime Time5 { get; set; }
-        public DateTime Time6 { get; set; }
+        public DateTime[] Time { get; set; }
+
+        public List<List<bool>> Taken { get; set; }
 
         public string Name { get; set; }
 
@@ -28,22 +26,16 @@ namespace MedAgent_0_1
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
 
+        public int Interval { get; set; }
+
         public ImageSource MedPhoto { get; set; }
 
-        public int Amount1 { get; set; }
-        public int Amount2 { get; set; }
-        public int Amount3 { get; set; }
-        public int Amount4 { get; set; }
-        public int Amount5 { get; set; }
-        public int Amount6 { get; set; }
-
+<<<<<<< HEAD
         public string Course { get; set; }
+=======
+        public int[] Amount { get; set; }
+>>>>>>> 2a21007... Kalender is af
 
-        public Reminder reminder1;
-        public Reminder reminder2;
-        public Reminder reminder3;
-        public Reminder reminder4;
-        public Reminder reminder5;
-        public Reminder reminder6;
+        public Reminder[] Reminder { get; set; }
     }
 }

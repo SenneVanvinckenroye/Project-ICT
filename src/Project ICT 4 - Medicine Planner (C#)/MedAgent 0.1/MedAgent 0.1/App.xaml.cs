@@ -58,6 +58,13 @@ namespace MedAgent_0_1
         public int Amount6 { get; set; }
 
 
+
+
+
+
+
+
+
         /// <summary>
         /// Constructor for the Application object.
         /// </summary>
@@ -86,6 +93,47 @@ namespace MedAgent_0_1
 
             // Phone-specific initialization
             InitializePhoneApplication();
+
+            //test code!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            App.MedList.Add(new Medication()
+            {
+                Amount = new int[] { 1, 2, 3, 4, 5, 6 },
+                Description = "testmed",
+                EndDate = new DateTime(2013, 04, 30),
+                Interval = 3,
+                Name = "TestMed",
+                StartDate = new DateTime(2013, 04, 1),
+
+                Taken = new List<List<bool>>(){
+                            new List<bool>(){true,true,true,false,false,false},
+                            new List<bool>(){false,false,false,false,false,false},
+                            new List<bool>(){true,false,false,false,false,false},
+                            new List<bool>(){true,true,true,false,false,false},
+                            new List<bool>(){true,true,true,false,false,false},
+                            new List<bool>(){true,true,true,false,false,false},
+                            new List<bool>(){true,true,true,false,false,false},
+                            new List<bool>(){true,true,true,false,false,false},
+                            new List<bool>(){true,true,true,false,false,false},
+                            new List<bool>(){true,true,true,false,false,false},
+                            new List<bool>(){true,true,true,false,false,false},
+                            new List<bool>(){true,true,true,false,false,false},
+                            new List<bool>(){true,true,true,false,false,false},
+                            new List<bool>(){true,true,true,false,false,false},
+                            new List<bool>(){true,true,true,false,false,false},
+                            new List<bool>(){true,true,true,false,false,false}
+                        },
+
+                Time = new DateTime[]{
+                            new DateTime(2013,04,24,06,00,00),
+                            new DateTime(2013,04,24,08,00,00), 
+                            new DateTime(), 
+                            new DateTime(), 
+                            new DateTime(), 
+                            new DateTime()
+                        },
+            });
+            //test code!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
         }
 
         // Code to execute when the application is launching (eg, from Start)

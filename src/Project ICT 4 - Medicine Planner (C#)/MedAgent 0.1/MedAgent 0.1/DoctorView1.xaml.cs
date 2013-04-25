@@ -70,7 +70,7 @@ namespace MediAgent
                 //PatientLst.SelectedIndex = PatientLst.SelectedIndex - 2;
                 NavigationService.Navigate(new Uri("/PatientFile.xaml", UriKind.Relative));
             }
-            else if (PatientLst.SelectedItem != null && PatientLst.SelectedItem.ToString() == "    Course of medication")
+            else if (PatientLst.SelectedItem != null && PatientLst.SelectedItem.ToString() == "    Add medication")
             {
                 //App.Pat = PatientLst.Items.ElementAt(PatientLst.SelectedIndex - 2) as Patient;
                 //App.PublicPatient = PatientLst.Items.ElementAt(PatientLst.SelectedIndex - 1) as Patient;
@@ -95,7 +95,7 @@ namespace MediAgent
             {
                 App.PublicPatient = (Patient)PatientLst.SelectedItem;
                 PatientLst.Items.Insert(PatientLst.SelectedIndex + 1, "    Patient's file");
-                PatientLst.Items.Insert(PatientLst.SelectedIndex + 1, "    Course of medication");
+                PatientLst.Items.Insert(PatientLst.SelectedIndex + 1, "    Add medication");
             }
 
         }

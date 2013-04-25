@@ -92,7 +92,7 @@
 				</Setter.Value>
 			</Setter>
 		</Style>
-		<Style x:Key="OnOffSlider" TargetType="Slider">
+		<!--<Style x:Key="OnOffSlider" TargetType="Slider">
 			<Setter Property="BorderThickness" Value="0"/>
 			<Setter Property="BorderBrush" Value="Transparent"/>
 			<Setter Property="Maximum" Value="10"/>
@@ -170,7 +170,7 @@
 					</ControlTemplate>
 				</Setter.Value>
 			</Setter>
-		</Style>
+		</Style>-->
 	</Application.Resources>
 
 	<Application.ApplicationLifetimeObjects>
