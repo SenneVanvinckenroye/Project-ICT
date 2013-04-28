@@ -93,4 +93,65 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="CreatePrescription">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DrugName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="StartDarte" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="EndDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="Quantity" type="xs:int" />
+        <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="Time1" type="q6:duration" />
+        <xs:element xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="Time2" type="q7:duration" />
+        <xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="Time3" type="q8:duration" />
+        <xs:element xmlns:q9="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="Time4" type="q9:duration" />
+        <xs:element xmlns:q10="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="Time5" type="q10:duration" />
+        <xs:element xmlns:q11="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="Time6" type="q11:duration" />
+        <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Course" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="PatientID" type="xs:int" />
+        <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+        <xs:element xmlns:q12="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="Taken1" type="q12:char" />
+        <xs:element xmlns:q13="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="Taken2" type="q13:char" />
+        <xs:element xmlns:q14="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="Taken3" type="q14:char" />
+        <xs:element xmlns:q15="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="Taken4" type="q15:char" />
+        <xs:element xmlns:q16="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="Taken5" type="q16:char" />
+        <xs:element xmlns:q17="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="Taken6" type="q17:char" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreatePrescriptionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CreatePrescriptionResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPatientData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="MemberID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPatientDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/SilverlightApplication3.Web.Model" minOccurs="0" name="GetPatientDataResult" nillable="true" type="q18:Patient" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPrescriptionsForPatient">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PatientID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPrescriptionsForPatientResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/SilverlightApplication3.Web.Model" minOccurs="0" name="GetPrescriptionsForPatientResult" nillable="true" type="q19:ArrayOfPrescription" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

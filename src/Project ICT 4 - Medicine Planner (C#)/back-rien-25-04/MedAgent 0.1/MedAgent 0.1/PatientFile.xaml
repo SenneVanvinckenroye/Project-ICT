@@ -1,0 +1,105 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="MediAgent.PatientFile"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:calendarControl="clr-namespace:CalendarControl"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True" d:DesignHeight="696" d:DesignWidth="480">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="#FFF7F7F7">
+        <controls:Panorama Title="MedCare" Foreground="#FF3FC1DF">
+
+            <!--Panorama item one-->
+            <controls:PanoramaItem Header="Med List" Foreground="#FF3FC1DF">
+                <Grid>
+                    <ListBox x:Name="DetailsLst">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="Gray" BorderThickness="2">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock x:Name="Med" Text="{Binding MedName}"></TextBlock>
+                                        <TextBlock x:Name="Time" Text="{Binding MedTime}"></TextBlock>
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+            </controls:PanoramaItem>
+
+            <controls:PanoramaItem Header="Patient file" Foreground="#FF3FC1DF" FontSize="26">
+                <!-- design nog beter maken -->
+                <ScrollViewer>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1.1*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Border BorderBrush="OrangeRed" BorderThickness="0,0,2,0">
+                            <!-- verander kleur -->
+                            <StackPanel Grid.Column="0" Margin="30,0,0,0">
+                                <TextBlock Text="Name" Margin="0,18,0,18"></TextBlock>
+                                <TextBlock Text="Firstname" Margin="0,18,0,18"></TextBlock>
+                                <TextBlock Text="Age" Margin="0,18,0,18"></TextBlock>
+                                <TextBlock Text="Sex" Margin="0,18,0,18"></TextBlock>
+                                <TextBlock Text="Email" Margin="0,18,0,18"></TextBlock>
+                                <TextBlock Text="Birthdate" Margin="0,18,0,18"></TextBlock>
+                                <TextBlock Text="SSN" Margin="0,18,0,18"></TextBlock>
+                            </StackPanel>
+                        </Border>
+
+                        <StackPanel x:Name="StkNoEdit" Grid.Column="1" Margin="5,0,0,0" Visibility="Visible">
+                            <TextBlock x:Name="PatName" Text="Patient Name" Margin="0,18,0,18"></TextBlock>
+                            <TextBlock x:Name="PatFirstname" Text="Patient Firstname" Margin="0,18,0,18"></TextBlock>
+                            <TextBlock x:Name="PatAge" Text="Patient Age" Margin="0,18,0,18"></TextBlock>
+                            <TextBlock x:Name="PatSex" Text="Patient Sex" Margin="0,18,0,18"></TextBlock>
+                            <TextBlock x:Name="PatEmail" Text="Patient Email" Margin="0,18,0,18"></TextBlock>
+                            <TextBlock x:Name="PatBday" Text="Patient Bday" Margin="0,18,0,18"></TextBlock>
+                            <TextBlock x:Name="PatSsn" Text="Patient SSN" Margin="0,18,0,18"></TextBlock>
+                        </StackPanel>
+
+                        <StackPanel x:Name="StkEdit" Grid.Column="1" Margin="5,0,0,0" Visibility="Collapsed">
+                            <TextBox x:Name="PatNameEdit" Text="Patient Name"></TextBox>
+                            <TextBox x:Name="PatFirstnameEdit" Text="Patient Firstname"></TextBox>
+                            <TextBox x:Name="PatAgeEdit" Text="Patient Age"></TextBox>
+                            <TextBox x:Name="PatSexEdit" Text="Patient Sex"></TextBox>
+                            <TextBox x:Name="PatEmailEdit" Text="Patient Email"></TextBox>
+                            <TextBox x:Name="PatBdayEdit" Text="Patient Bday"></TextBox>
+                            <TextBox x:Name="PatSsnEdit" Text="Patient SSN"></TextBox>
+                        </StackPanel>
+
+
+                    </Grid>
+                </ScrollViewer>
+            </controls:PanoramaItem>
+
+            <controls:PanoramaItem Header="Medicine">
+                <Grid Background="#B25E549E">
+                    <calendarControl:LCalendar x:Name="Calendar" Foreground="#FFCAE756" HolidayBrush="#FFF1DC30" EventsForegroundBrush="#FF556193" ButtonBorderBrush="#FF3FC1DF" ButtonBackground="#00FF7A00"/>
+                </Grid>
+            </controls:PanoramaItem>
+        </controls:Panorama>
+    </Grid>
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <!--<shell:ApplicationBarIconButton IconUri="/Images/appbar_button1.png" Text="Button 1"/>
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button2.png" Text="Button 2"/>-->
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Text="Edit" Click="ApplicationBarMenuItem_OnClick"/>
+                <shell:ApplicationBarMenuItem Text="MenuItem 2"/>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+</phone:PhoneApplicationPage>

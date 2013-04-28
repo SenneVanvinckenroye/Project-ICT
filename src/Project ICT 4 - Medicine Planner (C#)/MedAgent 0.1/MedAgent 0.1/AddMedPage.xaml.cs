@@ -14,12 +14,14 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Scheduler;
 using Microsoft.Phone.Tasks;
 using Microsoft.Phone;
+using System.Windows.Navigation;
 
 
 namespace MedAgent_0_1
 {
     public partial class PanoramaPage1 : PhoneApplicationPage
     {
+        MedCareCloudServiceReference.MedPlanServiceClient client;
         public PanoramaPage1()
         {
             InitializeComponent();
@@ -694,6 +696,24 @@ namespace MedAgent_0_1
                 App.MedList[App.MedID].StartDate = (DateTime) StartDate.Value;
 
                 //Write the variables medication in the medlist with the current ID to the database.
+                client = new MedAgent_0_1.MedCareCloudServiceReference.MedPlanServiceClient();
+                client.CreatePrescriptionAsync(App.MedList[App.MedID].Name, App.MedList[App.MedID].StartDate, App.MedList[App.MedID].EndDate, App.MedList[App.MedID].Amount1,
+                    App.MedList[App.MedID].Time1.TimeOfDay,
+                    App.MedList[App.MedID].Time2.TimeOfDay,
+                    App.MedList[App.MedID].Time3.TimeOfDay,
+                    App.MedList[App.MedID].Time4.TimeOfDay,
+                    App.MedList[App.MedID].Time5.TimeOfDay,
+                    App.MedList[App.MedID].Time6.TimeOfDay,
+                    App.MedList[App.MedID].Description,
+                    App.MedList[App.MedID].Course,
+                    App.PublicPatient.Id,
+                    "pillen",
+                    'n','n','n','n','n','n');
+
+
+                client.CreatePrescriptionCompleted += new EventHandler<MedCareCloudServiceReference.CreatePrescriptionCompletedEventArgs>(client_CreatePrescriptionCompleted);
+
+
 
                 App.MedID++;
 
@@ -709,8 +729,7 @@ namespace MedAgent_0_1
 
 
             //Werkt van geen kante ='((
-
-           
+            /*
             for (int i = 0; i < 6; i++)
             {
                 if (ScheduledActionService.Find("rem" + (i + 1)) != null)
@@ -718,123 +737,98 @@ namespace MedAgent_0_1
                     ScheduledActionService.Remove("rem" + (i + 1)); 
                 }
             }
+            
 
-            RoundToggleButton[] roundToggleButton = new RoundToggleButton[6];
-            roundToggleButton[1] = ToggleButton1;
-            roundToggleButton[2] = ToggleButton2;
-            roundToggleButton[3] = ToggleButton3;
-            roundToggleButton[4] = ToggleButton4;
-            roundToggleButton[5] = ToggleButton5;
-            roundToggleButton[6] = ToggleButton6;
-            DateTime[] Time = new DateTime[6];
-            Time[1] = (DateTime)Time1.Value;
-            Time[2] = (DateTime)Time2.Value;
-            Time[3] = (DateTime)Time3.Value;
-            Time[4] = (DateTime)Time4.Value;
-            Time[5] = (DateTime)Time5.Value;
-            Time[6] = (DateTime)Time6.Value;
-
-            for (int i = 0; i < roundToggleButton.Count(); i++)
+            if ((bool)ToggleButton1.IsChecked)
             {
-                if ((bool)roundToggleButton[i].IsChecked)
+                App.MedList[App.MedID].reminder1 = new Reminder("rem1")
                 {
-                    App.MedList[App.MedID].Reminder[i] = new Reminder("rem" + (i + 1))
-                        {
-                            BeginTime = Time[i],
-                            Content = App.MedList[App.MedID].Name,  // welke med toevoegen hier
-                            ExpirationTime = Time[i].AddDays(1),
-                            NavigationUri = new Uri("/TestPage1.xaml", UriKind.Relative),
-                            RecurrenceType = RecurrenceInterval.Daily,
-                            Title = "Take med title" // change this
-                        };
-                    ScheduledActionService.Add(App.MedList[App.MedID].Reminder[i]);
-                }
+                    BeginTime = (DateTime)Time1.Value,
+                    Content = "Take pills",  // welke med toevoegen hier
+                    ExpirationTime = ((DateTime)Time1.Value).AddDays(1),
+                    NavigationUri = new Uri("/TestPage1.xaml", UriKind.Relative),
+                    RecurrenceType = RecurrenceInterval.Daily,
+                    Title = "Take med title" // change this
+                };
+                ScheduledActionService.Add(App.MedList[App.MedID].reminder1);
+            }
+            if ((bool)ToggleButton2.IsChecked)
+            {
+                App.MedList[App.MedID].reminder2 = new Reminder("rem2")
+                {
+                    BeginTime = (DateTime)Time2.Value,
+                    Content = "Take pills",  // welke med toevoegen hier
+                    ExpirationTime = ((DateTime)Time2.Value).AddDays(1),
+                    NavigationUri = new Uri("/TestPage1.xaml", UriKind.Relative),
+                    RecurrenceType = RecurrenceInterval.Daily,
+                    Title = "Take med title" // change this
+                };
+                ScheduledActionService.Add(App.MedList[App.MedID].reminder2);
+            }
+            if ((bool)ToggleButton3.IsChecked)
+            {
+                App.MedList[App.MedID].reminder3 = new Reminder("rem3")
+                    {
+                        BeginTime = (DateTime)Time3.Value,
+                        Content = "Take pills", // welke med toevoegen hier
+                        ExpirationTime = ((DateTime)Time3.Value).AddDays(1),
+                        NavigationUri = new Uri("/TestPage1.xaml", UriKind.Relative),
+                        RecurrenceType = RecurrenceInterval.Daily,
+                        Title = "Take med title" // change this
+                    };
+                ScheduledActionService.Add(App.MedList[App.MedID].reminder3);
             }
 
+            if ((bool)ToggleButton4.IsChecked)
+            {
+                App.MedList[App.MedID].reminder4 = new Reminder("rem4")
+                {
+                    BeginTime = (DateTime)Time4.Value,
+                    Content = "Take pills", // welke med toevoegen hier
+                    ExpirationTime = ((DateTime)Time4.Value).AddDays(1),
+                    NavigationUri = new Uri("/TestPage1.xaml", UriKind.Relative),
+                    RecurrenceType = RecurrenceInterval.Daily,
+                    Title = "Take med title" // change this
+                };
+                ScheduledActionService.Add(App.MedList[App.MedID].reminder4);
+            }
+            if ((bool)ToggleButton5.IsChecked)
+            {
+                App.MedList[App.MedID].reminder5 = new Reminder("rem5")
+                {
+                    BeginTime = (DateTime)Time5.Value,
+                    Content = "Take pills", // welke med toevoegen hier
+                    ExpirationTime = ((DateTime)Time5.Value).AddDays(1),
+                    NavigationUri = new Uri("/TestPage1.xaml", UriKind.Relative),
+                    RecurrenceType = RecurrenceInterval.Daily,
+                    Title = "Take med title" // change this
+                };
+                ScheduledActionService.Add(App.MedList[App.MedID].reminder5);
+            }
+            if ((bool)ToggleButton6.IsChecked)
+            {
+                App.MedList[App.MedID].reminder6 = new Reminder("rem6")
+                {
+                    BeginTime = (DateTime)Time6.Value,
+                    Content = "Take pills", // welke med toevoegen hier
+                    ExpirationTime = ((DateTime)Time6.Value).AddDays(1),
+                    NavigationUri = new Uri("/TestPage1.xaml", UriKind.Relative),
+                    RecurrenceType = RecurrenceInterval.Daily,
+                    Title = "Take med title" // change this
+                };
+                ScheduledActionService.Add(App.MedList[App.MedID].reminder6);
+            }
 
-            #region hardcode reminder
-            //    if ((bool)ToggleButton1.IsChecked)
-            //    {
-            //        App.MedList[App.MedID].Reminder[1] = new Reminder("rem1")
-            //        {
-            //            BeginTime = (DateTime)Time1.Value,
-            //            Content = "Take pills",  // welke med toevoegen hier
-            //            ExpirationTime = ((DateTime)Time1.Value).AddDays(1),
-            //            NavigationUri = new Uri("/TestPage1.xaml", UriKind.Relative),
-            //            RecurrenceType = RecurrenceInterval.Daily,
-            //            Title = "Take med title" // change this
-            //        };
-            //        ScheduledActionService.Add(App.MedList[App.MedID].Reminder[1]);
-            //    }
-            //    if ((bool)ToggleButton2.IsChecked)
-            //    {
-            //        App.MedList[App.MedID].Reminder[2] = new Reminder("rem2")
-            //        {
-            //            BeginTime = (DateTime)Time2.Value,
-            //            Content = "Take pills",  // welke med toevoegen hier
-            //            ExpirationTime = ((DateTime)Time2.Value).AddDays(1),
-            //            NavigationUri = new Uri("/TestPage1.xaml", UriKind.Relative),
-            //            RecurrenceType = RecurrenceInterval.Daily,
-            //            Title = "Take med title" // change this
-            //        };
-            //        ScheduledActionService.Add(App.MedList[App.MedID].Reminder[2]);
-            //    }
-            //    if ((bool)ToggleButton3.IsChecked)
-            //    {
-            //        App.MedList[App.MedID].Reminder[3] = new Reminder("rem3")
-            //            {
-            //                BeginTime = (DateTime)Time3.Value,
-            //                Content = "Take pills", // welke med toevoegen hier
-            //                ExpirationTime = ((DateTime)Time3.Value).AddDays(1),
-            //                NavigationUri = new Uri("/TestPage1.xaml", UriKind.Relative),
-            //                RecurrenceType = RecurrenceInterval.Daily,
-            //                Title = "Take med title" // change this
-            //            };
-            //        ScheduledActionService.Add(App.MedList[App.MedID].Reminder[3]);
-            //    }
-            //    if ((bool)ToggleButton4.IsChecked)
-            //    {
-            //        App.MedList[App.MedID].Reminder[4] = new Reminder("rem4")
-            //        {
-            //            BeginTime = (DateTime)Time4.Value,
-            //            Content = "Take pills", // welke med toevoegen hier
-            //            ExpirationTime = ((DateTime)Time4.Value).AddDays(1),
-            //            NavigationUri = new Uri("/TestPage1.xaml", UriKind.Relative),
-            //            RecurrenceType = RecurrenceInterval.Daily,
-            //            Title = "Take med title" // change this
-            //        };
-            //        ScheduledActionService.Add(App.MedList[App.MedID].Reminder[4]);
-            //    }
-            //    if ((bool)ToggleButton5.IsChecked)
-            //    {
-            //        App.MedList[App.MedID].Reminder[5] = new Reminder("rem5")
-            //        {
-            //            BeginTime = (DateTime)Time5.Value,
-            //            Content = "Take pills", // welke med toevoegen hier
-            //            ExpirationTime = ((DateTime)Time5.Value).AddDays(1),
-            //            NavigationUri = new Uri("/TestPage1.xaml", UriKind.Relative),
-            //            RecurrenceType = RecurrenceInterval.Daily,
-            //            Title = "Take med title" // change this
-            //        };
-            //        ScheduledActionService.Add(App.MedList[App.MedID].Reminder[5]);
-            //    }
-            //    if ((bool)ToggleButton6.IsChecked)
-            //    {
-            //        App.MedList[App.MedID].Reminder[6] = new Reminder("rem6")
-            //        {
-            //            BeginTime = (DateTime)Time6.Value,
-            //            Content = "Take pills", // welke med toevoegen hier
-            //            ExpirationTime = ((DateTime)Time6.Value).AddDays(1),
-            //            NavigationUri = new Uri("/TestPage1.xaml", UriKind.Relative),
-            //            RecurrenceType = RecurrenceInterval.Daily,
-            //            Title = "Take med title" // change this
-            //        };
-            //        ScheduledActionService.Add(App.MedList[App.MedID].Reminder[6]);
-            //    }
+            */
 
-            //    NavigationService.Navigate(new Uri(string.Format("/MedListOverview.xaml"), UriKind.Relative));
-            #endregion
-//>>>>>>> 2a21007... Kalender is af
+        }
+
+        void client_CreatePrescriptionCompleted(object sender, MedCareCloudServiceReference.CreatePrescriptionCompletedEventArgs e)
+        {
+            if (e.Result == "success")
+                MessageBox.Show("Prescription added! :)");
+            else
+                MessageBox.Show("Oops, something went wrong :(\n\rFailed to add prescription\n\rError: " + e.Result);
         }
 
 

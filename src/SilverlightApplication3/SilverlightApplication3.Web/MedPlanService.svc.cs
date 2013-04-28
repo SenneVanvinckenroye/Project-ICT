@@ -35,7 +35,6 @@ namespace SilverlightApplication3.Web
             foreach (var item in us)
             {
                 alist.Add(new Model.User() { FName = item.FName, LName = item.LName});
-                
             }
 
             return alist;
@@ -119,11 +118,11 @@ namespace SilverlightApplication3.Web
             else
                 return null;
         }
-
+        SqlConnection con;
         public string CreateNewUser(string FName, string LName, string pass_hash, string email, char sex, int docID, char type, DateTime bday, string address, int ssn)
         {
             ///using SQL to insert new user
-            using (SqlConnection con = new SqlConnection("Server=tcp:kqayqahno5.database.windows.net;Database=medplanner-2013-3-15-11-53;User ID=medagent@kqayqahno5;Password=Finland1!;Trusted_Connection=False;"))
+            using (con = new SqlConnection("Server=tcp:kqayqahno5.database.windows.net;Database=medplanner-2013-3-15-11-53;User ID=medagent@kqayqahno5;Password=Finland1!;Trusted_Connection=False;"))
             {
                 try
                 {
@@ -131,7 +130,7 @@ namespace SilverlightApplication3.Web
                 }
                 catch
                 {
-                    return "o";
+                    return "SQL Connection Error";
                 }
                 try
                 {
@@ -149,6 +148,7 @@ namespace SilverlightApplication3.Web
                         command.Parameters.Add(new SqlParameter("@ssn", ssn));
                         command.ExecuteNonQuery();
                         con.Close();
+                        con.Dispose();
                     }
                 }
                 catch (SqlException e)
@@ -190,7 +190,7 @@ namespace SilverlightApplication3.Web
             }
             catch
             {
-                return "m";
+                return "Failed to retrieve MemberID";
             }
             //nu patient toevoegen met memberID en docID
             /*Patient ptnt = new Patient();
@@ -207,6 +207,110 @@ namespace SilverlightApplication3.Web
                 return 'p';
             }*/
             return "k";
+        }
+
+        public string CreatePrescription(string DrugName, DateTime StartDate, DateTime EndDate, int Quantity, TimeSpan Time1, TimeSpan Time2, TimeSpan Time3, TimeSpan Time4, TimeSpan Time5, TimeSpan Time6, string Description, string Course, int PatientID, string Type, char Taken1, char Taken2, char Taken3, char Taken4, char Taken5, char Taken6)
+        {
+            try
+            {
+                using (con = new SqlConnection("Server=tcp:kqayqahno5.database.windows.net;Database=medplanner-2013-3-15-11-53;User ID=medagent@kqayqahno5;Password=Finland1!;Trusted_Connection=False;"))
+                {
+                    try
+                    {
+                        con.Open();
+                    }
+                    catch
+                    {
+                        return "SQL Connection error";
+                    }
+                    try
+                    {
+                        using (SqlCommand command = new SqlCommand(
+                        "INSERT INTO Prescriptions (StartDate, EndDate, Type, Quantity, DrugName, DDescription, Course, PatientID, Time1, Taken1, Time2, Taken2, Time3, Taken3, Time4, Taken4, Time5, Taken5, Time6, Taken6) VALUES (@StartDate, @EndDate, @Type, @Quantity, @DrugName, @DDescription, @Course, @PatientID, @Time1, @Taken1, @Time2, @Taken2, @Time3, @Taken3, @Time4, @Taken4, @Time5, @Taken5, @Time6, @Taken6)", con))
+                        {
+                            command.Parameters.Add(new SqlParameter("@StartDate", StartDate));
+                            command.Parameters.Add(new SqlParameter("@EndDate", EndDate));
+                            command.Parameters.Add(new SqlParameter("@Quantity", Quantity));
+                            command.Parameters.Add(new SqlParameter("@Taken1", Taken1));
+                            command.Parameters.Add(new SqlParameter("@Taken2", Taken2));
+                            command.Parameters.Add(new SqlParameter("@Taken3", Taken3));
+                            command.Parameters.Add(new SqlParameter("@Taken4", Taken4));
+                            command.Parameters.Add(new SqlParameter("@Taken5", Taken5));
+                            command.Parameters.Add(new SqlParameter("@Taken6", Taken6));
+                            command.Parameters.Add(new SqlParameter("@Time1", Time1));
+                            command.Parameters.Add(new SqlParameter("@Time2", Time2));
+                            command.Parameters.Add(new SqlParameter("@Time3", Time3));
+                            command.Parameters.Add(new SqlParameter("@Time4", Time4));
+                            command.Parameters.Add(new SqlParameter("@Time5", Time5));
+                            command.Parameters.Add(new SqlParameter("@Time6", Time6));
+                            command.Parameters.Add(new SqlParameter("@DrugName", DrugName));
+                            command.Parameters.Add(new SqlParameter("@DDescription", Description));
+                            command.Parameters.Add(new SqlParameter("@Course", Course));
+                            command.Parameters.Add(new SqlParameter("@PatientID", PatientID));
+                            command.Parameters.Add(new SqlParameter("@Type", Type));
+                            command.ExecuteNonQuery();
+                            con.Close();
+                            con.Dispose();
+                        }
+                    }
+                    catch (SqlException e)
+                    {
+                        return e.Message;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                return e.Message;
+            }
+            return "success";
+        }
+        public Model.Patient GetPatientData(int MemberID)
+        {
+            Model.Patient Patient = new Model.Patient();
+            try
+            {
+                DataClasses1DataContext dc = new DataClasses1DataContext();
+                var patient = from p in dc.Patients
+                              where p.MemberID == MemberID
+                              select new { p.PatientID, p.DocID };
+
+                foreach (var p in patient)
+                {
+                    Patient.PatientID = p.PatientID;
+                    Patient.MemberID = MemberID;
+                    Patient.DocID = p.DocID;
+                }
+            }
+            catch
+            {
+                Model.Patient failPatient = new Model.Patient();
+                failPatient.PatientID = -1;
+                return failPatient;
+            }
+            return Patient;
+        }
+
+        public List<Model.Prescription> GetPrescriptionsForPatient(int PatientID)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            List<Model.Prescription> prescriptions = new List<Model.Prescription>();
+
+            var pres = from p in dc.Prescriptions
+                          where p.PatientID == PatientID
+                          select p;
+
+            foreach (var i in pres)
+            {
+                prescriptions.Add(new Model.Prescription() { PrescriptionID = i.PrescriptionID, StartDate = i.StartDate, EndDate = i.EndDate,
+                    PatientID = i.PatientID, Course = i.Course, DDescription = i.DDescription, DrugName = i.DrugName, Quantity = i.Quantity,
+                    Taken1 = i.Taken1, Taken2 = (char)i.Taken2, Taken3 = (char)i.Taken3, Taken4 = (char)i.Taken4, Taken5 = (char)i.Taken5, Taken6 = (char)i.Taken6,
+                    Time1 = i.Time1, Time2 = (TimeSpan)i.Time2, Time3 = (TimeSpan)i.Time3, Time4 = (TimeSpan)i.Time4, Time5 = (TimeSpan)i.Time5, Time6 = (TimeSpan)i.Time6 });
+            }
+            if (prescriptions.Count() > 0)
+                return prescriptions;
+            else
+                return null;
         }
     }
 }

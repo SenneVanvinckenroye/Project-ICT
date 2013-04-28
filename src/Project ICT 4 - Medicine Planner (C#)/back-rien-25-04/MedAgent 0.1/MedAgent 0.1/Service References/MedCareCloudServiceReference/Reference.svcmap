@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="84cb2f48-4943-44a9-ae1d-3776b05022a5" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.ObjectModel.ObservableCollection`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>false</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://medcarecloudservice.cloudapp.net/MedPlanService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="MedPlanService1.xsd" MetadataType="Schema" ID="ed9ea073-b0b4-4d63-9f3e-35234c9f90b1" SourceId="1" SourceUrl="http://medcarecloudservice.cloudapp.net/MedPlanService.svc?xsd=xsd1" />
+    <MetadataFile FileName="MedPlanService.xsd" MetadataType="Schema" ID="adaf87f6-611a-4d59-93c8-84d2c4a727bd" SourceId="1" SourceUrl="http://medcarecloudservice.cloudapp.net/MedPlanService.svc?xsd=xsd2" />
+    <MetadataFile FileName="MedPlanService.disco" MetadataType="Disco" ID="05057d65-1549-4569-b71d-34e0c73506e4" SourceId="1" SourceUrl="http://medcarecloudservice.cloudapp.net/MedPlanService.svc?disco" />
+    <MetadataFile FileName="MedPlanService2.xsd" MetadataType="Schema" ID="01884f98-3a61-488e-b9f0-3f910bcf141f" SourceId="1" SourceUrl="http://medcarecloudservice.cloudapp.net/MedPlanService.svc?xsd=xsd0" />
+    <MetadataFile FileName="MedPlanService.wsdl" MetadataType="Wsdl" ID="b3780fb0-e55c-40c3-92c3-61505c06d90d" SourceId="1" SourceUrl="http://medcarecloudservice.cloudapp.net/MedPlanService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

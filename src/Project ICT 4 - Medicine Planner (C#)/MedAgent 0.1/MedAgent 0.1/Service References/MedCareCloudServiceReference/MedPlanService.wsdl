@@ -43,6 +43,24 @@
   <wsdl:message name="IMedPlanService_SendEmail_OutputMessage">
     <wsdl:part name="parameters" element="tns:SendEmailResponse" />
   </wsdl:message>
+  <wsdl:message name="IMedPlanService_CreatePrescription_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreatePrescription" />
+  </wsdl:message>
+  <wsdl:message name="IMedPlanService_CreatePrescription_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreatePrescriptionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMedPlanService_GetPatientData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPatientData" />
+  </wsdl:message>
+  <wsdl:message name="IMedPlanService_GetPatientData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPatientDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMedPlanService_GetPrescriptionsForPatient_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPrescriptionsForPatient" />
+  </wsdl:message>
+  <wsdl:message name="IMedPlanService_GetPrescriptionsForPatient_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPrescriptionsForPatientResponse" />
+  </wsdl:message>
   <wsdl:portType name="IMedPlanService">
     <wsdl:operation name="DoWork">
       <wsdl:input wsaw:Action="http://tempuri.org/IMedPlanService/DoWork" message="tns:IMedPlanService_DoWork_InputMessage" />
@@ -67,6 +85,18 @@
     <wsdl:operation name="SendEmail">
       <wsdl:input wsaw:Action="http://tempuri.org/IMedPlanService/SendEmail" message="tns:IMedPlanService_SendEmail_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IMedPlanService/SendEmailResponse" message="tns:IMedPlanService_SendEmail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreatePrescription">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMedPlanService/CreatePrescription" message="tns:IMedPlanService_CreatePrescription_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMedPlanService/CreatePrescriptionResponse" message="tns:IMedPlanService_CreatePrescription_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPatientData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMedPlanService/GetPatientData" message="tns:IMedPlanService_GetPatientData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMedPlanService/GetPatientDataResponse" message="tns:IMedPlanService_GetPatientData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPrescriptionsForPatient">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMedPlanService/GetPrescriptionsForPatient" message="tns:IMedPlanService_GetPrescriptionsForPatient_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMedPlanService/GetPrescriptionsForPatientResponse" message="tns:IMedPlanService_GetPrescriptionsForPatient_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IMedPlanService" type="tns:IMedPlanService">
@@ -118,6 +148,33 @@
     </wsdl:operation>
     <wsdl:operation name="SendEmail">
       <soap:operation soapAction="http://tempuri.org/IMedPlanService/SendEmail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreatePrescription">
+      <soap:operation soapAction="http://tempuri.org/IMedPlanService/CreatePrescription" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPatientData">
+      <soap:operation soapAction="http://tempuri.org/IMedPlanService/GetPatientData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPrescriptionsForPatient">
+      <soap:operation soapAction="http://tempuri.org/IMedPlanService/GetPrescriptionsForPatient" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

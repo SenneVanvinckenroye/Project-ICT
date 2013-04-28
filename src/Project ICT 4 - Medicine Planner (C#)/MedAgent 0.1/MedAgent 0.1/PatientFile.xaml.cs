@@ -21,9 +21,19 @@ namespace MediAgent
 {
     public partial class PatientFile : PhoneApplicationPage
     {
+        //Helper Class for showing some of the data we pull from the MedList in the ListBox
+        public class MedData
+        {
+            public string Name { get; set; }
+            //public string Description { get; set; }
+            public ImageSource ImageSource { get; set; }
+            public string StartDate { get; set; }
 
+        }
+
+        MedAgent_0_1.MedCareCloudServiceReference.MedPlanServiceClient client;
       
-        //WTF DOET DEES???
+        //Als ge op deze pagina terecht komt kunde checke of den dokter ne patient wil toevoege OF ne patient zen medicijnen wil toevoegen???
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             string addPatient = "false";
@@ -41,8 +51,47 @@ namespace MediAgent
                     NavigationService.GoBack();
                 }
             }
+            string isPatient = "false";
+            if (this.NavigationContext.QueryString.TryGetValue("isPatient", out isPatient))
+            {
+                if (isPatient == "true")
+                {
+                    MedAgent_0_1.MedCareCloudServiceReference.MedPlanServiceClient client;
+                    client = new MedAgent_0_1.MedCareCloudServiceReference.MedPlanServiceClient();
+                    client.GetPatientDataAsync(MainPage.userMemberID);//geef login MemberID door van patient om verdere gegevens op te halen
+                    client.GetPatientDataCompleted += new EventHandler<MedAgent_0_1.MedCareCloudServiceReference.GetPatientDataCompletedEventArgs>(client_GetPatientDataCompleted);
+                    client.GetPrescriptionsForPatientAsync(App.PublicPatient.Id);
+                    client.GetPrescriptionsForPatientCompleted += new EventHandler<MedAgent_0_1.MedCareCloudServiceReference.GetPrescriptionsForPatientCompletedEventArgs>(client_GetPrescriptionsForPatientCompleted);
+                }
+                else
+                {
+                    MessageBox.Show("Something went wrong\n\rRedirecting...");
+                    NavigationService.GoBack();
+                }
+            }
 
             PatName.Text = App.PublicPatient.FirstName + " " + App.PublicPatient.LastName;
+        }
+
+        void client_GetPrescriptionsForPatientCompleted(object sender, MedAgent_0_1.MedCareCloudServiceReference.GetPrescriptionsForPatientCompletedEventArgs e)
+        {
+            if(e.Result != null)
+                MedListBox.Items.Add(e.Result);
+            else
+                MessageBox.Show("Oops, error happened :(\n\rWe couldn't retrieve the Medication List");
+        }
+
+        void client_GetPatientDataCompleted(object sender, MedAgent_0_1.MedCareCloudServiceReference.GetPatientDataCompletedEventArgs e)
+        {
+            if (e.Result.PatientID != -1)
+            {
+                App.PublicPatient.Id = e.Result.PatientID;
+            }
+            else
+            {
+                MessageBox.Show("Something went wrong\n\rRedirecting...");
+                NavigationService.GoBack();
+            }
         }
 
         //Constructor
@@ -51,10 +100,25 @@ namespace MediAgent
             InitializeComponent();
 
 
+            MedData tempMedData = new MedData();
+
             //Load all medication
             foreach (Medication item in App.MedList)
             {
+                //If there was no photo taken for this Medication show the default picture
+                if (item.MedPhoto == null)
+                {
 
+                    tempMedData.ImageSource = item.MedPhoto;
+
+                }
+
+                tempMedData.ImageSource = item.MedPhoto;
+
+
+                //Assign the values from the MedList to the right item that is databound to it
+                tempMedData.Name = item.Name;
+                tempMedData.StartDate = item.StartDate.ToShortDateString();
                 MedListBox.Items.Add(item);
 
             
@@ -172,6 +236,11 @@ namespace MediAgent
         }
 
 
+
+
+
+
+
         //Go to the AddMedPage and create a new Medication object
         private void ApplicationBarAddButton_OnClick(object sender, EventArgs e)
         {
@@ -179,6 +248,12 @@ namespace MediAgent
             App.MedList.Add(new Medication());
 
             NavigationService.Navigate(new Uri(string.Format("/AddMedPage.xaml"), UriKind.Relative));
+
+        }
+
+       
+        private void ApplicationBarDeleteButton_OnClick(object sender, EventArgs e)
+        {
 
         }
         #endregion

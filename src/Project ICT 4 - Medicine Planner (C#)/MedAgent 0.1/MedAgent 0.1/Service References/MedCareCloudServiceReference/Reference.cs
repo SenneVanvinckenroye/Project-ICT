@@ -315,6 +315,336 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Prescription", Namespace="http://schemas.datacontract.org/2004/07/SilverlightApplication3.Web.Model")]
+    public partial class Prescription : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string CourseField;
+        
+        private string DDescriptionField;
+        
+        private string DrugNameField;
+        
+        private System.DateTime EndDateField;
+        
+        private int PatientIDField;
+        
+        private int PrescriptionIDField;
+        
+        private int QuantityField;
+        
+        private System.DateTime StartDateField;
+        
+        private char Taken1Field;
+        
+        private char Taken2Field;
+        
+        private char Taken3Field;
+        
+        private char Taken4Field;
+        
+        private char Taken5Field;
+        
+        private char Taken6Field;
+        
+        private System.TimeSpan Time1Field;
+        
+        private System.TimeSpan Time2Field;
+        
+        private System.TimeSpan Time3Field;
+        
+        private System.TimeSpan Time4Field;
+        
+        private System.TimeSpan Time5Field;
+        
+        private System.TimeSpan Time6Field;
+        
+        private string TypeField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Course {
+            get {
+                return this.CourseField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CourseField, value) != true)) {
+                    this.CourseField = value;
+                    this.RaisePropertyChanged("Course");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DDescription {
+            get {
+                return this.DDescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DDescriptionField, value) != true)) {
+                    this.DDescriptionField = value;
+                    this.RaisePropertyChanged("DDescription");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DrugName {
+            get {
+                return this.DrugNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DrugNameField, value) != true)) {
+                    this.DrugNameField = value;
+                    this.RaisePropertyChanged("DrugName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime EndDate {
+            get {
+                return this.EndDateField;
+            }
+            set {
+                if ((this.EndDateField.Equals(value) != true)) {
+                    this.EndDateField = value;
+                    this.RaisePropertyChanged("EndDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int PatientID {
+            get {
+                return this.PatientIDField;
+            }
+            set {
+                if ((this.PatientIDField.Equals(value) != true)) {
+                    this.PatientIDField = value;
+                    this.RaisePropertyChanged("PatientID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int PrescriptionID {
+            get {
+                return this.PrescriptionIDField;
+            }
+            set {
+                if ((this.PrescriptionIDField.Equals(value) != true)) {
+                    this.PrescriptionIDField = value;
+                    this.RaisePropertyChanged("PrescriptionID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Quantity {
+            get {
+                return this.QuantityField;
+            }
+            set {
+                if ((this.QuantityField.Equals(value) != true)) {
+                    this.QuantityField = value;
+                    this.RaisePropertyChanged("Quantity");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime StartDate {
+            get {
+                return this.StartDateField;
+            }
+            set {
+                if ((this.StartDateField.Equals(value) != true)) {
+                    this.StartDateField = value;
+                    this.RaisePropertyChanged("StartDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public char Taken1 {
+            get {
+                return this.Taken1Field;
+            }
+            set {
+                if ((this.Taken1Field.Equals(value) != true)) {
+                    this.Taken1Field = value;
+                    this.RaisePropertyChanged("Taken1");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public char Taken2 {
+            get {
+                return this.Taken2Field;
+            }
+            set {
+                if ((this.Taken2Field.Equals(value) != true)) {
+                    this.Taken2Field = value;
+                    this.RaisePropertyChanged("Taken2");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public char Taken3 {
+            get {
+                return this.Taken3Field;
+            }
+            set {
+                if ((this.Taken3Field.Equals(value) != true)) {
+                    this.Taken3Field = value;
+                    this.RaisePropertyChanged("Taken3");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public char Taken4 {
+            get {
+                return this.Taken4Field;
+            }
+            set {
+                if ((this.Taken4Field.Equals(value) != true)) {
+                    this.Taken4Field = value;
+                    this.RaisePropertyChanged("Taken4");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public char Taken5 {
+            get {
+                return this.Taken5Field;
+            }
+            set {
+                if ((this.Taken5Field.Equals(value) != true)) {
+                    this.Taken5Field = value;
+                    this.RaisePropertyChanged("Taken5");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public char Taken6 {
+            get {
+                return this.Taken6Field;
+            }
+            set {
+                if ((this.Taken6Field.Equals(value) != true)) {
+                    this.Taken6Field = value;
+                    this.RaisePropertyChanged("Taken6");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.TimeSpan Time1 {
+            get {
+                return this.Time1Field;
+            }
+            set {
+                if ((this.Time1Field.Equals(value) != true)) {
+                    this.Time1Field = value;
+                    this.RaisePropertyChanged("Time1");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.TimeSpan Time2 {
+            get {
+                return this.Time2Field;
+            }
+            set {
+                if ((this.Time2Field.Equals(value) != true)) {
+                    this.Time2Field = value;
+                    this.RaisePropertyChanged("Time2");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.TimeSpan Time3 {
+            get {
+                return this.Time3Field;
+            }
+            set {
+                if ((this.Time3Field.Equals(value) != true)) {
+                    this.Time3Field = value;
+                    this.RaisePropertyChanged("Time3");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.TimeSpan Time4 {
+            get {
+                return this.Time4Field;
+            }
+            set {
+                if ((this.Time4Field.Equals(value) != true)) {
+                    this.Time4Field = value;
+                    this.RaisePropertyChanged("Time4");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.TimeSpan Time5 {
+            get {
+                return this.Time5Field;
+            }
+            set {
+                if ((this.Time5Field.Equals(value) != true)) {
+                    this.Time5Field = value;
+                    this.RaisePropertyChanged("Time5");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.TimeSpan Time6 {
+            get {
+                return this.Time6Field;
+            }
+            set {
+                if ((this.Time6Field.Equals(value) != true)) {
+                    this.Time6Field = value;
+                    this.RaisePropertyChanged("Time6");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Type {
+            get {
+                return this.TypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TypeField, value) != true)) {
+                    this.TypeField = value;
+                    this.RaisePropertyChanged("Type");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="MedCareCloudServiceReference.IMedPlanService")]
     public interface IMedPlanService {
@@ -348,6 +678,43 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
         System.IAsyncResult BeginSendEmail(string PatientEmail, string PatientFName, string DoctorLName, string PatientPass, System.AsyncCallback callback, object asyncState);
         
         bool EndSendEmail(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IMedPlanService/CreatePrescription", ReplyAction="http://tempuri.org/IMedPlanService/CreatePrescriptionResponse")]
+        System.IAsyncResult BeginCreatePrescription(
+                    string DrugName, 
+                    System.DateTime StartDarte, 
+                    System.DateTime EndDate, 
+                    int Quantity, 
+                    System.TimeSpan Time1, 
+                    System.TimeSpan Time2, 
+                    System.TimeSpan Time3, 
+                    System.TimeSpan Time4, 
+                    System.TimeSpan Time5, 
+                    System.TimeSpan Time6, 
+                    string Description, 
+                    string Course, 
+                    int PatientID, 
+                    string Type, 
+                    char Taken1, 
+                    char Taken2, 
+                    char Taken3, 
+                    char Taken4, 
+                    char Taken5, 
+                    char Taken6, 
+                    System.AsyncCallback callback, 
+                    object asyncState);
+        
+        string EndCreatePrescription(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IMedPlanService/GetPatientData", ReplyAction="http://tempuri.org/IMedPlanService/GetPatientDataResponse")]
+        System.IAsyncResult BeginGetPatientData(int MemberID, System.AsyncCallback callback, object asyncState);
+        
+        MedAgent_0_1.MedCareCloudServiceReference.Patient EndGetPatientData(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IMedPlanService/GetPrescriptionsForPatient", ReplyAction="http://tempuri.org/IMedPlanService/GetPrescriptionsForPatientResponse")]
+        System.IAsyncResult BeginGetPrescriptionsForPatient(int PatientID, System.AsyncCallback callback, object asyncState);
+        
+        System.Collections.ObjectModel.ObservableCollection<MedAgent_0_1.MedCareCloudServiceReference.Prescription> EndGetPrescriptionsForPatient(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -451,6 +818,63 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class CreatePrescriptionCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public CreatePrescriptionCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public string Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetPatientDataCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetPatientDataCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public MedAgent_0_1.MedCareCloudServiceReference.Patient Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((MedAgent_0_1.MedCareCloudServiceReference.Patient)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetPrescriptionsForPatientCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetPrescriptionsForPatientCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public System.Collections.ObjectModel.ObservableCollection<MedAgent_0_1.MedCareCloudServiceReference.Prescription> Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((System.Collections.ObjectModel.ObservableCollection<MedAgent_0_1.MedCareCloudServiceReference.Prescription>)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class MedPlanServiceClient : System.ServiceModel.ClientBase<MedAgent_0_1.MedCareCloudServiceReference.IMedPlanService>, MedAgent_0_1.MedCareCloudServiceReference.IMedPlanService {
         
         private BeginOperationDelegate onBeginDoWorkDelegate;
@@ -488,6 +912,24 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
         private EndOperationDelegate onEndSendEmailDelegate;
         
         private System.Threading.SendOrPostCallback onSendEmailCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginCreatePrescriptionDelegate;
+        
+        private EndOperationDelegate onEndCreatePrescriptionDelegate;
+        
+        private System.Threading.SendOrPostCallback onCreatePrescriptionCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginGetPatientDataDelegate;
+        
+        private EndOperationDelegate onEndGetPatientDataDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetPatientDataCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginGetPrescriptionsForPatientDelegate;
+        
+        private EndOperationDelegate onEndGetPrescriptionsForPatientDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetPrescriptionsForPatientCompletedDelegate;
         
         private BeginOperationDelegate onBeginOpenDelegate;
         
@@ -553,6 +995,12 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
         public event System.EventHandler<CreateNewUserCompletedEventArgs> CreateNewUserCompleted;
         
         public event System.EventHandler<SendEmailCompletedEventArgs> SendEmailCompleted;
+        
+        public event System.EventHandler<CreatePrescriptionCompletedEventArgs> CreatePrescriptionCompleted;
+        
+        public event System.EventHandler<GetPatientDataCompletedEventArgs> GetPatientDataCompleted;
+        
+        public event System.EventHandler<GetPrescriptionsForPatientCompletedEventArgs> GetPrescriptionsForPatientCompleted;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> OpenCompleted;
         
@@ -855,6 +1303,245 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
                         PatientPass}, this.onEndSendEmailDelegate, this.onSendEmailCompletedDelegate, userState);
         }
         
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult MedAgent_0_1.MedCareCloudServiceReference.IMedPlanService.BeginCreatePrescription(
+                    string DrugName, 
+                    System.DateTime StartDarte, 
+                    System.DateTime EndDate, 
+                    int Quantity, 
+                    System.TimeSpan Time1, 
+                    System.TimeSpan Time2, 
+                    System.TimeSpan Time3, 
+                    System.TimeSpan Time4, 
+                    System.TimeSpan Time5, 
+                    System.TimeSpan Time6, 
+                    string Description, 
+                    string Course, 
+                    int PatientID, 
+                    string Type, 
+                    char Taken1, 
+                    char Taken2, 
+                    char Taken3, 
+                    char Taken4, 
+                    char Taken5, 
+                    char Taken6, 
+                    System.AsyncCallback callback, 
+                    object asyncState) {
+            return base.Channel.BeginCreatePrescription(DrugName, StartDarte, EndDate, Quantity, Time1, Time2, Time3, Time4, Time5, Time6, Description, Course, PatientID, Type, Taken1, Taken2, Taken3, Taken4, Taken5, Taken6, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        string MedAgent_0_1.MedCareCloudServiceReference.IMedPlanService.EndCreatePrescription(System.IAsyncResult result) {
+            return base.Channel.EndCreatePrescription(result);
+        }
+        
+        private System.IAsyncResult OnBeginCreatePrescription(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string DrugName = ((string)(inValues[0]));
+            System.DateTime StartDarte = ((System.DateTime)(inValues[1]));
+            System.DateTime EndDate = ((System.DateTime)(inValues[2]));
+            int Quantity = ((int)(inValues[3]));
+            System.TimeSpan Time1 = ((System.TimeSpan)(inValues[4]));
+            System.TimeSpan Time2 = ((System.TimeSpan)(inValues[5]));
+            System.TimeSpan Time3 = ((System.TimeSpan)(inValues[6]));
+            System.TimeSpan Time4 = ((System.TimeSpan)(inValues[7]));
+            System.TimeSpan Time5 = ((System.TimeSpan)(inValues[8]));
+            System.TimeSpan Time6 = ((System.TimeSpan)(inValues[9]));
+            string Description = ((string)(inValues[10]));
+            string Course = ((string)(inValues[11]));
+            int PatientID = ((int)(inValues[12]));
+            string Type = ((string)(inValues[13]));
+            char Taken1 = ((char)(inValues[14]));
+            char Taken2 = ((char)(inValues[15]));
+            char Taken3 = ((char)(inValues[16]));
+            char Taken4 = ((char)(inValues[17]));
+            char Taken5 = ((char)(inValues[18]));
+            char Taken6 = ((char)(inValues[19]));
+            return ((MedAgent_0_1.MedCareCloudServiceReference.IMedPlanService)(this)).BeginCreatePrescription(DrugName, StartDarte, EndDate, Quantity, Time1, Time2, Time3, Time4, Time5, Time6, Description, Course, PatientID, Type, Taken1, Taken2, Taken3, Taken4, Taken5, Taken6, callback, asyncState);
+        }
+        
+        private object[] OnEndCreatePrescription(System.IAsyncResult result) {
+            string retVal = ((MedAgent_0_1.MedCareCloudServiceReference.IMedPlanService)(this)).EndCreatePrescription(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnCreatePrescriptionCompleted(object state) {
+            if ((this.CreatePrescriptionCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.CreatePrescriptionCompleted(this, new CreatePrescriptionCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void CreatePrescriptionAsync(
+                    string DrugName, 
+                    System.DateTime StartDarte, 
+                    System.DateTime EndDate, 
+                    int Quantity, 
+                    System.TimeSpan Time1, 
+                    System.TimeSpan Time2, 
+                    System.TimeSpan Time3, 
+                    System.TimeSpan Time4, 
+                    System.TimeSpan Time5, 
+                    System.TimeSpan Time6, 
+                    string Description, 
+                    string Course, 
+                    int PatientID, 
+                    string Type, 
+                    char Taken1, 
+                    char Taken2, 
+                    char Taken3, 
+                    char Taken4, 
+                    char Taken5, 
+                    char Taken6) {
+            this.CreatePrescriptionAsync(DrugName, StartDarte, EndDate, Quantity, Time1, Time2, Time3, Time4, Time5, Time6, Description, Course, PatientID, Type, Taken1, Taken2, Taken3, Taken4, Taken5, Taken6, null);
+        }
+        
+        public void CreatePrescriptionAsync(
+                    string DrugName, 
+                    System.DateTime StartDarte, 
+                    System.DateTime EndDate, 
+                    int Quantity, 
+                    System.TimeSpan Time1, 
+                    System.TimeSpan Time2, 
+                    System.TimeSpan Time3, 
+                    System.TimeSpan Time4, 
+                    System.TimeSpan Time5, 
+                    System.TimeSpan Time6, 
+                    string Description, 
+                    string Course, 
+                    int PatientID, 
+                    string Type, 
+                    char Taken1, 
+                    char Taken2, 
+                    char Taken3, 
+                    char Taken4, 
+                    char Taken5, 
+                    char Taken6, 
+                    object userState) {
+            if ((this.onBeginCreatePrescriptionDelegate == null)) {
+                this.onBeginCreatePrescriptionDelegate = new BeginOperationDelegate(this.OnBeginCreatePrescription);
+            }
+            if ((this.onEndCreatePrescriptionDelegate == null)) {
+                this.onEndCreatePrescriptionDelegate = new EndOperationDelegate(this.OnEndCreatePrescription);
+            }
+            if ((this.onCreatePrescriptionCompletedDelegate == null)) {
+                this.onCreatePrescriptionCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnCreatePrescriptionCompleted);
+            }
+            base.InvokeAsync(this.onBeginCreatePrescriptionDelegate, new object[] {
+                        DrugName,
+                        StartDarte,
+                        EndDate,
+                        Quantity,
+                        Time1,
+                        Time2,
+                        Time3,
+                        Time4,
+                        Time5,
+                        Time6,
+                        Description,
+                        Course,
+                        PatientID,
+                        Type,
+                        Taken1,
+                        Taken2,
+                        Taken3,
+                        Taken4,
+                        Taken5,
+                        Taken6}, this.onEndCreatePrescriptionDelegate, this.onCreatePrescriptionCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult MedAgent_0_1.MedCareCloudServiceReference.IMedPlanService.BeginGetPatientData(int MemberID, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetPatientData(MemberID, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        MedAgent_0_1.MedCareCloudServiceReference.Patient MedAgent_0_1.MedCareCloudServiceReference.IMedPlanService.EndGetPatientData(System.IAsyncResult result) {
+            return base.Channel.EndGetPatientData(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetPatientData(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int MemberID = ((int)(inValues[0]));
+            return ((MedAgent_0_1.MedCareCloudServiceReference.IMedPlanService)(this)).BeginGetPatientData(MemberID, callback, asyncState);
+        }
+        
+        private object[] OnEndGetPatientData(System.IAsyncResult result) {
+            MedAgent_0_1.MedCareCloudServiceReference.Patient retVal = ((MedAgent_0_1.MedCareCloudServiceReference.IMedPlanService)(this)).EndGetPatientData(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetPatientDataCompleted(object state) {
+            if ((this.GetPatientDataCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetPatientDataCompleted(this, new GetPatientDataCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetPatientDataAsync(int MemberID) {
+            this.GetPatientDataAsync(MemberID, null);
+        }
+        
+        public void GetPatientDataAsync(int MemberID, object userState) {
+            if ((this.onBeginGetPatientDataDelegate == null)) {
+                this.onBeginGetPatientDataDelegate = new BeginOperationDelegate(this.OnBeginGetPatientData);
+            }
+            if ((this.onEndGetPatientDataDelegate == null)) {
+                this.onEndGetPatientDataDelegate = new EndOperationDelegate(this.OnEndGetPatientData);
+            }
+            if ((this.onGetPatientDataCompletedDelegate == null)) {
+                this.onGetPatientDataCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetPatientDataCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetPatientDataDelegate, new object[] {
+                        MemberID}, this.onEndGetPatientDataDelegate, this.onGetPatientDataCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult MedAgent_0_1.MedCareCloudServiceReference.IMedPlanService.BeginGetPrescriptionsForPatient(int PatientID, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetPrescriptionsForPatient(PatientID, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Collections.ObjectModel.ObservableCollection<MedAgent_0_1.MedCareCloudServiceReference.Prescription> MedAgent_0_1.MedCareCloudServiceReference.IMedPlanService.EndGetPrescriptionsForPatient(System.IAsyncResult result) {
+            return base.Channel.EndGetPrescriptionsForPatient(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetPrescriptionsForPatient(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int PatientID = ((int)(inValues[0]));
+            return ((MedAgent_0_1.MedCareCloudServiceReference.IMedPlanService)(this)).BeginGetPrescriptionsForPatient(PatientID, callback, asyncState);
+        }
+        
+        private object[] OnEndGetPrescriptionsForPatient(System.IAsyncResult result) {
+            System.Collections.ObjectModel.ObservableCollection<MedAgent_0_1.MedCareCloudServiceReference.Prescription> retVal = ((MedAgent_0_1.MedCareCloudServiceReference.IMedPlanService)(this)).EndGetPrescriptionsForPatient(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetPrescriptionsForPatientCompleted(object state) {
+            if ((this.GetPrescriptionsForPatientCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetPrescriptionsForPatientCompleted(this, new GetPrescriptionsForPatientCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetPrescriptionsForPatientAsync(int PatientID) {
+            this.GetPrescriptionsForPatientAsync(PatientID, null);
+        }
+        
+        public void GetPrescriptionsForPatientAsync(int PatientID, object userState) {
+            if ((this.onBeginGetPrescriptionsForPatientDelegate == null)) {
+                this.onBeginGetPrescriptionsForPatientDelegate = new BeginOperationDelegate(this.OnBeginGetPrescriptionsForPatient);
+            }
+            if ((this.onEndGetPrescriptionsForPatientDelegate == null)) {
+                this.onEndGetPrescriptionsForPatientDelegate = new EndOperationDelegate(this.OnEndGetPrescriptionsForPatient);
+            }
+            if ((this.onGetPrescriptionsForPatientCompletedDelegate == null)) {
+                this.onGetPrescriptionsForPatientCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetPrescriptionsForPatientCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetPrescriptionsForPatientDelegate, new object[] {
+                        PatientID}, this.onEndGetPrescriptionsForPatientDelegate, this.onGetPrescriptionsForPatientCompletedDelegate, userState);
+        }
+        
         private System.IAsyncResult OnBeginOpen(object[] inValues, System.AsyncCallback callback, object asyncState) {
             return ((System.ServiceModel.ICommunicationObject)(this)).BeginOpen(callback, asyncState);
         }
@@ -1016,6 +1703,86 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
             public bool EndSendEmail(System.IAsyncResult result) {
                 object[] _args = new object[0];
                 bool _result = ((bool)(base.EndInvoke("SendEmail", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginCreatePrescription(
+                        string DrugName, 
+                        System.DateTime StartDarte, 
+                        System.DateTime EndDate, 
+                        int Quantity, 
+                        System.TimeSpan Time1, 
+                        System.TimeSpan Time2, 
+                        System.TimeSpan Time3, 
+                        System.TimeSpan Time4, 
+                        System.TimeSpan Time5, 
+                        System.TimeSpan Time6, 
+                        string Description, 
+                        string Course, 
+                        int PatientID, 
+                        string Type, 
+                        char Taken1, 
+                        char Taken2, 
+                        char Taken3, 
+                        char Taken4, 
+                        char Taken5, 
+                        char Taken6, 
+                        System.AsyncCallback callback, 
+                        object asyncState) {
+                object[] _args = new object[20];
+                _args[0] = DrugName;
+                _args[1] = StartDarte;
+                _args[2] = EndDate;
+                _args[3] = Quantity;
+                _args[4] = Time1;
+                _args[5] = Time2;
+                _args[6] = Time3;
+                _args[7] = Time4;
+                _args[8] = Time5;
+                _args[9] = Time6;
+                _args[10] = Description;
+                _args[11] = Course;
+                _args[12] = PatientID;
+                _args[13] = Type;
+                _args[14] = Taken1;
+                _args[15] = Taken2;
+                _args[16] = Taken3;
+                _args[17] = Taken4;
+                _args[18] = Taken5;
+                _args[19] = Taken6;
+                System.IAsyncResult _result = base.BeginInvoke("CreatePrescription", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public string EndCreatePrescription(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                string _result = ((string)(base.EndInvoke("CreatePrescription", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginGetPatientData(int MemberID, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = MemberID;
+                System.IAsyncResult _result = base.BeginInvoke("GetPatientData", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public MedAgent_0_1.MedCareCloudServiceReference.Patient EndGetPatientData(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                MedAgent_0_1.MedCareCloudServiceReference.Patient _result = ((MedAgent_0_1.MedCareCloudServiceReference.Patient)(base.EndInvoke("GetPatientData", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginGetPrescriptionsForPatient(int PatientID, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = PatientID;
+                System.IAsyncResult _result = base.BeginInvoke("GetPrescriptionsForPatient", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public System.Collections.ObjectModel.ObservableCollection<MedAgent_0_1.MedCareCloudServiceReference.Prescription> EndGetPrescriptionsForPatient(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                System.Collections.ObjectModel.ObservableCollection<MedAgent_0_1.MedCareCloudServiceReference.Prescription> _result = ((System.Collections.ObjectModel.ObservableCollection<MedAgent_0_1.MedCareCloudServiceReference.Prescription>)(base.EndInvoke("GetPrescriptionsForPatient", _args, result)));
                 return _result;
             }
         }

@@ -1,0 +1,58 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="MediAgent.DoctorView1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:system="clr-namespace:System;assembly=mscorlib"
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="800"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait"  Orientation="Portrait"
+    shell:SystemTray.IsVisible="False"
+    >
+
+    <!--LayoutRoot contains the root grid where all other page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="White">
+
+        <controls:Panorama Title="MedCare" Foreground="#FFC7DA1B">
+
+            <!--Panorama item one-->
+            <controls:PanoramaItem Header="Patient list" Foreground="#FFC7DA1D" FontSize="26">
+                <Grid>
+                    <ListBox Margin="30,0,0,0" FontSize="35" x:Name="PatientLst" SelectionChanged="PatientList_SelectionChanged" Foreground="#FF2895DA"></ListBox>
+                </Grid>
+            </controls:PanoramaItem>
+
+            <!--Panorama item two-->
+            <controls:PanoramaItem Header="Add Patient" >
+                <Grid>
+                    <TextBox x:Name="TxtboxFirstName" HorizontalAlignment="Left" Height="72" Margin="124,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="296" Background="White" BorderBrush="#FF3FC1DF" />
+                    <TextBox x:Name="TxtboxLastName" HorizontalAlignment="Left" Height="72" Margin="124,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="296" Background="White" BorderBrush="#FF3FC1DF" />
+                    <TextBox x:Name="TxtboxEmail" HorizontalAlignment="Left" Height="72" Margin="124,154,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="296" Background="White" BorderBrush="#FF3FC1DF" />
+                    <TextBlock HorizontalAlignment="Left" Margin="20,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="First Name" Foreground="#FF556193" />
+                    <TextBlock HorizontalAlignment="Left" Margin="20,102,0,0" TextWrapping="Wrap" Text="Last Name" VerticalAlignment="Top" Foreground="#FF556193" />
+                    <TextBlock HorizontalAlignment="Left" Margin="20,176,0,0" TextWrapping="Wrap" Text="Email" VerticalAlignment="Top" Foreground="#FF556193" />
+
+                    <Button Content="Continue" HorizontalAlignment="Left" Margin="78,341,0,0" VerticalAlignment="Top" Width="260" Click="Button_Click_1" Background="Transparent" BorderBrush="#FFC7DA1B" Foreground="#FF3FC1DF" Height="85" />
+
+                </Grid>
+            </controls:PanoramaItem>
+        </controls:Panorama>
+    </Grid>
+    <!--<phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">-->
+            <!--<shell:ApplicationBarIconButton IconUri="/Images/appbar_button1.png" Text="Button 1"/>
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button2.png" Text="Button 2"/>-->
+            <!--<shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Text="MenuItem 1"/>
+                <shell:ApplicationBarMenuItem Text="MenuItem 2"/>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>-->
+</phone:PhoneApplicationPage>
+    

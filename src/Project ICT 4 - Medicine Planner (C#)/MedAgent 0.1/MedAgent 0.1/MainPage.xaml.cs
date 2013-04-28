@@ -63,6 +63,7 @@ namespace MedAgent_0_1
         }
         
         public static string userFName, userLName, userEmail;//global vars to reach userdata in other pages
+        public static int userMemberID;
 
         void client_LoginCompleted(object sender, MedCareCloudServiceReference.LoginCompletedEventArgs e)
         {
@@ -76,11 +77,12 @@ namespace MedAgent_0_1
                 userFName = e.Result.FName;
                 userLName = e.Result.LName;
                 userEmail = e.Result.email;
+                userMemberID = e.Result.MemberID;
                 switch(e.Result.UserType)
                 {
                     case 'p'://patient
                     {
-                        NavigationService.Navigate(new Uri(string.Format("/PatientFile.xaml"), UriKind.Relative));
+                        NavigationService.Navigate(new Uri("/PatientFile.xaml?isPatient=true", UriKind.Relative));
                         break;
                     }
                     case 'd'://dokter

@@ -29,5 +29,14 @@ namespace SilverlightApplication3.Web
 
         [OperationContract]
         bool SendEmail(string PatientEmail, string PatientFName, string DoctorLName, string PatientPass);
+
+        [OperationContract]
+        string CreatePrescription(string DrugName, DateTime StartDarte, DateTime EndDate, int Quantity, TimeSpan Time1, TimeSpan Time2, TimeSpan Time3, TimeSpan Time4, TimeSpan Time5, TimeSpan Time6, string Description, string Course, int PatientID, string Type, char Taken1, char Taken2, char Taken3, char Taken4, char Taken5, char Taken6);
+
+        [OperationContract]
+        Model.Patient GetPatientData(int MemberID);
+
+        [OperationContract]
+        List<Model.Prescription> GetPrescriptionsForPatient(int PatientID);
     }
 }

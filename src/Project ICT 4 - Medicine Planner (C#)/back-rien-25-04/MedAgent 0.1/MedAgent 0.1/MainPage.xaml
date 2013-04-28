@@ -1,0 +1,63 @@
+﻿<phone:PhoneApplicationPage
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+	xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:edc="clr-namespace:Microsoft.Expression.Controls;assembly=Microsoft.Expression.Drawing"
+	mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
+	x:Class="MedAgent_0_1.MainPage"
+	FontFamily="{StaticResource PhoneFontFamilyNormal}"
+	FontSize="{StaticResource PhoneFontSizeNormal}"
+	Foreground="{StaticResource PhoneForegroundBrush}"
+	SupportedOrientations="Portrait" Orientation="Portrait"
+	shell:SystemTray.IsVisible="True">
+
+
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+	<Grid x:Name="LayoutRoot" Margin="0,0,0,1" Background="#FFF7F7F7">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition/>
+		</Grid.RowDefinitions>
+
+		<!--TitlePanel contains the name of the application and page title-->
+
+		<!--TitlePanel contains the name of the application and page title-->
+		<Border BorderBrush="#FFF1DC30" BorderThickness="0,0,0,4" Margin="0,10,0,0"/>
+
+		<!--TitlePanel contains the name of the application and page title-->
+		<StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,29">
+			<TextBlock x:Name="ApplicationTitle" Text="MED CARE" Style="{StaticResource PhoneTextNormalStyle}" Foreground="#FF556193"/>
+			<TextBlock x:Name="PageTitle" Text="Welcome" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" Foreground="#FF556193"/>
+		</StackPanel>
+
+		<!--ContentPanel - place additional content here-->
+		<Grid x:Name="ContentPanel" Grid.Row="1" Margin="0,-1,0,1">
+            <Border BorderThickness="5" Height="503" Width="435" Background="#FFCAE756" BorderBrush="#FFF1DC30" Margin="24,45,21,57" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel Height="399" Width="350" Margin="0,0,0,0">
+                    <TextBlock Margin="12,0,40,0" TextWrapping="Wrap" Text="Email" d:LayoutOverrides="Width" Foreground="#FF556193"/>
+                    <TextBox x:Name="EmailBox" Text="rien.vanbeek@student.artesis.be" Margin="0,0,0,0" TextWrapping="Wrap" Background="#BFFFFFFF" InputScope="EmailSmtpAddress" BorderBrush="#FF3FC1DF" />
+                    <TextBlock Margin="12,0,5,0" TextWrapping="Wrap" Text="Password" d:LayoutOverrides="Width" Foreground="#FF556193" />
+                    <PasswordBox x:Name="Paswoord_pswdbx" Margin="0,0,0,0" Foreground="Black" Background="#BFFFFFFF" BorderBrush="#FF3FC1DF"/>
+                    <Button x:Name="LogInButtonPatient" Content="Log In"  Click="LogInButtonPatient_Click" VerticalAlignment="Top" Height="72" Foreground="#FF556193"/>
+                    <Button x:Name="byPass" Content="offline" Height="74" Click="byPass_Click"></Button>
+                </StackPanel>
+            </Border>
+        </Grid>
+        
+		<Popup x:Name="ErrorPopup" VerticalOffset="300" HorizontalOffset="100" OpacityMask="#B1FF0707">
+			<Border BorderThickness="2" Height="200" Width="250" Background="#FFF16C6C" BorderBrush="#FFCAE756" HorizontalAlignment="Center" VerticalAlignment="Center">
+				<StackPanel HorizontalAlignment="Center">
+					<TextBlock x:Name="error_txblck" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Auto" Height="75" Text="ErrorValueTest"/>
+					<Button x:Name="Confirm_btn" Content="OK" HorizontalAlignment="Center" VerticalAlignment="Top" Background="Transparent" Click="confirmButton_Click" Foreground="#FFCAE756"/>
+				</StackPanel>
+			</Border>
+        </Popup>
+    </Grid>
+
+
+    
+</phone:PhoneApplicationPage>

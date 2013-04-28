@@ -292,6 +292,9 @@
     <None Include="Service References\MedCareCloudServiceReference\MedAgent_0_1.MedCareCloudServiceReference.Patient.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\MedCareCloudServiceReference\MedAgent_0_1.MedCareCloudServiceReference.Prescription.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\MedCareCloudServiceReference\MedAgent_0_1.MedCareCloudServiceReference.User.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
