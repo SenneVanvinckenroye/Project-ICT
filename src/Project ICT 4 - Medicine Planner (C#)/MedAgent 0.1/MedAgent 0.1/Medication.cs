@@ -15,7 +15,24 @@ namespace MedAgent_0_1
 {
     public class Medication
     {
-        public DateTime[] Time { get; set; }
+
+
+        public DateTime[] Times { get; set; }
+        
+
+        private DateTime DefaultTime = new DateTime(1600,1,1);
+
+        public Medication()
+        {
+            //When the times aren't set they will be given the default value
+            Times = new DateTime[]
+                {
+                    DefaultTime,DefaultTime,DefaultTime,DefaultTime,DefaultTime,DefaultTime
+                };
+
+ 
+        }
+
 
         public List<List<bool>> Taken { get; set; }
 
@@ -32,8 +49,8 @@ namespace MedAgent_0_1
 
         public string Course { get; set; }
 
-        public int[] Amount { get; set; }
+        public int Amount { get; set; }
 
-        public Reminder[] Reminder { get; set; }
+        public Reminder[] Reminders { get; set; }
     }
 }

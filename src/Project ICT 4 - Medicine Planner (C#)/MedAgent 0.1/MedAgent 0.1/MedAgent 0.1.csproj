@@ -51,21 +51,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Coding4Fun.Toolkit.Audio">
-      <HintPath>..\..\..\..\..\..\..\coding4fun\Coding4Fun.Toolkit.Audio.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\..\..\..\..\..\..\..\coding4fun\Coding4Fun.Toolkit.Audio.dll</HintPath>
     </Reference>
-    <Reference Include="Coding4Fun.Toolkit.Controls, Version=2.0.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\coding4fun\Coding4Fun.Toolkit.Controls.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Coding4Fun.Toolkit.Controls">
+      <HintPath>..\..\..\..\..\..\..\..\coding4fun\Coding4Fun.Toolkit.Controls.dll</HintPath>
     </Reference>
     <Reference Include="Coding4Fun.Toolkit.Net">
-      <HintPath>..\..\..\..\..\..\..\coding4fun\Coding4Fun.Toolkit.Net.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\..\..\..\..\..\..\..\coding4fun\Coding4Fun.Toolkit.Net.dll</HintPath>
     </Reference>
     <Reference Include="Coding4Fun.Toolkit.Storage">
-      <HintPath>..\..\..\..\..\..\..\coding4fun\Coding4Fun.Toolkit.Storage.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\..\..\..\..\..\..\..\coding4fun\Coding4Fun.Toolkit.Storage.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Advertising.Mobile">
       <Private>True</Private>
@@ -82,7 +77,7 @@
     <Reference Include="Microsoft.Phone.Controls, Version=7.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Phone.Controls.Toolkit, Version=7.0.0.0, Culture=neutral, PublicKeyToken=b772ad94eb9ca604, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Phone.Controls.Toolkit, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b772ad94eb9ca604, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Phone.Interop">
       <Private>True</Private>
     </Reference>
@@ -116,20 +111,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddMedicationPage.xaml.cs">
-      <DependentUpon>AddMedicationPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="AddMedPage.xaml.cs">
       <DependentUpon>AddMedPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AddMedPlanPage.xaml.cs">
-      <DependentUpon>AddMedPlanPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="AddPatientFile.xaml.cs">
       <DependentUpon>AddPatientFile.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="AnimatedSplashScreen.xaml.cs">
-      <DependentUpon>AnimatedSplashScreen.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
@@ -170,23 +156,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
-    <Page Include="AddMedicationPage.xaml">
-      <Generator>MSBuild:MarkupCompilePass1</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="AddMedPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="AddMedPlanPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="AddPatientFile.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="AnimatedSplashScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -210,8 +184,77 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="ResourceDictionary.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Icons\black, without circle\add.png" />
+    <Resource Include="Icons\black, without circle\back.png" />
+    <Resource Include="Icons\black, without circle\camera.png" />
+    <Resource Include="Icons\black, without circle\cancel.png" />
+    <Resource Include="Icons\black, without circle\check.png" />
+    <Resource Include="Icons\black, without circle\delete.png" />
+    <Resource Include="Icons\black, without circle\download.png" />
+    <Resource Include="Icons\black, without circle\edit.png" />
+    <Resource Include="Icons\black, without circle\favs.addto.png" />
+    <Resource Include="Icons\black, without circle\favs.png" />
+    <Resource Include="Icons\black, without circle\ff.png" />
+    <Resource Include="Icons\black, without circle\flag.png" />
+    <Resource Include="Icons\black, without circle\folder.png" />
+    <Resource Include="Icons\black, without circle\heart.png" />
+    <Resource Include="Icons\black, without circle\i.png" />
+    <Resource Include="Icons\black, without circle\mail.png" />
+    <Resource Include="Icons\black, without circle\minus.png" />
+    <Resource Include="Icons\black, without circle\next.png" />
+    <Resource Include="Icons\black, without circle\overflowdots.png" />
+    <Resource Include="Icons\black, without circle\parent.png" />
+    <Resource Include="Icons\black, without circle\pause.png" />
+    <Resource Include="Icons\black, without circle\phone.png" />
+    <Resource Include="Icons\black, without circle\play.png" />
+    <Resource Include="Icons\black, without circle\questionmark.png" />
+    <Resource Include="Icons\black, without circle\refresh.png" />
+    <Resource Include="Icons\black, without circle\rew.png" />
+    <Resource Include="Icons\black, without circle\save.png" />
+    <Resource Include="Icons\black, without circle\search.png" />
+    <Resource Include="Icons\black, without circle\settings.png" />
+    <Resource Include="Icons\black, without circle\share.png" />
+    <Resource Include="Icons\black, without circle\upload.png" />
+    <Resource Include="Icons\black, without circle\video.png" />
+    <Resource Include="Icons\black\add.png" />
+    <Resource Include="Icons\black\back.png" />
+    <Resource Include="Icons\black\basecircle.png" />
+    <Resource Include="Icons\black\camera.png" />
+    <Resource Include="Icons\black\cancel.png" />
+    <Resource Include="Icons\black\check.png" />
+    <Resource Include="Icons\black\delete.png" />
+    <Resource Include="Icons\black\download.png" />
+    <Resource Include="Icons\black\edit.png" />
+    <Resource Include="Icons\black\favs.addto.png" />
+    <Resource Include="Icons\black\favs.png" />
+    <Resource Include="Icons\black\ff.png" />
+    <Resource Include="Icons\black\flag.png" />
+    <Resource Include="Icons\black\folder.png" />
+    <Resource Include="Icons\black\heart.png" />
+    <Resource Include="Icons\black\i.png" />
+    <Resource Include="Icons\black\mail.png" />
+    <Resource Include="Icons\black\minus.png" />
+    <Resource Include="Icons\black\next.png" />
+    <Resource Include="Icons\black\overflowdots.png" />
+    <Resource Include="Icons\black\parent.png" />
+    <Resource Include="Icons\black\pause.png" />
+    <Resource Include="Icons\black\phone.png" />
+    <Resource Include="Icons\black\play.png" />
+    <Resource Include="Icons\black\questionmark.png" />
+    <Resource Include="Icons\black\refresh.png" />
+    <Resource Include="Icons\black\rew.png" />
+    <Resource Include="Icons\black\save.png" />
+    <Resource Include="Icons\black\search.png" />
+    <Resource Include="Icons\black\settings.png" />
+    <Resource Include="Icons\black\share.png" />
+    <Resource Include="Icons\black\upload.png" />
+    <Resource Include="Icons\black\video.png" />
     <Content Include="Icons\dark\appbar.add.rest.png" />
     <Content Include="Icons\dark\appbar.back.rest.png" />
     <Content Include="Icons\dark\appbar.basecircle.rest.png" />
@@ -279,6 +322,71 @@
     <Resource Include="Icons\light\appbar.upload.rest.png" />
     <Content Include="Icons\light\LightIcons.dll" />
     <Content Include="Icons\vector\Vectors.dll" />
+    <Resource Include="Icons\white, without circle\add.png" />
+    <Resource Include="Icons\white, without circle\back.png" />
+    <Resource Include="Icons\white, without circle\camera.png" />
+    <Resource Include="Icons\white, without circle\cancel.png" />
+    <Resource Include="Icons\white, without circle\check.png" />
+    <Resource Include="Icons\white, without circle\delete.png" />
+    <Resource Include="Icons\white, without circle\download.png" />
+    <Resource Include="Icons\white, without circle\edit.png" />
+    <Resource Include="Icons\white, without circle\favs.addto.png" />
+    <Resource Include="Icons\white, without circle\favs.png" />
+    <Resource Include="Icons\white, without circle\ff.png" />
+    <Resource Include="Icons\white, without circle\flag.png" />
+    <Resource Include="Icons\white, without circle\folder.png" />
+    <Resource Include="Icons\white, without circle\heart.png" />
+    <Resource Include="Icons\white, without circle\i.png" />
+    <Resource Include="Icons\white, without circle\mail.png" />
+    <Resource Include="Icons\white, without circle\minus.png" />
+    <Resource Include="Icons\white, without circle\next.png" />
+    <Resource Include="Icons\white, without circle\overflowdots.png" />
+    <Resource Include="Icons\white, without circle\parent.png" />
+    <Resource Include="Icons\white, without circle\pause.png" />
+    <Resource Include="Icons\white, without circle\phone.png" />
+    <Resource Include="Icons\white, without circle\play.png" />
+    <Resource Include="Icons\white, without circle\questionmark.png" />
+    <Resource Include="Icons\white, without circle\refresh.png" />
+    <Resource Include="Icons\white, without circle\rew.png" />
+    <Resource Include="Icons\white, without circle\save.png" />
+    <Resource Include="Icons\white, without circle\search.png" />
+    <Resource Include="Icons\white, without circle\settings.png" />
+    <Resource Include="Icons\white, without circle\share.png" />
+    <Resource Include="Icons\white, without circle\upload.png" />
+    <Resource Include="Icons\white, without circle\video.png" />
+    <Resource Include="Icons\white\add.png" />
+    <Resource Include="Icons\white\back.png" />
+    <Resource Include="Icons\white\basecircle.png" />
+    <Resource Include="Icons\white\camera.png" />
+    <Resource Include="Icons\white\cancel.png" />
+    <Resource Include="Icons\white\check.png" />
+    <Resource Include="Icons\white\delete.png" />
+    <Resource Include="Icons\white\download.png" />
+    <Resource Include="Icons\white\edit.png" />
+    <Resource Include="Icons\white\favs.addto.png" />
+    <Resource Include="Icons\white\favs.png" />
+    <Resource Include="Icons\white\ff.png" />
+    <Resource Include="Icons\white\flag.png" />
+    <Resource Include="Icons\white\folder.png" />
+    <Resource Include="Icons\white\heart.png" />
+    <Resource Include="Icons\white\i.png" />
+    <Resource Include="Icons\white\mail.png" />
+    <Resource Include="Icons\white\minus.png" />
+    <Resource Include="Icons\white\next.png" />
+    <Resource Include="Icons\white\overflowdots.png" />
+    <Resource Include="Icons\white\parent.png" />
+    <Resource Include="Icons\white\pause.png" />
+    <Resource Include="Icons\white\phone.png" />
+    <Resource Include="Icons\white\play.png" />
+    <Resource Include="Icons\white\questionmark.png" />
+    <Resource Include="Icons\white\refresh.png" />
+    <Resource Include="Icons\white\rew.png" />
+    <Resource Include="Icons\white\save.png" />
+    <Resource Include="Icons\white\search.png" />
+    <Resource Include="Icons\white\settings.png" />
+    <Resource Include="Icons\white\share.png" />
+    <Resource Include="Icons\white\upload.png" />
+    <Resource Include="Icons\white\video.png" />
     <Content Include="README_FIRST.txt" />
     <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Check.png" />

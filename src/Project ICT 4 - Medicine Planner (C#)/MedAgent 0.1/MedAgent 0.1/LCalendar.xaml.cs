@@ -273,7 +273,7 @@ namespace CalendarControl
                                 MedDay = true;
                                 if (temp.Date <= DateTime.Now.Date)
                                 {
-                                    foreach (DateTime times in App.MedList[App.MedID].Time)
+                                    foreach (DateTime times in App.MedList[App.MedID].Times)
                                     {
                                         if (times.Date != new DateTime(0001, 1, 1)) // date is not initial date
                                         {

@@ -97,7 +97,7 @@ namespace MedAgent_0_1
             //test code!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             App.MedList.Add(new Medication()
             {
-                Amount = new int[] { 1, 2, 3, 4, 5, 6 },
+                Amount = 100,
                 Description = "testmed",
                 EndDate = new DateTime(2013, 04, 30),
                 Interval = 3,
@@ -123,7 +123,7 @@ namespace MedAgent_0_1
                             new List<bool>(){true,true,true,false,false,false}
                         },
 
-                Time = new DateTime[]{
+                Times = new DateTime[]{
                             new DateTime(2013,04,24,06,00,00),
                             new DateTime(2013,04,24,08,00,00), 
                             new DateTime(), 
