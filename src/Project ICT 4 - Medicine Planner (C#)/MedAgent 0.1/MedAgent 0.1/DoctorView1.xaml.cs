@@ -120,5 +120,11 @@ namespace MediAgent
             }
 
         }
+
+        private void PhonesListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //Call the patient his number, VETTEN DJAB
+
+        }
     }
 }
