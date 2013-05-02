@@ -119,7 +119,7 @@ namespace SilverlightApplication3.Web
                 return null;
         }
         SqlConnection con;
-        public string CreateNewUser(string FName, string LName, string pass_hash, string email, char sex, int docID, char type, DateTime bday, string address, int ssn)
+        public string CreateNewUser(string FName, string LName, string pass_hash, string email, char sex, int docID, char type, DateTime bday, string address, int ssn, int DocID, int phoneNumber)
         {
             try
             {
@@ -137,7 +137,7 @@ namespace SilverlightApplication3.Web
                         try
                         {
                             using (SqlCommand command = new SqlCommand(
-                            "INSERT INTO Users (FName, LName, pass_hash, sex, email, bday, ssn, UserType, address) VALUES (@FName, @LName, @pass_hash, @sex, @email, @bday, @ssn, @UserType, @address)", con))
+                            "INSERT INTO Users (FName, LName, pass_hash, sex, email, bday, ssn, UserType, address, phoneNumber) VALUES (@FName, @LName, @pass_hash, @sex, @email, @bday, @ssn, @UserType, @address, @phoneNumber)", con))
                             {
                                 command.Parameters.Add(new SqlParameter("@FName", FName));
                                 command.Parameters.Add(new SqlParameter("@LName", LName));
@@ -148,6 +148,7 @@ namespace SilverlightApplication3.Web
                                 command.Parameters.Add(new SqlParameter("@bday", bday));
                                 command.Parameters.Add(new SqlParameter("@address", address));
                                 command.Parameters.Add(new SqlParameter("@ssn", ssn));
+                                command.Parameters.Add(new SqlParameter("@phoneNumber", phoneNumber));
                                 command.ExecuteNonQuery();
                                 con.Close();
                                 con.Dispose();
@@ -155,7 +156,7 @@ namespace SilverlightApplication3.Web
                         }
                         catch (SqlException e)
                         {
-                            Console.WriteLine(e.Message);
+                            return e.Message;
                         }
                     }
 
@@ -193,19 +194,23 @@ namespace SilverlightApplication3.Web
                         return "Failed to retrieve MemberID";
                     }
                     //nu patient toevoegen met memberID en docID
-                    Patient ptnt = new Patient();
-                    ptnt.DocID = docID;
-                    ptnt.MemberID = usr.MemberID;
-                    dc.Patients.InsertOnSubmit(ptnt);
                     try
                     {
-                        dc.SubmitChanges();//patient toevoegen
-                        return "k";
+                        using (SqlCommand command = new SqlCommand(
+                                    "INSERT INTO Patients (MemberID, DocID) VALUES (@MemberID, @DocID)", con))
+                        {
+                            command.Parameters.Add(new SqlParameter("@MemberID", usr.MemberID));
+                            command.Parameters.Add(new SqlParameter("@DocID", DocID));
+                            command.ExecuteNonQuery();
+                            con.Close();
+                            con.Dispose();
+                        }
                     }
                     catch
                     {
-                        return "p";
+                        return "Failed to add to Patients table";
                     }
+                    return "k";
                 }
                 catch (Exception e)
                 {

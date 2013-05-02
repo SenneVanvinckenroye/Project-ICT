@@ -25,7 +25,7 @@ namespace SilverlightApplication3.Web
         Model.User Login(string email, string pswd_hash);
 
         [OperationContract]
-        string CreateNewUser(string FName,string LName, string pass_hash, string email, char sex, int docID, char type, DateTime bday, string address, int ssn);//return type char for debugging
+        string CreateNewUser(string FName, string LName, string pass_hash, string email, char sex, int docID, char type, DateTime bday, string address, int ssn, int DocID, int phoneNumber);//return type char for debugging
 
         [OperationContract]
         bool SendEmail(string PatientEmail, string PatientFName, string DoctorLName, string PatientPass);

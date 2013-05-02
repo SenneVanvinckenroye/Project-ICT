@@ -44,6 +44,8 @@
                         <TextBlock Text="Sex" Margin="0,18,0,18"></TextBlock>
                         <TextBlock Text="Email" Margin="0,18,0,18"></TextBlock>
                         <TextBlock Text="SSN" Margin="0,18,0,18"></TextBlock>
+                        <TextBlock Text="Address" Margin="0,18,0,18"></TextBlock>
+                        <TextBlock Text="Phone nr." Margin="0,18,0,18"></TextBlock>
                     </StackPanel>
                 </Border>
 
@@ -58,6 +60,8 @@
                     <TextBox x:Name="PatSexEdit" Text="type: m or f" Foreground="#FF0BD47C" BorderBrush="#FF1BA1E2"></TextBox>
                     <TextBox x:Name="PatEmailEdit" Text="Patient Email" Foreground="#FF0BD47C" BorderBrush="#FF1BA1E2"></TextBox>
                     <TextBox x:Name="PatSsnEdit" Text="Patient SSN" Foreground="#FF0BD47C" BorderBrush="#FF1BA1E2"></TextBox>
+                    <TextBox x:Name="PatAddress" Text="Address" Foreground="#FF0BD47C" BorderBrush="#FF1BA1E2"></TextBox>
+                    <TextBox x:Name="PatPhoneNumber" Text="" Foreground="#FF0BD47C" BorderBrush="#FF1BA1E2"></TextBox>
                 </StackPanel>
             </Grid>
             

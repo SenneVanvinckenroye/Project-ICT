@@ -84,7 +84,7 @@ namespace MedAgent_0_1
             bool isNum = Int32.TryParse(PatSsnEdit.Text,out SSN);
             if (PatNameEdit.Text != "" && PatFirstnameEdit.Text != "" && (PatSexEdit.Text.ToCharArray().First() == 'm' || PatSexEdit.Text.ToCharArray().First() == 'f') && Validator.EmailIsValid(PatEmailEdit.Text) && (PatSsnEdit.Text!="" && isNum) )
             {
-                 client.CreateNewUserAsync(PatFirstnameEdit.Text, PatNameEdit.Text, randomPassHash, PatEmailEdit.Text, PatSexEdit.Text.ToCharArray().FirstOrDefault(), 1, 'p', MyDateTime, "lippenslaan knokke", Convert.ToInt32(PatSsnEdit.Text));
+                 client.CreateNewUserAsync(PatFirstnameEdit.Text, PatNameEdit.Text, randomPassHash, PatEmailEdit.Text, PatSexEdit.Text.ToCharArray().FirstOrDefault(), 1, 'p', MyDateTime, PatAddress.Text, Convert.ToInt32(PatSsnEdit.Text), DocID1, PatPhoneNumber.Text);
             }
 
             else

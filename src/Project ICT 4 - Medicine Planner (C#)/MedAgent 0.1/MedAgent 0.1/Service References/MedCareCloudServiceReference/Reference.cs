@@ -670,7 +670,7 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
         MedAgent_0_1.MedCareCloudServiceReference.User EndLogin(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IMedPlanService/CreateNewUser", ReplyAction="http://tempuri.org/IMedPlanService/CreateNewUserResponse")]
-        System.IAsyncResult BeginCreateNewUser(string FName, string LName, string pass_hash, string email, char sex, int docID, char type, System.DateTime bday, string address, int ssn, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult BeginCreateNewUser(string FName, string LName, string pass_hash, string email, char sex, int docID, char type, System.DateTime bday, string address, int ssn, [System.ServiceModel.MessageParameterAttribute(Name="DocID")] int DocID1, int phoneNumber, System.AsyncCallback callback, object asyncState);
         
         string EndCreateNewUser(System.IAsyncResult result);
         
@@ -1188,8 +1188,8 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.IAsyncResult MedAgent_0_1.MedCareCloudServiceReference.IMedPlanService.BeginCreateNewUser(string FName, string LName, string pass_hash, string email, char sex, int docID, char type, System.DateTime bday, string address, int ssn, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginCreateNewUser(FName, LName, pass_hash, email, sex, docID, type, bday, address, ssn, callback, asyncState);
+        System.IAsyncResult MedAgent_0_1.MedCareCloudServiceReference.IMedPlanService.BeginCreateNewUser(string FName, string LName, string pass_hash, string email, char sex, int docID, char type, System.DateTime bday, string address, int ssn, int DocID1, int phoneNumber, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginCreateNewUser(FName, LName, pass_hash, email, sex, docID, type, bday, address, ssn, DocID1, phoneNumber, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -1208,7 +1208,9 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
             System.DateTime bday = ((System.DateTime)(inValues[7]));
             string address = ((string)(inValues[8]));
             int ssn = ((int)(inValues[9]));
-            return ((MedAgent_0_1.MedCareCloudServiceReference.IMedPlanService)(this)).BeginCreateNewUser(FName, LName, pass_hash, email, sex, docID, type, bday, address, ssn, callback, asyncState);
+            int DocID1 = ((int)(inValues[10]));
+            int phoneNumber = ((int)(inValues[11]));
+            return ((MedAgent_0_1.MedCareCloudServiceReference.IMedPlanService)(this)).BeginCreateNewUser(FName, LName, pass_hash, email, sex, docID, type, bday, address, ssn, DocID1, phoneNumber, callback, asyncState);
         }
         
         private object[] OnEndCreateNewUser(System.IAsyncResult result) {
@@ -1224,11 +1226,11 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
             }
         }
         
-        public void CreateNewUserAsync(string FName, string LName, string pass_hash, string email, char sex, int docID, char type, System.DateTime bday, string address, int ssn) {
-            this.CreateNewUserAsync(FName, LName, pass_hash, email, sex, docID, type, bday, address, ssn, null);
+        public void CreateNewUserAsync(string FName, string LName, string pass_hash, string email, char sex, int docID, char type, System.DateTime bday, string address, int ssn, int DocID1, int phoneNumber) {
+            this.CreateNewUserAsync(FName, LName, pass_hash, email, sex, docID, type, bday, address, ssn, DocID1, phoneNumber, null);
         }
         
-        public void CreateNewUserAsync(string FName, string LName, string pass_hash, string email, char sex, int docID, char type, System.DateTime bday, string address, int ssn, object userState) {
+        public void CreateNewUserAsync(string FName, string LName, string pass_hash, string email, char sex, int docID, char type, System.DateTime bday, string address, int ssn, int DocID1, int phoneNumber, object userState) {
             if ((this.onBeginCreateNewUserDelegate == null)) {
                 this.onBeginCreateNewUserDelegate = new BeginOperationDelegate(this.OnBeginCreateNewUser);
             }
@@ -1248,7 +1250,9 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
                         type,
                         bday,
                         address,
-                        ssn}, this.onEndCreateNewUserDelegate, this.onCreateNewUserCompletedDelegate, userState);
+                        ssn,
+                        DocID1,
+                        phoneNumber}, this.onEndCreateNewUserDelegate, this.onCreateNewUserCompletedDelegate, userState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -1668,8 +1672,8 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
                 return _result;
             }
             
-            public System.IAsyncResult BeginCreateNewUser(string FName, string LName, string pass_hash, string email, char sex, int docID, char type, System.DateTime bday, string address, int ssn, System.AsyncCallback callback, object asyncState) {
-                object[] _args = new object[10];
+            public System.IAsyncResult BeginCreateNewUser(string FName, string LName, string pass_hash, string email, char sex, int docID, char type, System.DateTime bday, string address, int ssn, int DocID1, int phoneNumber, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[12];
                 _args[0] = FName;
                 _args[1] = LName;
                 _args[2] = pass_hash;
@@ -1680,6 +1684,8 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
                 _args[7] = bday;
                 _args[8] = address;
                 _args[9] = ssn;
+                _args[10] = DocID1;
+                _args[11] = phoneNumber;
                 System.IAsyncResult _result = base.BeginInvoke("CreateNewUser", _args, callback, asyncState);
                 return _result;
             }
