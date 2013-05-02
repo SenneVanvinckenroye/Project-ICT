@@ -63,14 +63,10 @@ namespace MedAgent_0_1
 
             DateTime MyDateTime;
             MyDateTime = new DateTime();
-            MyDateTime = (DateTime)PatBdayEdit.Value;
 
-            App.PatList[App.PatID].Bday = MyDateTime;
+            MyDateTime = (DateTime)DateOfBirth.Value;
 
 
-            App.PatID++;
-
-            NavigationService.Navigate(new Uri(string.Format("/DoctorView1.xaml"), UriKind.Relative));
             //data needed:
             //current docter ID
 
@@ -83,7 +79,19 @@ namespace MedAgent_0_1
             randomPass = null;
             
             client = new MedAgent_0_1.MedCareCloudServiceReference.MedPlanServiceClient();
-            client.CreateNewUserAsync(App.PublicPatient.FirstName, App.PublicPatient.LastName, randomPassHash, App.PublicPatient.Email, App.PublicPatient.Sex, 1, 'p', App.PublicPatient.Bday, "lippenslaan knokke", App.PublicPatient.SSN);
+            //Checke of alle velde legit zijn
+            int SSN;
+            bool isNum = Int32.TryParse(PatSsnEdit.Text,out SSN);
+            if (PatNameEdit.Text != "" && PatFirstnameEdit.Text != "" && (PatSexEdit.Text.ToCharArray().First() == 'm' || PatSexEdit.Text.ToCharArray().First() == 'f') && Validator.EmailIsValid(PatEmailEdit.Text) && (PatSsnEdit.Text!="" && isNum) )
+            {
+                 client.CreateNewUserAsync(PatFirstnameEdit.Text, PatNameEdit.Text, randomPassHash, PatEmailEdit.Text, PatSexEdit.Text.ToCharArray().FirstOrDefault(), 1, 'p', MyDateTime, "lippenslaan knokke", Convert.ToInt32(PatSsnEdit.Text));
+            }
+
+            else
+            {
+                MessageBox.Show("Not all fields have been filled in correctly");
+            }
+           
             client.CreateNewUserCompleted += new EventHandler<MedCareCloudServiceReference.CreateNewUserCompletedEventArgs>(client_CreateNewUserCompleted);
         }
 
@@ -94,6 +102,8 @@ namespace MedAgent_0_1
             {
                 MessageBox.Show("User succesfully added to db");
 
+                App.PatID++;
+
                 NavigationService.Navigate(new Uri(string.Format("/DoctorView1.xaml"), UriKind.Relative));
             }
 
@@ -103,6 +113,11 @@ namespace MedAgent_0_1
 
 
 
+        }
+
+        private void DateOfBirth_ValueChanged(object sender, DateTimeValueChangedEventArgs e)
+        {
+            
         }
 
         //bool mailstatus;

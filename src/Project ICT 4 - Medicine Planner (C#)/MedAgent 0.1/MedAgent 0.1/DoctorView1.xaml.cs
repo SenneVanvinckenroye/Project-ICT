@@ -91,9 +91,6 @@ namespace MediAgent
             {
 
                 //We zette de database results in de publieke PatList 
-
-
-                
                 test[i] = new Patient();
                 test[i].FirstName = e.Result[i].FirstName;
                 test[i].LastName = e.Result[i].LastName;
@@ -106,7 +103,7 @@ namespace MediAgent
             }
             foreach (Patient patient in test)
             {
-
+                App.PatID++;
                 PatientLst.Items.Add(patient);
                 App.PatList.Add(patient);
             }
