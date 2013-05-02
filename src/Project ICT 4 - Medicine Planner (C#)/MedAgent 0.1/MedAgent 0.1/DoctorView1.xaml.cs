@@ -60,7 +60,6 @@ namespace MediAgent
         //Constructor
         public DoctorView1()
         {
-            
             InitializeComponent();
 
             //Load all patients in the listbox
@@ -76,11 +75,7 @@ namespace MediAgent
             client = new MedAgent_0_1.MedCareCloudServiceReference.MedPlanServiceClient();
 
             //Databinding yo
-<<<<<<< HEAD
             //PatientLst.DataContext = typeof (Patient);
-=======
-            PatientLst.DataContext = typeof(Patient);
->>>>>>> 4b6abd5... Doctor.cs toegevoegd
 
             client.GetAllPatientsForDoctorAsync(1);//change 1 to DocID from login
             client.GetAllPatientsForDoctorCompleted += new EventHandler<MedAgent_0_1.MedCareCloudServiceReference.GetAllPatientsForDoctorCompletedEventArgs>(client_GetAllPatientsForDoctorCompleted);
@@ -126,7 +121,6 @@ namespace MediAgent
 
         private void PatientList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-<<<<<<< HEAD
             if (e.AddedItems.Count > 0)
             {
                 
@@ -192,10 +186,6 @@ namespace MediAgent
                 PatientLst.Items.Insert(PatientLst.SelectedIndex + 1, "    Add medication");
             }*/
 
-=======
-            PatientLst.SelectedItem = null;
-            NavigationService.Navigate(new Uri("/PatientFile.xaml", UriKind.Relative));
->>>>>>> 4b6abd5... Doctor.cs toegevoegd
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

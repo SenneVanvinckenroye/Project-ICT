@@ -121,7 +121,6 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Course.cs" />
-    <Compile Include="Doctor.cs" />
     <Compile Include="DoctorView1.xaml.cs">
       <DependentUpon>DoctorView1.xaml</DependentUpon>
     </Compile>

@@ -42,7 +42,6 @@
             		<SolidColorBrush Color="{StaticResource PurpleColor}"/>
             	</controls:PanoramaItem.Foreground>
                 <Grid>
-<<<<<<< HEAD
                     <ListBox DataContext="{Binding}" Margin="77,0,0,0" FontSize="35" x:Name="PatientLst" SelectionChanged="PatientList_SelectionChanged" Foreground="#FF2895DA" Width="343">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
@@ -55,29 +54,6 @@
                                         <TextBlock Text="{Binding FirstName}" Foreground="DarkTurquoise" FontSize="24" />
                                         <TextBlock Text="{Binding LastName}" Foreground="DarkTurquoise" TextWrapping="Wrap" FontSize="20" />
                                     </StackPanel>
-=======
-                    <ListBox DataContext="{Binding}" Margin="30,0,0,0" FontSize="35" x:Name="PatientLst" SelectionChanged="PatientList_SelectionChanged" Foreground="#FF2895DA">
-                        <ListBox.ItemContainerStyle>
-                            <Style TargetType="ListBoxItem">
-
-                                <Setter Property="HorizontalAlignment" Value="Stretch" />
-                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-
-                            </Style>
-                        </ListBox.ItemContainerStyle>
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                               <StackPanel Orientation="Horizontal">
-                                    <Image Source="{Binding ImageSource}" Name="MedImage"  Height="73" Width="73" VerticalAlignment="Top" Margin="0,10,8,0">
-
-                                    </Image>
-                                    <StackPanel Width="240">
-                                        <TextBlock Text="{Binding FirstName}" Foreground="DarkTurquoise" FontSize="28" />
-                                        <TextBlock Text="{Binding LastName}" Foreground="Black" TextWrapping="Wrap" FontSize="24" />
-                                        </StackPanel>
-                                    <TextBlock Text="Id: " Foreground="Black" TextWrapping="Wrap" FontSize="26" HorizontalAlignment="Right"  VerticalAlignment="Center"></TextBlock>
-                                    <TextBlock Text="{Binding Id}" Foreground="Black" TextWrapping="Wrap" FontSize="36" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
->>>>>>> 4b6abd5... Doctor.cs toegevoegd
                                 </StackPanel>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
