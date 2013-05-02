@@ -121,92 +121,96 @@ namespace SilverlightApplication3.Web
         SqlConnection con;
         public string CreateNewUser(string FName, string LName, string pass_hash, string email, char sex, int docID, char type, DateTime bday, string address, int ssn)
         {
-            ///using SQL to insert new user
-            using (con = new SqlConnection("Server=tcp:kqayqahno5.database.windows.net;Database=medplanner-2013-3-15-11-53;User ID=medagent@kqayqahno5;Password=Finland1!;Trusted_Connection=False;"))
+            try
             {
-                try
+                ///using SQL to insert new user
+                using (con = new SqlConnection("Server=tcp:kqayqahno5.database.windows.net;Database=medplanner-2013-3-15-11-53;User ID=medagent@kqayqahno5;Password=Finland1!;Trusted_Connection=False;"))
                 {
-                    con.Open();
-                }
-                catch
-                {
-                    return "SQL Connection Error";
-                }
-                try
-                {
-                    using (SqlCommand command = new SqlCommand(
-                    "INSERT INTO Users (FName, LName, pass_hash, sex, email, bday, ssn, UserType, address) VALUES (@FName, @LName, @pass_hash, @sex, @email, @bday, @ssn, @UserType, @address)", con))
+                        try
+                        {
+                            con.Open();
+                        }
+                        catch
+                        {
+                            return "SQL Connection Error";
+                        }
+                        try
+                        {
+                            using (SqlCommand command = new SqlCommand(
+                            "INSERT INTO Users (FName, LName, pass_hash, sex, email, bday, ssn, UserType, address) VALUES (@FName, @LName, @pass_hash, @sex, @email, @bday, @ssn, @UserType, @address)", con))
+                            {
+                                command.Parameters.Add(new SqlParameter("@FName", FName));
+                                command.Parameters.Add(new SqlParameter("@LName", LName));
+                                command.Parameters.Add(new SqlParameter("@pass_hash", pass_hash));
+                                command.Parameters.Add(new SqlParameter("@email", email));
+                                command.Parameters.Add(new SqlParameter("@sex", sex));
+                                command.Parameters.Add(new SqlParameter("@UserType", type));
+                                command.Parameters.Add(new SqlParameter("@bday", bday));
+                                command.Parameters.Add(new SqlParameter("@address", address));
+                                command.Parameters.Add(new SqlParameter("@ssn", ssn));
+                                command.ExecuteNonQuery();
+                                con.Close();
+                                con.Dispose();
+                            }
+                        }
+                        catch (SqlException e)
+                        {
+                            Console.WriteLine(e.Message);
+                        }
+                    }
+
+                    DataClasses1DataContext dc = new DataClasses1DataContext();
+                    User usr = new User();
+                    usr.FName = FName;
+                    /*usr.LName = LName;
+                    usr.email = email;
+                    usr.sex = sex;
+                    usr.UserType = type;
+                    usr.bday = bday;
+
+                    dc.Users.InsertOnSubmit(usr);
+                    try
                     {
-                        command.Parameters.Add(new SqlParameter("@FName", FName));
-                        command.Parameters.Add(new SqlParameter("@LName", LName));
-                        command.Parameters.Add(new SqlParameter("@pass_hash", pass_hash));
-                        command.Parameters.Add(new SqlParameter("@email", email));
-                        command.Parameters.Add(new SqlParameter("@sex", sex));
-                        command.Parameters.Add(new SqlParameter("@UserType", type));
-                        command.Parameters.Add(new SqlParameter("@bday", bday));
-                        command.Parameters.Add(new SqlParameter("@address", address));
-                        command.Parameters.Add(new SqlParameter("@ssn", ssn));
-                        command.ExecuteNonQuery();
-                        con.Close();
-                        con.Dispose();
+                        dc.SubmitChanges();
+                    }
+                    catch
+                    {
+                        return 'u';
+                    }*/
+                    //nu gebruiker selecteren om memberID terug te halen
+                    try
+                    {
+                        var users = from u in dc.Users
+                                    where u.email == email
+                                    select new { u.MemberID };
+                        foreach (var user in users)
+                        {
+                            usr.MemberID = user.MemberID;//get memberID
+                        }
+                    }
+                    catch
+                    {
+                        return "Failed to retrieve MemberID";
+                    }
+                    //nu patient toevoegen met memberID en docID
+                    Patient ptnt = new Patient();
+                    ptnt.DocID = docID;
+                    ptnt.MemberID = usr.MemberID;
+                    dc.Patients.InsertOnSubmit(ptnt);
+                    try
+                    {
+                        dc.SubmitChanges();//patient toevoegen
+                        return "k";
+                    }
+                    catch
+                    {
+                        return "p";
                     }
                 }
-                catch (SqlException e)
+                catch (Exception e)
                 {
-                    Console.WriteLine(e.Message);
+                    return e.Message;
                 }
-            }
-
-
-
-            DataClasses1DataContext dc = new DataClasses1DataContext();
-            User usr = new User();
-            usr.FName = FName;
-            /*usr.LName = LName;
-            usr.email = email;
-            usr.sex = sex;
-            usr.UserType = type;
-            usr.bday = bday;
-
-            dc.Users.InsertOnSubmit(usr);
-            try
-            {
-                dc.SubmitChanges();
-            }
-            catch
-            {
-                return 'u';
-            }*/
-            //nu gebruiker selecteren om memberID terug te halen
-            try
-            {
-                var users = from u in dc.Users
-                            where u.email == email
-                            select new { u.MemberID };
-                foreach (var user in users)
-                {
-                    usr.MemberID = user.MemberID;//get memberID
-                }
-            }
-            catch
-            {
-                return "Failed to retrieve MemberID";
-            }
-            //nu patient toevoegen met memberID en docID
-            /*Patient ptnt = new Patient();
-            ptnt.DocID = docID;
-            ptnt.MemberID = usr.MemberID;
-            dc.Patients.InsertOnSubmit(ptnt);
-            try
-            {
-                dc.SubmitChanges();//patient toevoegen
-                return 'k';
-            }
-            catch
-            {
-                return 'p';
-            }*/
-            return "k";
         }
 
         public string CreatePrescription(string DrugName, DateTime StartDate, DateTime EndDate, int Quantity, TimeSpan Time1, TimeSpan Time2, TimeSpan Time3, TimeSpan Time4, TimeSpan Time5, TimeSpan Time6, string Description, string Course, int PatientID, string Type, char Taken1, char Taken2, char Taken3, char Taken4, char Taken5, char Taken6)
