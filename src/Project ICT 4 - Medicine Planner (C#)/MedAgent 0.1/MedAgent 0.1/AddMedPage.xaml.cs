@@ -671,42 +671,42 @@ namespace MedAgent_0_1
         {
 
             App.MedList[App.MedID].Times[0] = (DateTime)Time2.Value;
-            // WAT IS DIT??? (dries)
+
         }
 
         private void Time2_ValueChanged(object sender, DateTimeValueChangedEventArgs e)
         {
 
             App.MedList[App.MedID].Times[1] = (DateTime)Time2.Value;
-            //WAT IS DIT??? (dries)
+
         }
 
         private void Time3_ValueChanged(object sender, DateTimeValueChangedEventArgs e)
         {
 
-            App.MedList[App.MedID].Times[1] = (DateTime)Time2.Value;
-            //WAT IS DIT??? (dries)
+            App.MedList[App.MedID].Times[2] = (DateTime)Time2.Value;
+
         }
 
         private void Time4_ValueChanged(object sender, DateTimeValueChangedEventArgs e)
         {
 
-            App.MedList[App.MedID].Times[1] = (DateTime)Time2.Value;
-            //WAT IS DIT??? (dries)
+            App.MedList[App.MedID].Times[3] = (DateTime)Time2.Value;
+
         }
 
         private void Time5_ValueChanged(object sender, DateTimeValueChangedEventArgs e)
         {
 
-            App.MedList[App.MedID].Times[1] = (DateTime)Time2.Value;
-            //WAT IS DIT??? (dries)
+            App.MedList[App.MedID].Times[4] = (DateTime)Time2.Value;
+
         }
 
         private void Time6_ValueChanged(object sender, DateTimeValueChangedEventArgs e)
         {
 
-            App.MedList[App.MedID].Times[1] = (DateTime)Time2.Value;
-            //WAT IS DIT??? (dries)
+            App.MedList[App.MedID].Times[5] = (DateTime)Time2.Value;
+
         }
 
 
@@ -721,7 +721,7 @@ namespace MedAgent_0_1
                 && App.MedList[App.MedID].Course != null)
             {
                 //The current value of the startdate is always the current date so when we don't change it we have to assign its value still
-                App.MedList[App.MedID].StartDate = (DateTime) StartDate.Value;
+                App.MedList[App.MedID].StartDate = (DateTime)StartDate.Value;
 
                 //Write the variables medication in the medlist with the current ID to the database.
                 client = new MedAgent_0_1.MedCareCloudServiceReference.MedPlanServiceClient();
@@ -742,7 +742,7 @@ namespace MedAgent_0_1
                 client.CreatePrescriptionCompleted += new EventHandler<MedCareCloudServiceReference.CreatePrescriptionCompletedEventArgs>(client_CreatePrescriptionCompleted);
 
 
-
+                //Next index in the list
                 App.MedID++;
 
                 NavigationService.Navigate(new Uri(string.Format("/PatientFile.xaml"), UriKind.Relative));

@@ -14,30 +14,86 @@ using Microsoft.Phone.Controls;
 
 namespace MediAgent
 {
+
+
     public partial class DoctorView1 : PhoneApplicationPage
     {
+
+        //Field _currentItemIndex will be used as an index field for the currently selected patient
+        private int _currentItemIndex = -1;
+
+        //This property will implement our entire selection logic so when a patient object is set it will be selected as current.
+        private Patient CurrentPatient
+        {
+            get
+            {
+                if (_currentItemIndex != -1)
+                    return this.TestList[_currentItemIndex];
+                else
+                {
+                    return null;
+                }
+            }
+
+            set 
+            { 
+                Patient patient = value; 
+                if (patient != null)
+                {
+                    _currentItemIndex = TestList.IndexOf(patient);
+                    PatientLst.DataContext = patient;
+                }
+                else
+                {
+                    PatientLst.DataContext = typeof (Patient);
+                    _currentItemIndex = -1;
+                }
+            }
+        }
+
+
+
         public List<Patient> TestList;
+
         MedAgent_0_1.MedCareCloudServiceReference.MedPlanServiceClient client;
+
+        //Constructor
         public DoctorView1()
         {
             InitializeComponent();
+
+            //Load all patients in the listbox
+
+            
+            foreach (Patient item in App.PatList)
+            {
+                //PatientLst.Items.Add(item);
+            }
+
             //Service.DownloadDone += Service_DownloadDone;
             //Service.Query(null, "lastName");
             client = new MedAgent_0_1.MedCareCloudServiceReference.MedPlanServiceClient();
 
             //Databinding yo
-            PatientLst.DataContext = typeof (Patient);
+            //PatientLst.DataContext = typeof (Patient);
 
             client.GetAllPatientsForDoctorAsync(1);//change 1 to DocID from login
-            client.GetAllPatientsForDoctorCompleted += new EventHandler<MedAgent_0_1.MedCareCloudServiceReference.GetAllPatientsForDoctorCompletedEventArgs>(client_GetAllPatientsCompleted);
+            client.GetAllPatientsForDoctorCompleted += new EventHandler<MedAgent_0_1.MedCareCloudServiceReference.GetAllPatientsForDoctorCompletedEventArgs>(client_GetAllPatientsForDoctorCompleted);
 
         }
 
-        void client_GetAllPatientsCompleted(object sender, MedAgent_0_1.MedCareCloudServiceReference.GetAllPatientsForDoctorCompletedEventArgs e)
+        
+        void client_GetAllPatientsForDoctorCompleted(object sender, MedAgent_0_1.MedCareCloudServiceReference.GetAllPatientsForDoctorCompletedEventArgs e)
         {
+            
             Patient[] test = new Patient[e.Result.Count];
             for (int i = 0; i < e.Result.Count; i++)
             {
+
+                //We zette de database results in de publieke PatList 
+
+
+                
                 test[i] = new Patient();
                 test[i].FirstName = e.Result[i].FirstName;
                 test[i].LastName = e.Result[i].LastName;
@@ -50,7 +106,9 @@ namespace MediAgent
             }
             foreach (Patient patient in test)
             {
+
                 PatientLst.Items.Add(patient);
+                App.PatList.Add(patient);
             }
         }
 
@@ -66,13 +124,43 @@ namespace MediAgent
 
         private void PatientList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //
-            if (PatientLst.SelectedItem != null && PatientLst.SelectedItem.ToString() == "    Patient's file")
+            if (e.AddedItems.Count > 0)
             {
-                //App.PublicPatient = PatientLst.Items.ElementAt(PatientLst.SelectedIndex - 2) as Patient;
-                //PatientLst.SelectedIndex = PatientLst.SelectedIndex - 2;
-                NavigationService.Navigate(new Uri("/PatientFile.xaml", UriKind.Relative));
+                
+                // If selected index  is -1 (no selection) do nothing
+                if (PatientLst.SelectedIndex == -1)
+                    return;
+
+
+                ListBox listBox = sender as ListBox;
+
+                if (listBox != null && listBox.SelectedItem != null)
+                {
+                    //Data hale uit geselecteerde item
+                    Patient patdata = (Patient)listBox.SelectedItem;
+
+
+                    // reset selection of ListBox 
+                    ((ListBox)sender).SelectedIndex = -1;
+
+                    //Data doorsture als ge naar de volgende pagina ga
+                    FrameworkElement root = Application.Current.RootVisual as FrameworkElement; 
+                    
+                    root.DataContext = patdata;
+
+                   
+
+                    // change page navigation 
+                    NavigationService.Navigate(new Uri(string.Format("/PatientFile.xaml"), UriKind.Relative));
+
+                }
+
+
             }
+
+
+            //Dit doen we nimeer
+                /*
             else if (PatientLst.SelectedItem != null && PatientLst.SelectedItem.ToString() == "    Add medication")
             {
                 //App.Pat = PatientLst.Items.ElementAt(PatientLst.SelectedIndex - 2) as Patient;
@@ -99,7 +187,7 @@ namespace MediAgent
                 App.PublicPatient = (Patient)PatientLst.SelectedItem;
                 PatientLst.Items.Insert(PatientLst.SelectedIndex + 1, "    Patient's file");
                 PatientLst.Items.Insert(PatientLst.SelectedIndex + 1, "    Add medication");
-            }
+            }*/
 
         }
 
@@ -125,6 +213,14 @@ namespace MediAgent
         {
             //Call the patient his number, VETTEN DJAB
 
+        }
+
+        //Go to the AddPatientPage and create a new Patient object
+        private void ApplicationBarAddButton_OnClick(object sender, EventArgs e)
+        {
+            App.PatList.Add(new Patient());
+
+            NavigationService.Navigate(new Uri(string.Format("/AddPatientFile.xaml"), UriKind.Relative));
         }
     }
 }

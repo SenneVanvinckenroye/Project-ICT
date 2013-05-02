@@ -25,10 +25,17 @@ namespace MediAgent
         public class MedData
         {
             public string Name { get; set; }
-            //public string Description { get; set; }
             public ImageSource ImageSource { get; set; }
             public string StartDate { get; set; }
 
+            //...
+
+        }
+
+                //Helper Class for showing some of the data we pull from the PatientList in the ListBox
+        public class PatientData
+        {
+            //...
         }
 
         MedAgent_0_1.MedCareCloudServiceReference.MedPlanServiceClient client;
@@ -43,7 +50,7 @@ namespace MediAgent
                 {
                     PatName.Text = App.PublicPatient.FirstName;
                     StkEdit.Visibility = Visibility.Visible;
-                    StkNoEdit.Visibility = Visibility.Collapsed;
+                    PatientInfoStackPanel.Visibility = Visibility.Collapsed;
                 }
                 else
                 {
@@ -99,26 +106,29 @@ namespace MediAgent
         {
             InitializeComponent();
 
+            //Databinding yo
+            PatientInfoStackPanel.DataContext = typeof(Patient);
 
-            MedData tempMedData = new MedData();
 
-            //Load all medication
+            //MedData tempMedData = new MedData();
+
+            //Load all medication in the listbox
             foreach (Medication item in App.MedList)
             {
                 //If there was no photo taken for this Medication show the default picture
                 if (item.MedPhoto == null)
                 {
 
-                    tempMedData.ImageSource = item.MedPhoto;
+                    //tempMedData.ImageSource = item.MedPhoto;
 
                 }
 
-                tempMedData.ImageSource = item.MedPhoto;
+                //tempMedData.ImageSource = item.MedPhoto;
 
 
                 //Assign the values from the MedList to the right item that is databound to it
-                tempMedData.Name = item.Name;
-                tempMedData.StartDate = item.StartDate.ToShortDateString();
+                //tempMedData.Name = item.Name;
+                //tempMedData.StartDate = item.StartDate.ToShortDateString();
                 MedListBox.Items.Add(item);
 
             
@@ -199,18 +209,8 @@ namespace MediAgent
                     // change page navigation 
                     NavigationService.Navigate(new Uri(string.Format("/OverviewPage.xaml"), UriKind.Relative));
 
-
-                    
-
-
                 }
-
-
-
-
-            }
-            
-           
+            } 
         }
 
 
@@ -220,22 +220,6 @@ namespace MediAgent
             Button temp = (Button) sender;
             MessageBox.Show(temp.Tag.ToString());
         }
-
-        private void ApplicationBarMenuItem_OnClick(object sender, EventArgs e)
-        {
-            if (StkEdit.Visibility == Visibility.Visible)
-            {
-                StkNoEdit.Visibility = Visibility.Visible;
-                StkEdit.Visibility = Visibility.Collapsed;
-            }
-            else
-            {
-                StkNoEdit.Visibility = Visibility.Collapsed;
-                StkEdit.Visibility = Visibility.Visible;
-            }
-        }
-
-
 
 
 
@@ -251,11 +235,7 @@ namespace MediAgent
 
         }
 
-       
-        private void ApplicationBarDeleteButton_OnClick(object sender, EventArgs e)
-        {
-
-        }
+      
         #endregion
 
     }

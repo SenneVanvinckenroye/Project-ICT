@@ -33,32 +33,13 @@ namespace MedAgent_0_1
 
         public static List<Medication> MedList = new List<Medication>();
 
+        public static List<Patient> PatList = new List<Patient>();
+ 
+
+
         public static int MedID = 0;
 
-        public DateTime Time1 { get; set; }
-        public DateTime Time2 { get; set; }
-        public DateTime Time3 { get; set; }
-        public DateTime Time4 { get; set; }
-        public DateTime Time5 { get; set; }
-        public DateTime Time6 { get; set; }
-
-        public string MedName { get; set; }
-
-        public string Description { get; set; }
-
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
-
-
-        public int Amount1 { get; set; }
-        public int Amount2 { get; set; }
-        public int Amount3 { get; set; }
-        public int Amount4 { get; set; }
-        public int Amount5 { get; set; }
-        public int Amount6 { get; set; }
-
-
-
+        public static int PatID = 0;
 
 
 

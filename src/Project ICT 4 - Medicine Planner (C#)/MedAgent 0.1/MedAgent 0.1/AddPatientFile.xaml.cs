@@ -18,6 +18,9 @@ namespace MedAgent_0_1
     public partial class AddPatientFile : PhoneApplicationPage
     {
         MedAgent_0_1.MedCareCloudServiceReference.MedPlanServiceClient client;
+
+
+        /*
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             string addPatient = "false";
@@ -36,7 +39,7 @@ namespace MedAgent_0_1
                 }
             }
 
-        }
+        }*/
 
 
 
@@ -53,17 +56,21 @@ namespace MedAgent_0_1
 
         private void Register_Click(object sender, RoutedEventArgs e)
         {
-            App.PublicPatient.FirstName = PatFirstnameEdit.Text;
-            App.PublicPatient.LastName = PatNameEdit.Text;
-            App.PublicPatient.Email = PatEmailEdit.Text;
-            App.PublicPatient.Sex = PatSexEdit.Text.ToCharArray().FirstOrDefault();//field male/female -> m/f
+            App.PatList[App.PatID].FirstName = PatFirstnameEdit.Text;
+            App.PatList[App.PatID].LastName = PatNameEdit.Text;
+            App.PatList[App.PatID].Email = PatEmailEdit.Text;
+            App.PatList[App.PatID].Sex = PatSexEdit.Text.ToCharArray().FirstOrDefault();//field male/female -> m/f
 
             DateTime MyDateTime;
             MyDateTime = new DateTime();
             MyDateTime = (DateTime)PatBdayEdit.Value;
-            App.PublicPatient.Bday = MyDateTime;
+
+            App.PatList[App.PatID].Bday = MyDateTime;
 
 
+            App.PatID++;
+
+            NavigationService.Navigate(new Uri(string.Format("/DoctorView1.xaml"), UriKind.Relative));
             //data needed:
             //current docter ID
 
@@ -82,12 +89,24 @@ namespace MedAgent_0_1
 
         void client_CreateNewUserCompleted(object sender, MedCareCloudServiceReference.CreateNewUserCompletedEventArgs e)
         {
+            //If shit is succesfull, go yolooo
             if (e.Result == "k")
+            {
                 MessageBox.Show("User succesfully added to db");
+
+                NavigationService.Navigate(new Uri(string.Format("/DoctorView1.xaml"), UriKind.Relative));
+            }
+
             else
                 MessageBox.Show("Failed to add user to db\n\rError: "+e.Result);
+
+
+
+
         }
+
         //bool mailstatus;
+        /*
         private void sendMail(string email,string FName,string randomPass)
         {
             client = new MedAgent_0_1.MedCareCloudServiceReference.MedPlanServiceClient();
@@ -107,6 +126,6 @@ namespace MedAgent_0_1
                 MessageBox.Show("Failed to send email to patient!");
             }
         }
-
+        */
     }
 }

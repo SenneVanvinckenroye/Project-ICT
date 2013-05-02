@@ -68,9 +68,9 @@
                             </StackPanel>
                         </Border>
 
-                        <StackPanel x:Name="StkNoEdit" Grid.Column="1" Margin="5,0,0,0" Visibility="Visible">
-                            <TextBlock x:Name="PatName" Text="Patient Name" Margin="0,18,0,18"></TextBlock>
-                            <TextBlock x:Name="PatFirstname" Text="Patient Firstname" Margin="0,18,0,18"></TextBlock>
+                        <StackPanel DataContext="{Binding}" x:Name="PatientInfoStackPanel" Grid.Column="1" Margin="5,0,0,0" Visibility="Visible" >
+                            <TextBlock x:Name="PatName" Text="{Binding LastName}" Margin="0,18,0,18"></TextBlock>
+                            <TextBlock x:Name="PatFirstname" Text="{Binding FirstName}" Margin="0,18,0,18"></TextBlock>
                             <TextBlock x:Name="PatAge" Text="Patient Age" Margin="0,18,0,18"></TextBlock>
                             <TextBlock x:Name="PatSex" Text="Patient Sex" Margin="0,18,0,18"></TextBlock>
                             <TextBlock x:Name="PatEmail" Text="Patient Email" Margin="0,18,0,18"></TextBlock>
