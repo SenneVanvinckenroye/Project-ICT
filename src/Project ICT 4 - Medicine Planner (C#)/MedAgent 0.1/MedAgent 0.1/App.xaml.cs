@@ -29,7 +29,11 @@ namespace MedAgent_0_1
         /// 
         /// 
         /// 
-        public static Patient PublicPatient = new Patient(); 
+        public static Patient PublicPatient = new Patient();
+
+        public static Doctor PublicDoctor = new Doctor();
+
+        public static bool UserIsDoctor = false;
 
         public static List<Medication> MedList = new List<Medication>();
 
@@ -78,8 +82,13 @@ namespace MedAgent_0_1
             //test code!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             App.MedList.Add(new Medication()
             {
+<<<<<<< HEAD
                 Amount = 100,
                 Description = "testmed",
+=======
+                Amount = new int[] { 1, 2, 3, 4, 5, 6 },
+                Description = "Delete mij",
+>>>>>>> 4b6abd5... Doctor.cs toegevoegd
                 EndDate = new DateTime(2013, 04, 30),
                 Interval = 3,
                 Name = "TestMed",

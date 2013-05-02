@@ -61,13 +61,13 @@ namespace MedAgent_0_1
                 MessageBox.Show("Missing entries!");
             }
         }
-        
+
         public static string userFName, userLName, userEmail;//global vars to reach userdata in other pages
         public static int userMemberID;
 
         void client_LoginCompleted(object sender, MedCareCloudServiceReference.LoginCompletedEventArgs e)
         {
-            if(e.Result == null)
+            if (e.Result == null)
             {
                 error_txblck.Text = "Email and or password \n not found";
                 ErrorPopup.IsOpen = true;
@@ -77,6 +77,7 @@ namespace MedAgent_0_1
                 userFName = e.Result.FName;
                 userLName = e.Result.LName;
                 userEmail = e.Result.email;
+<<<<<<< HEAD
                 userMemberID = e.Result.MemberID;
                 switch(e.Result.UserType)
                 {
@@ -85,22 +86,33 @@ namespace MedAgent_0_1
                         NavigationService.Navigate(new Uri("/PatientFile.xaml?isPatient=true", UriKind.Relative));
                         break;
                     }
+=======
+                switch (e.Result.UserType)
+                {
+                    case 'p'://patient
+                        {
+                            NavigationService.Navigate(new Uri(string.Format("/PatientFile.xaml"), UriKind.Relative));
+                            break;
+                        }
+>>>>>>> 4b6abd5... Doctor.cs toegevoegd
                     case 'd'://dokter
-                    {
-                        NavigationService.Navigate(new Uri(string.Format("/DoctorView1.xaml"), UriKind.Relative));
-                        break;
-                    }
+                        {
+                            App.UserIsDoctor = true;
+
+                            NavigationService.Navigate(new Uri(string.Format("/DoctorView1.xaml"), UriKind.Relative));
+                            break;
+                        }
                     case 'n'://verpleger
-                    {
-                        NavigationService.Navigate(new Uri(string.Format("/DoctorView1.xaml"), UriKind.Relative));
-                        break;
-                    }
+                        {
+                            NavigationService.Navigate(new Uri(string.Format("/DoctorView1.xaml"), UriKind.Relative));
+                            break;
+                        }
                     default:
-                    {
-                        error_txblck.Text = "~Error~ in usertype";
-                        ErrorPopup.IsOpen = true;
-                        break;
-                    }
+                        {
+                            error_txblck.Text = "~Error~ in usertype";
+                            ErrorPopup.IsOpen = true;
+                            break;
+                        }
                 }
             }
         }
@@ -121,6 +133,6 @@ namespace MedAgent_0_1
         }
 
     }
-	
-	
+
+
 }
