@@ -670,42 +670,42 @@ namespace MedAgent_0_1
         private void Time1_ValueChanged(object sender, DateTimeValueChangedEventArgs e)
         {
 
-            App.MedList[App.MedID].Times[0] = (DateTime)Time2.Value;
+            App.MedList[App.MedID].Times[0] = Convert.ToDateTime(Time1.Value).TimeOfDay;
 
         }
 
         private void Time2_ValueChanged(object sender, DateTimeValueChangedEventArgs e)
         {
 
-            App.MedList[App.MedID].Times[1] = (DateTime)Time2.Value;
+            App.MedList[App.MedID].Times[1] = Convert.ToDateTime(Time2.Value).TimeOfDay;
 
         }
 
         private void Time3_ValueChanged(object sender, DateTimeValueChangedEventArgs e)
         {
 
-            App.MedList[App.MedID].Times[2] = (DateTime)Time2.Value;
+            App.MedList[App.MedID].Times[2] = Convert.ToDateTime(Time3.Value).TimeOfDay;
 
         }
 
         private void Time4_ValueChanged(object sender, DateTimeValueChangedEventArgs e)
         {
 
-            App.MedList[App.MedID].Times[3] = (DateTime)Time2.Value;
+            App.MedList[App.MedID].Times[3] = Convert.ToDateTime(Time4.Value).TimeOfDay;
 
         }
 
         private void Time5_ValueChanged(object sender, DateTimeValueChangedEventArgs e)
         {
 
-            App.MedList[App.MedID].Times[4] = (DateTime)Time2.Value;
+            App.MedList[App.MedID].Times[4] = Convert.ToDateTime(Time5.Value).TimeOfDay;
 
         }
 
         private void Time6_ValueChanged(object sender, DateTimeValueChangedEventArgs e)
         {
 
-            App.MedList[App.MedID].Times[5] = (DateTime)Time2.Value;
+            App.MedList[App.MedID].Times[5] = Convert.ToDateTime(Time6.Value).TimeOfDay;
 
         }
 
@@ -726,12 +726,12 @@ namespace MedAgent_0_1
                 //Write the variables medication in the medlist with the current ID to the database.
                 client = new MedAgent_0_1.MedCareCloudServiceReference.MedPlanServiceClient();
                 client.CreatePrescriptionAsync(App.MedList[App.MedID].Name, App.MedList[App.MedID].StartDate, App.MedList[App.MedID].EndDate, App.MedList[App.MedID].Amount,
-                    App.MedList[App.MedID].Times[0].TimeOfDay,
-                    App.MedList[App.MedID].Times[1].TimeOfDay,
-                    App.MedList[App.MedID].Times[2].TimeOfDay,
-                    App.MedList[App.MedID].Times[3].TimeOfDay,
-                    App.MedList[App.MedID].Times[4].TimeOfDay,
-                    App.MedList[App.MedID].Times[5].TimeOfDay,
+                    App.MedList[App.MedID].Times[0],
+                    App.MedList[App.MedID].Times[1],
+                    App.MedList[App.MedID].Times[2],
+                    App.MedList[App.MedID].Times[3],
+                    App.MedList[App.MedID].Times[4],
+                    App.MedList[App.MedID].Times[5],
                     App.MedList[App.MedID].Description,
                     App.MedList[App.MedID].Course,
                     App.PublicPatient.Id,

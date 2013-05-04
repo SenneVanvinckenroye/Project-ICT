@@ -105,13 +105,13 @@ namespace MedAgent_0_1
                             new List<bool>(){true,true,true,false,false,false}
                         },
 
-                Times = new DateTime[]{
-                            new DateTime(2013,04,24,06,00,00),
-                            new DateTime(2013,04,24,08,00,00), 
-                            new DateTime(), 
-                            new DateTime(), 
-                            new DateTime(), 
-                            new DateTime()
+                Times = new TimeSpan[]{
+                            new TimeSpan(),
+                            new TimeSpan(), 
+                            new TimeSpan(), 
+                            new TimeSpan(), 
+                            new TimeSpan(), 
+                            new TimeSpan()
                         },
             });
             //test code!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

@@ -63,12 +63,9 @@ namespace MediAgent
             {
                 if (isPatient == "true")
                 {
-                    MedAgent_0_1.MedCareCloudServiceReference.MedPlanServiceClient client;
                     client = new MedAgent_0_1.MedCareCloudServiceReference.MedPlanServiceClient();
                     client.GetPatientDataAsync(MainPage.userMemberID);//geef login MemberID door van patient om verdere gegevens op te halen
                     client.GetPatientDataCompleted += new EventHandler<MedAgent_0_1.MedCareCloudServiceReference.GetPatientDataCompletedEventArgs>(client_GetPatientDataCompleted);
-                    client.GetPrescriptionsForPatientAsync(App.PublicPatient.Id);
-                    client.GetPrescriptionsForPatientCompleted += new EventHandler<MedAgent_0_1.MedCareCloudServiceReference.GetPrescriptionsForPatientCompletedEventArgs>(client_GetPrescriptionsForPatientCompleted);
                 }
                 else
                 {
@@ -76,23 +73,71 @@ namespace MediAgent
                     NavigationService.GoBack();
                 }
             }
-
-            PatName.Text = App.PublicPatient.FirstName + " " + App.PublicPatient.LastName;
         }
 
         void client_GetPrescriptionsForPatientCompleted(object sender, MedAgent_0_1.MedCareCloudServiceReference.GetPrescriptionsForPatientCompletedEventArgs e)
         {
-            if(e.Result != null)
-                MedListBox.Items.Add(e.Result);
+            if (e.Result != null)
+            {
+                App.MedList.Clear();
+                foreach (var item in e.Result)
+                {
+                    MedListBox.Items.Clear();
+                    Medication tempMed = new Medication();
+                    tempMed.Name = item.DrugName;
+                    tempMed.Description = item.DDescription;
+                    tempMed.Amount = item.Quantity;
+                    tempMed.StartDate = item.StartDate;
+                    tempMed.EndDate = item.EndDate;
+                    tempMed.Course = item.Course;
+
+                    tempMed.Times[0] = item.Time1;
+                    tempMed.Times[1] = item.Time2;
+                    tempMed.Times[2] = item.Time3;
+                    tempMed.Times[3] = item.Time4;
+                    tempMed.Times[4] = item.Time5;
+                    tempMed.Times[5] = item.Time6;
+
+                    /*tempMed.Taken[0][0] = CharNaarBool(item.Taken1);
+                    tempMed.Taken[0][1] = CharNaarBool(item.Taken2);
+                    tempMed.Taken[0][2] = CharNaarBool(item.Taken3);
+                    tempMed.Taken[0][3] = CharNaarBool(item.Taken4);
+                    tempMed.Taken[0][4] = CharNaarBool(item.Taken5);
+                    tempMed.Taken[0][5] = CharNaarBool(item.Taken6);*/
+
+                    App.MedList.Add(tempMed);    
+                }
+                foreach (Medication MedItem in App.MedList)
+                {
+                    MedListBox.Items.Add(MedItem);
+                }
+            }
             else
                 MessageBox.Show("Oops, error happened :(\n\rWe couldn't retrieve the Medication List");
+        }
+
+        private bool CharNaarBool(char letter)
+        {
+            switch (letter)
+            {
+                case 'y':
+                    return true;
+                case 'n':
+                    return false;
+                default:
+                    return false;
+            }
         }
 
         void client_GetPatientDataCompleted(object sender, MedAgent_0_1.MedCareCloudServiceReference.GetPatientDataCompletedEventArgs e)
         {
             if (e.Result.PatientID != -1)
             {
+                client = new MedAgent_0_1.MedCareCloudServiceReference.MedPlanServiceClient();
                 App.PublicPatient.Id = e.Result.PatientID;
+                client.GetPrescriptionsForPatientAsync(Convert.ToInt32(App.PublicPatient.Id));
+                client.GetPrescriptionsForPatientCompleted += new EventHandler<MedAgent_0_1.MedCareCloudServiceReference.GetPrescriptionsForPatientCompletedEventArgs>(client_GetPrescriptionsForPatientCompleted);
+                PatName.Text = App.PublicPatient.FirstName + " " + App.PublicPatient.LastName;
             }
             else
             {

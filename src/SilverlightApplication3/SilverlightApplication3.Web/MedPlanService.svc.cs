@@ -312,10 +312,11 @@ namespace SilverlightApplication3.Web
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
             List<Model.Prescription> prescriptions = new List<Model.Prescription>();
+            //Model.Prescription voorschrift = new Model.Prescription();
 
             var pres = from p in dc.Prescriptions
-                          where p.PatientID == PatientID
-                          select p;
+                       where p.PatientID == PatientID
+                       select p;
 
             foreach (var i in pres)
             {

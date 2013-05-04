@@ -273,9 +273,9 @@ namespace CalendarControl
                                 MedDay = true;
                                 if (temp.Date <= DateTime.Now.Date)
                                 {
-                                    foreach (DateTime times in App.MedList[App.MedID].Times)
+                                    foreach (TimeSpan times in App.MedList[App.MedID].Times)//aangepast door rien van DateTime naar TimeSpan
                                     {
-                                        if (times.Date != new DateTime(0001, 1, 1)) // date is not initial date
+                                        if (!times.Days.Equals(new DateTime(0001, 1, 1))) // date is not initial date // aangepast door Rien van if (times.Date != new DateTime(0001, 1, 1)) naar if (!times.Days.Equals(new DateTime(0001, 1, 1)))
                                         {
                                             activeDays++;
                                         }

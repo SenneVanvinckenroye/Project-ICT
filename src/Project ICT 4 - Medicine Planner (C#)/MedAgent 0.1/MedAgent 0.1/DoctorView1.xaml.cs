@@ -159,7 +159,7 @@ namespace MediAgent
                     
                     root.DataContext = patdata;
 
-                   
+                    App.PublicPatient.Id = patdata.Id;
 
                     // change page navigation 
                     NavigationService.Navigate(new Uri(string.Format("/PatientFile.xaml"), UriKind.Relative));

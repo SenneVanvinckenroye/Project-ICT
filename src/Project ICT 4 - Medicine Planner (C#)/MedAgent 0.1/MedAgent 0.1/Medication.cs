@@ -17,15 +17,15 @@ namespace MedAgent_0_1
     {
 
 
-        public DateTime[] Times { get; set; }
+        public TimeSpan[] Times { get; set; }
         
 
-        private DateTime DefaultTime = new DateTime(1600,1,1);
+        private TimeSpan DefaultTime = new TimeSpan();
 
         public Medication()
         {
             //When the times aren't set they will be given the default value
-            Times = new DateTime[]
+            Times = new TimeSpan[]
                 {
                     DefaultTime,DefaultTime,DefaultTime,DefaultTime,DefaultTime,DefaultTime
                 };
