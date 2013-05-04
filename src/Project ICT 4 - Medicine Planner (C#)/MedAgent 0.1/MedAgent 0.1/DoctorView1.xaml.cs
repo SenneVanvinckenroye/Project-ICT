@@ -77,7 +77,7 @@ namespace MediAgent
             //Databinding yo
             //PatientLst.DataContext = typeof (Patient);
 
-            client.GetAllPatientsForDoctorAsync(1);//change 1 to DocID from login
+            client.GetAllPatientsForDoctorAsync(Convert.ToInt32(App.PublicDoctor.DocID));//change 1 to DocID from login
             client.GetAllPatientsForDoctorCompleted += new EventHandler<MedAgent_0_1.MedCareCloudServiceReference.GetAllPatientsForDoctorCompletedEventArgs>(client_GetAllPatientsForDoctorCompleted);
 
         }
@@ -85,28 +85,42 @@ namespace MediAgent
         
         void client_GetAllPatientsForDoctorCompleted(object sender, MedAgent_0_1.MedCareCloudServiceReference.GetAllPatientsForDoctorCompletedEventArgs e)
         {
-            
-            Patient[] test = new Patient[e.Result.Count];
-            for (int i = 0; i < e.Result.Count; i++)
+            //MessageBox.Show(e.Result);
+            if (e.Result != null)
             {
+                if (e.Result.Count > 0)
+                {
+                    Patient[] test = new Patient[e.Result.Count];
+                    for (int i = 0; i < e.Result.Count; i++)
+                    {
 
-                //We zette de database results in de publieke PatList 
-                test[i] = new Patient();
-                test[i].FirstName = e.Result[i].FirstName;
-                test[i].LastName = e.Result[i].LastName;
-                test[i].Id = e.Result[i].PatientID;
-                test[i].Email = e.Result[i].Email;
-                test[i].Bday = e.Result[i].bDay;
-                test[i].Sex = e.Result[i].Sex;
-                test[i].SSN = e.Result[i].Ssn;
+                        //We zette de database results in de publieke PatList 
+                        test[i] = new Patient();
+                        test[i].FirstName = e.Result[i].FirstName;
+                        test[i].LastName = e.Result[i].LastName;
+                        test[i].Id = e.Result[i].PatientID;
+                        test[i].Email = e.Result[i].Email;
+                        test[i].Bday = e.Result[i].bDay;
+                        test[i].Sex = e.Result[i].Sex;
+                        test[i].SSN = e.Result[i].Ssn;
+                        test[i].Address = e.Result[i].address;
+                        test[i].Telephone = e.Result[i].phoneNumber;
 
+                    }
+                    foreach (Patient patient in test)
+                    {
+                        App.PatID++;
+                        PatientLst.Items.Add(patient);
+                        App.PatList.Add(patient);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Server error :(\n\rWe could not find any of your patients");
+                }
             }
-            foreach (Patient patient in test)
-            {
-                App.PatID++;
-                PatientLst.Items.Add(patient);
-                App.PatList.Add(patient);
-            }
+            else
+                MessageBox.Show("Server error :(\n\rWe could not return a patientlist");
         }
 
         //void Service_DownloadDone(object sender, EventArgs e)

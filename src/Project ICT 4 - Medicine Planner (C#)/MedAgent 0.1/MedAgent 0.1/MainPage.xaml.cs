@@ -87,7 +87,9 @@ namespace MedAgent_0_1
                     }
                     case 'd'://dokter
                     {
-                        NavigationService.Navigate(new Uri(string.Format("/DoctorView1.xaml"), UriKind.Relative));
+                        client.GetDocInfoAsync(userMemberID);
+                        client.GetDocInfoCompleted += new EventHandler<MedCareCloudServiceReference.GetDocInfoCompletedEventArgs>(client_GetDocInfoCompleted);
+                        
                         break;
                     }
                     case 'n'://verpleger
@@ -102,6 +104,22 @@ namespace MedAgent_0_1
                         break;
                     }
                 }
+            }
+        }
+
+        void client_GetDocInfoCompleted(object sender, MedCareCloudServiceReference.GetDocInfoCompletedEventArgs e)
+        {
+            if (e.Result != null)
+            {
+                App.PublicDoctor.DocID = e.Result.DoctorID;
+                App.PublicDoctor.MemberID = e.Result.MemberID;
+                App.PublicDoctor.Speciality = e.Result.Speciality;
+
+                NavigationService.Navigate(new Uri(string.Format("/DoctorView1.xaml"), UriKind.Relative));
+            }
+            else
+            {
+                MessageBox.Show("Server error:\n\rWe failed to retrieve your data\n\r\n\rPlease retry or contact an Admin.");
             }
         }
 

@@ -156,4 +156,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetDocInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="MemberID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDocInfoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/SilverlightApplication3.Web.Model" minOccurs="0" name="GetDocInfoResult" nillable="true" type="q20:Doctor" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

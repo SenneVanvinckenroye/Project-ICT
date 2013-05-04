@@ -42,20 +42,28 @@ namespace SilverlightApplication3.Web
 
         public List<Model.Patient> GetAllPatientsForDoctor(int DocID)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
-            List<Model.Patient> alist = new List<Model.Patient>();
-
-            var us = from p in dc.Patients
-                     join u in dc.Users on p.MemberID equals u.MemberID
-                     where p.DocID == DocID
-                     select new { p.PatientID, u.FName, u.LName, u.sex, u.bday, u.email, u.ssn };
-
-            foreach (var item in us)
+            try
             {
-                alist.Add(new Model.Patient() { PatientID = item.PatientID, FirstName = item.FName, LastName = item.LName, bDay = item.bday, Sex = item.sex, Ssn = (int)item.ssn, Email = item.email });
-            }
+                DataClasses1DataContext dc = new DataClasses1DataContext();
+                List<Model.Patient> alist = new List<Model.Patient>();
 
-            return alist;
+                var pat = from p in dc.Patients
+                         join u in dc.Users on p.MemberID equals u.MemberID
+                         where p.DocID == DocID
+                         select new { p.PatientID, u.FName, u.LName, u.sex, u.bday, u.email, u.ssn, u.address, u.PhoneNumber };
+
+                foreach (var item in pat)
+                {
+                    alist.Add(new Model.Patient() { PatientID = item.PatientID, FirstName = item.FName, LastName = item.LName, bDay = item.bday, Sex = item.sex, Ssn = Convert.ToInt64(item.ssn), Email = item.email, address = Convert.ToString(item.address), phoneNumber = Convert.ToInt64(item.PhoneNumber) });
+                }
+                //return "error";
+                return alist;
+            }
+            catch(Exception e)
+            {
+                return null;
+                //return "GetAllPatientsError? : \n\r"+e.Message;
+            }
         }
 
         public bool SendEmail(string PatientEmail, string PatientFName, string DoctorFName, string PatientPass)
@@ -320,6 +328,30 @@ namespace SilverlightApplication3.Web
                 return prescriptions;
             else
                 return null;
+        }
+
+        public Model.Doctor GetDocInfo(int MemberID)
+        {
+            try
+            {
+                Model.Doctor dokter = new Model.Doctor();
+                DataClasses1DataContext dc = new DataClasses1DataContext();
+                var Doctors = from d in dc.Doctors
+                             where d.MemberID == MemberID
+                             select new {d.DocID,d.MemberID,d.Speciality };
+
+                foreach (var doctor in Doctors)
+                {
+                    dokter.DoctorID = doctor.DocID;
+                    dokter.MemberID = doctor.MemberID;
+                    dokter.Speciality = doctor.Speciality;
+                }
+                return dokter;
+            }
+            catch(Exception e)
+            {
+                return null;
+            }
         }
     }
 }

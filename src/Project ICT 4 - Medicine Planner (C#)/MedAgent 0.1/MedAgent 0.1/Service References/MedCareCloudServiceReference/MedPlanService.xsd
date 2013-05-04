@@ -36,8 +36,10 @@
       <xs:element minOccurs="0" name="MemberID" type="xs:int" />
       <xs:element minOccurs="0" name="PatientID" type="xs:int" />
       <xs:element minOccurs="0" name="Sex" type="ser:char" />
-      <xs:element minOccurs="0" name="Ssn" type="xs:int" />
+      <xs:element minOccurs="0" name="Ssn" type="xs:long" />
+      <xs:element minOccurs="0" name="address" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="bDay" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="phoneNumber" type="xs:long" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Patient" nillable="true" type="tns:Patient" />
@@ -73,4 +75,12 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Prescription" nillable="true" type="tns:Prescription" />
+  <xs:complexType name="Doctor">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DoctorID" type="xs:int" />
+      <xs:element minOccurs="0" name="MemberID" type="xs:int" />
+      <xs:element minOccurs="0" name="Speciality" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Doctor" nillable="true" type="tns:Doctor" />
 </xs:schema>

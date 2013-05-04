@@ -121,6 +121,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Course.cs" />
+    <Compile Include="Doctor.cs" />
     <Compile Include="DoctorView1.xaml.cs">
       <DependentUpon>DoctorView1.xaml</DependentUpon>
     </Compile>
@@ -397,6 +398,9 @@
     <None Include="packages.config" />
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml" />
+    <None Include="Service References\MedCareCloudServiceReference\MedAgent_0_1.MedCareCloudServiceReference.Doctor.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\MedCareCloudServiceReference\MedAgent_0_1.MedCareCloudServiceReference.Patient.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

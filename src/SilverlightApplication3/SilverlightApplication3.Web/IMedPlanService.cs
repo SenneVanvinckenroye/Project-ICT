@@ -38,5 +38,8 @@ namespace SilverlightApplication3.Web
 
         [OperationContract]
         List<Model.Prescription> GetPrescriptionsForPatient(int PatientID);
+
+        [OperationContract]
+        Model.Doctor GetDocInfo(int MemberID);
     }
 }

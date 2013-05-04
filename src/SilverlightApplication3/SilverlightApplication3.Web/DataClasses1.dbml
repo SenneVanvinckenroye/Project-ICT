@@ -17,6 +17,40 @@
       <Association Name="User_Doctor" Member="User" ThisKey="MemberID" OtherKey="MemberID" Type="User" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.Users" Member="Users">
+    <Type Name="User">
+      <Column Name="MemberID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FName" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="LName" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="pass_hash" Type="System.String" DbType="VarChar(32) NOT NULL" CanBeNull="false" />
+      <Column Name="sex" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="email" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="bday" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="ssn" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="UserType" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="address" Type="System.String" DbType="VarChar(70)" CanBeNull="true" />
+      <Column Name="PhoneNumber" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Association Name="User_Branch" Member="Branches" ThisKey="MemberID" OtherKey="AdminID" Type="Branch" />
+      <Association Name="User_Doctor" Member="Doctors" ThisKey="MemberID" OtherKey="MemberID" Type="Doctor" />
+      <Association Name="User_login_attempt" Member="login_attempts" ThisKey="MemberID" OtherKey="MemberID" Type="login_attempt" />
+      <Association Name="User_Nurse" Member="Nurses" ThisKey="MemberID" OtherKey="MemberID" Type="Nurse" />
+      <Association Name="User_Patient" Member="Patients" ThisKey="MemberID" OtherKey="MemberID" Type="Patient" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Drugs" Member="Drugs">
+    <Type Name="Drug">
+      <Column Name="DrugName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Instructions" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="DrugID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.login_attempts" Member="login_attempts">
+    <Type Name="login_attempt">
+      <Column Name="MemberID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Time" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="User_login_attempt" Member="User" ThisKey="MemberID" OtherKey="MemberID" Type="User" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.NursePerPatient" Member="NursePerPatients">
     <Type Name="NursePerPatient">
       <Column Name="PatientID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -38,25 +72,8 @@
       <Column Name="MemberID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="DocID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="Patient_Prescription" Member="Prescriptions" ThisKey="PatientID" OtherKey="PatientID" Type="Prescription" />
-      <Association Name="Doctor_Patient" Member="Doctor" ThisKey="DocID" OtherKey="DocID" Type="Doctor" IsForeignKey="true" />
       <Association Name="User_Patient" Member="User" ThisKey="MemberID" OtherKey="MemberID" Type="User" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Users" Member="Users">
-    <Type Name="User">
-      <Column Name="MemberID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="FName" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
-      <Column Name="LName" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
-      <Column Name="pass_hash" Type="System.String" DbType="VarChar(32) NOT NULL" CanBeNull="false" />
-      <Column Name="sex" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
-      <Column Name="email" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="bday" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="ssn" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="UserType" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
-      <Association Name="User_Branch" Member="Branches" ThisKey="MemberID" OtherKey="AdminID" Type="Branch" />
-      <Association Name="User_Doctor" Member="Doctors" ThisKey="MemberID" OtherKey="MemberID" Type="Doctor" />
-      <Association Name="User_Nurse" Member="Nurses" ThisKey="MemberID" OtherKey="MemberID" Type="Nurse" />
-      <Association Name="User_Patient" Member="Patients" ThisKey="MemberID" OtherKey="MemberID" Type="Patient" />
+      <Association Name="Doctor_Patient" Member="Doctor" ThisKey="DocID" OtherKey="DocID" Type="Doctor" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Prescriptions" Member="Prescriptions">

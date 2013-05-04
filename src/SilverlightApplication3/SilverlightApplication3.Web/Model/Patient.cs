@@ -31,9 +31,15 @@ namespace SilverlightApplication3.Web.Model
         public char Sex { get; set; }
 
         [DataMember]
-        public int Ssn { get; set; }
+        public long Ssn { get; set; }//bigint in db
 
         [DataMember]
         public string Email { get; set; }
+
+        [DataMember]
+        public string address { get; set; }
+
+        [DataMember]
+        public long phoneNumber { get; set; }//bigint in db
     }
 }

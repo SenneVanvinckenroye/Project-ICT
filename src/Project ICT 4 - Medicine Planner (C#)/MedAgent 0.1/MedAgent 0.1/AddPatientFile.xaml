@@ -62,14 +62,15 @@
                     <TextBox x:Name="PatSsnEdit" Text="Patient SSN" Foreground="#FF0BD47C" BorderBrush="#FF1BA1E2"></TextBox>
                     <TextBox x:Name="PatAddress" Text="Address" Foreground="#FF0BD47C" BorderBrush="#FF1BA1E2"></TextBox>
                     <TextBox x:Name="PatPhoneNumber" Text="" Foreground="#FF0BD47C" BorderBrush="#FF1BA1E2"></TextBox>
+                    <ContentControl BorderThickness="2"></ContentControl>
+                    <Button Content="Register Patient" Margin="108,10,112,8" Click="Register_Click" Background="Transparent" BorderBrush="#FFC7DA1B" Foreground="#FF3FC1DF" VerticalAlignment="Center" />
                 </StackPanel>
+                    
             </Grid>
-            
+
             
         </ScrollViewer>
-        <Grid Grid.Row="2">
-            <Button Content="Register Patient" Margin="108,10,112,8" Click="Register_Click" Background="Transparent" BorderBrush="#FFC7DA1B" Foreground="#FF3FC1DF" VerticalAlignment="Center" />
-        </Grid>        
+               
     </Grid>
 
     <phone:PhoneApplicationPage.ApplicationBar>

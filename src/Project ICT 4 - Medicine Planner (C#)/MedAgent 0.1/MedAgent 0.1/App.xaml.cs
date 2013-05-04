@@ -29,6 +29,7 @@ namespace MedAgent_0_1
         /// 
         /// 
         /// 
+        public static Doctor PublicDoctor = new Doctor();
         public static Patient PublicPatient = new Patient(); 
 
         public static List<Medication> MedList = new List<Medication>();
