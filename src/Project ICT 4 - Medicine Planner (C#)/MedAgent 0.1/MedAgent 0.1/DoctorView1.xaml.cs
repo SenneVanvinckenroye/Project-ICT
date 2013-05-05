@@ -220,11 +220,11 @@ namespace MediAgent
 
         }
 
-        private void PhonesListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            //Call the patient his number, VETTEN DJAB
+        //private void PhonesListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    //Call the patient his number, VETTEN DJAB
 
-        }
+        //}
 
         //Go to the AddPatientPage and create a new Patient object
         private void ApplicationBarAddButton_OnClick(object sender, EventArgs e)
@@ -232,6 +232,13 @@ namespace MediAgent
             App.PatList.Add(new Patient());
 
             NavigationService.Navigate(new Uri(string.Format("/AddPatientFile.xaml"), UriKind.Relative));
+        }
+
+        private void PhonePatBtn_OnClick(object sender, RoutedEventArgs e)
+        {
+            Button test = (Button) e.OriginalSource;
+            MessageBox.Show("");
+            //Call the patient his number, VETTEN DJAB
         }
     }
 }

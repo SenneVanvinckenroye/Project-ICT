@@ -177,7 +177,7 @@ namespace MediAgent
                 MedListBox.Items.Add(item);
 
             
-            Calendar.OnDayClicked += Calendar_OnDayClicked;
+            //Calendar.OnDayClicked += Calendar_OnDayClicked;
             PatName.Text = App.PublicPatient.LastName;
             PatFirstname.Text = App.PublicPatient.FirstName;
 
