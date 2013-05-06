@@ -354,5 +354,43 @@ namespace SilverlightApplication3.Web
                 return null;
             }
         }
+
+        public string DropUsers(int[] MemberIDs)//array parameter, mogelijk om meerdere gebruikers terzelfdetijd te verwijderen
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            try
+            {
+                foreach (int MemberID in MemberIDs)
+                {
+                    //request to delete presiption row where MemberID is id from array
+                    dc.Users.DeleteOnSubmit((User)dc.Users.Where(p => p.MemberID == MemberID));
+                }
+                dc.SubmitChanges();//submit changes to db (e.g. all rows to delete)
+            }
+            catch (Exception e)
+            {
+                return e.Message;//indien er iets fout ging, stop en return dan de foutmelding
+            }
+            return "success";
+        }
+
+        public string DropMeds(int[] PrescriptionIDs)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            try
+            {
+                foreach (int PrescriptionID in PrescriptionIDs)
+                {
+                    //request to delete presiption row where prescriptionID is id from array
+                    dc.Prescriptions.DeleteOnSubmit((Prescription)dc.Prescriptions.Where(p => p.PrescriptionID == PrescriptionID));
+                }
+                dc.SubmitChanges();//submit changes to db (e.g. all rows to delete)
+            }
+            catch (Exception e)
+            {
+                return e.Message;//indien er iets fout ging, stop en return dan de foutmelding
+            }
+            return "success";//alles goed verlopen.
+        }
     }
 }

@@ -41,5 +41,11 @@ namespace SilverlightApplication3.Web
 
         [OperationContract]
         Model.Doctor GetDocInfo(int MemberID);
+
+        [OperationContract]
+        string DropUsers(int[] MemberID);
+
+        [OperationContract]
+        string DropMeds(int[] PrescriptionID);
     }
 }
