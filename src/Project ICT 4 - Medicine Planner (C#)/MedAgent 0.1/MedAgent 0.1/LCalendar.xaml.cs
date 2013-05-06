@@ -37,16 +37,6 @@ namespace CalendarControl
             InitializeComponent();
             InitializeObjects();
             PopulateDaysTextBlock();
-            //test
-            
-
-
-
-
-
-            //test
-
-
         }
 
         #endregion
@@ -268,14 +258,17 @@ namespace CalendarControl
 
                         while (medication.EndDate.Date > temp.Date)
                         {
+
                             if (temp.Date == ButtonDay.Date)
                             {
                                 MedDay = true;
                                 if (temp.Date <= DateTime.Now.Date)
                                 {
-                                    foreach (TimeSpan times in App.MedList[App.MedID].Times)//aangepast door rien van DateTime naar TimeSpan
+                                    foreach (TimeSpan times in App.MedList[App.MedID].Times)
+                                    //aangepast door rien van DateTime naar TimeSpan
                                     {
-                                        if (!times.Days.Equals(new DateTime(0001, 1, 1))) // date is not initial date // aangepast door Rien van if (times.Date != new DateTime(0001, 1, 1)) naar if (!times.Days.Equals(new DateTime(0001, 1, 1)))
+                                        if (!times.Days.Equals(new DateTime(0001, 1, 1)))
+                                        // date is not initial date // aangepast door Rien van if (times.Date != new DateTime(0001, 1, 1)) naar if (!times.Days.Equals(new DateTime(0001, 1, 1)))
                                         {
                                             activeDays++;
                                         }

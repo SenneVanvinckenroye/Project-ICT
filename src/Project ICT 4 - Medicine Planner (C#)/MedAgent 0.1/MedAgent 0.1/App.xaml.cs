@@ -77,43 +77,43 @@ namespace MedAgent_0_1
             InitializePhoneApplication();
 
             //test code!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            App.MedList.Add(new Medication()
-            {
-                Amount = 100,
-                Description = "testmed",
-                EndDate = new DateTime(2013, 04, 30),
-                Interval = 3,
-                Name = "TestMed",
-                StartDate = new DateTime(2013, 04, 1),
+            //App.MedList.Add(new Medication()
+            //{
+            //    Amount = 100,
+            //    Description = "testmed",
+            //    EndDate = new DateTime(2013, 04, 30),
+            //    Interval = 3,
+            //    Name = "TestMed",
+            //    StartDate = new DateTime(2013, 04, 1),
 
-                Taken = new List<List<bool>>(){
-                            new List<bool>(){true,true,true,false,false,false},
-                            new List<bool>(){false,false,false,false,false,false},
-                            new List<bool>(){true,false,false,false,false,false},
-                            new List<bool>(){true,true,true,false,false,false},
-                            new List<bool>(){true,true,true,false,false,false},
-                            new List<bool>(){true,true,true,false,false,false},
-                            new List<bool>(){true,true,true,false,false,false},
-                            new List<bool>(){true,true,true,false,false,false},
-                            new List<bool>(){true,true,true,false,false,false},
-                            new List<bool>(){true,true,true,false,false,false},
-                            new List<bool>(){true,true,true,false,false,false},
-                            new List<bool>(){true,true,true,false,false,false},
-                            new List<bool>(){true,true,true,false,false,false},
-                            new List<bool>(){true,true,true,false,false,false},
-                            new List<bool>(){true,true,true,false,false,false},
-                            new List<bool>(){true,true,true,false,false,false}
-                        },
+            //    Taken = new List<List<bool>>(){
+            //                new List<bool>(){true,true,true,false,false,false},
+            //                new List<bool>(){false,false,false,false,false,false},
+            //                new List<bool>(){true,false,false,false,false,false},
+            //                new List<bool>(){true,true,true,false,false,false},
+            //                new List<bool>(){true,true,true,false,false,false},
+            //                new List<bool>(){true,true,true,false,false,false},
+            //                new List<bool>(){true,true,true,false,false,false},
+            //                new List<bool>(){true,true,true,false,false,false},
+            //                new List<bool>(){true,true,true,false,false,false},
+            //                new List<bool>(){true,true,true,false,false,false},
+            //                new List<bool>(){true,true,true,false,false,false},
+            //                new List<bool>(){true,true,true,false,false,false},
+            //                new List<bool>(){true,true,true,false,false,false},
+            //                new List<bool>(){true,true,true,false,false,false},
+            //                new List<bool>(){true,true,true,false,false,false},
+            //                new List<bool>(){true,true,true,false,false,false}
+            //            },
 
-                Times = new TimeSpan[]{
-                            new TimeSpan(),
-                            new TimeSpan(), 
-                            new TimeSpan(), 
-                            new TimeSpan(), 
-                            new TimeSpan(), 
-                            new TimeSpan()
-                        },
-            });
+            //    Times = new TimeSpan[]{
+            //                new TimeSpan(),
+            //                new TimeSpan(), 
+            //                new TimeSpan(), 
+            //                new TimeSpan(), 
+            //                new TimeSpan(), 
+            //                new TimeSpan()
+            //            },
+            //});
             //test code!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
         }

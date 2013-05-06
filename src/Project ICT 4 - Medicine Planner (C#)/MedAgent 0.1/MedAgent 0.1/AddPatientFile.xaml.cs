@@ -82,6 +82,8 @@ namespace MedAgent_0_1
             //Checke of alle velde legit zijn
             int SSN;
             bool isNum = Int32.TryParse(PatSsnEdit.Text,out SSN);
+
+            // er moeten meer checks in deze "if"... (phoneNum checken of het een nummer is)
             if (PatNameEdit.Text != "" && PatFirstnameEdit.Text != "" && (PatSexEdit.Text.ToCharArray().First() == 'm' || PatSexEdit.Text.ToCharArray().First() == 'f') && Validator.EmailIsValid(PatEmailEdit.Text) && (PatSsnEdit.Text!="" && isNum) )
             {
                  client.CreateNewUserAsync(PatFirstnameEdit.Text, PatNameEdit.Text, randomPassHash, PatEmailEdit.Text, PatSexEdit.Text.ToCharArray().FirstOrDefault(), 1, 'p', MyDateTime, PatAddress.Text, Convert.ToInt32(PatSsnEdit.Text), App.PublicDoctor.DocID, Convert.ToInt32(PatPhoneNumber.Text));
