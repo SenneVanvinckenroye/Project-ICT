@@ -99,7 +99,10 @@ namespace MedAgent_0_1
                 case 4: repeatInfo_txt.Text = "Every 5 days";
                     App.MedList[App.MedID].Course = "Every 5 days";
                     break;
-                case 5: repeatInfo_txt.Text = "Weekly";
+                case 5: repeatInfo_txt.Text = "Every 6 days";
+                    App.MedList[App.MedID].Course = "Every 6 days";
+                    break;
+                case 6: repeatInfo_txt.Text = "Weekly";
                     App.MedList[App.MedID].Course = "Weekly";
                     break;
                 default: repeatInfo_txt.Text = "error";

@@ -275,7 +275,7 @@ namespace CalendarControl
                                     }
                                     for (int j = 0; j < activeDays; j++)
                                     {
-                                        if (App.MedList[App.MedID].Taken.ElementAt(IntervalDay).ElementAt(j))
+                                        if (App.MedList[App.MedID].Taken.ElementAt(IntervalDay).ElementAt(j)) // geeft error hier
                                         {
                                             AmountTrue++;
                                         }

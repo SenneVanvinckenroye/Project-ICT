@@ -32,14 +32,14 @@ namespace MediAgent
 
         }
 
-                //Helper Class for showing some of the data we pull from the PatientList in the ListBox
+        //Helper Class for showing some of the data we pull from the PatientList in the ListBox
         public class PatientData
         {
             //...
         }
 
         MedAgent_0_1.MedCareCloudServiceReference.MedPlanServiceClient client;
-      
+
         //Als ge op deze pagina terecht komt kunde checke of den dokter ne patient wil toevoege OF ne patient zen medicijnen wil toevoegen???
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -91,6 +91,46 @@ namespace MediAgent
                     tempMed.EndDate = item.EndDate;
                     tempMed.Course = item.Course;
 
+
+                    switch (item.Course)
+                    {
+                        case "Daily":
+                            {
+                                tempMed.Interval = 1;
+                                break;
+                            }
+                        case "Every 2 days":
+                            {
+                                tempMed.Interval = 2;
+                                break;
+                            }
+                        case "Every 3 days":
+                            {
+                                tempMed.Interval = 3;
+                                break;
+                            }
+                        case "Every 4 days":
+                            {
+                                tempMed.Interval = 4;
+                                break;
+                            }
+                        case "Every 5 days":
+                            {
+                                tempMed.Interval = 5;
+                                break;
+                            }
+                        case "Every 6 days":
+                            {
+                                tempMed.Interval = 6;
+                                break;
+                            }
+                        case "Weekly":
+                            {
+                                tempMed.Interval = 7;
+                                break;
+                            }
+                    }
+
                     tempMed.Times[0] = item.Time1;
                     tempMed.Times[1] = item.Time2;
                     tempMed.Times[2] = item.Time3;
@@ -105,7 +145,7 @@ namespace MediAgent
                     tempMed.Taken[0][4] = CharNaarBool(item.Taken5);
                     tempMed.Taken[0][5] = CharNaarBool(item.Taken6);*/
 
-                    App.MedList.Add(tempMed);    
+                    App.MedList.Add(tempMed);
                 }
                 foreach (Medication MedItem in App.MedList)
                 {
@@ -176,38 +216,38 @@ namespace MediAgent
                 //tempMedData.StartDate = item.StartDate.ToShortDateString();
                 MedListBox.Items.Add(item);
 
-            
-            //Calendar.OnDayClicked += Calendar_OnDayClicked;
-            PatName.Text = App.PublicPatient.LastName;
-            PatFirstname.Text = App.PublicPatient.FirstName;
 
-            if (App.PublicPatient.Bday != new DateTime())
-            {
-                int age = DateTime.Today.Year - App.PublicPatient.Bday.Year;
-                if (App.PublicPatient.Bday > DateTime.Today.AddYears(-age)) age--;
-                PatAge.Text = age.ToString();
+                //Calendar.OnDayClicked += Calendar_OnDayClicked;
+                PatName.Text = App.PublicPatient.LastName;
+                PatFirstname.Text = App.PublicPatient.FirstName;
+
+                if (App.PublicPatient.Bday != new DateTime())
+                {
+                    int age = DateTime.Today.Year - App.PublicPatient.Bday.Year;
+                    if (App.PublicPatient.Bday > DateTime.Today.AddYears(-age)) age--;
+                    PatAge.Text = age.ToString();
+                }
+                else
+                {
+                    PatAge.Text = "NA";
+                }
+
+                PatSex.Text = App.PublicPatient.Sex != '\0' ? App.PublicPatient.Sex.ToString() : "NA";
+                PatEmail.Text = App.PublicPatient.Email ?? "NA";
+                PatBday.Text = App.PublicPatient.Bday != new DateTime() ? App.PublicPatient.Bday.Date.ToString() : "NA";
+                PatSsn.Text = App.PublicPatient.SSN != 0 ? App.PublicPatient.SSN.ToString() : "NA";
+
+                PatNameEdit.Text = PatName.Text;
+                PatFirstnameEdit.Text = PatFirstname.Text;
+                PatAgeEdit.Text = PatAge.Text;
+                PatSexEdit.Text = PatSex.Text;
+                PatEmailEdit.Text = PatEmail.Text;
+                PatBdayEdit.Text = PatBday.Text;
+                PatSsnEdit.Text = PatSsn.Text;
             }
-            else
-            {
-                PatAge.Text = "NA";
-            }
-
-            PatSex.Text = App.PublicPatient.Sex != '\0' ? App.PublicPatient.Sex.ToString() : "NA";
-            PatEmail.Text = App.PublicPatient.Email ?? "NA";
-            PatBday.Text = App.PublicPatient.Bday != new DateTime() ? App.PublicPatient.Bday.Date.ToString() : "NA";
-            PatSsn.Text = App.PublicPatient.SSN != 0 ? App.PublicPatient.SSN.ToString() : "NA";
-
-            PatNameEdit.Text = PatName.Text;
-            PatFirstnameEdit.Text = PatFirstname.Text;
-            PatAgeEdit.Text = PatAge.Text;
-            PatSexEdit.Text = PatSex.Text;
-            PatEmailEdit.Text = PatEmail.Text;
-            PatBdayEdit.Text = PatBday.Text;
-            PatSsnEdit.Text = PatSsn.Text;
-        }
 
 
-        //Panorama Item 1 (MedListOverview)
+            //Panorama Item 1 (MedListOverview)
 
 
 
@@ -223,7 +263,7 @@ namespace MediAgent
             NavigationService.Navigate(new Uri(string.Format("/MainPage.xaml"), UriKind.Relative));
         }
 
-      
+
         private void MedListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (e.AddedItems.Count > 0)
@@ -245,24 +285,24 @@ namespace MediAgent
                     ((ListBox)sender).SelectedIndex = -1;
 
                     //Data doorsture als ge naar de volgende pagina ga
-                    FrameworkElement root = Application.Current.RootVisual as FrameworkElement; 
-                    
+                    FrameworkElement root = Application.Current.RootVisual as FrameworkElement;
+
                     root.DataContext = meddata;
 
-                   
+
 
                     // change page navigation 
                     NavigationService.Navigate(new Uri(string.Format("/OverviewPage.xaml"), UriKind.Relative));
 
                 }
-            } 
+            }
         }
 
 
 
         void Calendar_OnDayClicked(object sender, LCalendar.DayClickedEventArgs e)
         {
-            Button temp = (Button) sender;
+            Button temp = (Button)sender;
             MessageBox.Show(temp.Tag.ToString());
         }
 
@@ -280,7 +320,7 @@ namespace MediAgent
 
         }
 
-      
+
         #endregion
 
     }
