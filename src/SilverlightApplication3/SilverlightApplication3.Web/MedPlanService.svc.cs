@@ -40,6 +40,33 @@ namespace SilverlightApplication3.Web
             return alist;
         }
 
+        public List<Model.Patient> GetAllPatientsForNurse(int NurseID)
+        {
+            try
+            {
+                DataClasses1DataContext dc = new DataClasses1DataContext();
+                List<Model.Patient> alist = new List<Model.Patient>();
+
+                var pat = from n in dc.NursePerPatients
+                          join p in dc.Patients on n.PatientID equals p.PatientID
+                          join u in dc.Users on p.MemberID equals u.MemberID
+                          where n.NurseID == NurseID
+                          select new { p.PatientID, u.FName, u.LName, u.sex, u.bday, u.email, u.ssn, u.address, u.PhoneNumber };
+
+                foreach (var item in pat)
+                {
+                    alist.Add(new Model.Patient() { PatientID = item.PatientID, FirstName = item.FName, LastName = item.LName, bDay = item.bday, Sex = item.sex, Ssn = Convert.ToInt64(item.ssn), Email = item.email, address = Convert.ToString(item.address), phoneNumber = Convert.ToInt64(item.PhoneNumber) });
+                }
+                //return "error";
+                return alist;
+            }
+            catch (Exception e)
+            {
+                return null;
+                //return "GetAllPatientsError? : \n\r"+e.Message;
+            }
+        }
+
         public List<Model.Patient> GetAllPatientsForDoctor(int DocID)
         {
             try

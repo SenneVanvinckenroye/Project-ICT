@@ -94,7 +94,8 @@ namespace MedAgent_0_1
                     }
                     case 'n'://verpleger
                     {
-                        NavigationService.Navigate(new Uri(string.Format("/DoctorView1.xaml"), UriKind.Relative));
+                        MessageBox.Show("No support for nurses just yet.\n\rApologies from the MedCare team.")
+                        //NavigationService.Navigate(new Uri(string.Format("/NurseView1.xaml"), UriKind.Relative));
                         break;
                     }
                     default:
