@@ -43,7 +43,7 @@ namespace MedAgent_0_1
         public static int PatID = 0;
 
 
-
+        public static int PrescriptionsCounter = 0;
 
 
 

@@ -8,15 +8,6 @@
       <Association Name="User_Branch" Member="User" ThisKey="AdminID" OtherKey="MemberID" Type="User" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Doctors" Member="Doctors">
-    <Type Name="Doctor">
-      <Column Name="DocID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="MemberID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Speciality" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
-      <Association Name="Doctor_Patient" Member="Patients" ThisKey="DocID" OtherKey="DocID" Type="Patient" />
-      <Association Name="User_Doctor" Member="User" ThisKey="MemberID" OtherKey="MemberID" Type="User" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Users" Member="Users">
     <Type Name="User">
       <Column Name="MemberID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -35,6 +26,15 @@
       <Association Name="User_login_attempt" Member="login_attempts" ThisKey="MemberID" OtherKey="MemberID" Type="login_attempt" />
       <Association Name="User_Nurse" Member="Nurses" ThisKey="MemberID" OtherKey="MemberID" Type="Nurse" />
       <Association Name="User_Patient" Member="Patients" ThisKey="MemberID" OtherKey="MemberID" Type="Patient" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Doctors" Member="Doctors">
+    <Type Name="Doctor">
+      <Column Name="DocID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MemberID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Speciality" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
+      <Association Name="Doctor_Patient" Member="Patients" ThisKey="DocID" OtherKey="DocID" Type="Patient" />
+      <Association Name="User_Doctor" Member="User" ThisKey="MemberID" OtherKey="MemberID" Type="User" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.Drugs" Member="Drugs">
@@ -79,27 +79,9 @@
   <Table Name="dbo.Prescriptions" Member="Prescriptions">
     <Type Name="Prescription">
       <Column Name="PrescriptionID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="Type" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
-      <Column Name="Quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="DrugName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="DDescription" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
-      <Column Name="Course" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
-      <Column Name="PatientID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Time1" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" />
-      <Column Name="Taken1" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
-      <Column Name="Time2" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
-      <Column Name="Taken2" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
-      <Column Name="Time3" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
-      <Column Name="Taken3" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
-      <Column Name="Time4" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
-      <Column Name="Taken4" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
-      <Column Name="Time5" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
-      <Column Name="Taken5" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
-      <Column Name="Time6" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
-      <Column Name="Taken6" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
-      <Association Name="Patient_Prescription" Member="Patient" ThisKey="PatientID" OtherKey="PatientID" Type="Patient" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Column Name="PatientID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="data" Type="System.String" DbType="VarChar(8000)" CanBeNull="true" />
+      <Association Name="Patient_Prescription" Member="Patient" ThisKey="PatientID" OtherKey="PatientID" Type="Patient" IsForeignKey="true" DeleteRule="CASCADE" />
     </Type>
   </Table>
 </Database>

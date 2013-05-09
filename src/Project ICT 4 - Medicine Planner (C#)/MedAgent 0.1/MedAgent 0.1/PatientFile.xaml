@@ -37,7 +37,7 @@
                                     </Image>
                                     <StackPanel Width="370">
                                         <TextBlock Text="{Binding Name}" Foreground="DarkTurquoise" FontSize="28" />
-                                        <TextBlock Text="{Binding Amount}" Foreground="Black" TextWrapping="Wrap" FontSize="24" />
+                                        <TextBlock Text="{Binding Description}" Foreground="Black" TextWrapping="Wrap" FontSize="24" />
                                         <TextBlock Text="{Binding Course}" Foreground="Black" TextWrapping="Wrap" FontSize="24"/>
                                     </StackPanel>
                                 </StackPanel>

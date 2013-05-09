@@ -15,6 +15,10 @@ using Microsoft.Phone.Scheduler;
 using Microsoft.Phone.Tasks;
 using Microsoft.Phone;
 using System.Windows.Navigation;
+using System.Xml;
+using System.IO;
+using System.Xml.Linq;
+using System.IO.IsolatedStorage;
 
 
 namespace MedAgent_0_1
@@ -85,28 +89,28 @@ namespace MedAgent_0_1
             switch ((int)(CourseSlider.Value))
             {
                 case 0: repeatInfo_txt.Text = "Daily";
-                    App.MedList[App.MedID].Course = "Daily";
+                    App.MedList[App.MedID].Course = 1;
                     break;
                 case 1: repeatInfo_txt.Text = "Every 2 days";
-                    App.MedList[App.MedID].Course = "Every 2 days";
+                    App.MedList[App.MedID].Course = 2;
                     break;
                 case 2: repeatInfo_txt.Text = "Every 3 days";
-                    App.MedList[App.MedID].Course = "Every 3 days";
+                    App.MedList[App.MedID].Course = 3;
                     break;
                 case 3: repeatInfo_txt.Text = "Every 4 days";
-                    App.MedList[App.MedID].Course = "Every 4 days";
+                    App.MedList[App.MedID].Course = 4;
                     break;
                 case 4: repeatInfo_txt.Text = "Every 5 days";
-                    App.MedList[App.MedID].Course = "Every 5 days";
+                    App.MedList[App.MedID].Course = 5;
                     break;
                 case 5: repeatInfo_txt.Text = "Every 6 days";
-                    App.MedList[App.MedID].Course = "Every 6 days";
+                    App.MedList[App.MedID].Course = 6;
                     break;
                 case 6: repeatInfo_txt.Text = "Weekly";
-                    App.MedList[App.MedID].Course = "Weekly";
+                    App.MedList[App.MedID].Course = 7;
                     break;
                 default: repeatInfo_txt.Text = "error";
-                    App.MedList[App.MedID].Course = "N/A";
+                    App.MedList[App.MedID].Course = 0;
                     break;
             }
         }
@@ -728,19 +732,107 @@ namespace MedAgent_0_1
 
                 //Write the variables medication in the medlist with the current ID to the database.
                 client = new MedAgent_0_1.MedCareCloudServiceReference.MedPlanServiceClient();
-                client.CreatePrescriptionAsync(App.MedList[App.MedID].Name, App.MedList[App.MedID].StartDate, App.MedList[App.MedID].EndDate, App.MedList[App.MedID].Amount,
-                    App.MedList[App.MedID].Times[0],
-                    App.MedList[App.MedID].Times[1],
-                    App.MedList[App.MedID].Times[2],
-                    App.MedList[App.MedID].Times[3],
-                    App.MedList[App.MedID].Times[4],
-                    App.MedList[App.MedID].Times[5],
-                    App.MedList[App.MedID].Description,
-                    App.MedList[App.MedID].Course,
-                    App.PublicPatient.Id,
-                    "pillen",
-                    'n','n','n','n','n','n');
 
+
+                //writing the medlist to the prescription.xml
+                /*XDocument xml = new XDocument(new XElement("Prescription",
+                    new XElement("Drugname", App.MedList[App.MedID].Name),
+                    new XElement("DrugDescription", App.MedList[App.MedID].Description),
+                    new XElement("StartDate", App.MedList[App.MedID].StartDate),
+                    new XElement("EndDate", App.MedList[App.MedID].EndDate),
+                    new XElement("Quantity", App.MedList[App.MedID].Amount),
+                    new XElement("Interval", App.MedList[App.MedID].Interval)));
+
+                using (var appStorage = IsolatedStorageFile.GetUserStoreForApplication())
+                {
+                    using (var file = appStorage.OpenFile("Prescription.xml", FileMode.OpenOrCreate))
+                    {
+                        using (var writer = new StreamWriter(file))
+                        {
+                            writer.Write(xml);
+                        }
+                    }
+                }*/
+                XDocument doc = new XDocument(
+                    new XElement("Prescription",
+                        new XElement("DrugName", App.MedList[App.MedID].Name),
+                        new XElement("DrugDescription", App.MedList[App.MedID].Description),
+                        new XElement("StartDate", App.MedList[App.MedID].StartDate),
+                        new XElement("EndDate", App.MedList[App.MedID].EndDate),
+                        new XElement("Quantity", App.MedList[App.MedID].Amount),
+                        new XElement("Course", App.MedList[App.MedID].Course)
+
+                    )
+                );
+
+                string XElementTimeName;
+                string XElementDayName;
+
+                List<DateTime> allDates = new List<DateTime>();//array om alle dagen tussen start en einddatum in te steken (met interval 'course')
+                if (App.MedList[App.MedID].Course != 0)//indien het interval wel groot genoeg is
+                {
+                    for (DateTime date = App.MedList[App.MedID].StartDate; date <= App.MedList[App.MedID].EndDate; date = date.AddDays(App.MedList[App.MedID].Course))
+                        allDates.Add(date);//bereken alle dagen met de 'course' als intervalstap en steek al de datums in de array allDates.
+
+                    for (int i = 0; i < allDates.Count; i++)//voor elke berekende Dag: maak DagNode...
+                    {
+                        XElementDayName = "Day" + i.ToString();//<Date0></Date0>
+                        doc.Element("Prescription").Add(new XElement(XElementDayName, allDates[i].ToString()));//<Date0>1999-25-1</Date0>
+
+                        for (int j = 0; j < App.MedList[App.MedID].Times.Length; j++)//... en voeg alle ingestelde tijden toe aan deze dag.
+                        {
+                            XElementTimeName = "Time" + j.ToString();//<Time0></Time0>
+                            doc.Element("Prescription").Element(XElementDayName).Add(new XElement(XElementTimeName, App.MedList[App.MedID].Times[j].ToString()));//<Day0><Timej>00:00:00</Timej></Day0>
+                            doc.Element("Prescription").Element(XElementDayName).Element(XElementTimeName).Add(new XElement("Taken", false));//<Day0>12-12-2013T0:00:00<Timej>00:00:00<Taken>false</Taken></Timej></Day0>
+                            doc.Element("Prescription").Element(XElementDayName).Element(XElementTimeName).Add(new XElement("Administration", "1 tablet"));//<Day0>12-12-2013T0:00:00<Timej>00:00:00<Taken>false</Taken></Timej></Day0>
+                        }
+                    }
+                    //normaal nu:
+                    /*
+                     * <Day0>1991-25-12
+                     *  <Time0>00:00:00<Taken>false</Taken></Time0>
+                     *  ...
+                     *  <Time5>00:00:00<Taken>false</Taken></Time5>
+                     * </Day0>
+                     * ...
+                     * <Dayn>...</Dayn>
+                     * */
+
+                }
+                else
+                {
+                    MessageBox.Show("Oops, no course have been found");
+                }
+
+                
+
+                MessageBox.Show(doc.ToString());//DEBUGGING --> SHOW THE XML TO BE WRITTEN
+                
+                //NU NOG DYNAMISCH EXTRA NODES TOEVOEGEN VAN REMINDER TIJDEN!!!!
+                //XElement niewElement = new XElement("testchild", "testvalue");
+                //doc.FirstNode.Add(niewElement);
+                string currentXmlFileName = "Prescription" + Convert.ToInt32(App.PrescriptionsCounter + 1) + ".xml";
+                //MessageBox.Show(currentXmlFileName);
+                //SLA HET XML BESTAND LOKAAL OP
+                using (IsolatedStorageFile isoStore = IsolatedStorageFile.GetUserStoreForApplication())
+                {
+                    using (IsolatedStorageFileStream isoStream =
+                        new IsolatedStorageFileStream(currentXmlFileName, FileMode.Create, isoStore))
+                    {
+                        doc.Save(isoStream);
+                    }
+                }
+
+                //SCHRIJF HET XMLBESTAND NAAR DATABASE TABEL PRESCRIPTIONS IN HET DATA VELD VAN EEN VOORSCHRIFT
+                using (IsolatedStorageFile isoStore = IsolatedStorageFile.GetUserStoreForApplication())
+                {
+                    using (IsolatedStorageFileStream isoStream = new IsolatedStorageFileStream(currentXmlFileName, FileMode.Open, isoStore))
+                    {
+                        //inserting the prescription.xml in the db
+                        XDocument xmlDoc = XDocument.Load(isoStream);
+                        client.CreatePrescriptionAsync(App.PublicPatient.Id, xmlDoc.ToString());
+                    }
+                }
 
                 client.CreatePrescriptionCompleted += new EventHandler<MedCareCloudServiceReference.CreatePrescriptionCompletedEventArgs>(client_CreatePrescriptionCompleted);
 

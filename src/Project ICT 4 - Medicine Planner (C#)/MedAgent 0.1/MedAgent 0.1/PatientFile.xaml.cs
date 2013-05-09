@@ -14,8 +14,11 @@ using System.Windows.Input;
 using System.Windows.Shapes;
 using Microsoft.Phone.Tasks;
 using Microsoft.Phone;
+using System.Xml.Linq;
 
 using MedAgent_0_1;
+using System.IO;
+using System.IO.IsolatedStorage;
 
 namespace MediAgent
 {
@@ -75,6 +78,27 @@ namespace MediAgent
             }
         }
 
+        
+
+        //CHARNAARBOOL WEG WANT TAKEN IS NU REEDS BOOLEAN
+
+        void client_GetPatientDataCompleted(object sender, MedAgent_0_1.MedCareCloudServiceReference.GetPatientDataCompletedEventArgs e)
+        {
+            if (e.Result.PatientID != -1)
+            {
+                client = new MedAgent_0_1.MedCareCloudServiceReference.MedPlanServiceClient();
+                App.PublicPatient.Id = e.Result.PatientID;
+                client.GetPrescriptionsForPatientAsync(Convert.ToInt32(App.PublicPatient.Id));
+                client.GetPrescriptionsForPatientCompleted += new EventHandler<MedAgent_0_1.MedCareCloudServiceReference.GetPrescriptionsForPatientCompletedEventArgs>(client_GetPrescriptionsForPatientCompleted);
+                PatName.Text = App.PublicPatient.FirstName + " " + App.PublicPatient.LastName;
+            }
+            else
+            {
+                MessageBox.Show("Something went wrong\n\rRedirecting...");
+                NavigationService.GoBack();
+            }
+        }
+
         void client_GetPrescriptionsForPatientCompleted(object sender, MedAgent_0_1.MedCareCloudServiceReference.GetPrescriptionsForPatientCompletedEventArgs e)
         {
             if (e.Result != null)
@@ -82,61 +106,54 @@ namespace MediAgent
                 App.MedList.Clear();
                 foreach (var item in e.Result)
                 {
+                    App.PrescriptionsCounter = item.PrescriptionID;
                     MedListBox.Items.Clear();
                     Medication tempMed = new Medication();
-                    tempMed.Name = item.DrugName;
-                    tempMed.Description = item.DDescription;
-                    tempMed.Amount = item.Quantity;
-                    tempMed.StartDate = item.StartDate;
-                    tempMed.EndDate = item.EndDate;
-                    tempMed.Course = item.Course;
+                    string xmlData = item.data;
+                    XDocument xml = XDocument.Parse(item.data);
 
-
-                    switch (item.Course)
+                    string xmlFileName = "Prescription" + item.PrescriptionID + ".xml";//ZO KRIJGEN WE LOKALE XML BESTANDEN VOOR ELK VOORSCHRIFT
+                    //xml.Load(); // suppose that myXmlString contains "<Names>...</Names>"
+                    //SLA HET XML BESTAND LOKAAL OP
+                    using (IsolatedStorageFile isoStore = IsolatedStorageFile.GetUserStoreForApplication())
                     {
-                        case "Daily":
-                            {
-                                tempMed.Interval = 1;
-                                break;
-                            }
-                        case "Every 2 days":
-                            {
-                                tempMed.Interval = 2;
-                                break;
-                            }
-                        case "Every 3 days":
-                            {
-                                tempMed.Interval = 3;
-                                break;
-                            }
-                        case "Every 4 days":
-                            {
-                                tempMed.Interval = 4;
-                                break;
-                            }
-                        case "Every 5 days":
-                            {
-                                tempMed.Interval = 5;
-                                break;
-                            }
-                        case "Every 6 days":
-                            {
-                                tempMed.Interval = 6;
-                                break;
-                            }
-                        case "Weekly":
-                            {
-                                tempMed.Interval = 7;
-                                break;
-                            }
+                        using (IsolatedStorageFileStream isoStream =
+                            new IsolatedStorageFileStream(xmlFileName, FileMode.Create, isoStore))
+                        {
+                            xml.Save(isoStream);
+                        }
                     }
 
-                    tempMed.Times[0] = item.Time1;
+                    var prescription = from p in xml.Descendants("Prescription") select p;///???
+
+                    tempMed.Name = prescription.Elements("DrugName").First().Value;
+                    tempMed.Description = prescription.Elements("DrugDescription").First().Value;
+                    tempMed.Amount = Convert.ToInt32(prescription.Elements("Quantity").First().Value);
+                    tempMed.StartDate = Convert.ToDateTime(prescription.Elements("StartDate").First().Value);
+                    tempMed.EndDate = Convert.ToDateTime(prescription.Elements("EndDate").First().Value);
+                    //COURSE IS NU INTEGER DUS '1' IS EVERY DAY ETC....
+                    //tempMed.Administration = "2 tablets";
+                    /*string courseInString;
+                    switch (Convert.ToInt32(prescription.Elements("Course").First().Value))
+                    {
+                        case 1:
+                            {
+                                courseInString = "Daily";
+                                break;
+                            }
+                        default:
+                            break;
+                            
+                    }*/
+                    int CourseOut;
+                    int.TryParse(prescription.Elements("Course").First().Value, out CourseOut);
+                    tempMed.Course = CourseOut;
+                    /*tempMed.Times[0] = item.Time1;
                     tempMed.Times[1] = item.Time2;
                     tempMed.Times[2] = item.Time3;
                     tempMed.Times[3] = item.Time4;
                     tempMed.Times[4] = item.Time5;
-                    tempMed.Times[5] = item.Time6;
+                    tempMed.Times[5] = item.Time6;*/
 
                     /*tempMed.Taken[0][0] = CharNaarBool(item.Taken1);
                     tempMed.Taken[0][1] = CharNaarBool(item.Taken2);
@@ -154,36 +171,6 @@ namespace MediAgent
             }
             else
                 MessageBox.Show("Oops, error happened :(\n\rWe couldn't retrieve the Medication List");
-        }
-
-        private bool CharNaarBool(char letter)
-        {
-            switch (letter)
-            {
-                case 'y':
-                    return true;
-                case 'n':
-                    return false;
-                default:
-                    return false;
-            }
-        }
-
-        void client_GetPatientDataCompleted(object sender, MedAgent_0_1.MedCareCloudServiceReference.GetPatientDataCompletedEventArgs e)
-        {
-            if (e.Result.PatientID != -1)
-            {
-                client = new MedAgent_0_1.MedCareCloudServiceReference.MedPlanServiceClient();
-                App.PublicPatient.Id = e.Result.PatientID;
-                client.GetPrescriptionsForPatientAsync(Convert.ToInt32(App.PublicPatient.Id));
-                client.GetPrescriptionsForPatientCompleted += new EventHandler<MedAgent_0_1.MedCareCloudServiceReference.GetPrescriptionsForPatientCompletedEventArgs>(client_GetPrescriptionsForPatientCompleted);
-                PatName.Text = App.PublicPatient.FirstName + " " + App.PublicPatient.LastName;
-            }
-            else
-            {
-                MessageBox.Show("Something went wrong\n\rRedirecting...");
-                NavigationService.GoBack();
-            }
         }
 
         //Constructor

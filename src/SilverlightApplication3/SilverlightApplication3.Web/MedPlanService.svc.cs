@@ -8,7 +8,7 @@ using System.ServiceModel;
 using System.Text;
 using System.Collections.Generic; // For generic collections like List.
 using System.Data.SqlClient;      // For the database connections and objects.
-
+using System.Xml;
 
 
 namespace SilverlightApplication3.Web
@@ -226,7 +226,46 @@ namespace SilverlightApplication3.Web
                 }
         }
 
-        public string CreatePrescription(string DrugName, DateTime StartDate, DateTime EndDate, int Quantity, TimeSpan Time1, TimeSpan Time2, TimeSpan Time3, TimeSpan Time4, TimeSpan Time5, TimeSpan Time6, string Description, string Course, int PatientID, string Type, char Taken1, char Taken2, char Taken3, char Taken4, char Taken5, char Taken6)
+        public string CreatePrescription(int PatientID, string xml)
+        {
+            try
+            {
+                using (con = new SqlConnection("Server=tcp:kqayqahno5.database.windows.net;Database=medplanner-2013-3-15-11-53;User ID=medagent@kqayqahno5;Password=Finland1!;Trusted_Connection=False;"))
+                {
+                    try
+                    {
+                        con.Open();
+                    }
+                    catch
+                    {
+                        return "SQL Connection Error";
+                    }
+                    try
+                    {
+                        using (SqlCommand command = new SqlCommand(
+                        "INSERT INTO Prescriptions (PatientID,data) VALUES (@PatientID,@XMLDoc)", con))
+                        {
+                            command.Parameters.Add(new SqlParameter("@PatientID",PatientID));
+                            command.Parameters.Add(new SqlParameter("@XMLDoc", xml));
+                            command.ExecuteNonQuery();
+                            con.Close();
+                            con.Dispose();
+                        }
+                    }
+                    catch (SqlException e)
+                    {
+                        return e.Message;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                return e.Message;
+            }
+            return "success";
+        }
+
+        /*public string CreatePrescription(string DrugName, DateTime StartDate, DateTime EndDate, int Quantity, TimeSpan Time1, TimeSpan Time2, TimeSpan Time3, TimeSpan Time4, TimeSpan Time5, TimeSpan Time6, string Description, string Course, int PatientID, string Type, char Taken1, char Taken2, char Taken3, char Taken4, char Taken5, char Taken6)
         {
             try
             {
@@ -282,6 +321,7 @@ namespace SilverlightApplication3.Web
             }
             return "success";
         }
+        */
         public Model.Patient GetPatientData(int MemberID)
         {
             Model.Patient Patient = new Model.Patient();
@@ -320,6 +360,26 @@ namespace SilverlightApplication3.Web
 
             foreach (var i in pres)
             {
+                prescriptions.Add(new Model.Prescription() { PrescriptionID = i.PrescriptionID, PatientID = (int)i.PatientID, data = i.data });
+            }
+            if (prescriptions.Count() > 0)
+                return prescriptions;
+            else
+                return null;
+        }
+
+        /*public List<Model.Prescription> GetPrescriptionsForPatient(int PatientID)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            List<Model.Prescription> prescriptions = new List<Model.Prescription>();
+            //Model.Prescription voorschrift = new Model.Prescription();
+
+            var pres = from p in dc.Prescriptions
+                       where p.PatientID == PatientID
+                       select p;
+
+            foreach (var i in pres)
+            {
                 prescriptions.Add(new Model.Prescription() { PrescriptionID = i.PrescriptionID, StartDate = i.StartDate, EndDate = i.EndDate,
                     PatientID = i.PatientID, Course = i.Course, DDescription = i.DDescription, DrugName = i.DrugName, Quantity = i.Quantity,
                     Taken1 = i.Taken1, Taken2 = (char)i.Taken2, Taken3 = (char)i.Taken3, Taken4 = (char)i.Taken4, Taken5 = (char)i.Taken5, Taken6 = (char)i.Taken6,
@@ -329,7 +389,7 @@ namespace SilverlightApplication3.Web
                 return prescriptions;
             else
                 return null;
-        }
+        }*/
 
         public Model.Doctor GetDocInfo(int MemberID)
         {

@@ -32,7 +32,7 @@ namespace MedAgent_0_1
 
  
         }
-
+        public string Administration { get; set; }
 
         public List<List<bool>> Taken { get; set; }
 
@@ -47,7 +47,7 @@ namespace MedAgent_0_1
 
         public ImageSource MedPhoto { get; set; }
 
-        public string Course { get; set; }
+        public int Course { get; set; }
 
         public int Amount { get; set; }
 

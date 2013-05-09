@@ -51,27 +51,9 @@
   <xs:element name="ArrayOfPrescription" nillable="true" type="tns:ArrayOfPrescription" />
   <xs:complexType name="Prescription">
     <xs:sequence>
-      <xs:element minOccurs="0" name="Course" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="DDescription" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="DrugName" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="EndDate" type="xs:dateTime" />
       <xs:element minOccurs="0" name="PatientID" type="xs:int" />
       <xs:element minOccurs="0" name="PrescriptionID" type="xs:int" />
-      <xs:element minOccurs="0" name="Quantity" type="xs:int" />
-      <xs:element minOccurs="0" name="StartDate" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="Taken1" type="ser:char" />
-      <xs:element minOccurs="0" name="Taken2" type="ser:char" />
-      <xs:element minOccurs="0" name="Taken3" type="ser:char" />
-      <xs:element minOccurs="0" name="Taken4" type="ser:char" />
-      <xs:element minOccurs="0" name="Taken5" type="ser:char" />
-      <xs:element minOccurs="0" name="Taken6" type="ser:char" />
-      <xs:element minOccurs="0" name="Time1" type="ser:duration" />
-      <xs:element minOccurs="0" name="Time2" type="ser:duration" />
-      <xs:element minOccurs="0" name="Time3" type="ser:duration" />
-      <xs:element minOccurs="0" name="Time4" type="ser:duration" />
-      <xs:element minOccurs="0" name="Time5" type="ser:duration" />
-      <xs:element minOccurs="0" name="Time6" type="ser:duration" />
-      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="data" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Prescription" nillable="true" type="tns:Prescription" />

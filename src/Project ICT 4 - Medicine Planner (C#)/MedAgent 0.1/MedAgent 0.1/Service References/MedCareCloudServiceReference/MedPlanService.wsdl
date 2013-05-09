@@ -5,6 +5,7 @@
       <xsd:import schemaLocation="http://medcarecloudservice.cloudapp.net/MedPlanService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://medcarecloudservice.cloudapp.net/MedPlanService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://medcarecloudservice.cloudapp.net/MedPlanService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SilverlightApplication3.Web.Model" />
+      <xsd:import schemaLocation="http://medcarecloudservice.cloudapp.net/MedPlanService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IMedPlanService_DoWork_InputMessage">
@@ -67,6 +68,18 @@
   <wsdl:message name="IMedPlanService_GetDocInfo_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetDocInfoResponse" />
   </wsdl:message>
+  <wsdl:message name="IMedPlanService_DropUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:DropUsers" />
+  </wsdl:message>
+  <wsdl:message name="IMedPlanService_DropUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DropUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMedPlanService_DropMeds_InputMessage">
+    <wsdl:part name="parameters" element="tns:DropMeds" />
+  </wsdl:message>
+  <wsdl:message name="IMedPlanService_DropMeds_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DropMedsResponse" />
+  </wsdl:message>
   <wsdl:portType name="IMedPlanService">
     <wsdl:operation name="DoWork">
       <wsdl:input wsaw:Action="http://tempuri.org/IMedPlanService/DoWork" message="tns:IMedPlanService_DoWork_InputMessage" />
@@ -107,6 +120,14 @@
     <wsdl:operation name="GetDocInfo">
       <wsdl:input wsaw:Action="http://tempuri.org/IMedPlanService/GetDocInfo" message="tns:IMedPlanService_GetDocInfo_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IMedPlanService/GetDocInfoResponse" message="tns:IMedPlanService_GetDocInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DropUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMedPlanService/DropUsers" message="tns:IMedPlanService_DropUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMedPlanService/DropUsersResponse" message="tns:IMedPlanService_DropUsers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DropMeds">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMedPlanService/DropMeds" message="tns:IMedPlanService_DropMeds_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMedPlanService/DropMedsResponse" message="tns:IMedPlanService_DropMeds_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IMedPlanService" type="tns:IMedPlanService">
@@ -194,6 +215,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetDocInfo">
       <soap:operation soapAction="http://tempuri.org/IMedPlanService/GetDocInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DropUsers">
+      <soap:operation soapAction="http://tempuri.org/IMedPlanService/DropUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DropMeds">
+      <soap:operation soapAction="http://tempuri.org/IMedPlanService/DropMeds" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
