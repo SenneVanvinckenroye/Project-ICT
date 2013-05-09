@@ -105,7 +105,7 @@
     
 <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
-            <shell:ApplicationBarIconButton IconUri="/Icons/dark/appbar.add.rest.png" Text="Button 1" Click="ApplicationBarAddButton_OnClick" />
+            <shell:ApplicationBarIconButton IconUri="/Icons/dark/appbar.add.rest.png" Text="Add Patient" Click="ApplicationBarAddButton_OnClick" />
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>
 

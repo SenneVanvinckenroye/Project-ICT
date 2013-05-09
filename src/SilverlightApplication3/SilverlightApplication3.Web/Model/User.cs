@@ -31,9 +31,15 @@ namespace SilverlightApplication3.Web.Model
         public DateTime bday { get; set; }
 
         [DataMember]
-        public int ssn { get; set; }
+        public long ssn { get; set; }
 
         [DataMember]
         public char UserType { get; set; }
+
+        [DataMember]
+        public string address { get; set; }
+
+        [DataMember]
+        public string phoneNumber { get; set; }//varchar in db
     }
 }

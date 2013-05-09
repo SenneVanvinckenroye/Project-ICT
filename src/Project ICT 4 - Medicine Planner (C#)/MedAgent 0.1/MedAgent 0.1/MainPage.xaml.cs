@@ -94,7 +94,7 @@ namespace MedAgent_0_1
                     }
                     case 'n'://verpleger
                     {
-                        MessageBox.Show("No support for nurses just yet.\n\rApologies from the MedCare team.")
+                        MessageBox.Show("No support for nurses just yet.\n\rApologies from the MedCare team.");
                         //NavigationService.Navigate(new Uri(string.Format("/NurseView1.xaml"), UriKind.Relative));
                         break;
                     }

@@ -15,7 +15,7 @@ namespace MedAgent_0_1
         public DateTime Bday { get; set; }
         public long SSN { get; set; }
 
-        public long Telephone { get; set; }
+        public string Telephone { get; set; }
         public string Address { get; set; }
         public string MedicineHistory { get; set; }
         public List<string> Symptoms { get; set; }

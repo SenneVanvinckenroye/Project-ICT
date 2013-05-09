@@ -65,6 +65,7 @@
                                 <TextBlock Text="Email" Margin="0,18,0,18"></TextBlock>
                                 <TextBlock Text="Birthdate" Margin="0,18,0,18"></TextBlock>
                                 <TextBlock Text="SSN" Margin="0,18,0,18"></TextBlock>
+                                <TextBlock Text="Phone" Margin="0,18,0,18"></TextBlock>
                             </StackPanel>
                         </Border>
 
@@ -76,6 +77,7 @@
                             <TextBlock x:Name="PatEmail" Text="Patient Email" Margin="0,18,0,18"></TextBlock>
                             <TextBlock x:Name="PatBday" Text="Patient Bday" Margin="0,18,0,18"></TextBlock>
                             <TextBlock x:Name="PatSsn" Text="Patient SSN" Margin="0,18,0,18"></TextBlock>
+                            <TextBlock x:Name="PatPhone" Text="Patient phone nr." Margin="0,18,0,18"></TextBlock>
                         </StackPanel>
 
                         <StackPanel x:Name="StkEdit" Grid.Column="1" Margin="5,0,0,0" Visibility="Collapsed">
@@ -86,6 +88,7 @@
                             <TextBox x:Name="PatEmailEdit" Text="Patient Email"></TextBox>
                             <TextBox x:Name="PatBdayEdit" Text="Patient Bday"></TextBox>
                             <TextBox x:Name="PatSsnEdit" Text="Patient SSN"></TextBox>
+                            <TextBox x:Name="PatPhoneEdit" Text="Patient phone nr."></TextBox>
                         </StackPanel>
 
 
@@ -103,7 +106,7 @@
 
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
-            <shell:ApplicationBarIconButton Click="ApplicationBarAddButton_OnClick" IconUri="/Icons/dark/appbar.add.rest.png" Text="Button 1"/>
+            <shell:ApplicationBarIconButton Click="ApplicationBarAddButton_OnClick" IconUri="/Icons/dark/appbar.add.rest.png" Text="Add Medication"/>
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>
 

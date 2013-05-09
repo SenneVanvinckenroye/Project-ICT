@@ -26,6 +26,12 @@
   <wsdl:message name="IMedPlanService_GetAllPatientsForDoctor_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllPatientsForDoctorResponse" />
   </wsdl:message>
+  <wsdl:message name="IMedPlanService_GetAllPatientsForNurse_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllPatientsForNurse" />
+  </wsdl:message>
+  <wsdl:message name="IMedPlanService_GetAllPatientsForNurse_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllPatientsForNurseResponse" />
+  </wsdl:message>
   <wsdl:message name="IMedPlanService_Login_InputMessage">
     <wsdl:part name="parameters" element="tns:Login" />
   </wsdl:message>
@@ -55,6 +61,12 @@
   </wsdl:message>
   <wsdl:message name="IMedPlanService_GetPatientData_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetPatientDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMedPlanService_GetUserData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserData" />
+  </wsdl:message>
+  <wsdl:message name="IMedPlanService_GetUserData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserDataResponse" />
   </wsdl:message>
   <wsdl:message name="IMedPlanService_GetPrescriptionsForPatient_InputMessage">
     <wsdl:part name="parameters" element="tns:GetPrescriptionsForPatient" />
@@ -93,6 +105,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IMedPlanService/GetAllPatientsForDoctor" message="tns:IMedPlanService_GetAllPatientsForDoctor_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IMedPlanService/GetAllPatientsForDoctorResponse" message="tns:IMedPlanService_GetAllPatientsForDoctor_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetAllPatientsForNurse">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMedPlanService/GetAllPatientsForNurse" message="tns:IMedPlanService_GetAllPatientsForNurse_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMedPlanService/GetAllPatientsForNurseResponse" message="tns:IMedPlanService_GetAllPatientsForNurse_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="Login">
       <wsdl:input wsaw:Action="http://tempuri.org/IMedPlanService/Login" message="tns:IMedPlanService_Login_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IMedPlanService/LoginResponse" message="tns:IMedPlanService_Login_OutputMessage" />
@@ -112,6 +128,10 @@
     <wsdl:operation name="GetPatientData">
       <wsdl:input wsaw:Action="http://tempuri.org/IMedPlanService/GetPatientData" message="tns:IMedPlanService_GetPatientData_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IMedPlanService/GetPatientDataResponse" message="tns:IMedPlanService_GetPatientData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMedPlanService/GetUserData" message="tns:IMedPlanService_GetUserData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMedPlanService/GetUserDataResponse" message="tns:IMedPlanService_GetUserData_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetPrescriptionsForPatient">
       <wsdl:input wsaw:Action="http://tempuri.org/IMedPlanService/GetPrescriptionsForPatient" message="tns:IMedPlanService_GetPrescriptionsForPatient_InputMessage" />
@@ -159,6 +179,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetAllPatientsForNurse">
+      <soap:operation soapAction="http://tempuri.org/IMedPlanService/GetAllPatientsForNurse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="Login">
       <soap:operation soapAction="http://tempuri.org/IMedPlanService/Login" style="document" />
       <wsdl:input>
@@ -197,6 +226,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetPatientData">
       <soap:operation soapAction="http://tempuri.org/IMedPlanService/GetPatientData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserData">
+      <soap:operation soapAction="http://tempuri.org/IMedPlanService/GetUserData" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

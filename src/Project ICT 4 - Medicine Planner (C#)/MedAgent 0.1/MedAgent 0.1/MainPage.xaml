@@ -35,15 +35,16 @@
 		</StackPanel>
 
 		<!--ContentPanel - place additional content here-->
-		<Grid x:Name="ContentPanel" Grid.Row="1" Margin="0,-1,0,1">
-            <Border BorderThickness="5" Height="503" Width="435" Background="#FFCAE756" BorderBrush="#FFF1DC30" Margin="24,45,21,57" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <StackPanel Height="399" Width="350" Margin="0,0,0,0">
+		<Grid x:Name="ContentPanel" Grid.Row="1" Margin="0,0
+              ,0,1" VerticalAlignment="Top">
+            <Border BorderThickness="5" Height="400" Width="435" Background="#FFCAE756" BorderBrush="#FFF1DC30" Margin="24,45,21,57" HorizontalAlignment="Center" VerticalAlignment="Top">
+                <StackPanel Height="300" Width="420" Margin="0,0,0,0">
                     <TextBlock Margin="12,0,40,0" TextWrapping="Wrap" Text="Email" d:LayoutOverrides="Width" Foreground="#FF556193"/>
                     <TextBox x:Name="EmailBox" Text="dries.crauwels@student.artesis.be" Margin="0,0,0,0" TextWrapping="Wrap" Background="#BFFFFFFF" InputScope="EmailSmtpAddress" BorderBrush="#FF3FC1DF" />
                     <TextBlock Margin="12,0,5,0" TextWrapping="Wrap" Text="Password" d:LayoutOverrides="Width" Foreground="#FF556193" />
                     <PasswordBox x:Name="Paswoord_pswdbx" Margin="0,0,0,0" Foreground="Black" Background="#BFFFFFFF" BorderBrush="#FF3FC1DF"/>
-                    <Button x:Name="LogInButtonPatient" Content="Log In"  Click="LogInButtonPatient_Click" VerticalAlignment="Top" Height="72" Foreground="#FF556193"/>
-                    <Button x:Name="byPass" Content="offline" Height="74" Click="byPass_Click"></Button>
+                    <Button x:Name="LogInButtonPatient" Content="Log In"  Click="LogInButtonPatient_Click" VerticalAlignment="Top" Foreground="#FF556193"/>
+                    <!--<Button x:Name="byPass" Content="offline" Height="74" Click="byPass_Click"></Button>-->
                 </StackPanel>
             </Border>
         </Grid>

@@ -104,7 +104,7 @@ namespace MediAgent
                         test[i].Sex = e.Result[i].Sex;
                         test[i].SSN = e.Result[i].Ssn;
                         test[i].Address = e.Result[i].address;
-                        test[i].Telephone = e.Result[i].phoneNumber;
+                        test[i].Telephone = e.Result[i].phoneNumber.ToString();
 
                     }
                     foreach (Patient patient in test)

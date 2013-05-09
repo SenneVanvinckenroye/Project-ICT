@@ -67,6 +67,8 @@ namespace MediAgent
                 if (isPatient == "true")
                 {
                     client = new MedAgent_0_1.MedCareCloudServiceReference.MedPlanServiceClient();
+                    client.GetUserDataAsync(MainPage.userMemberID);
+                    client.GetUserDataCompleted += new EventHandler<MedAgent_0_1.MedCareCloudServiceReference.GetUserDataCompletedEventArgs>(client_GetUserDataCompleted);
                     client.GetPatientDataAsync(MainPage.userMemberID);//geef login MemberID door van patient om verdere gegevens op te halen
                     client.GetPatientDataCompleted += new EventHandler<MedAgent_0_1.MedCareCloudServiceReference.GetPatientDataCompletedEventArgs>(client_GetPatientDataCompleted);
                 }
@@ -76,6 +78,30 @@ namespace MediAgent
                     NavigationService.GoBack();
                 }
             }
+        }
+
+        void client_GetUserDataCompleted(object sender, MedAgent_0_1.MedCareCloudServiceReference.GetUserDataCompletedEventArgs e)
+        {
+            App.PublicPatient.Address = e.Result.address;
+            App.PublicPatient.Bday = e.Result.bday;
+            App.PublicPatient.Email = e.Result.email;
+            App.PublicPatient.FirstName = e.Result.FName;
+            App.PublicPatient.LastName = e.Result.LName;
+            App.PublicPatient.Sex = e.Result.sex;
+            App.PublicPatient.SSN = e.Result.ssn;
+            App.PublicPatient.Telephone = e.Result.phoneNumber;
+
+            PatName.Text = App.PublicPatient.LastName;
+            PatBday.Text = App.PublicPatient.Bday.ToShortDateString();
+            DateTime today = DateTime.Today;
+            int age = today.Year - App.PublicPatient.Bday.Year;
+            if (App.PublicPatient.Bday > today.AddYears(-age)) age--;
+            PatAge.Text = age.ToString();
+            PatEmail.Text = App.PublicPatient.Email;
+            PatFirstname.Text = App.PublicPatient.FirstName;
+            PatSex.Text = App.PublicPatient.Sex.ToString();
+            PatSsn.Text = App.PublicPatient.SSN.ToString();
+            PatPhone.Text = App.PublicPatient.Telephone.ToString();
         }
 
         
@@ -88,9 +114,10 @@ namespace MediAgent
             {
                 client = new MedAgent_0_1.MedCareCloudServiceReference.MedPlanServiceClient();
                 App.PublicPatient.Id = e.Result.PatientID;
+                
+
                 client.GetPrescriptionsForPatientAsync(Convert.ToInt32(App.PublicPatient.Id));
                 client.GetPrescriptionsForPatientCompleted += new EventHandler<MedAgent_0_1.MedCareCloudServiceReference.GetPrescriptionsForPatientCompletedEventArgs>(client_GetPrescriptionsForPatientCompleted);
-                PatName.Text = App.PublicPatient.FirstName + " " + App.PublicPatient.LastName;
             }
             else
             {
@@ -170,7 +197,7 @@ namespace MediAgent
                 }
             }
             else
-                MessageBox.Show("Oops, error happened :(\n\rWe couldn't retrieve the Medication List");
+                MessageBox.Show("Couldn't retrieve any medication.");
         }
 
         //Constructor

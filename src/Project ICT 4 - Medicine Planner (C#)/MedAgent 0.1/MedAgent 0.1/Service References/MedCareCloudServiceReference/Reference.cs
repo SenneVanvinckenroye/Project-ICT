@@ -28,15 +28,19 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
         
         private char UserTypeField;
         
+        private string addressField;
+        
         private System.DateTime bdayField;
         
         private string emailField;
         
         private string pass_hashField;
         
+        private string phoneNumberField;
+        
         private char sexField;
         
-        private int ssnField;
+        private long ssnField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public string FName {
@@ -91,6 +95,19 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string address {
+            get {
+                return this.addressField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.addressField, value) != true)) {
+                    this.addressField = value;
+                    this.RaisePropertyChanged("address");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public System.DateTime bday {
             get {
                 return this.bdayField;
@@ -130,6 +147,19 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string phoneNumber {
+            get {
+                return this.phoneNumberField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.phoneNumberField, value) != true)) {
+                    this.phoneNumberField = value;
+                    this.RaisePropertyChanged("phoneNumber");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public char sex {
             get {
                 return this.sexField;
@@ -143,7 +173,7 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int ssn {
+        public long ssn {
             get {
                 return this.ssnField;
             }
@@ -484,6 +514,11 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
         
         System.Collections.ObjectModel.ObservableCollection<MedAgent_0_1.MedCareCloudServiceReference.Patient> EndGetAllPatientsForDoctor(System.IAsyncResult result);
         
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IMedPlanService/GetAllPatientsForNurse", ReplyAction="http://tempuri.org/IMedPlanService/GetAllPatientsForNurseResponse")]
+        System.IAsyncResult BeginGetAllPatientsForNurse(int NurseID, System.AsyncCallback callback, object asyncState);
+        
+        System.Collections.ObjectModel.ObservableCollection<MedAgent_0_1.MedCareCloudServiceReference.Patient> EndGetAllPatientsForNurse(System.IAsyncResult result);
+        
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IMedPlanService/Login", ReplyAction="http://tempuri.org/IMedPlanService/LoginResponse")]
         System.IAsyncResult BeginLogin(string email, string pswd_hash, System.AsyncCallback callback, object asyncState);
         
@@ -508,6 +543,11 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
         System.IAsyncResult BeginGetPatientData(int MemberID, System.AsyncCallback callback, object asyncState);
         
         MedAgent_0_1.MedCareCloudServiceReference.Patient EndGetPatientData(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IMedPlanService/GetUserData", ReplyAction="http://tempuri.org/IMedPlanService/GetUserDataResponse")]
+        System.IAsyncResult BeginGetUserData(int MemberID, System.AsyncCallback callback, object asyncState);
+        
+        MedAgent_0_1.MedCareCloudServiceReference.User EndGetUserData(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IMedPlanService/GetPrescriptionsForPatient", ReplyAction="http://tempuri.org/IMedPlanService/GetPrescriptionsForPatientResponse")]
         System.IAsyncResult BeginGetPrescriptionsForPatient(int PatientID, System.AsyncCallback callback, object asyncState);
@@ -560,6 +600,25 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
         private object[] results;
         
         public GetAllPatientsForDoctorCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public System.Collections.ObjectModel.ObservableCollection<MedAgent_0_1.MedCareCloudServiceReference.Patient> Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((System.Collections.ObjectModel.ObservableCollection<MedAgent_0_1.MedCareCloudServiceReference.Patient>)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetAllPatientsForNurseCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetAllPatientsForNurseCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -669,6 +728,25 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetUserDataCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetUserDataCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public MedAgent_0_1.MedCareCloudServiceReference.User Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((MedAgent_0_1.MedCareCloudServiceReference.User)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class GetPrescriptionsForPatientCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
@@ -765,6 +843,12 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
         
         private System.Threading.SendOrPostCallback onGetAllPatientsForDoctorCompletedDelegate;
         
+        private BeginOperationDelegate onBeginGetAllPatientsForNurseDelegate;
+        
+        private EndOperationDelegate onEndGetAllPatientsForNurseDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetAllPatientsForNurseCompletedDelegate;
+        
         private BeginOperationDelegate onBeginLoginDelegate;
         
         private EndOperationDelegate onEndLoginDelegate;
@@ -794,6 +878,12 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
         private EndOperationDelegate onEndGetPatientDataDelegate;
         
         private System.Threading.SendOrPostCallback onGetPatientDataCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginGetUserDataDelegate;
+        
+        private EndOperationDelegate onEndGetUserDataDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetUserDataCompletedDelegate;
         
         private BeginOperationDelegate onBeginGetPrescriptionsForPatientDelegate;
         
@@ -878,6 +968,8 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
         
         public event System.EventHandler<GetAllPatientsForDoctorCompletedEventArgs> GetAllPatientsForDoctorCompleted;
         
+        public event System.EventHandler<GetAllPatientsForNurseCompletedEventArgs> GetAllPatientsForNurseCompleted;
+        
         public event System.EventHandler<LoginCompletedEventArgs> LoginCompleted;
         
         public event System.EventHandler<CreateNewUserCompletedEventArgs> CreateNewUserCompleted;
@@ -887,6 +979,8 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
         public event System.EventHandler<CreatePrescriptionCompletedEventArgs> CreatePrescriptionCompleted;
         
         public event System.EventHandler<GetPatientDataCompletedEventArgs> GetPatientDataCompleted;
+        
+        public event System.EventHandler<GetUserDataCompletedEventArgs> GetUserDataCompleted;
         
         public event System.EventHandler<GetPrescriptionsForPatientCompletedEventArgs> GetPrescriptionsForPatientCompleted;
         
@@ -1031,6 +1125,52 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
             }
             base.InvokeAsync(this.onBeginGetAllPatientsForDoctorDelegate, new object[] {
                         DocID}, this.onEndGetAllPatientsForDoctorDelegate, this.onGetAllPatientsForDoctorCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult MedAgent_0_1.MedCareCloudServiceReference.IMedPlanService.BeginGetAllPatientsForNurse(int NurseID, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetAllPatientsForNurse(NurseID, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Collections.ObjectModel.ObservableCollection<MedAgent_0_1.MedCareCloudServiceReference.Patient> MedAgent_0_1.MedCareCloudServiceReference.IMedPlanService.EndGetAllPatientsForNurse(System.IAsyncResult result) {
+            return base.Channel.EndGetAllPatientsForNurse(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetAllPatientsForNurse(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int NurseID = ((int)(inValues[0]));
+            return ((MedAgent_0_1.MedCareCloudServiceReference.IMedPlanService)(this)).BeginGetAllPatientsForNurse(NurseID, callback, asyncState);
+        }
+        
+        private object[] OnEndGetAllPatientsForNurse(System.IAsyncResult result) {
+            System.Collections.ObjectModel.ObservableCollection<MedAgent_0_1.MedCareCloudServiceReference.Patient> retVal = ((MedAgent_0_1.MedCareCloudServiceReference.IMedPlanService)(this)).EndGetAllPatientsForNurse(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetAllPatientsForNurseCompleted(object state) {
+            if ((this.GetAllPatientsForNurseCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetAllPatientsForNurseCompleted(this, new GetAllPatientsForNurseCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetAllPatientsForNurseAsync(int NurseID) {
+            this.GetAllPatientsForNurseAsync(NurseID, null);
+        }
+        
+        public void GetAllPatientsForNurseAsync(int NurseID, object userState) {
+            if ((this.onBeginGetAllPatientsForNurseDelegate == null)) {
+                this.onBeginGetAllPatientsForNurseDelegate = new BeginOperationDelegate(this.OnBeginGetAllPatientsForNurse);
+            }
+            if ((this.onEndGetAllPatientsForNurseDelegate == null)) {
+                this.onEndGetAllPatientsForNurseDelegate = new EndOperationDelegate(this.OnEndGetAllPatientsForNurse);
+            }
+            if ((this.onGetAllPatientsForNurseCompletedDelegate == null)) {
+                this.onGetAllPatientsForNurseCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetAllPatientsForNurseCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetAllPatientsForNurseDelegate, new object[] {
+                        NurseID}, this.onEndGetAllPatientsForNurseDelegate, this.onGetAllPatientsForNurseCompletedDelegate, userState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -1293,6 +1433,52 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
             }
             base.InvokeAsync(this.onBeginGetPatientDataDelegate, new object[] {
                         MemberID}, this.onEndGetPatientDataDelegate, this.onGetPatientDataCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult MedAgent_0_1.MedCareCloudServiceReference.IMedPlanService.BeginGetUserData(int MemberID, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetUserData(MemberID, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        MedAgent_0_1.MedCareCloudServiceReference.User MedAgent_0_1.MedCareCloudServiceReference.IMedPlanService.EndGetUserData(System.IAsyncResult result) {
+            return base.Channel.EndGetUserData(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetUserData(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int MemberID = ((int)(inValues[0]));
+            return ((MedAgent_0_1.MedCareCloudServiceReference.IMedPlanService)(this)).BeginGetUserData(MemberID, callback, asyncState);
+        }
+        
+        private object[] OnEndGetUserData(System.IAsyncResult result) {
+            MedAgent_0_1.MedCareCloudServiceReference.User retVal = ((MedAgent_0_1.MedCareCloudServiceReference.IMedPlanService)(this)).EndGetUserData(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetUserDataCompleted(object state) {
+            if ((this.GetUserDataCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetUserDataCompleted(this, new GetUserDataCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetUserDataAsync(int MemberID) {
+            this.GetUserDataAsync(MemberID, null);
+        }
+        
+        public void GetUserDataAsync(int MemberID, object userState) {
+            if ((this.onBeginGetUserDataDelegate == null)) {
+                this.onBeginGetUserDataDelegate = new BeginOperationDelegate(this.OnBeginGetUserData);
+            }
+            if ((this.onEndGetUserDataDelegate == null)) {
+                this.onEndGetUserDataDelegate = new EndOperationDelegate(this.OnEndGetUserData);
+            }
+            if ((this.onGetUserDataCompletedDelegate == null)) {
+                this.onGetUserDataCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetUserDataCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetUserDataDelegate, new object[] {
+                        MemberID}, this.onEndGetUserDataDelegate, this.onGetUserDataCompletedDelegate, userState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -1591,6 +1777,19 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
                 return _result;
             }
             
+            public System.IAsyncResult BeginGetAllPatientsForNurse(int NurseID, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = NurseID;
+                System.IAsyncResult _result = base.BeginInvoke("GetAllPatientsForNurse", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public System.Collections.ObjectModel.ObservableCollection<MedAgent_0_1.MedCareCloudServiceReference.Patient> EndGetAllPatientsForNurse(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                System.Collections.ObjectModel.ObservableCollection<MedAgent_0_1.MedCareCloudServiceReference.Patient> _result = ((System.Collections.ObjectModel.ObservableCollection<MedAgent_0_1.MedCareCloudServiceReference.Patient>)(base.EndInvoke("GetAllPatientsForNurse", _args, result)));
+                return _result;
+            }
+            
             public System.IAsyncResult BeginLogin(string email, string pswd_hash, System.AsyncCallback callback, object asyncState) {
                 object[] _args = new object[2];
                 _args[0] = email;
@@ -1669,6 +1868,19 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
             public MedAgent_0_1.MedCareCloudServiceReference.Patient EndGetPatientData(System.IAsyncResult result) {
                 object[] _args = new object[0];
                 MedAgent_0_1.MedCareCloudServiceReference.Patient _result = ((MedAgent_0_1.MedCareCloudServiceReference.Patient)(base.EndInvoke("GetPatientData", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginGetUserData(int MemberID, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = MemberID;
+                System.IAsyncResult _result = base.BeginInvoke("GetUserData", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public MedAgent_0_1.MedCareCloudServiceReference.User EndGetUserData(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                MedAgent_0_1.MedCareCloudServiceReference.User _result = ((MedAgent_0_1.MedCareCloudServiceReference.User)(base.EndInvoke("GetUserData", _args, result)));
                 return _result;
             }
             

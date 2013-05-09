@@ -375,6 +375,35 @@ namespace SilverlightApplication3.Web
             return Patient;
         }
 
+        public Model.User GetUserData(int MemberID)
+        {
+            Model.User User = new Model.User();
+            try
+            {
+                DataClasses1DataContext dc = new DataClasses1DataContext();
+                var user = from u in dc.Users
+                              where u.MemberID == MemberID
+                           select new { u.MemberID, u.FName, u.LName, u.sex, u.bday, u.email, u.ssn, u.address, u.PhoneNumber };
+                
+                User.MemberID = user.First().MemberID;
+                User.sex = user.First().sex;
+                User.LName = user.First().LName;
+                User.ssn = (long)user.First().ssn;
+                User.FName = user.First().FName;
+                User.email = user.First().email;
+                User.bday = user.First().bday;
+                User.phoneNumber = user.First().PhoneNumber;
+                User.address = user.First().address;
+            }
+            catch
+            {
+                Model.User failUser = new Model.User();
+                failUser.MemberID = -1;
+                return failUser;
+            }
+            return User;
+        }
+
         public List<Model.Prescription> GetPrescriptionsForPatient(int PatientID)
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
