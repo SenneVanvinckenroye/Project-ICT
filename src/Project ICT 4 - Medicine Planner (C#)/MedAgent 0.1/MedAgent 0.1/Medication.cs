@@ -52,5 +52,22 @@ namespace MedAgent_0_1
         public int Amount { get; set; }
 
         public Reminder[] Reminders { get; set; }
+
+        public List<Day> Days { get; set; }
+    }
+
+    public class Day
+    {
+        public Day(DateTime date, bool[] taken, string[] administration)
+        {
+            Date = date;
+            Taken = taken;
+            Administration = administration;
+        }
+        public DateTime Date { get; set; }
+
+        public bool[] Taken { get; set; }
+
+        public String[] Administration { get; set; }
     }
 }

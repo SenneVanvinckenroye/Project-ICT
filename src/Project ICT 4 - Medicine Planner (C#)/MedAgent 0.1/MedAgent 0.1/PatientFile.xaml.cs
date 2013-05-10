@@ -104,7 +104,7 @@ namespace MediAgent
             PatPhone.Text = App.PublicPatient.Telephone.ToString();
         }
 
-        
+
 
         //CHARNAARBOOL WEG WANT TAKEN IS NU REEDS BOOLEAN
 
@@ -114,7 +114,7 @@ namespace MediAgent
             {
                 client = new MedAgent_0_1.MedCareCloudServiceReference.MedPlanServiceClient();
                 App.PublicPatient.Id = e.Result.PatientID;
-                
+
 
                 client.GetPrescriptionsForPatientAsync(Convert.ToInt32(App.PublicPatient.Id));
                 client.GetPrescriptionsForPatientCompleted += new EventHandler<MedAgent_0_1.MedCareCloudServiceReference.GetPrescriptionsForPatientCompletedEventArgs>(client_GetPrescriptionsForPatientCompleted);
@@ -158,6 +158,20 @@ namespace MediAgent
                     tempMed.Amount = Convert.ToInt32(prescription.Elements("Quantity").First().Value);
                     tempMed.StartDate = Convert.ToDateTime(prescription.Elements("StartDate").First().Value);
                     tempMed.EndDate = Convert.ToDateTime(prescription.Elements("EndDate").First().Value);
+
+                    foreach (var xElement in prescription.Elements("Days"))
+                    {
+                        bool[] tempTaken = new bool[]{false,false,false};
+                        for (int i = 0; i < 5; i++)
+                        {
+                            TimeSpan.TryParse(xElement.Element("Time"+i).Value.ToString(), out tempMed.Times[i]);
+                            tempTaken[i] = Convert.ToBoolean(xElement.Element("Taken" + i).Value.ToString());
+                        }
+                        tempMed.Days.Add(new Day(Convert.ToDateTime(xElement.Elements("Date").First().Value), tempTaken,));
+                    }
+                    
+
+
                     //COURSE IS NU INTEGER DUS '1' IS EVERY DAY ETC....
                     //tempMed.Administration = "2 tablets";
                     /*string courseInString;
