@@ -243,13 +243,16 @@ namespace CalendarControl
                 ba.Content = (i + 1).ToString();
                 ba.Click += new RoutedEventHandler(ba_Click);
 
-                DateTime ButtonDay = new DateTime(dateTime.Year, dateTime.Month, i + 1);
-                List<char> takenLst = new List<char>();
-                int IntervalDay = 0;
-                int activeDays = 0;
-                int AmountTrue = 0;
-                int AmountFalse = 0;
-                bool MedDay = false;
+#region Oude Med uitlees methode
+                //DateTime ButtonDay = new DateTime(dateTime.Year, dateTime.Month, i + 1);
+                //List<char> takenLst = new List<char>();
+                //int IntervalDay = 0;
+                //int activeDays = 0;
+                //int AmountTrue = 0;
+                //int AmountFalse = 0;
+                //bool MedDay = false;
+
+                
                 //foreach (Medication medication in App.MedList)
                 //{
                 //    DateTime temp = medication.StartDate.Date;
@@ -339,6 +342,48 @@ namespace CalendarControl
                 //        ba.Background = new SolidColorBrush(Colors.Orange); // some taken
                 //    }
                 //}
+                #endregion
+
+                int AmountTrue = 0;
+                int AmountFalse = 0;
+                foreach (var day in App.MedList[App.MedID].Days) // ArgumentOutOfRangeException.... MedList is leeg
+                {
+                    if (day.Date.Month == dateTime.Month && day.Date.Year == dateTime.Year && day.Date.Day == i+1)
+                    {
+                        foreach (bool b in day.Taken)
+                        {
+                            if (b)
+                            {
+                                AmountTrue++;
+                            }
+                            else
+                            {
+                                AmountFalse++;
+                            }
+                        }
+                    }
+                }
+                if (AmountTrue + AmountFalse != 0)
+                {
+                    if (AmountTrue == AmountTrue + AmountFalse)
+                    {
+                        // all taken
+                        ba.Background = new SolidColorBrush(Colors.Green);
+                    }
+                    else if (AmountFalse == AmountTrue + AmountFalse)
+                    {
+                        // none taken
+                        ba.Background = new SolidColorBrush(Colors.Red);
+                    }
+                    else
+                    {
+                        //some taken
+                        ba.Background = new SolidColorBrush(Colors.Orange);
+                    }
+                }
+
+
+
                 if (dateTime.Year == DateTime.Now.Year && dateTime.Month == DateTime.Now.Month && ba.Content.ToString() == DateTime.Now.Day.ToString())
                 {
                     ba.Background = new SolidColorBrush(Colors.Blue);

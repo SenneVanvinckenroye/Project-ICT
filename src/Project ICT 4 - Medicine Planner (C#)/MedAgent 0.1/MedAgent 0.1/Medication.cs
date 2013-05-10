@@ -27,9 +27,9 @@ namespace MedAgent_0_1
                     DefaultTime,DefaultTime,DefaultTime,DefaultTime,DefaultTime,DefaultTime
                 };
         }
-        public string Administration { get; set; }
+        //public string Administration { get; set; }
 
-        public List<List<bool>> Taken { get; set; }
+        //public List<List<bool>> Taken { get; set; }
 
         public string Name { get; set; }
 
