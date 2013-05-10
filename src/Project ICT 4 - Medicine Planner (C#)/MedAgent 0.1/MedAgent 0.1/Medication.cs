@@ -15,10 +15,7 @@ namespace MedAgent_0_1
 {
     public class Medication
     {
-
-
         public TimeSpan[] Times { get; set; }
-        
 
         private TimeSpan DefaultTime = new TimeSpan();
 
@@ -29,8 +26,6 @@ namespace MedAgent_0_1
                 {
                     DefaultTime,DefaultTime,DefaultTime,DefaultTime,DefaultTime,DefaultTime
                 };
-
- 
         }
         public string Administration { get; set; }
 
@@ -41,6 +36,7 @@ namespace MedAgent_0_1
         public string Description { get; set; }
 
         public DateTime StartDate { get; set; }
+
         public DateTime EndDate { get; set; }
 
         public int Interval { get; set; }
@@ -58,16 +54,12 @@ namespace MedAgent_0_1
 
     public class Day
     {
-        public Day(DateTime date, bool[] taken, string[] administration)
-        {
-            Date = date;
-            Taken = taken;
-            Administration = administration;
-        }
         public DateTime Date { get; set; }
 
-        public bool[] Taken { get; set; }
+        public List<TimeSpan> Time { get; set; }
 
-        public String[] Administration { get; set; }
+        public List<bool> Taken { get; set; }
+
+        public List<string> Administration { get; set; }
     }
 }

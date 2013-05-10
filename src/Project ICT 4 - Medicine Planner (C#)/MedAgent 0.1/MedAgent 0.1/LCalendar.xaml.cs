@@ -250,95 +250,95 @@ namespace CalendarControl
                 int AmountTrue = 0;
                 int AmountFalse = 0;
                 bool MedDay = false;
-                foreach (Medication medication in App.MedList)
-                {
-                    DateTime temp = medication.StartDate.Date;
-                    if (medication.StartDate.Date < ButtonDay.Date && medication.EndDate.Date > ButtonDay.Date) // kalender dag is een dag tussen start en einde
-                    {
+                //foreach (Medication medication in App.MedList)
+                //{
+                //    DateTime temp = medication.StartDate.Date;
+                //    if (medication.StartDate.Date < ButtonDay.Date && medication.EndDate.Date > ButtonDay.Date) // kalender dag is een dag tussen start en einde
+                //    {
 
-                        while (medication.EndDate.Date > temp.Date)
-                        {
+                //        while (medication.EndDate.Date > temp.Date)
+                //        {
 
-                            if (temp.Date == ButtonDay.Date)
-                            {
-                                MedDay = true;
-                                if (temp.Date <= DateTime.Now.Date)
-                                {
-                                    foreach (TimeSpan times in App.MedList[App.MedID].Times)
-                                    //aangepast door rien van DateTime naar TimeSpan
-                                    {
-                                        if (!times.Days.Equals(new DateTime(0001, 1, 1)))
-                                        // date is not initial date // aangepast door Rien van if (times.Date != new DateTime(0001, 1, 1)) naar if (!times.Days.Equals(new DateTime(0001, 1, 1)))
-                                        {
-                                            activeDays++;
-                                        }
-                                    }
-                                    for (int j = 0; j < activeDays; j++)
-                                    {
-                                        if (App.MedList[App.MedID].Taken.ElementAt(IntervalDay).ElementAt(j)) // geeft error hier
-                                        {
-                                            AmountTrue++;
-                                        }
-                                        else
-                                        {
-                                            AmountFalse++;
-                                        }
-                                    }
-                                    if (AmountTrue == 0)
-                                    {
-                                        takenLst.Add('f');
-                                    }
-                                    else if (AmountFalse == 0)
-                                    {
-                                        takenLst.Add('t');
-                                    }
-                                    else
-                                    {
-                                        takenLst.Add('s');
-                                    }
-                                }
-                                else
-                                {
-                                    ba.Background = new SolidColorBrush(Colors.Purple);
-                                }
-                            }
-                            IntervalDay++;
-                            temp = temp.AddDays(medication.Interval);
-                        }
-                    }
-                    IntervalDay = 0;
-                    AmountFalse = 0;
-                    AmountTrue = 0;
-                    activeDays = 0;
-                }
-                if (ButtonDay.Date < DateTime.Now.Date && MedDay)
-                {
-                    int DayTrueCount = 0;
-                    int DayFalseCount = 0;
-                    foreach (char c in takenLst) // per med taken result
-                    {
-                        if (c == 't')
-                        {
-                            DayTrueCount++;
-                        }
-                        else if (c == 'f')
-                        {
-                            DayFalseCount++;
-                        }
-                    }
-                    if (DayTrueCount == 0 && DayFalseCount > 0)
-                    {
-                        ba.Background = new SolidColorBrush(Colors.Red); // none taken
-                    }
-                    else if (DayFalseCount == 0 && DayTrueCount > 0)
-                    {
-                        ba.Background = new SolidColorBrush(Colors.Green); // all teken
-                    }
-                    else
-                    {
-                        ba.Background = new SolidColorBrush(Colors.Orange); // some taken
-                    }
-                }
+                //            if (temp.Date == ButtonDay.Date)
+                //            {
+                //                MedDay = true;
+                //                if (temp.Date <= DateTime.Now.Date)
+                //                {
+                //                    foreach (TimeSpan times in App.MedList[App.MedID].Times)
+                //                    //aangepast door rien van DateTime naar TimeSpan
+                //                    {
+                //                        if (!times.Days.Equals(new DateTime(0001, 1, 1)))
+                //                        // date is not initial date // aangepast door Rien van if (times.Date != new DateTime(0001, 1, 1)) naar if (!times.Days.Equals(new DateTime(0001, 1, 1)))
+                //                        {
+                //                            activeDays++;
+                //                        }
+                //                    }
+                //                    for (int j = 0; j < activeDays; j++)
+                //                    {
+                //                        if (App.MedList[App.MedID].Taken.ElementAt(IntervalDay).ElementAt(j)) // geeft error hier
+                //                        {
+                //                            AmountTrue++;
+                //                        }
+                //                        else
+                //                        {
+                //                            AmountFalse++;
+                //                        }
+                //                    }
+                //                    if (AmountTrue == 0)
+                //                    {
+                //                        takenLst.Add('f');
+                //                    }
+                //                    else if (AmountFalse == 0)
+                //                    {
+                //                        takenLst.Add('t');
+                //                    }
+                //                    else
+                //                    {
+                //                        takenLst.Add('s');
+                //                    }
+                //                }
+                //                else
+                //                {
+                //                    ba.Background = new SolidColorBrush(Colors.Purple);
+                //                }
+                //            }
+                //            IntervalDay++;
+                //            temp = temp.AddDays(medication.Interval);
+                //        }
+                //    }
+                //    IntervalDay = 0;
+                //    AmountFalse = 0;
+                //    AmountTrue = 0;
+                //    activeDays = 0;
+                //}
+                //if (ButtonDay.Date < DateTime.Now.Date && MedDay)
+                //{
+                //    int DayTrueCount = 0;
+                //    int DayFalseCount = 0;
+                //    foreach (char c in takenLst) // per med taken result
+                //    {
+                //        if (c == 't')
+                //        {
+                //            DayTrueCount++;
+                //        }
+                //        else if (c == 'f')
+                //        {
+                //            DayFalseCount++;
+                //        }
+                //    }
+                //    if (DayTrueCount == 0 && DayFalseCount > 0)
+                //    {
+                //        ba.Background = new SolidColorBrush(Colors.Red); // none taken
+                //    }
+                //    else if (DayFalseCount == 0 && DayTrueCount > 0)
+                //    {
+                //        ba.Background = new SolidColorBrush(Colors.Green); // all teken
+                //    }
+                //    else
+                //    {
+                //        ba.Background = new SolidColorBrush(Colors.Orange); // some taken
+                //    }
+                //}
                 if (dateTime.Year == DateTime.Now.Year && dateTime.Month == DateTime.Now.Month && ba.Content.ToString() == DateTime.Now.Day.ToString())
                 {
                     ba.Background = new SolidColorBrush(Colors.Blue);

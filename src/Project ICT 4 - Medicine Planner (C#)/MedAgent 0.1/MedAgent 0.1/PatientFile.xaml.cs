@@ -161,13 +161,25 @@ namespace MediAgent
 
                     foreach (var xElement in prescription.Elements("Days"))
                     {
-                        bool[] tempTaken = new bool[]{false,false,false};
-                        for (int i = 0; i < 5; i++)
+                        Day TempDay = new Day();
+                        TempDay.Date = Convert.ToDateTime(xElement.Elements("Date").First().Value);
+
+                        foreach (var element in xElement.Elements("Times"))
                         {
-                            TimeSpan.TryParse(xElement.Element("Time"+i).Value.ToString(), out tempMed.Times[i]);
-                            tempTaken[i] = Convert.ToBoolean(xElement.Element("Taken" + i).Value.ToString());
+                            TimeSpan tempTime;
+                            TimeSpan.TryParse(element.Value, out tempTime);
+                            TempDay.Time.Add(tempTime);
                         }
-                        tempMed.Days.Add(new Day(Convert.ToDateTime(xElement.Elements("Date").First().Value), tempTaken,));
+                        foreach (var element in xElement.Elements("Taken"))
+                        {
+                            bool tempTaken;
+                            bool.TryParse(element.Value, out tempTaken);
+                            TempDay.Taken.Add(tempTaken);
+                        }
+                        foreach (var element in xElement.Elements("Administration"))
+                        {
+                            TempDay.Administration.Add(element.Value);
+                        }
                     }
                     
 
