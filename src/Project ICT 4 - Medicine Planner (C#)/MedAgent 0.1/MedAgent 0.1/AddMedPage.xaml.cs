@@ -774,17 +774,19 @@ namespace MedAgent_0_1
                     for (DateTime date = App.MedList[App.MedID].StartDate; date <= App.MedList[App.MedID].EndDate; date = date.AddDays(App.MedList[App.MedID].Course))
                         allDates.Add(date);//bereken alle dagen met de 'course' als intervalstap en steek al de datums in de array allDates.
 
+                    doc.Element("Prescription").Add(new XElement("Days", ""));
+                    
                     for (int i = 0; i < allDates.Count; i++)//voor elke berekende Dag: maak DagNode...
                     {
                         XElementDayName = "Day" + i.ToString();//<Date0></Date0>
-                        doc.Element("Prescription").Add(new XElement(XElementDayName, allDates[i].ToString()));//<Date0>1999-25-1</Date0>
+                        doc.Element("Prescription").Element("Days").Add(new XElement(XElementDayName, allDates[i].ToString()));//<Date0>1999-25-1</Date0>
 
                         for (int j = 0; j < App.MedList[App.MedID].Times.Length; j++)//... en voeg alle ingestelde tijden toe aan deze dag.
                         {
                             XElementTimeName = "Time" + j.ToString();//<Time0></Time0>
-                            doc.Element("Prescription").Element(XElementDayName).Add(new XElement(XElementTimeName, App.MedList[App.MedID].Times[j].ToString()));//<Day0><Timej>00:00:00</Timej></Day0>
-                            doc.Element("Prescription").Element(XElementDayName).Element(XElementTimeName).Add(new XElement("Taken", false));//<Day0>12-12-2013T0:00:00<Timej>00:00:00<Taken>false</Taken></Timej></Day0>
-                            doc.Element("Prescription").Element(XElementDayName).Element(XElementTimeName).Add(new XElement("Administration", "1 tablet"));//<Day0>12-12-2013T0:00:00<Timej>00:00:00<Taken>false</Taken></Timej></Day0>
+                            doc.Element("Prescription").Element("Days").Element(XElementDayName).Add(new XElement(XElementTimeName, App.MedList[App.MedID].Times[j].ToString()));//<Day0><Timej>00:00:00</Timej></Day0>
+                            doc.Element("Prescription").Element("Days").Element(XElementDayName).Element(XElementTimeName).Add(new XElement("Taken", false));//<Day0>12-12-2013T0:00:00<Timej>00:00:00<Taken>false</Taken></Timej></Day0>
+                            doc.Element("Prescription").Element("Days").Element(XElementDayName).Element(XElementTimeName).Add(new XElement("Administration", "1 tablet"));//<Day0>12-12-2013T0:00:00<Timej>00:00:00<Taken>false</Taken></Timej></Day0>
                         }
                     }
                     //normaal nu:
@@ -840,8 +842,7 @@ namespace MedAgent_0_1
                 //Next index in the list
                 App.MedID++;
 
-                NavigationService.Navigate(new Uri(string.Format("/PatientFile.xaml"), UriKind.Relative));
-
+                
             }
 
             else
@@ -949,7 +950,10 @@ namespace MedAgent_0_1
         void client_CreatePrescriptionCompleted(object sender, MedCareCloudServiceReference.CreatePrescriptionCompletedEventArgs e)
         {
             if (e.Result == "success")
+            {
                 MessageBox.Show("Prescription added! :)");
+                NavigationService.Navigate(new Uri(string.Format("/PatientFile.xaml"), UriKind.Relative));
+            }
             else
                 MessageBox.Show("Oops, something went wrong :(\n\rFailed to add prescription\n\rError: " + e.Result);
         }

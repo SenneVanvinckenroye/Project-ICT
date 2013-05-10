@@ -120,11 +120,7 @@
             <!--Panorama item one-->
             <controls:PanoramaItem x:Name="Item1" Header="Add Medication" Style="{StaticResource PanoramaItemStyle1}" BorderThickness="6,4,6,19">
                 <Grid x:Name="ContentPanel" Margin="-8,2,4,0">
-            		<TextBox x:Name="NameTxtBox" Margin="19,51,217,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="{x:Null}" InputScope="Text" Foreground="Black" TextChanged="NameTxtBox_TextChanged">
-            			<TextBox.BorderBrush>
-            				<SolidColorBrush Color="#FF7AC843"/>
-            			</TextBox.BorderBrush>
-            		</TextBox>
+            		<TextBox x:Name="NameTxtBox" Margin="19,51,100,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="{x:Null}" InputScope="Text" Foreground="Black" TextChanged="NameTxtBox_TextChanged" BorderBrush="#FF7AC843" Width="305" Height="72"></TextBox>
             		<TextBlock x:Name="NameTxtBlock" HorizontalAlignment="Left" Margin="32,20,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top">
             			<TextBlock.Foreground>
             				<SolidColorBrush Color="#FF6D5592"/>
