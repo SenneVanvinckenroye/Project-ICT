@@ -96,9 +96,9 @@
                 </ScrollViewer>
             </controls:PanoramaItem>
 
-            <controls:PanoramaItem Header="Medicine">
-                <Grid Background="#B25E549E">
-                    <calendarControl:LCalendar OnDayClicked="Calendar_OnDayClicked" x:Name="Calendar" Foreground="#FFCAE756" HolidayBrush="#FFF1DC30" EventsForegroundBrush="#FF556193" ButtonBorderBrush="#FF3FC1DF" ButtonBackground="#00FF7A00"/>
+            <controls:PanoramaItem Header="Medicine" >
+                <Grid Background="#B25E549E" x:Name="KalenderPanoItem">
+                    <!--<calendarControl:LCalendar OnDayClicked="Calendar_OnDayClicked" x:Name="Calendar" Foreground="#FFCAE756" HolidayBrush="#FFF1DC30" EventsForegroundBrush="#FF556193" ButtonBorderBrush="#FF3FC1DF" ButtonBackground="#00FF7A00"/>-->
                 </Grid>
             </controls:PanoramaItem>
         </controls:Panorama>

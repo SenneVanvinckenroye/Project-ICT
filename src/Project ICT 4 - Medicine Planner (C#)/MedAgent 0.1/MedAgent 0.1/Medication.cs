@@ -60,6 +60,6 @@ namespace MedAgent_0_1
 
         public List<bool> Taken { get; set; }
 
-        public List<string> Administration { get; set; }
+        public List<String> Administration { get; set; }
     }
 }

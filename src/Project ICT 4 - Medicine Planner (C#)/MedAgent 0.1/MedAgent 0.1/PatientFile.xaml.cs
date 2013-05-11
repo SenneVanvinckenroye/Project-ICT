@@ -110,6 +110,7 @@ namespace MediAgent
 
         void client_GetPatientDataCompleted(object sender, MedAgent_0_1.MedCareCloudServiceReference.GetPatientDataCompletedEventArgs e)
         {
+
             if (e.Result.PatientID != -1)
             {
                 client = new MedAgent_0_1.MedCareCloudServiceReference.MedPlanServiceClient();
@@ -124,6 +125,7 @@ namespace MediAgent
                 MessageBox.Show("Something went wrong\n\rRedirecting...");
                 NavigationService.GoBack();
             }
+
         }
 
         void client_GetPrescriptionsForPatientCompleted(object sender, MedAgent_0_1.MedCareCloudServiceReference.GetPrescriptionsForPatientCompletedEventArgs e)
@@ -159,29 +161,42 @@ namespace MediAgent
                     tempMed.StartDate = Convert.ToDateTime(prescription.Elements("StartDate").First().Value);
                     tempMed.EndDate = Convert.ToDateTime(prescription.Elements("EndDate").First().Value);
 
-                    foreach (var xElement in prescription.Elements("Days"))
+                    tempMed.Days = new List<Day>();
+
+                    foreach (var xElement in prescription.Elements("Days").Elements())
                     {
                         Day TempDay = new Day();
-                        TempDay.Date = Convert.ToDateTime(xElement.Elements("Date").First().Value);
+                        TempDay.Time = new List<TimeSpan>();
+                        TempDay.Taken = new List<bool>();
+                        TempDay.Administration = new List<string>();
 
-                        foreach (var element in xElement.Elements("Times"))
+                        DateTime TempDate;
+                        DateTime.TryParse(xElement.Element("Date").Value, out TempDate);
+                        TempDay.Date = TempDate;
+
+                        foreach (var element in xElement.Elements())
                         {
-                            TimeSpan tempTime;
-                            TimeSpan.TryParse(element.Value, out tempTime);
-                            TempDay.Time.Add(tempTime);
+                            if (element.DescendantsAndSelf("Time").Any())
+                            {
+                                TimeSpan tempTime;
+                                TimeSpan.TryParse(element.Elements("Time").First().Value, out tempTime);
+                                TempDay.Time.Add(tempTime);
+                            }
+                            if (element.DescendantsAndSelf("Taken").Any())
+                            {
+                                bool tempTaken;
+                                bool.TryParse(element.Elements("Taken").First().Value, out tempTaken);
+                                TempDay.Taken.Add(tempTaken);
+                            }
+                            if (element.DescendantsAndSelf("Administration").Any())
+                            {
+                                TempDay.Administration.Add(element.Elements("Administration").First().Value);
+                            }
+
                         }
-                        foreach (var element in xElement.Elements("Taken"))
-                        {
-                            bool tempTaken;
-                            bool.TryParse(element.Value, out tempTaken);
-                            TempDay.Taken.Add(tempTaken);
-                        }
-                        foreach (var element in xElement.Elements("Administration"))
-                        {
-                            TempDay.Administration.Add(element.Value);
-                        }
+                        tempMed.Days.Add(TempDay);
                     }
-                    
+
 
 
                     //COURSE IS NU INTEGER DUS '1' IS EVERY DAY ETC....
@@ -221,6 +236,14 @@ namespace MediAgent
                 {
                     MedListBox.Items.Add(MedItem);
                 }
+                LCalendar MedCal = new LCalendar();
+                MedCal.Name = "Calendar";
+                MedCal.OnDayClicked += Calendar_OnDayClicked;
+                
+
+
+                KalenderPanoItem.Children.Add(MedCal);
+
             }
             else
                 MessageBox.Show("Couldn't retrieve any medication.");

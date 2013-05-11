@@ -350,16 +350,24 @@ namespace CalendarControl
                 {
                     if (day.Date.Month == dateTime.Month && day.Date.Year == dateTime.Year && day.Date.Day == i+1)
                     {
-                        foreach (bool b in day.Taken)
+                        if (day.Date < DateTime.Now.Date)
                         {
-                            if (b)
+                            foreach (bool b in day.Taken)
                             {
-                                AmountTrue++;
+                                if (b)
+                                {
+                                    AmountTrue++;
+                                }
+                                else if (!b)
+                                {
+                                    AmountFalse++;
+                                }
                             }
-                            else
-                            {
-                                AmountFalse++;
-                            }
+                        }
+                        else
+                        {
+                            //dag moet nog komen? (geen Taken bool)
+                            ba.Background = new SolidColorBrush(Colors.Yellow);
                         }
                     }
                 }
@@ -381,6 +389,8 @@ namespace CalendarControl
                         ba.Background = new SolidColorBrush(Colors.Orange);
                     }
                 }
+                
+                
 
 
 
