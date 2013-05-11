@@ -508,5 +508,36 @@ namespace SilverlightApplication3.Web
             }
             return "success";//alles goed verlopen.
         }
+
+        /*public string GetLastPrescriptionID()
+        {
+            using (con = new SqlConnection("Server=tcp:kqayqahno5.database.windows.net;Database=medplanner-2013-3-15-11-53;User ID=medagent@kqayqahno5;Password=Finland1!;Trusted_Connection=False;"))
+            {
+                try
+                {
+                    con.Open();
+                }
+                catch
+                {
+                    return "SQL Connection Error";
+                }
+                try
+                {
+                    using (SqlCommand command = new SqlCommand(
+                    "INSERT INTO Prescriptions (PatientID,data) VALUES (@PatientID,@XMLDoc)", con))
+                    {
+                        command.Parameters.Add(new SqlParameter("@PatientID", 0));
+                        command.Parameters.Add(new SqlParameter("@XMLDoc", "<lol></lol>"));
+                        command.ExecuteNonQuery();
+                        con.Close();
+                        con.Dispose();
+                    }
+                }
+                catch (SqlException e)
+                {
+                    return e.Message;
+                }
+            }
+        }*/
     }
 }

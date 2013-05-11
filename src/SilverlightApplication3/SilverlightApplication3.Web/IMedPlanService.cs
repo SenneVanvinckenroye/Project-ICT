@@ -56,5 +56,8 @@ namespace SilverlightApplication3.Web
 
         [OperationContract]
         string DropMeds(int[] PrescriptionID);
+
+        /*[OperationContract]
+        string GetLastPrescriptionID();*/
     }
 }
