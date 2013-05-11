@@ -27,7 +27,7 @@ namespace MedAgent_0_1
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
-            NavigationService.Navigate(new Uri(string.Format("/PatientFile.xaml"), UriKind.Relative));
+            NavigationService.GoBack(); 
 
         }
     }

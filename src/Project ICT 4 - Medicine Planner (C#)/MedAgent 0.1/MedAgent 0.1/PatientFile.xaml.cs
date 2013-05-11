@@ -236,13 +236,18 @@ namespace MediAgent
                 {
                     MedListBox.Items.Add(MedItem);
                 }
-                LCalendar MedCal = new LCalendar();
-                MedCal.Name = "Calendar";
-                MedCal.OnDayClicked += Calendar_OnDayClicked;
                 
 
 
-                KalenderPanoItem.Children.Add(MedCal);
+                if (firstTime)
+                {
+                    LCalendar MedCal = new LCalendar();
+                    MedCal.Name = "Calendar";
+                    MedCal.OnDayClicked += Calendar_OnDayClicked;
+                    KalenderPanoItem.Children.Add(MedCal);
+                    firstTime = false;
+                }
+                
 
             }
             else
@@ -250,6 +255,7 @@ namespace MediAgent
         }
 
         //Constructor
+        private bool firstTime = true;
         public PatientFile()
         {
             InitializeComponent();
@@ -365,8 +371,16 @@ namespace MediAgent
 
         void Calendar_OnDayClicked(object sender, LCalendar.DayClickedEventArgs e)
         {
-            Button temp = (Button)sender;
-            MessageBox.Show(temp.Tag.ToString());
+            foreach (var med in App.MedList)
+            {
+                foreach (var day in med.Days)
+                {
+                    if (day.Date == e.SelectedDate)
+                    {
+                        NavigationService.Navigate(new Uri("/DayMedPage.xaml?Date="+e.SelectedDate.ToString(), UriKind.Relative));
+                    }
+                }
+            }
         }
 
 

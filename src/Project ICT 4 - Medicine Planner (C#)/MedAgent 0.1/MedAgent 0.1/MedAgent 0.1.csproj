@@ -121,6 +121,9 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Course.cs" />
+    <Compile Include="DayMedPage.xaml.cs">
+      <DependentUpon>DayMedPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Doctor.cs" />
     <Compile Include="DoctorView1.xaml.cs">
       <DependentUpon>DoctorView1.xaml</DependentUpon>
@@ -162,6 +165,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="AddPatientFile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DayMedPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -24,9 +24,9 @@ namespace CalendarControl
         private event EventHandler<DayClickedEventArgs> dayClicked;
         #endregion
 
-        int testTaken = 0;
-        int testTotal = 0;
-        DateTime PreDate = new DateTime(1, 1, 1);
+        //int testTaken = 0;
+        //int testTotal = 0;
+        //DateTime PreDate = new DateTime(1, 1, 1);
 
 
 
@@ -229,7 +229,6 @@ namespace CalendarControl
 
                 bord.HorizontalAlignment = HorizontalAlignment.Center;
                 bord.Margin = new Thickness(0);
-
                 Button ba = new Button();
                 ba.BorderBrush = new SolidColorBrush(Colors.Transparent);
                 ba.Width = 99;
@@ -243,7 +242,7 @@ namespace CalendarControl
                 ba.Content = (i + 1).ToString();
                 ba.Click += new RoutedEventHandler(ba_Click);
 
-#region Oude Med uitlees methode
+                #region Oude Med uitlees methode
                 //DateTime ButtonDay = new DateTime(dateTime.Year, dateTime.Month, i + 1);
                 //List<char> takenLst = new List<char>();
                 //int IntervalDay = 0;
@@ -252,7 +251,7 @@ namespace CalendarControl
                 //int AmountFalse = 0;
                 //bool MedDay = false;
 
-                
+
                 //foreach (Medication medication in App.MedList)
                 //{
                 //    DateTime temp = medication.StartDate.Date;
@@ -346,28 +345,31 @@ namespace CalendarControl
 
                 int AmountTrue = 0;
                 int AmountFalse = 0;
-                foreach (var day in App.MedList[App.MedID].Days) // ArgumentOutOfRangeException.... MedList is leeg
+                foreach (Medication medication in App.MedList)
                 {
-                    if (day.Date.Month == dateTime.Month && day.Date.Year == dateTime.Year && day.Date.Day == i+1)
+                    foreach (var day in medication.Days) // ArgumentOutOfRangeException.... MedList is leeg
                     {
-                        if (day.Date < DateTime.Now.Date)
+                        if (day.Date.Month == dateTime.Month && day.Date.Year == dateTime.Year && day.Date.Day == i + 1)
                         {
-                            foreach (bool b in day.Taken)
+                            if (day.Date < DateTime.Now.Date)
                             {
-                                if (b)
+                                foreach (bool b in day.Taken)
                                 {
-                                    AmountTrue++;
-                                }
-                                else if (!b)
-                                {
-                                    AmountFalse++;
+                                    if (b)
+                                    {
+                                        AmountTrue++;
+                                    }
+                                    else if (!b)
+                                    {
+                                        AmountFalse++;
+                                    }
                                 }
                             }
-                        }
-                        else
-                        {
-                            //dag moet nog komen? (geen Taken bool)
-                            ba.Background = new SolidColorBrush(Colors.Yellow);
+                            else
+                            {
+                                //dag moet nog komen? (geen Taken bool)
+                                ba.Background = new SolidColorBrush(Color.FromArgb(255, 216, 193, 0));
+                            }
                         }
                     }
                 }
@@ -376,27 +378,27 @@ namespace CalendarControl
                     if (AmountTrue == AmountTrue + AmountFalse)
                     {
                         // all taken
-                        ba.Background = new SolidColorBrush(Colors.Green);
+                        ba.Background = new SolidColorBrush(Color.FromArgb(255, 96, 169, 23));
                     }
                     else if (AmountFalse == AmountTrue + AmountFalse)
                     {
                         // none taken
-                        ba.Background = new SolidColorBrush(Colors.Red);
+                        ba.Background = new SolidColorBrush(Color.FromArgb(255, 229, 20, 0));
                     }
                     else
                     {
                         //some taken
-                        ba.Background = new SolidColorBrush(Colors.Orange);
+                        ba.Background = new SolidColorBrush(Color.FromArgb(255, 250, 104, 0));
                     }
                 }
-                
-                
+
+
 
 
 
                 if (dateTime.Year == DateTime.Now.Year && dateTime.Month == DateTime.Now.Month && ba.Content.ToString() == DateTime.Now.Day.ToString())
                 {
-                    ba.Background = new SolidColorBrush(Colors.Blue);
+                    ba.Background = new SolidColorBrush(Color.FromArgb(255, 27, 161, 226));
                 }
 
                 //controllo sull'evento esistente

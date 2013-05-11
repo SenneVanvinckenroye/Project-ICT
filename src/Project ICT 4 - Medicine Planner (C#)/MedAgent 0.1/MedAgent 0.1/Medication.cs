@@ -111,5 +111,14 @@ namespace MedAgent_0_1
         public List<bool> Taken { get; set; }
 
         public List<String> Administration { get; set; }
+
+    }
+
+    public class DayMedListClass
+    {
+        public DateTime Date { get; set; }
+        public String Name { get; set; }
+        public TimeSpan Time { get; set; }
+        public Medication Medication { get; set; }
     }
 }
