@@ -215,7 +215,7 @@ namespace MediAgent
                     }*/
                     int CourseOut;
                     int.TryParse(prescription.Elements("Course").First().Value, out CourseOut);
-                    tempMed.Course = CourseOut;
+                    tempMed.Interval = CourseOut;
                     /*tempMed.Times[0] = item.Time1;
                     tempMed.Times[1] = item.Time2;
                     tempMed.Times[2] = item.Time3;

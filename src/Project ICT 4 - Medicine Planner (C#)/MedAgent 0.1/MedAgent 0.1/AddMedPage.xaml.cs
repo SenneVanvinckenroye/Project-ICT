@@ -89,28 +89,28 @@ namespace MedAgent_0_1
             switch ((int)(CourseSlider.Value))
             {
                 case 0: repeatInfo_txt.Text = "Daily";
-                    App.MedList[App.MedID].Course = 1;
+                    App.MedList[App.MedID].Interval = 1;
                     break;
                 case 1: repeatInfo_txt.Text = "Every 2 days";
-                    App.MedList[App.MedID].Course = 2;
+                    App.MedList[App.MedID].Interval = 2;
                     break;
                 case 2: repeatInfo_txt.Text = "Every 3 days";
-                    App.MedList[App.MedID].Course = 3;
+                    App.MedList[App.MedID].Interval = 3;
                     break;
                 case 3: repeatInfo_txt.Text = "Every 4 days";
-                    App.MedList[App.MedID].Course = 4;
+                    App.MedList[App.MedID].Interval = 4;
                     break;
                 case 4: repeatInfo_txt.Text = "Every 5 days";
-                    App.MedList[App.MedID].Course = 5;
+                    App.MedList[App.MedID].Interval = 5;
                     break;
                 case 5: repeatInfo_txt.Text = "Every 6 days";
-                    App.MedList[App.MedID].Course = 6;
+                    App.MedList[App.MedID].Interval = 6;
                     break;
                 case 6: repeatInfo_txt.Text = "Weekly";
-                    App.MedList[App.MedID].Course = 7;
+                    App.MedList[App.MedID].Interval = 7;
                     break;
                 default: repeatInfo_txt.Text = "error";
-                    App.MedList[App.MedID].Course = 0;
+                    App.MedList[App.MedID].Interval = 0;
                     break;
             }
         }
@@ -760,7 +760,7 @@ namespace MedAgent_0_1
                         new XElement("StartDate", App.MedList[App.MedID].StartDate),
                         new XElement("EndDate", App.MedList[App.MedID].EndDate),
                         new XElement("Quantity", App.MedList[App.MedID].Amount),
-                        new XElement("Course", App.MedList[App.MedID].Course)
+                        new XElement("Course", App.MedList[App.MedID].Interval)
 
                     )
                 );
@@ -769,9 +769,9 @@ namespace MedAgent_0_1
                 string XElementDayName;
 
                 List<DateTime> allDates = new List<DateTime>();//array om alle dagen tussen start en einddatum in te steken (met interval 'course')
-                if (App.MedList[App.MedID].Course != 0)//indien het interval wel groot genoeg is
+                if (App.MedList[App.MedID].Interval != 0)//indien het interval wel groot genoeg is
                 {
-                    for (DateTime date = App.MedList[App.MedID].StartDate; date <= App.MedList[App.MedID].EndDate; date = date.AddDays(App.MedList[App.MedID].Course))
+                    for (DateTime date = App.MedList[App.MedID].StartDate; date <= App.MedList[App.MedID].EndDate; date = date.AddDays(App.MedList[App.MedID].Interval))
                         allDates.Add(date);//bereken alle dagen met de 'course' als intervalstap en steek al de datums in de array allDates.
 
                     doc.Element("Prescription").Add(new XElement("Days", ""));

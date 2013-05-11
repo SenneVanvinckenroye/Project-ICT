@@ -39,11 +39,58 @@ namespace MedAgent_0_1
 
         public DateTime EndDate { get; set; }
 
-        public int Interval { get; set; }
+        public int Interval {
+            get
+            {
+                return Interval;
+            }
+
+            set
+            {
+                switch (value)
+                {
+                    case 1:
+                        {
+                            Course = "Every day";
+                            break;
+                        }
+                    case 2:
+                        {
+                            Course = "Every 2 days";
+                            break;
+                        }
+                    case 3:
+                        {
+                            Course = "Every 3 days";
+                            break;
+                        }
+                    case 4:
+                        {
+                            Course = "Every 4 days";
+                            break;
+                        }
+                    case 5:
+                        {
+                            Course = "Every 5 days";
+                            break;
+                        }
+                    case 6:
+                        {
+                            Course = "Every 6 days";
+                            break;
+                        }
+                    case 7:
+                        {
+                            Course = "Weekly";
+                            break;
+                        }
+                }
+            }
+        }
 
         public ImageSource MedPhoto { get; set; }
 
-        public int Course { get; set; }
+        public string Course { get; set; }
 
         public int Amount { get; set; }
 
