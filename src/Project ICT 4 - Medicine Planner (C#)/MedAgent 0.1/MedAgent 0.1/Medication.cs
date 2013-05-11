@@ -39,10 +39,12 @@ namespace MedAgent_0_1
 
         public DateTime EndDate { get; set; }
 
+        private int _interval;
+
         public int Interval {
             get
             {
-                return Interval;
+                return _interval;
             }
 
             set
@@ -85,6 +87,7 @@ namespace MedAgent_0_1
                             break;
                         }
                 }
+                _interval = value;
             }
         }
 
