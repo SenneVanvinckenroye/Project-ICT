@@ -76,7 +76,7 @@ namespace MedAgent_0_1
                                     string data = appDataXml.ToString();
 
                                     client.UpdatePrescriptionDataAsync(App.MedList[x].PrescriptionID, data);
-                                    client.UpdatePrescriptionDataCompleted += new EventHandler<MedCareCloudServiceReference.UpdatePrescriptionDataCompletedEventArgs>(client_UpdatePrescriptionDataCompleted);
+                                    
                                 }
                             }
                         }
