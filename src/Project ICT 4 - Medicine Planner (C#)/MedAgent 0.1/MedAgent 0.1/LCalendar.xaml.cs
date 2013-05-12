@@ -13,6 +13,8 @@ using System.Windows.Shapes;
 using System.Globalization;
 using MedAgent_0_1;
 using MediAgent;
+using System.Windows.Navigation;
+using Microsoft.Phone.Controls;
 
 namespace CalendarControl
 {
@@ -347,30 +349,37 @@ namespace CalendarControl
                 int AmountFalse = 0;
                 foreach (Medication medication in App.MedList)
                 {
-                    foreach (var day in medication.Days) // ArgumentOutOfRangeException.... MedList is leeg
+                    if (medication.Days != null)
                     {
-                        if (day.Date.Month == dateTime.Month && day.Date.Year == dateTime.Year && day.Date.Day == i + 1)
+                        foreach (var day in medication.Days) // ArgumentOutOfRangeException.... MedList is leeg
                         {
-                            if (day.Date < DateTime.Now.Date)
+                            if (day.Date.Month == dateTime.Month && day.Date.Year == dateTime.Year && day.Date.Day == i + 1)
                             {
-                                foreach (bool b in day.Taken)
+                                if (day.Date < DateTime.Now.Date)
                                 {
-                                    if (b)
+                                    foreach (bool b in day.Taken)
                                     {
-                                        AmountTrue++;
-                                    }
-                                    else if (!b)
-                                    {
-                                        AmountFalse++;
+                                        if (b)
+                                        {
+                                            AmountTrue++;
+                                        }
+                                        else if (!b)
+                                        {
+                                            AmountFalse++;
+                                        }
                                     }
                                 }
-                            }
-                            else
-                            {
-                                //dag moet nog komen? (geen Taken bool)
-                                ba.Background = new SolidColorBrush(Color.FromArgb(255, 216, 193, 0));
+                                else
+                                {
+                                    //dag moet nog komen? (geen Taken bool)
+                                    ba.Background = new SolidColorBrush(Color.FromArgb(255, 202, 231, 86));
+                                }
                             }
                         }
+                    }
+                    else//wss geklikt op de terugknop en Medication.Days == null
+                    {
+                        (Application.Current.RootVisual as PhoneApplicationFrame).Navigate(new Uri("/PatientFile.xaml?isPatient=true", UriKind.Relative));
                     }
                 }
                 if (AmountTrue + AmountFalse != 0)
@@ -383,7 +392,7 @@ namespace CalendarControl
                     else if (AmountFalse == AmountTrue + AmountFalse)
                     {
                         // none taken
-                        ba.Background = new SolidColorBrush(Color.FromArgb(255, 229, 20, 0));
+                        ba.Background = new SolidColorBrush(Color.FromArgb(255, 165, 50, 50));
                     }
                     else
                     {

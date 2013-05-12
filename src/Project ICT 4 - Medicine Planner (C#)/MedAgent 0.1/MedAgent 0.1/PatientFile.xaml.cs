@@ -46,6 +46,7 @@ namespace MediAgent
         //Als ge op deze pagina terecht komt kunde checke of den dokter ne patient wil toevoege OF ne patient zen medicijnen wil toevoegen???
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            client = new MedAgent_0_1.MedCareCloudServiceReference.MedPlanServiceClient();
             string addPatient = "false";
             if (this.NavigationContext.QueryString.TryGetValue("addPatient", out addPatient))
             {
@@ -66,11 +67,25 @@ namespace MediAgent
             {
                 if (isPatient == "true")
                 {
-                    client = new MedAgent_0_1.MedCareCloudServiceReference.MedPlanServiceClient();
                     client.GetUserDataAsync(MainPage.userMemberID);
                     client.GetUserDataCompleted += new EventHandler<MedAgent_0_1.MedCareCloudServiceReference.GetUserDataCompletedEventArgs>(client_GetUserDataCompleted);
                     client.GetPatientDataAsync(MainPage.userMemberID);//geef login MemberID door van patient om verdere gegevens op te halen
                     client.GetPatientDataCompleted += new EventHandler<MedAgent_0_1.MedCareCloudServiceReference.GetPatientDataCompletedEventArgs>(client_GetPatientDataCompleted);
+                }
+                else
+                {
+                    MessageBox.Show("Something went wrong\n\rRedirecting...");
+                    NavigationService.GoBack();
+                }
+            }
+            string isDoctor = "false";
+            if (this.NavigationContext.QueryString.TryGetValue("isDoctor", out isDoctor))
+            {
+                if (isDoctor == "true")
+                {
+                    SetPatientDataFields();
+                    System.Threading.Thread.Sleep(1000);
+                    GetPrescriptionsForPatient();
                 }
                 else
                 {
@@ -91,6 +106,11 @@ namespace MediAgent
             App.PublicPatient.SSN = e.Result.ssn;
             App.PublicPatient.Telephone = e.Result.phoneNumber;
 
+            SetPatientDataFields();
+        }
+
+        private void SetPatientDataFields()
+        {
             PatName.Text = App.PublicPatient.LastName;
             PatBday.Text = App.PublicPatient.Bday.ToShortDateString();
             DateTime today = DateTime.Today;
@@ -104,7 +124,18 @@ namespace MediAgent
             PatPhone.Text = App.PublicPatient.Telephone.ToString();
         }
 
-
+        private void GetPrescriptionsForPatient()
+        {
+            try
+            {
+                client.GetPrescriptionsForPatientAsync(App.PublicPatient.Id);
+                client.GetPrescriptionsForPatientCompleted += new EventHandler<MedAgent_0_1.MedCareCloudServiceReference.GetPrescriptionsForPatientCompletedEventArgs>(client_GetPrescriptionsForPatientCompleted);
+            }
+            catch(NullReferenceException e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
 
         //CHARNAARBOOL WEG WANT TAKEN IS NU REEDS BOOLEAN
 
@@ -116,9 +147,7 @@ namespace MediAgent
                 client = new MedAgent_0_1.MedCareCloudServiceReference.MedPlanServiceClient();
                 App.PublicPatient.Id = e.Result.PatientID;
 
-
-                client.GetPrescriptionsForPatientAsync(Convert.ToInt32(App.PublicPatient.Id));
-                client.GetPrescriptionsForPatientCompleted += new EventHandler<MedAgent_0_1.MedCareCloudServiceReference.GetPrescriptionsForPatientCompletedEventArgs>(client_GetPrescriptionsForPatientCompleted);
+                GetPrescriptionsForPatient();
             }
             else
             {
@@ -153,7 +182,7 @@ namespace MediAgent
                         }
                     }
 
-                    var prescription = from p in xml.Descendants("Prescription") select p;///???
+                    var prescription = from p in xml.Descendants("Prescription") select p;///root tag selecteren in het xml document met linq to xml
 
                     tempMed.Name = prescription.Elements("DrugName").First().Value;
                     tempMed.Description = prescription.Elements("DrugDescription").First().Value;

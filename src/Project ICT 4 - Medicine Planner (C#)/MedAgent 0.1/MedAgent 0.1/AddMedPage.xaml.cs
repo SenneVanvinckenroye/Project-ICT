@@ -20,6 +20,7 @@ using System.IO;
 using System.Xml.Linq;
 using System.IO.IsolatedStorage;
 using System.Diagnostics;
+using System.Windows.Controls.Primitives;
 
 
 namespace MedAgent_0_1
@@ -785,11 +786,16 @@ namespace MedAgent_0_1
                             doc.Element("Prescription").Element("Days").Element(XElementDayName).Add(new XElement("Date", allDates[i].ToString()));
                             for (int j = 0; j < App.MedList[App.MedID].Times.Length; j++)//... en voeg alle ingestelde tijden toe aan deze dag.
                             {
-                                XElementReminderName = "Reminder" + j.ToString();//<Time0></Time0>
-                                doc.Element("Prescription").Element("Days").Element(XElementDayName).Add(new XElement(XElementReminderName, ""));//<Day0><Timej>00:00:00</Timej></Day0>
-                                doc.Element("Prescription").Element("Days").Element(XElementDayName).Element(XElementReminderName).Add(new XElement("Time", App.MedList[App.MedID].Times[j].ToString()));
-                                doc.Element("Prescription").Element("Days").Element(XElementDayName).Element(XElementReminderName).Add(new XElement("Taken", false));//<Day0>12-12-2013T0:00:00<Timej>00:00:00<Taken>false</Taken></Timej></Day0>
-                                doc.Element("Prescription").Element("Days").Element(XElementDayName).Element(XElementReminderName).Add(new XElement("Administration", "1 tablet"));//<Day0>12-12-2013T0:00:00<Timej>00:00:00<Taken>false</Taken></Timej></Day0>
+                                ToggleButton temp = (ToggleButton)this.FindName("ToggleButton" + Convert.ToInt32(j + 1));//togglebutton1 - 6
+                                if ((bool)temp.IsChecked)
+                                {
+                                    XElementReminderName = "Reminder" + j.ToString();//<Time0></Time0>
+                                    doc.Element("Prescription").Element("Days").Element(XElementDayName).Add(new XElement(XElementReminderName, ""));//<Day0><Timej>00:00:00</Timej></Day0>  
+                                    doc.Element("Prescription").Element("Days").Element(XElementDayName).Element(XElementReminderName).Add(new XElement("Time", App.MedList[App.MedID].Times[j].ToString()));
+
+                                    doc.Element("Prescription").Element("Days").Element(XElementDayName).Element(XElementReminderName).Add(new XElement("Taken", false));//<Day0>12-12-2013T0:00:00<Timej>00:00:00<Taken>false</Taken></Timej></Day0>
+                                    doc.Element("Prescription").Element("Days").Element(XElementDayName).Element(XElementReminderName).Add(new XElement("Administration", "1 tablet"));//<Day0>12-12-2013T0:00:00<Timej>00:00:00<Taken>false</Taken></Timej></Day0>
+                                }
                             }
                         }
                         //normaal nu:

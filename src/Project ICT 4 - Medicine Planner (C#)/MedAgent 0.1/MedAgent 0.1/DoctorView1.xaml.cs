@@ -160,9 +160,19 @@ namespace MediAgent
                     root.DataContext = patdata;
 
                     App.PublicPatient.Id = patdata.Id;
+                    App.PublicPatient.Address = patdata.Address;
+                    App.PublicPatient.Bday = patdata.Bday;
+                    App.PublicPatient.Email = patdata.Email;
+                    App.PublicPatient.FirstName = patdata.FirstName;
+                    App.PublicPatient.LastName = patdata.LastName;
+                    App.PublicPatient.Sex = patdata.Sex;
+                    App.PublicPatient.SSN = patdata.SSN;
+                    App.PublicPatient.Telephone = patdata.Telephone;
+                    /*App.PublicPatient.MedicineHistory = "";
+                    App.PublicPatient.Symptoms = new List<string>();*/
 
                     // change page navigation 
-                    NavigationService.Navigate(new Uri(string.Format("/PatientFile.xaml"), UriKind.Relative));
+                    NavigationService.Navigate(new Uri(string.Format("/PatientFile.xaml?isDoctor=true"), UriKind.Relative));
 
                 }
 
