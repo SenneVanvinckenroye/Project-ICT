@@ -134,10 +134,10 @@ namespace MedAgent_0_1
             NavigationService.Navigate(new Uri(string.Format("/DoctorView1.xaml"), UriKind.Relative));
         }
 
-        private void byPass_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new Uri(string.Format("/DoctorView1.xaml"), UriKind.Relative));
-        }
+        //private void byPass_Click(object sender, RoutedEventArgs e)
+        //{
+        //    NavigationService.Navigate(new Uri(string.Format("/MedConfirmationPage.xaml"), UriKind.Relative));
+        //}
 
     }
 	

@@ -275,8 +275,9 @@ namespace MediAgent
                     MedCal.OnDayClicked += Calendar_OnDayClicked;
                     KalenderPanoItem.Children.Add(MedCal);
                     firstTime = false;
+                    //NavigationService.Navigate(new Uri(string.Format("/MedConfirmationPage.xaml"), UriKind.Relative)); //bijpass om taken en not taken te zeggen voor med
                 }
-                
+                App.UpdateReminders();
 
             }
             else
@@ -356,10 +357,10 @@ namespace MediAgent
 
         //All events
         #region
-        private void button1_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new Uri(string.Format("/MainPage.xaml"), UriKind.Relative));
-        }
+        //private void button1_Click(object sender, RoutedEventArgs e)
+        //{
+        //    NavigationService.Navigate(new Uri(string.Format("/MainPage.xaml"), UriKind.Relative));
+        //}
 
 
         private void MedListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

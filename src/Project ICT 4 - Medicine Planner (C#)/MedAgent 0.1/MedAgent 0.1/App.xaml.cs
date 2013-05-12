@@ -11,6 +11,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
+using Microsoft.Phone.Scheduler;
 using Microsoft.Phone.Shell;
 using Microsoft.Phone.Tasks;
 
@@ -30,12 +31,12 @@ namespace MedAgent_0_1
         /// 
         /// 
         public static Doctor PublicDoctor = new Doctor();
-        public static Patient PublicPatient = new Patient(); 
+        public static Patient PublicPatient = new Patient();
 
         public static List<Medication> MedList = new List<Medication>();
 
         public static List<Patient> PatList = new List<Patient>();
- 
+
 
 
         public static int MedID = 0;
@@ -76,46 +77,48 @@ namespace MedAgent_0_1
             // Phone-specific initialization
             InitializePhoneApplication();
 
-            //test code!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            //App.MedList.Add(new Medication()
-            //{
-            //    Amount = 100,
-            //    Description = "testmed",
-            //    EndDate = new DateTime(2013, 04, 30),
-            //    Interval = 3,
-            //    Name = "TestMed",
-            //    StartDate = new DateTime(2013, 04, 1),
 
-            //    Taken = new List<List<bool>>(){
-            //                new List<bool>(){true,true,true,false,false,false},
-            //                new List<bool>(){false,false,false,false,false,false},
-            //                new List<bool>(){true,false,false,false,false,false},
-            //                new List<bool>(){true,true,true,false,false,false},
-            //                new List<bool>(){true,true,true,false,false,false},
-            //                new List<bool>(){true,true,true,false,false,false},
-            //                new List<bool>(){true,true,true,false,false,false},
-            //                new List<bool>(){true,true,true,false,false,false},
-            //                new List<bool>(){true,true,true,false,false,false},
-            //                new List<bool>(){true,true,true,false,false,false},
-            //                new List<bool>(){true,true,true,false,false,false},
-            //                new List<bool>(){true,true,true,false,false,false},
-            //                new List<bool>(){true,true,true,false,false,false},
-            //                new List<bool>(){true,true,true,false,false,false},
-            //                new List<bool>(){true,true,true,false,false,false},
-            //                new List<bool>(){true,true,true,false,false,false}
-            //            },
 
-            //    Times = new TimeSpan[]{
-            //                new TimeSpan(),
-            //                new TimeSpan(), 
-            //                new TimeSpan(), 
-            //                new TimeSpan(), 
-            //                new TimeSpan(), 
-            //                new TimeSpan()
-            //            },
-            //});
-            //test code!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        }
 
+        public static void UpdateReminders()
+        {
+            int remNum = 0;
+            string RemName = "Rem";
+            while (ScheduledActionService.Find(RemName + remNum) != null)
+            {
+                ScheduledActionService.Remove(RemName + remNum);
+                remNum++;
+            }
+            remNum = 0;
+            foreach (Medication medication in MedList)
+            {
+                foreach (Day day in medication.Days)
+                {
+                    if (day.Date >= DateTime.Now.Date && day.Date < DateTime.Now.AddDays(5))
+                    {
+                        foreach (TimeSpan time in day.Time)
+                        {
+                            if (time != new TimeSpan(0, 0, 0, 0))
+                            {
+                                DateTime dt = day.Date;
+                                TimeSpan ts = time;
+                                dt = dt + ts;
+                                Reminder r = new Reminder("Rem" + remNum)
+                                {
+                                    Content = "Click for more info",
+                                    BeginTime = dt,
+                                    Title = medication.Name,
+                                    NavigationUri = new Uri("/MedConfirmationPage.xaml", UriKind.Relative),
+                                    RecurrenceType = RecurrenceInterval.None
+                                };
+                                ScheduledActionService.Add(r);
+                                remNum++;
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         // Code to execute when the application is launching (eg, from Start)
