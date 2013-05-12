@@ -676,7 +676,7 @@ namespace MedAgent_0_1
 
         //Panorama Item 3
 
-        private void Time1_ValueChanged(object sender, DateTimeValueChangedEventArgs e)
+        /*private void Time1_ValueChanged(object sender, DateTimeValueChangedEventArgs e)
         {
 
             App.MedList[App.MedID].Times[0] = Convert.ToDateTime(Time1.Value).TimeOfDay;
@@ -716,7 +716,7 @@ namespace MedAgent_0_1
 
             App.MedList[App.MedID].Times[5] = Convert.ToDateTime(Time6.Value).TimeOfDay;
 
-        }
+        }*/
 
 
 
@@ -732,6 +732,14 @@ namespace MedAgent_0_1
                 {
                     //The current value of the startdate is always the current date so when we don't change it we have to assign its value still
                     App.MedList[App.MedID].StartDate = (DateTime)StartDate.Value;
+
+                    //setting timers
+                    App.MedList[App.MedID].Times[0] = Convert.ToDateTime(Time1.Value).TimeOfDay;
+                    App.MedList[App.MedID].Times[1] = Convert.ToDateTime(Time2.Value).TimeOfDay;
+                    App.MedList[App.MedID].Times[2] = Convert.ToDateTime(Time3.Value).TimeOfDay;
+                    App.MedList[App.MedID].Times[3] = Convert.ToDateTime(Time4.Value).TimeOfDay;
+                    App.MedList[App.MedID].Times[4] = Convert.ToDateTime(Time5.Value).TimeOfDay;
+                    App.MedList[App.MedID].Times[5] = Convert.ToDateTime(Time6.Value).TimeOfDay;
 
                     //Write the variables medication in the medlist with the current ID to the database.
                     client = new MedAgent_0_1.MedCareCloudServiceReference.MedPlanServiceClient();
@@ -874,7 +882,7 @@ namespace MedAgent_0_1
             if (e.Result == "success")
             {
                 MessageBox.Show("Prescription added! :)\n\rRedirecting. . .");
-                System.Threading.Thread.Sleep(3000);
+
                 NavigationService.Navigate(new Uri(string.Format("/PatientFile.xaml"), UriKind.Relative));
             }
             else
