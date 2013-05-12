@@ -61,13 +61,13 @@ namespace MedAgent_0_1
                 MessageBox.Show("Missing entries!");
             }
         }
-        
+
         public static string userFName, userLName, userEmail;//global vars to reach userdata in other pages
         public static int userMemberID;
 
         void client_LoginCompleted(object sender, MedCareCloudServiceReference.LoginCompletedEventArgs e)
         {
-            if(e.Result == null)
+            if (e.Result == null)
             {
                 error_txblck.Text = "Email and or password \n not found";
                 ErrorPopup.IsOpen = true;
@@ -78,32 +78,35 @@ namespace MedAgent_0_1
                 userLName = e.Result.LName;
                 userEmail = e.Result.email;
                 userMemberID = e.Result.MemberID;
-                switch(e.Result.UserType)
+                switch (e.Result.UserType)
                 {
                     case 'p'://patient
-                    {
-                        NavigationService.Navigate(new Uri("/PatientFile.xaml?isPatient=true", UriKind.Relative));
-                        break;
-                    }
+                        {
+                            App.IsPatient = true;
+                            NavigationService.Navigate(new Uri("/PatientFile.xaml?isPatient=true", UriKind.Relative));
+                            break;
+                        }
                     case 'd'://dokter
-                    {
-                        client.GetDocInfoAsync(userMemberID);
-                        client.GetDocInfoCompleted += new EventHandler<MedCareCloudServiceReference.GetDocInfoCompletedEventArgs>(client_GetDocInfoCompleted);
-                        
-                        break;
-                    }
+                        {
+                            App.IsPatient = false;
+                            client.GetDocInfoAsync(userMemberID);
+                            client.GetDocInfoCompleted += new EventHandler<MedCareCloudServiceReference.GetDocInfoCompletedEventArgs>(client_GetDocInfoCompleted);
+
+                            break;
+                        }
                     case 'n'://verpleger
-                    {
-                        MessageBox.Show("No support for nurses just yet.\n\rApologies from the MedCare team.");
-                        //NavigationService.Navigate(new Uri(string.Format("/NurseView1.xaml"), UriKind.Relative));
-                        break;
-                    }
+                        {
+                            App.IsPatient = false;
+                            MessageBox.Show("No support for nurses just yet.\n\rApologies from the MedCare team.");
+                            //NavigationService.Navigate(new Uri(string.Format("/NurseView1.xaml"), UriKind.Relative));
+                            break;
+                        }
                     default:
-                    {
-                        error_txblck.Text = "~Error~ in usertype";
-                        ErrorPopup.IsOpen = true;
-                        break;
-                    }
+                        {
+                            error_txblck.Text = "~Error~ in usertype";
+                            ErrorPopup.IsOpen = true;
+                            break;
+                        }
                 }
             }
         }
@@ -140,6 +143,6 @@ namespace MedAgent_0_1
         //}
 
     }
-	
-	
+
+
 }

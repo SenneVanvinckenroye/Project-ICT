@@ -37,7 +37,7 @@ namespace MedAgent_0_1
 
         public static List<Patient> PatList = new List<Patient>();
 
-
+        public static bool IsPatient { get; set; }
 
         public static int MedID = 0;
 
@@ -104,16 +104,19 @@ namespace MedAgent_0_1
                                 DateTime dt = day.Date;
                                 TimeSpan ts = time;
                                 dt = dt + ts;
-                                Reminder r = new Reminder("Rem" + remNum)
+                                if (dt >= DateTime.Now)
                                 {
-                                    Content = "Click for more info",
-                                    BeginTime = dt,
-                                    Title = medication.Name,
-                                    NavigationUri = new Uri("/MedConfirmationPage.xaml", UriKind.Relative),
-                                    RecurrenceType = RecurrenceInterval.None
-                                };
-                                ScheduledActionService.Add(r);
-                                remNum++;
+                                    Reminder r = new Reminder("Rem" + remNum)
+                                    {
+                                        Content = "Click for more info",
+                                        BeginTime = dt,
+                                        Title = medication.Name,
+                                        NavigationUri = new Uri("/MedConfirmationPage.xaml", UriKind.Relative),
+                                        RecurrenceType = RecurrenceInterval.None
+                                    };
+                                    ScheduledActionService.Add(r);
+                                    remNum++;
+                                }
                             }
                         }
                     }

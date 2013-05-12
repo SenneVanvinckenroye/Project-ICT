@@ -281,6 +281,10 @@ namespace MediAgent
                 //}
                 App.UpdateReminders();
 
+                if (App.IsPatient)
+                {
+                    App.UpdateReminders();
+                }
             }
             /*else
                 MessageBox.Show("Couldn't retrieve any medication.");*/
