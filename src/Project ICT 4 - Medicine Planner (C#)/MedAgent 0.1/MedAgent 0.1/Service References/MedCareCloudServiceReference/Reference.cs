@@ -568,6 +568,11 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
         System.IAsyncResult BeginDropMeds(System.Collections.ObjectModel.ObservableCollection<int> PrescriptionID, System.AsyncCallback callback, object asyncState);
         
         string EndDropMeds(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IMedPlanService/UpdatePrescriptionData", ReplyAction="http://tempuri.org/IMedPlanService/UpdatePrescriptionDataResponse")]
+        System.IAsyncResult BeginUpdatePrescriptionData(int PrescriptionID, string data, System.AsyncCallback callback, object asyncState);
+        
+        string EndUpdatePrescriptionData(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -823,6 +828,25 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class UpdatePrescriptionDataCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public UpdatePrescriptionDataCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public string Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class MedPlanServiceClient : System.ServiceModel.ClientBase<MedAgent_0_1.MedCareCloudServiceReference.IMedPlanService>, MedAgent_0_1.MedCareCloudServiceReference.IMedPlanService {
         
         private BeginOperationDelegate onBeginDoWorkDelegate;
@@ -909,6 +933,12 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
         
         private System.Threading.SendOrPostCallback onDropMedsCompletedDelegate;
         
+        private BeginOperationDelegate onBeginUpdatePrescriptionDataDelegate;
+        
+        private EndOperationDelegate onEndUpdatePrescriptionDataDelegate;
+        
+        private System.Threading.SendOrPostCallback onUpdatePrescriptionDataCompletedDelegate;
+        
         private BeginOperationDelegate onBeginOpenDelegate;
         
         private EndOperationDelegate onEndOpenDelegate;
@@ -989,6 +1019,8 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
         public event System.EventHandler<DropUsersCompletedEventArgs> DropUsersCompleted;
         
         public event System.EventHandler<DropMedsCompletedEventArgs> DropMedsCompleted;
+        
+        public event System.EventHandler<UpdatePrescriptionDataCompletedEventArgs> UpdatePrescriptionDataCompleted;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> OpenCompleted;
         
@@ -1665,6 +1697,54 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
                         PrescriptionID}, this.onEndDropMedsDelegate, this.onDropMedsCompletedDelegate, userState);
         }
         
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult MedAgent_0_1.MedCareCloudServiceReference.IMedPlanService.BeginUpdatePrescriptionData(int PrescriptionID, string data, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginUpdatePrescriptionData(PrescriptionID, data, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        string MedAgent_0_1.MedCareCloudServiceReference.IMedPlanService.EndUpdatePrescriptionData(System.IAsyncResult result) {
+            return base.Channel.EndUpdatePrescriptionData(result);
+        }
+        
+        private System.IAsyncResult OnBeginUpdatePrescriptionData(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int PrescriptionID = ((int)(inValues[0]));
+            string data = ((string)(inValues[1]));
+            return ((MedAgent_0_1.MedCareCloudServiceReference.IMedPlanService)(this)).BeginUpdatePrescriptionData(PrescriptionID, data, callback, asyncState);
+        }
+        
+        private object[] OnEndUpdatePrescriptionData(System.IAsyncResult result) {
+            string retVal = ((MedAgent_0_1.MedCareCloudServiceReference.IMedPlanService)(this)).EndUpdatePrescriptionData(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnUpdatePrescriptionDataCompleted(object state) {
+            if ((this.UpdatePrescriptionDataCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.UpdatePrescriptionDataCompleted(this, new UpdatePrescriptionDataCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void UpdatePrescriptionDataAsync(int PrescriptionID, string data) {
+            this.UpdatePrescriptionDataAsync(PrescriptionID, data, null);
+        }
+        
+        public void UpdatePrescriptionDataAsync(int PrescriptionID, string data, object userState) {
+            if ((this.onBeginUpdatePrescriptionDataDelegate == null)) {
+                this.onBeginUpdatePrescriptionDataDelegate = new BeginOperationDelegate(this.OnBeginUpdatePrescriptionData);
+            }
+            if ((this.onEndUpdatePrescriptionDataDelegate == null)) {
+                this.onEndUpdatePrescriptionDataDelegate = new EndOperationDelegate(this.OnEndUpdatePrescriptionData);
+            }
+            if ((this.onUpdatePrescriptionDataCompletedDelegate == null)) {
+                this.onUpdatePrescriptionDataCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnUpdatePrescriptionDataCompleted);
+            }
+            base.InvokeAsync(this.onBeginUpdatePrescriptionDataDelegate, new object[] {
+                        PrescriptionID,
+                        data}, this.onEndUpdatePrescriptionDataDelegate, this.onUpdatePrescriptionDataCompletedDelegate, userState);
+        }
+        
         private System.IAsyncResult OnBeginOpen(object[] inValues, System.AsyncCallback callback, object asyncState) {
             return ((System.ServiceModel.ICommunicationObject)(this)).BeginOpen(callback, asyncState);
         }
@@ -1933,6 +2013,20 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
             public string EndDropMeds(System.IAsyncResult result) {
                 object[] _args = new object[0];
                 string _result = ((string)(base.EndInvoke("DropMeds", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginUpdatePrescriptionData(int PrescriptionID, string data, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[2];
+                _args[0] = PrescriptionID;
+                _args[1] = data;
+                System.IAsyncResult _result = base.BeginInvoke("UpdatePrescriptionData", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public string EndUpdatePrescriptionData(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                string _result = ((string)(base.EndInvoke("UpdatePrescriptionData", _args, result)));
                 return _result;
             }
         }

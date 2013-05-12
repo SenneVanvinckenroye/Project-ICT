@@ -33,6 +33,8 @@ namespace MedAgent_0_1
 
         public string Name { get; set; }
 
+        public int PrescriptionID { get; set; }
+
         public string Description { get; set; }
 
         public DateTime StartDate { get; set; }

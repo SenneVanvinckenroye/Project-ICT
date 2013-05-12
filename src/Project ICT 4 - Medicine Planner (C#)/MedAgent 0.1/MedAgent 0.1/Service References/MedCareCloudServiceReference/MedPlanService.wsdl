@@ -92,6 +92,12 @@
   <wsdl:message name="IMedPlanService_DropMeds_OutputMessage">
     <wsdl:part name="parameters" element="tns:DropMedsResponse" />
   </wsdl:message>
+  <wsdl:message name="IMedPlanService_UpdatePrescriptionData_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePrescriptionData" />
+  </wsdl:message>
+  <wsdl:message name="IMedPlanService_UpdatePrescriptionData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePrescriptionDataResponse" />
+  </wsdl:message>
   <wsdl:portType name="IMedPlanService">
     <wsdl:operation name="DoWork">
       <wsdl:input wsaw:Action="http://tempuri.org/IMedPlanService/DoWork" message="tns:IMedPlanService_DoWork_InputMessage" />
@@ -148,6 +154,10 @@
     <wsdl:operation name="DropMeds">
       <wsdl:input wsaw:Action="http://tempuri.org/IMedPlanService/DropMeds" message="tns:IMedPlanService_DropMeds_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IMedPlanService/DropMedsResponse" message="tns:IMedPlanService_DropMeds_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePrescriptionData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMedPlanService/UpdatePrescriptionData" message="tns:IMedPlanService_UpdatePrescriptionData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMedPlanService/UpdatePrescriptionDataResponse" message="tns:IMedPlanService_UpdatePrescriptionData_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IMedPlanService" type="tns:IMedPlanService">
@@ -271,6 +281,15 @@
     </wsdl:operation>
     <wsdl:operation name="DropMeds">
       <soap:operation soapAction="http://tempuri.org/IMedPlanService/DropMeds" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePrescriptionData">
+      <soap:operation soapAction="http://tempuri.org/IMedPlanService/UpdatePrescriptionData" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

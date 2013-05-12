@@ -76,11 +76,16 @@
       <Association Name="Doctor_Patient" Member="Doctor" ThisKey="DocID" OtherKey="DocID" Type="Doctor" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.PrescID" Member="PrescIDs">
+    <Type Name="PrescID">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
   <Table Name="dbo.Prescriptions" Member="Prescriptions">
     <Type Name="Prescription">
       <Column Name="PrescriptionID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="PatientID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="data" Type="System.String" DbType="VarChar(8000)" CanBeNull="true" />
+      <Column Name="data" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Association Name="Patient_Prescription" Member="Patient" ThisKey="PatientID" OtherKey="PatientID" Type="Patient" IsForeignKey="true" DeleteRule="CASCADE" />
     </Type>
   </Table>

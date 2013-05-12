@@ -845,12 +845,10 @@ namespace MedAgent_0_1
                         }
                     }
 
-                    client.CreatePrescriptionCompleted += new EventHandler<MedCareCloudServiceReference.CreatePrescriptionCompletedEventArgs>(client_CreatePrescriptionCompleted);
-
-
                     //Next index in the list
                     App.MedID++;
 
+                    client.CreatePrescriptionCompleted += new EventHandler<MedCareCloudServiceReference.CreatePrescriptionCompletedEventArgs>(client_CreatePrescriptionCompleted);
 
                 }
 
@@ -875,7 +873,8 @@ namespace MedAgent_0_1
         {
             if (e.Result == "success")
             {
-                MessageBox.Show("Prescription added! :)");
+                MessageBox.Show("Prescription added! :)\n\rRedirecting. . .");
+                System.Threading.Thread.Sleep(3000);
                 NavigationService.Navigate(new Uri(string.Format("/PatientFile.xaml"), UriKind.Relative));
             }
             else

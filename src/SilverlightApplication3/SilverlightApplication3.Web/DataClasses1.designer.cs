@@ -54,6 +54,9 @@ namespace SilverlightApplication3.Web
     partial void InsertPatient(Patient instance);
     partial void UpdatePatient(Patient instance);
     partial void DeletePatient(Patient instance);
+    partial void InsertPrescID(PrescID instance);
+    partial void UpdatePrescID(PrescID instance);
+    partial void DeletePrescID(PrescID instance);
     partial void InsertPrescription(Prescription instance);
     partial void UpdatePrescription(Prescription instance);
     partial void DeletePrescription(Prescription instance);
@@ -150,6 +153,14 @@ namespace SilverlightApplication3.Web
 			get
 			{
 				return this.GetTable<Patient>();
+			}
+		}
+		
+		public System.Data.Linq.Table<PrescID> PrescIDs
+		{
+			get
+			{
+				return this.GetTable<PrescID>();
 			}
 		}
 		
@@ -1673,6 +1684,68 @@ namespace SilverlightApplication3.Web
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PrescID")]
+	public partial class PrescID : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    #endregion
+		
+		public PrescID()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Prescriptions")]
 	public partial class Prescription : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -1749,7 +1822,7 @@ namespace SilverlightApplication3.Web
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_data", DbType="VarChar(8000)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_data", DbType="VarChar(MAX)")]
 		public string data
 		{
 			get

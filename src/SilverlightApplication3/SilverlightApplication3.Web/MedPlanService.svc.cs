@@ -539,5 +539,25 @@ namespace SilverlightApplication3.Web
                 }
             }
         }*/
+
+        public string UpdatePrescriptionData(int PrescriptionID, string data)
+        {
+            try
+            {
+                DataClasses1DataContext dc = new DataClasses1DataContext();
+                var presc = from p in dc.Prescriptions
+                            where p.PrescriptionID == PrescriptionID
+                            select p;
+
+                presc.First().data = data;
+
+                dc.SubmitChanges();
+            }
+            catch (Exception e)
+            {
+                return e.Message;
+            }
+            return "success";
+        }
     }
 }

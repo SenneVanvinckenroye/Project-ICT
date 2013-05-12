@@ -168,6 +168,7 @@ namespace MediAgent
                     MedListBox.Items.Clear();
                     Medication tempMed = new Medication();
                     string xmlData = item.data;
+                    
                     XDocument xml = XDocument.Parse(item.data);
 
                     string xmlFileName = "Prescription" + item.PrescriptionID + ".xml";//ZO KRIJGEN WE LOKALE XML BESTANDEN VOOR ELK VOORSCHRIFT
@@ -183,7 +184,7 @@ namespace MediAgent
                     }
 
                     var prescription = from p in xml.Descendants("Prescription") select p;///root tag selecteren in het xml document met linq to xml
-
+                    tempMed.PrescriptionID = item.PrescriptionID;//hou het ID van de db bij zodat we dingen kunnen update in de toekomst
                     tempMed.Name = prescription.Elements("DrugName").First().Value;
                     tempMed.Description = prescription.Elements("DrugDescription").First().Value;
                     tempMed.Amount = Convert.ToInt32(prescription.Elements("Quantity").First().Value);
@@ -260,6 +261,7 @@ namespace MediAgent
                     tempMed.Taken[0][5] = CharNaarBool(item.Taken6);*/
 
                     App.MedList.Add(tempMed);
+                    App.MedID++;
                 }
                 foreach (Medication MedItem in App.MedList)
                 {
@@ -268,20 +270,20 @@ namespace MediAgent
                 
 
 
-                if (firstTime)
-                {
+                /*if (firstTime)
+                {*/
                     LCalendar MedCal = new LCalendar();
                     MedCal.Name = "Calendar";
                     MedCal.OnDayClicked += Calendar_OnDayClicked;
                     KalenderPanoItem.Children.Add(MedCal);
-                    firstTime = false;
+                    //firstTime = false;
                     //NavigationService.Navigate(new Uri(string.Format("/MedConfirmationPage.xaml"), UriKind.Relative)); //bijpass om taken en not taken te zeggen voor med
-                }
+                //}
                 App.UpdateReminders();
 
             }
-            else
-                MessageBox.Show("Couldn't retrieve any medication.");
+            /*else
+                MessageBox.Show("Couldn't retrieve any medication.");*/
         }
 
         //Constructor

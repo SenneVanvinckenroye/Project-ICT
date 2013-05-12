@@ -7,11 +7,14 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using System.Xml.Linq;
+using System.Windows.Resources;
 
 namespace MedAgent_0_1
 {
     public partial class MedConfirmationPage : PhoneApplicationPage
     {
+        MedCareCloudServiceReference.MedPlanServiceClient client;
         public MedConfirmationPage()
         {
             InitializeComponent();
@@ -64,12 +67,23 @@ namespace MedAgent_0_1
                                         App.MedList[x].Days[j].Taken[i] = false; // moet nog naar db
                                     }
                                     
+                                    //update data in PrescriptionsTabel waar PrescriptionID = App.MedList[x].PrescriptionID;
+                                    client = new MedCareCloudServiceReference.MedPlanServiceClient();
+                                    XElement appDataXml;
+                                    string FileName = "Prescription"+App.MedList[x].PrescriptionID+".xml";
+                                    StreamResourceInfo xml = Application.GetResourceStream(new Uri(FileName, UriKind.Relative)); 
+                                    appDataXml = XElement.Load(xml.Stream);
+                                    string data = appDataXml.ToString();
+
+                                    client.UpdatePrescriptionDataAsync(App.MedList[x].PrescriptionID, data);
+                                    client.UpdatePrescriptionDataCompleted += new EventHandler<MedCareCloudServiceReference.UpdatePrescriptionDataCompletedEventArgs>(client_UpdatePrescriptionDataCompleted);
                                 }
                             }
                         }
                     }
                 }
             }
+            
         }
     }
 }

@@ -59,5 +59,8 @@ namespace SilverlightApplication3.Web
 
         /*[OperationContract]
         string GetLastPrescriptionID();*/
+
+        [OperationContract]
+        string UpdatePrescriptionData(int PrescriptionID, string data);
     }
 }
