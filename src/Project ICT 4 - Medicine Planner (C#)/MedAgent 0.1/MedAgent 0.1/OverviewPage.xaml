@@ -42,7 +42,7 @@
 	</phone:PhoneApplicationPage.Foreground>
 
 	<!--LayoutRoot is the root grid where all page content is placed-->
-	<Grid x:Name="LayoutRoot" Background="Black">
+	<Grid x:Name="LayoutRoot" Background="#FFB2E96E">
 		<Grid.RowDefinitions>
 			<RowDefinition Height="Auto"/>
 			<RowDefinition Height="*"/>
@@ -63,38 +63,42 @@
 		</StackPanel>
 
 		<!--ContentPanel - place additional content here-->
-		<Grid  x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0" Background="Black">
+		<Grid  x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0" Background="#FFDCE9F3">
 			<Grid Margin="8">
 				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="0.413*"/>
-					<ColumnDefinition Width="0.212*"/>
-					<ColumnDefinition Width="0.375*"/>
+					<ColumnDefinition Width="Auto" MinWidth="182"/>
+					<ColumnDefinition Width="Auto" MinWidth="93"/>
+					<ColumnDefinition Width="Auto" MinWidth="43"/>
 				</Grid.ColumnDefinitions>
 				<Grid.RowDefinitions>
-					<RowDefinition Height="48*"/>
-					<RowDefinition Height="39*"/>
-					<RowDefinition Height="56*"/>
-					<RowDefinition Height="40*"/>
-					<RowDefinition Height="40*"/>
-					<RowDefinition Height="40*"/>
-					<RowDefinition Height="40*"/>
-					<RowDefinition Height="41*"/>
-					<RowDefinition Height="39*"/>
-					<RowDefinition Height="41*"/>
-					<RowDefinition Height="167*"/>
+					<RowDefinition Height="Auto" MinHeight="6"/>
+					<RowDefinition Height="Auto" MinHeight="39"/>
+					<RowDefinition Height="0.106*"/>
+					<RowDefinition Height="0.076*"/>
+					<RowDefinition Height="0.091*"/>
+					<RowDefinition Height="0.076*"/>
+					<RowDefinition Height="0.091*"/>
+					<RowDefinition Height="0.076*"/>
+					<RowDefinition Height="0.076*"/>
+					<RowDefinition Height="0.076*"/>
+					<RowDefinition Height="0.333*"/>
 				</Grid.RowDefinitions>
-				<TextBlock x:Name="NameTextBlock" HorizontalAlignment="Left" Margin="8,8,0,0" TextWrapping="Wrap" Text="Name:" VerticalAlignment="Top">
+                <TextBlock x:Name="PrescriptionIDTextBlock" Visibility="Collapsed" Text="{Binding PrescriptionID}" HorizontalAlignment="Left" Margin="8,-25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="48"></TextBlock>
+				<TextBlock x:Name="NameTextBlock" HorizontalAlignment="Left" Margin="8,-25,0,0" TextWrapping="Wrap" Text="Name:" VerticalAlignment="Top" FontSize="48" Grid.Row="1">
 					<TextBlock.Foreground>
-						<SolidColorBrush Color="{StaticResource Backgrounds and Texts}"/>
+						<SolidColorBrush Color="{StaticResource LightBlueColor}"/>
 					</TextBlock.Foreground>
 				</TextBlock>
-				<TextBlock x:Name="EndDateTextBlock" Margin="8,0,68,8" TextWrapping="Wrap" Text="End Date:" Grid.Row="1" Grid.Column="2" d:LayoutOverrides="HorizontalAlignment, VerticalAlignment" Foreground="#FF6D5592"/>
-				<TextBlock x:Name="StartDateTextBlock" Margin="8,0,74,8" Grid.Row="1" TextWrapping="Wrap" Text="Start Date:" d:LayoutOverrides="VerticalAlignment" Foreground="#FF6D5592"/>
-                <TextBlock Text="{Binding Name}" x:Name="MedName" Margin="69,8,8,16" TextWrapping="Wrap" Grid.ColumnSpan="3" />
-                <TextBlock Text="{Binding StartDate, StringFormat='dd/MM/yyyy'}" x:Name="StartDate" Margin="0,8,8,8" Grid.Row="2" TextWrapping="Wrap" HorizontalAlignment="Right" Width="166"/>
-                <TextBlock Text="{Binding EndDate, StringFormat='dd/MM/yyyy'}" x:Name="EndDate" Margin="0,8,8,8" Grid.Row="2" TextWrapping="Wrap" HorizontalAlignment="Right" Width="149" Grid.Column="2"/>
-                <Button Content="Close" Grid.Column="1" Margin="-27,55,-9,40" Grid.Row="10" d:LayoutOverrides="Width, Height" Click="Button_Click" />
+				<TextBlock x:Name="StartDateTextBlock" Margin="0,14,82,1" Grid.Row="2" TextWrapping="Wrap" Text="Start Date:" d:LayoutOverrides="VerticalAlignment" Foreground="#FF6D5592" FontSize="48" Grid.RowSpan="2"/>
+                <TextBlock Text="{Binding Name}" x:Name="MedName" Margin="149,-25,0,0" TextWrapping="Wrap" Grid.ColumnSpan="3" Grid.Row="1" FontSize="32" Foreground="#FF4A95CE" HorizontalAlignment="Center" VerticalAlignment="Bottom" />
+                <TextBlock Text="{Binding StartDate, StringFormat='dd/MM/yyyy'}" x:Name="StartDate" Margin="0,0,0,-13" Grid.Row="4" TextWrapping="Wrap" HorizontalAlignment="Center" Width="440" Height="52" VerticalAlignment="Bottom" Grid.ColumnSpan="3" FontSize="32" Foreground="#FF4A95CE" TextAlignment="Right"/>
+                <Button Content="Close" Grid.Column="1" Margin="25,0,0,18" d:LayoutOverrides="Width, Height" Click="Button_Click" Grid.ColumnSpan="2" BorderBrush="#FFEFA6A6" Foreground="#FF698997" Background="#7FF3B9B9" />
+                <Button x:Name="RemoveMed" Content="Remove" Margin="0,0,0,18" BorderBrush="#FFEFA6A6" Foreground="#FF698997" Background="#7FF3B9B9" d:LayoutOverrides="Height" HorizontalAlignment="Left" Click="RemoveMed_Click" />
 			</Grid>
+			<TextBlock x:Name="EndDateTextBlock" Margin="8,299,245,244" TextWrapping="Wrap" Text="End Date:" Foreground="#FF6D5592" FontSize="48" d:LayoutOverrides="VerticalAlignment"/>
+			<TextBlock Text="{Binding EndDate, StringFormat=dd/MM/yyyy}" x:Name="EndDate" Margin="0,0,8,188" TextWrapping="Wrap" HorizontalAlignment="Center" Width="440" Height="52" VerticalAlignment="Bottom" FontSize="32" Foreground="#FF4A95CE" TextAlignment="Right"/>
+			<TextBlock x:Name="PlannedTextBlock" Margin="8,459,245,84" TextWrapping="Wrap" Text="Planned:" Foreground="#FF6D5592" FontSize="48"/>
+			<TextBlock Text="{Binding Course}" x:Name="Course" Margin="0,0,8,28" TextWrapping="Wrap" HorizontalAlignment="Center" Width="440" Height="52" VerticalAlignment="Bottom" FontSize="32" Foreground="#FF4A95CE" TextAlignment="Right"/>
 		</Grid>
 	</Grid>
 </phone:PhoneApplicationPage>

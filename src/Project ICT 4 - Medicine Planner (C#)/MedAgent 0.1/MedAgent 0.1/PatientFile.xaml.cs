@@ -46,6 +46,7 @@ namespace MediAgent
         //Als ge op deze pagina terecht komt kunde checke of den dokter ne patient wil toevoege OF ne patient zen medicijnen wil toevoegen???
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            App.MedID = 0;
             client = new MedAgent_0_1.MedCareCloudServiceReference.MedPlanServiceClient();
             string addPatient = "false";
             if (this.NavigationContext.QueryString.TryGetValue("addPatient", out addPatient))
@@ -146,7 +147,6 @@ namespace MediAgent
             {
                 client = new MedAgent_0_1.MedCareCloudServiceReference.MedPlanServiceClient();
                 App.PublicPatient.Id = e.Result.PatientID;
-
                 GetPrescriptionsForPatient();
             }
             else

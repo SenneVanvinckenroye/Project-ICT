@@ -637,11 +637,9 @@ namespace MedAgent_0_1
 
         //Panorama Item 1
 
-        private void NameTxtBox_TextChanged(object sender, TextChangedEventArgs e)
+        /*private void NameTxtBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-
             App.MedList[App.MedID].Name = NameTxtBox.Text;
-            
 
         }
 
@@ -652,14 +650,14 @@ namespace MedAgent_0_1
 
             App.MedList[App.MedID].Description = DescrTxtBox.Text;
 
-        }
+        }*/
 
 
 
 
         //Panorama Item 2
 
-        private void StartDate_ValueChanged(object sender, DateTimeValueChangedEventArgs e)
+        /*private void StartDate_ValueChanged(object sender, DateTimeValueChangedEventArgs e)
         {
 
             App.MedList[App.MedID].StartDate = (DateTime)StartDate.Value;
@@ -672,7 +670,7 @@ namespace MedAgent_0_1
 
             App.MedList[App.MedID].EndDate = (DateTime)EndDate.Value;
 
-        }
+        }*/
 
         //Panorama Item 3
 
@@ -722,7 +720,10 @@ namespace MedAgent_0_1
 
         private void DoneButton_Click(object sender, RoutedEventArgs e)
         {
-
+            App.MedList[App.MedID].Name = NameTxtBox.Text;
+            App.MedList[App.MedID].Description = DescrTxtBox.Text;
+            App.MedList[App.MedID].StartDate = (DateTime)StartDate.Value;
+            App.MedList[App.MedID].EndDate = (DateTime)EndDate.Value;
             try
             {
                 //First check if all fields are filled in except the photo and the time reminders.

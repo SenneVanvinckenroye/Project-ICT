@@ -11,6 +11,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using MedAgent_0_1;
 using Microsoft.Phone.Controls;
+using Microsoft.Phone.Tasks;
 
 namespace MediAgent
 {
@@ -247,7 +248,11 @@ namespace MediAgent
         private void PhonePatBtn_OnClick(object sender, RoutedEventArgs e)
         {
             Button test = (Button) e.OriginalSource;
-            MessageBox.Show("");
+            int listID = Convert.ToInt32(test.DataContext)-1;//patientID -1
+            PhoneCallTask callTask = new PhoneCallTask();
+            callTask.PhoneNumber = App.PatList[listID].Telephone;
+            callTask.DisplayName = App.PatList[listID].FirstName;
+            callTask.Show();
             //Call the patient his number, VETTEN DJAB
         }
     }

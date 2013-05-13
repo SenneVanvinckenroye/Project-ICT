@@ -26,7 +26,6 @@
     <MetadataFile FileName="MedPlanService1.xsd" MetadataType="Schema" ID="ed9ea073-b0b4-4d63-9f3e-35234c9f90b1" SourceId="1" SourceUrl="http://medcarecloudservice.cloudapp.net/MedPlanService.svc?xsd=xsd1" />
     <MetadataFile FileName="MedPlanService.xsd" MetadataType="Schema" ID="adaf87f6-611a-4d59-93c8-84d2c4a727bd" SourceId="1" SourceUrl="http://medcarecloudservice.cloudapp.net/MedPlanService.svc?xsd=xsd2" />
     <MetadataFile FileName="MedPlanService.disco" MetadataType="Disco" ID="05057d65-1549-4569-b71d-34e0c73506e4" SourceId="1" SourceUrl="http://medcarecloudservice.cloudapp.net/MedPlanService.svc?disco" />
-    <MetadataFile FileName="MedPlanService3.xsd" MetadataType="Schema" ID="71f02db5-797d-4c7c-9215-ad0af5e85dde" SourceId="1" SourceUrl="http://medcarecloudservice.cloudapp.net/MedPlanService.svc?xsd=xsd3" />
     <MetadataFile FileName="MedPlanService2.xsd" MetadataType="Schema" ID="01884f98-3a61-488e-b9f0-3f910bcf141f" SourceId="1" SourceUrl="http://medcarecloudservice.cloudapp.net/MedPlanService.svc?xsd=xsd0" />
     <MetadataFile FileName="MedPlanService.wsdl" MetadataType="Wsdl" ID="b3780fb0-e55c-40c3-92c3-61505c06d90d" SourceId="1" SourceUrl="http://medcarecloudservice.cloudapp.net/MedPlanService.svc?wsdl" />
   </Metadata>

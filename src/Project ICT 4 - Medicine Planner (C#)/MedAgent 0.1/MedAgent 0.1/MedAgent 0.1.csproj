@@ -434,9 +434,6 @@
     <None Include="Service References\MedCareCloudServiceReference\MedPlanService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MedCareCloudServiceReference\MedPlanService3.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\MedPlanServiceReference\MedAgent_0_1.MedPlanServiceReference.Patient.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -476,7 +473,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

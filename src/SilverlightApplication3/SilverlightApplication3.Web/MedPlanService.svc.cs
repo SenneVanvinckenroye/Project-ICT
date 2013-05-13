@@ -471,16 +471,14 @@ namespace SilverlightApplication3.Web
             }
         }
 
-        public string DropUsers(int[] MemberIDs)//array parameter, mogelijk om meerdere gebruikers terzelfdetijd te verwijderen
+        public string DropUsers(int MemberID)//array parameter, mogelijk om meerdere gebruikers terzelfdetijd te verwijderen
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
             try
             {
-                foreach (int MemberID in MemberIDs)
-                {
                     //request to delete presiption row where MemberID is id from array
-                    dc.Users.DeleteOnSubmit((User)dc.Users.Where(p => p.MemberID == MemberID));
-                }
+                    var user = (from u in dc.Users where u.MemberID == MemberID select u).First();
+                    dc.Users.DeleteOnSubmit(user);
                 dc.SubmitChanges();//submit changes to db (e.g. all rows to delete)
             }
             catch (Exception e)
@@ -490,16 +488,14 @@ namespace SilverlightApplication3.Web
             return "success";
         }
 
-        public string DropMeds(int[] PrescriptionIDs)
+        public string DropMed(int PrescriptionID)
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
             try
             {
-                foreach (int PrescriptionID in PrescriptionIDs)
-                {
-                    //request to delete presiption row where prescriptionID is id from array
-                    dc.Prescriptions.DeleteOnSubmit((Prescription)dc.Prescriptions.Where(p => p.PrescriptionID == PrescriptionID));
-                }
+                //request to delete presiption row where prescriptionID is id from array
+                var prescription = (from p in dc.Prescriptions where p.PrescriptionID == PrescriptionID select p).First();
+                dc.Prescriptions.DeleteOnSubmit(prescription);
                 dc.SubmitChanges();//submit changes to db (e.g. all rows to delete)
             }
             catch (Exception e)

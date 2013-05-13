@@ -120,13 +120,13 @@
             <!--Panorama item one-->
             <controls:PanoramaItem x:Name="Item1" Header="Add Medication" Style="{StaticResource PanoramaItemStyle1}" BorderThickness="6,4,6,19">
                 <Grid x:Name="ContentPanel" Margin="-8,2,4,0">
-            		<TextBox x:Name="NameTxtBox" Margin="19,51,100,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="{x:Null}" InputScope="Text" Foreground="Black" TextChanged="NameTxtBox_TextChanged" BorderBrush="#FF7AC843" Width="305" Height="72"></TextBox>
+            		<TextBox x:Name="NameTxtBox" Margin="19,51,100,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="{x:Null}" InputScope="Text" Foreground="Black" BorderBrush="#FF7AC843" Width="305" Height="72"></TextBox>
             		<TextBlock x:Name="NameTxtBlock" HorizontalAlignment="Left" Margin="32,20,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top">
             			<TextBlock.Foreground>
             				<SolidColorBrush Color="#FF6D5592"/>
             			</TextBlock.Foreground>
             		</TextBlock>
-            		<TextBox x:Name="DescrTxtBox" Margin="19,175,38,224" TextWrapping="Wrap" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Background="{x:Null}" Foreground="Black" TextChanged="DescrTxtBox_TextChanged">
+            		<TextBox x:Name="DescrTxtBox" Margin="19,175,38,224" TextWrapping="Wrap" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Background="{x:Null}" Foreground="Black">
             			<TextBox.BorderBrush>
             				<SolidColorBrush Color="#FF7AC843"/>
             			</TextBox.BorderBrush>
@@ -182,12 +182,12 @@
             				<SolidColorBrush Color="#FF6D5592"/>
             			</TextBlock.Foreground>
             		</TextBlock>
-            		<toolkit:DatePicker x:Name="StartDate" Margin="0,51,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="1" BorderThickness="0" BorderBrush="Black" Foreground="White" ValueChanged="StartDate_ValueChanged">
+            		<toolkit:DatePicker x:Name="StartDate" Margin="0,51,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="1" BorderThickness="0" BorderBrush="Black" Foreground="White">
             			<toolkit:DatePicker.Background>
             				<SolidColorBrush Color="#FF6D5592"/>
             			</toolkit:DatePicker.Background>
             		</toolkit:DatePicker>
-            		<toolkit:DatePicker x:Name="EndDate" Margin="0,147,0,0" VerticalAlignment="Top" Foreground="White" HorizontalAlignment="Left" Grid.Column="1" BorderThickness="0" BorderBrush="Black" Background="#FF6D5592" ValueChanged="EndDate_ValueChanged"></toolkit:DatePicker>
+            		<toolkit:DatePicker x:Name="EndDate" Margin="0,147,0,0" VerticalAlignment="Top" Foreground="White" HorizontalAlignment="Left" Grid.Column="1" BorderThickness="0" BorderBrush="Black" Background="#FF6D5592"></toolkit:DatePicker>
                 </Grid>
                 
             <!--Panorama item three -->
@@ -298,12 +298,12 @@
             						<SolidColorBrush Color="#FF6D5592"/>
             					</Coding4Fun_Toolkit_Controls:RoundToggleButton.Background>
             				</Coding4Fun_Toolkit_Controls:RoundToggleButton>
-            				<toolkit:TimePicker x:Name="Time1" Margin="72,8,0,8" Foreground="White" FontSize="18.667" ValueChanged="Time1_ValueChanged">
+            				<toolkit:TimePicker x:Name="Time1" Margin="72,8,0,8" Foreground="White" FontSize="18.667">
             					<toolkit:TimePicker.Background>
             						<SolidColorBrush Color="#FF6D5592"/>
             					</toolkit:TimePicker.Background>
             				</toolkit:TimePicker>
-            				<toolkit:TimePicker x:Name="Time2" Margin="72,0,0,16" Grid.Row="1" Foreground="White" Opacity="0.4" IsEnabled="False" ValueChanged="Time2_ValueChanged">
+            				<toolkit:TimePicker x:Name="Time2" Margin="72,0,0,16" Grid.Row="1" Foreground="White" Opacity="0.4" IsEnabled="False">
             					<toolkit:TimePicker.Background>
             						<SolidColorBrush Color="#FF6D5592"/>
             					</toolkit:TimePicker.Background>

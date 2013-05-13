@@ -560,14 +560,14 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
         MedAgent_0_1.MedCareCloudServiceReference.Doctor EndGetDocInfo(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IMedPlanService/DropUsers", ReplyAction="http://tempuri.org/IMedPlanService/DropUsersResponse")]
-        System.IAsyncResult BeginDropUsers(System.Collections.ObjectModel.ObservableCollection<int> MemberID, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult BeginDropUsers(int MemberID, System.AsyncCallback callback, object asyncState);
         
         string EndDropUsers(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IMedPlanService/DropMeds", ReplyAction="http://tempuri.org/IMedPlanService/DropMedsResponse")]
-        System.IAsyncResult BeginDropMeds(System.Collections.ObjectModel.ObservableCollection<int> PrescriptionID, System.AsyncCallback callback, object asyncState);
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IMedPlanService/DropMed", ReplyAction="http://tempuri.org/IMedPlanService/DropMedResponse")]
+        System.IAsyncResult BeginDropMed(int PrescriptionID, System.AsyncCallback callback, object asyncState);
         
-        string EndDropMeds(System.IAsyncResult result);
+        string EndDropMed(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IMedPlanService/UpdatePrescriptionData", ReplyAction="http://tempuri.org/IMedPlanService/UpdatePrescriptionDataResponse")]
         System.IAsyncResult BeginUpdatePrescriptionData(int PrescriptionID, string data, System.AsyncCallback callback, object asyncState);
@@ -809,11 +809,11 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class DropMedsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class DropMedCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        public DropMedsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        public DropMedCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -927,11 +927,11 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
         
         private System.Threading.SendOrPostCallback onDropUsersCompletedDelegate;
         
-        private BeginOperationDelegate onBeginDropMedsDelegate;
+        private BeginOperationDelegate onBeginDropMedDelegate;
         
-        private EndOperationDelegate onEndDropMedsDelegate;
+        private EndOperationDelegate onEndDropMedDelegate;
         
-        private System.Threading.SendOrPostCallback onDropMedsCompletedDelegate;
+        private System.Threading.SendOrPostCallback onDropMedCompletedDelegate;
         
         private BeginOperationDelegate onBeginUpdatePrescriptionDataDelegate;
         
@@ -1018,7 +1018,7 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
         
         public event System.EventHandler<DropUsersCompletedEventArgs> DropUsersCompleted;
         
-        public event System.EventHandler<DropMedsCompletedEventArgs> DropMedsCompleted;
+        public event System.EventHandler<DropMedCompletedEventArgs> DropMedCompleted;
         
         public event System.EventHandler<UpdatePrescriptionDataCompletedEventArgs> UpdatePrescriptionDataCompleted;
         
@@ -1606,7 +1606,7 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.IAsyncResult MedAgent_0_1.MedCareCloudServiceReference.IMedPlanService.BeginDropUsers(System.Collections.ObjectModel.ObservableCollection<int> MemberID, System.AsyncCallback callback, object asyncState) {
+        System.IAsyncResult MedAgent_0_1.MedCareCloudServiceReference.IMedPlanService.BeginDropUsers(int MemberID, System.AsyncCallback callback, object asyncState) {
             return base.Channel.BeginDropUsers(MemberID, callback, asyncState);
         }
         
@@ -1616,7 +1616,7 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
         }
         
         private System.IAsyncResult OnBeginDropUsers(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            System.Collections.ObjectModel.ObservableCollection<int> MemberID = ((System.Collections.ObjectModel.ObservableCollection<int>)(inValues[0]));
+            int MemberID = ((int)(inValues[0]));
             return ((MedAgent_0_1.MedCareCloudServiceReference.IMedPlanService)(this)).BeginDropUsers(MemberID, callback, asyncState);
         }
         
@@ -1633,11 +1633,11 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
             }
         }
         
-        public void DropUsersAsync(System.Collections.ObjectModel.ObservableCollection<int> MemberID) {
+        public void DropUsersAsync(int MemberID) {
             this.DropUsersAsync(MemberID, null);
         }
         
-        public void DropUsersAsync(System.Collections.ObjectModel.ObservableCollection<int> MemberID, object userState) {
+        public void DropUsersAsync(int MemberID, object userState) {
             if ((this.onBeginDropUsersDelegate == null)) {
                 this.onBeginDropUsersDelegate = new BeginOperationDelegate(this.OnBeginDropUsers);
             }
@@ -1652,49 +1652,49 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.IAsyncResult MedAgent_0_1.MedCareCloudServiceReference.IMedPlanService.BeginDropMeds(System.Collections.ObjectModel.ObservableCollection<int> PrescriptionID, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginDropMeds(PrescriptionID, callback, asyncState);
+        System.IAsyncResult MedAgent_0_1.MedCareCloudServiceReference.IMedPlanService.BeginDropMed(int PrescriptionID, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginDropMed(PrescriptionID, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        string MedAgent_0_1.MedCareCloudServiceReference.IMedPlanService.EndDropMeds(System.IAsyncResult result) {
-            return base.Channel.EndDropMeds(result);
+        string MedAgent_0_1.MedCareCloudServiceReference.IMedPlanService.EndDropMed(System.IAsyncResult result) {
+            return base.Channel.EndDropMed(result);
         }
         
-        private System.IAsyncResult OnBeginDropMeds(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            System.Collections.ObjectModel.ObservableCollection<int> PrescriptionID = ((System.Collections.ObjectModel.ObservableCollection<int>)(inValues[0]));
-            return ((MedAgent_0_1.MedCareCloudServiceReference.IMedPlanService)(this)).BeginDropMeds(PrescriptionID, callback, asyncState);
+        private System.IAsyncResult OnBeginDropMed(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int PrescriptionID = ((int)(inValues[0]));
+            return ((MedAgent_0_1.MedCareCloudServiceReference.IMedPlanService)(this)).BeginDropMed(PrescriptionID, callback, asyncState);
         }
         
-        private object[] OnEndDropMeds(System.IAsyncResult result) {
-            string retVal = ((MedAgent_0_1.MedCareCloudServiceReference.IMedPlanService)(this)).EndDropMeds(result);
+        private object[] OnEndDropMed(System.IAsyncResult result) {
+            string retVal = ((MedAgent_0_1.MedCareCloudServiceReference.IMedPlanService)(this)).EndDropMed(result);
             return new object[] {
                     retVal};
         }
         
-        private void OnDropMedsCompleted(object state) {
-            if ((this.DropMedsCompleted != null)) {
+        private void OnDropMedCompleted(object state) {
+            if ((this.DropMedCompleted != null)) {
                 InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.DropMedsCompleted(this, new DropMedsCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+                this.DropMedCompleted(this, new DropMedCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
             }
         }
         
-        public void DropMedsAsync(System.Collections.ObjectModel.ObservableCollection<int> PrescriptionID) {
-            this.DropMedsAsync(PrescriptionID, null);
+        public void DropMedAsync(int PrescriptionID) {
+            this.DropMedAsync(PrescriptionID, null);
         }
         
-        public void DropMedsAsync(System.Collections.ObjectModel.ObservableCollection<int> PrescriptionID, object userState) {
-            if ((this.onBeginDropMedsDelegate == null)) {
-                this.onBeginDropMedsDelegate = new BeginOperationDelegate(this.OnBeginDropMeds);
+        public void DropMedAsync(int PrescriptionID, object userState) {
+            if ((this.onBeginDropMedDelegate == null)) {
+                this.onBeginDropMedDelegate = new BeginOperationDelegate(this.OnBeginDropMed);
             }
-            if ((this.onEndDropMedsDelegate == null)) {
-                this.onEndDropMedsDelegate = new EndOperationDelegate(this.OnEndDropMeds);
+            if ((this.onEndDropMedDelegate == null)) {
+                this.onEndDropMedDelegate = new EndOperationDelegate(this.OnEndDropMed);
             }
-            if ((this.onDropMedsCompletedDelegate == null)) {
-                this.onDropMedsCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnDropMedsCompleted);
+            if ((this.onDropMedCompletedDelegate == null)) {
+                this.onDropMedCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnDropMedCompleted);
             }
-            base.InvokeAsync(this.onBeginDropMedsDelegate, new object[] {
-                        PrescriptionID}, this.onEndDropMedsDelegate, this.onDropMedsCompletedDelegate, userState);
+            base.InvokeAsync(this.onBeginDropMedDelegate, new object[] {
+                        PrescriptionID}, this.onEndDropMedDelegate, this.onDropMedCompletedDelegate, userState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -1990,7 +1990,7 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
                 return _result;
             }
             
-            public System.IAsyncResult BeginDropUsers(System.Collections.ObjectModel.ObservableCollection<int> MemberID, System.AsyncCallback callback, object asyncState) {
+            public System.IAsyncResult BeginDropUsers(int MemberID, System.AsyncCallback callback, object asyncState) {
                 object[] _args = new object[1];
                 _args[0] = MemberID;
                 System.IAsyncResult _result = base.BeginInvoke("DropUsers", _args, callback, asyncState);
@@ -2003,16 +2003,16 @@ namespace MedAgent_0_1.MedCareCloudServiceReference {
                 return _result;
             }
             
-            public System.IAsyncResult BeginDropMeds(System.Collections.ObjectModel.ObservableCollection<int> PrescriptionID, System.AsyncCallback callback, object asyncState) {
+            public System.IAsyncResult BeginDropMed(int PrescriptionID, System.AsyncCallback callback, object asyncState) {
                 object[] _args = new object[1];
                 _args[0] = PrescriptionID;
-                System.IAsyncResult _result = base.BeginInvoke("DropMeds", _args, callback, asyncState);
+                System.IAsyncResult _result = base.BeginInvoke("DropMed", _args, callback, asyncState);
                 return _result;
             }
             
-            public string EndDropMeds(System.IAsyncResult result) {
+            public string EndDropMed(System.IAsyncResult result) {
                 object[] _args = new object[0];
-                string _result = ((string)(base.EndInvoke("DropMeds", _args, result)));
+                string _result = ((string)(base.EndInvoke("DropMed", _args, result)));
                 return _result;
             }
             

@@ -52,10 +52,10 @@ namespace SilverlightApplication3.Web
         Model.Doctor GetDocInfo(int MemberID);
 
         [OperationContract]
-        string DropUsers(int[] MemberID);
+        string DropUsers(int MemberID);
 
         [OperationContract]
-        string DropMeds(int[] PrescriptionID);
+        string DropMed(int PrescriptionID);
 
         /*[OperationContract]
         string GetLastPrescriptionID();*/
