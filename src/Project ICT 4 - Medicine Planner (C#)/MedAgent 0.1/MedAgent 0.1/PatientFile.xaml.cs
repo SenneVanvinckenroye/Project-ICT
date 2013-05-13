@@ -270,24 +270,24 @@ namespace MediAgent
                 
 
 
-                /*if (firstTime)
-                {*/
+                if (firstTime)
+                {
                     LCalendar MedCal = new LCalendar();
                     MedCal.Name = "Calendar";
                     MedCal.OnDayClicked += Calendar_OnDayClicked;
                     KalenderPanoItem.Children.Add(MedCal);
-                    //firstTime = false;
+                    firstTime = false;
                     //NavigationService.Navigate(new Uri(string.Format("/MedConfirmationPage.xaml"), UriKind.Relative)); //bijpass om taken en not taken te zeggen voor med
-                //}
-                App.UpdateReminders();
+                }
+                //App.UpdateReminders();
 
                 if (App.IsPatient)
                 {
                     App.UpdateReminders();
                 }
             }
-            /*else
-                MessageBox.Show("Couldn't retrieve any medication.");*/
+            else
+                MessageBox.Show("Couldn't retrieve any medication.");
         }
 
         //Constructor
