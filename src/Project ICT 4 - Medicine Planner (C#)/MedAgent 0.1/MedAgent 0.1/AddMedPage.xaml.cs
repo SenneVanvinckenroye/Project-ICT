@@ -884,7 +884,7 @@ namespace MedAgent_0_1
             {
                 MessageBox.Show("Prescription added! :)\n\rRedirecting. . .");
 
-                NavigationService.Navigate(new Uri(string.Format("/PatientFile.xaml"), UriKind.Relative));
+                NavigationService.Navigate(new Uri(string.Format("/PatientFile.xaml?isDoctor=true"), UriKind.Relative));
             }
             else
                 MessageBox.Show("Oops, something went wrong :(\n\rFailed to add prescription\n\rError: " + e.Result);

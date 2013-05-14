@@ -379,7 +379,7 @@ namespace CalendarControl
                     }
                     else//wss geklikt op de terugknop en Medication.Days == null
                     {
-                        (Application.Current.RootVisual as PhoneApplicationFrame).Navigate(new Uri("/PatientFile.xaml?isPatient=true", UriKind.Relative));
+                        //(Application.Current.RootVisual as PhoneApplicationFrame).Navigate(new Uri("/PatientFile.xaml?isPatient=true", UriKind.Relative));
                     }
                 }
                 if (AmountTrue + AmountFalse != 0)
@@ -473,19 +473,21 @@ namespace CalendarControl
             LayoutRoot.Children.Add(el);
         }
 
-        private void OnChangeMonth(object sender, RoutedEventArgs e)
+        public void OnChangeMonth(object sender, RoutedEventArgs e)
         {
-            Button butSender = sender as Button;
-
-            if (butSender.Name == NextBtn.Name)
+            if (sender != null)
             {
-                mCurrentDate = mCurrentDate.AddMonths(+1);
-            }
-            else if (butSender.Name == BackBtn.Name)
-            {
-                mCurrentDate = mCurrentDate.AddMonths(-1);
-            }
+                Button butSender = sender as Button;
 
+                if (butSender.Name == NextBtn.Name)
+                {
+                    mCurrentDate = mCurrentDate.AddMonths(+1);
+                }
+                else if (butSender.Name == BackBtn.Name)
+                {
+                    mCurrentDate = mCurrentDate.AddMonths(-1);
+                }
+            }
             InizializeCalendar(mCurrentDate);
         }
         #endregion

@@ -132,7 +132,7 @@ namespace MediAgent
                 client.GetPrescriptionsForPatientAsync(App.PublicPatient.Id);
                 client.GetPrescriptionsForPatientCompleted += new EventHandler<MedAgent_0_1.MedCareCloudServiceReference.GetPrescriptionsForPatientCompletedEventArgs>(client_GetPrescriptionsForPatientCompleted);
             }
-            catch(NullReferenceException e)
+            catch (NullReferenceException e)
             {
                 MessageBox.Show(e.Message);
             }
@@ -168,7 +168,7 @@ namespace MediAgent
                     MedListBox.Items.Clear();
                     Medication tempMed = new Medication();
                     string xmlData = item.data;
-                    
+
                     XDocument xml = XDocument.Parse(item.data);
 
                     string xmlFileName = "Prescription" + item.PrescriptionID + ".xml";//ZO KRIJGEN WE LOKALE XML BESTANDEN VOOR ELK VOORSCHRIFT
@@ -267,19 +267,21 @@ namespace MediAgent
                 {
                     MedListBox.Items.Add(MedItem);
                 }
-                
 
 
-                if (firstTime)
-                {
-                    LCalendar MedCal = new LCalendar();
-                    MedCal.Name = "Calendar";
-                    MedCal.OnDayClicked += Calendar_OnDayClicked;
-                    KalenderPanoItem.Children.Add(MedCal);
-                    firstTime = false;
-                    //NavigationService.Navigate(new Uri(string.Format("/MedConfirmationPage.xaml"), UriKind.Relative)); //bijpass om taken en not taken te zeggen voor med
-                }
+
+                //if (firstTime)
+                //{
+                //    LCalendar MedCal = new LCalendar();
+                //    MedCal.Name = "Calendar";
+                //    MedCal.OnDayClicked += Calendar_OnDayClicked;
+                //    KalenderPanoItem.Children.Add(MedCal);
+                //    firstTime = false;
+                //    //NavigationService.Navigate(new Uri(string.Format("/MedConfirmationPage.xaml"), UriKind.Relative)); //bijpass om taken en not taken te zeggen voor med
+                //}
                 //App.UpdateReminders();
+
+                Calendar.OnChangeMonth(null, null); //update calendar
 
                 if (App.IsPatient)
                 {
@@ -409,11 +411,14 @@ namespace MediAgent
         {
             foreach (var med in App.MedList)
             {
-                foreach (var day in med.Days)
+                if (med.Days != null)
                 {
-                    if (day.Date == e.SelectedDate)
+                    foreach (var day in med.Days)
                     {
-                        NavigationService.Navigate(new Uri("/DayMedPage.xaml?Date="+e.SelectedDate.ToString(), UriKind.Relative));
+                        if (day.Date == e.SelectedDate)
+                        {
+                            NavigationService.Navigate(new Uri("/DayMedPage.xaml?Date=" + e.SelectedDate.ToString(), UriKind.Relative));
+                        }
                     }
                 }
             }
