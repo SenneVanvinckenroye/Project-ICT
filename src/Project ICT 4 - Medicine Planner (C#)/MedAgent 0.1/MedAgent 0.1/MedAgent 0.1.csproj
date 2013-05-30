@@ -269,6 +269,9 @@
     <Resource Include="Icons\black\share.png" />
     <Resource Include="Icons\black\upload.png" />
     <Resource Include="Icons\black\video.png" />
+    <EmbeddedResource Include="bg_docterview.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <Content Include="Icons\dark\appbar.add.rest.png" />
     <Content Include="Icons\dark\appbar.back.rest.png" />
     <Content Include="Icons\dark\appbar.basecircle.rest.png" />
@@ -402,6 +405,9 @@
     <Resource Include="Icons\white\upload.png" />
     <Resource Include="Icons\white\video.png" />
     <Content Include="README_FIRST.txt" />
+    <EmbeddedResource Include="SplashScreenImage.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Delete.png" />
