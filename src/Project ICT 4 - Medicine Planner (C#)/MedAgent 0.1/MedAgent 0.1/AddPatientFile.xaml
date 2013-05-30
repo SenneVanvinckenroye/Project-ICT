@@ -11,76 +11,68 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
-    mc:Ignorable="d" d:DesignHeight="696" d:DesignWidth="480"
+    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
     shell:SystemTray.IsVisible="True">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="White">
         <Grid.RowDefinitions>
+            <RowDefinition Height="768"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="0"/>
         </Grid.RowDefinitions>
 
         <!--TitlePanel contains the name of the application and page title-->
+        <!--TitlePanel contains the name of the application and page title-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock x:Name="ApplicationTitle" Text="MedCare" Style="{StaticResource PhoneTextNormalStyle}" Foreground="#FF6DC740" />
-            <TextBlock x:Name="PageTitle" Text="Add Patient" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" Foreground="#FF601EA7" />
+        	<TextBlock x:Name="ApplicationTitle" Text="MedCare" Style="{StaticResource PhoneTextNormalStyle}" Foreground="#FF6DC740" />
+        	<TextBlock x:Name="PageTitle" Text="Add Patient" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" Foreground="#FF601EA7" />
         </StackPanel>
-
-        <!--ContentPanel - place additional content here-->
-        <ScrollViewer Foreground="#FF3FC1DF" Grid.Row="1" FontSize="26">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Border BorderBrush="OrangeRed" Grid.Column="0" BorderThickness="0,0,2,0">
-                    <!-- verander kleur -->
-                    <StackPanel Grid.Column="0" Margin="30,0,0,0">
-                        <TextBlock Text="Name" Margin="0,18,0,18"></TextBlock>
-                        <TextBlock Text="Firstname" Margin="0,18,0,18"></TextBlock>
-                        <TextBlock Text="Date of birth" Margin="0,18,0,18" Height="38"></TextBlock>
-                        <TextBlock Text="Sex" Margin="0,18,0,18"></TextBlock>
-                        <TextBlock Text="Email" Margin="0,18,0,18"></TextBlock>
-                        <TextBlock Text="SSN" Margin="0,18,0,18"></TextBlock>
-                        <TextBlock Text="Address" Margin="0,18,0,18"></TextBlock>
-                        <TextBlock Text="Phone nr." Margin="0,18,0,18"></TextBlock>
-                    </StackPanel>
-                </Border>
-
-                <StackPanel x:Name="StkEdit" Grid.Column="1" Margin="5,0,0,0">
-                    <TextBox x:Name="PatNameEdit" Text="Patient Name" Foreground="#FF0BD47C" BorderBrush="#FF1BA1E2"></TextBox>
-                    <TextBox x:Name="PatFirstnameEdit" Text="Patient Firstname" Foreground="#FF0BD47C" BorderBrush="#FF1BA1E2"></TextBox>
-                    <toolkit:DatePicker x:Name="DateOfBirth"  VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="1" BorderThickness="0" BorderBrush="Black" Foreground="White" ValueChanged="DateOfBirth_ValueChanged">
-                        <toolkit:DatePicker.Background>
-                            <SolidColorBrush Color="#FF6D5592"/>
-                        </toolkit:DatePicker.Background>
-                    </toolkit:DatePicker>
-                    <TextBox x:Name="PatSexEdit" Text="type: m or f" Foreground="#FF0BD47C" BorderBrush="#FF1BA1E2"></TextBox>
-                    <TextBox x:Name="PatEmailEdit" Text="Patient Email" Foreground="#FF0BD47C" BorderBrush="#FF1BA1E2"></TextBox>
-                    <TextBox x:Name="PatSsnEdit" Text="Patient SSN" Foreground="#FF0BD47C" BorderBrush="#FF1BA1E2"></TextBox>
-                    <TextBox x:Name="PatAddress" Text="Address" Foreground="#FF0BD47C" BorderBrush="#FF1BA1E2"></TextBox>
-                    <TextBox x:Name="PatPhoneNumber" Text="" Foreground="#FF0BD47C" BorderBrush="#FF1BA1E2"></TextBox>
-                    <ContentControl BorderThickness="2"></ContentControl>
-                    <Button Content="Register Patient" Margin="108,10,112,8" Click="Register_Click" Background="Transparent" BorderBrush="#FFC7DA1B" Foreground="#FF3FC1DF" VerticalAlignment="Center" />
-                </StackPanel>
+        <ScrollViewer Margin="0,136,0,61">
+        	<Grid Height="856" Width="468">
+        		<Grid.RowDefinitions>
+        			<RowDefinition Height="0.083*"/>
+        			<RowDefinition Height="0.09*"/>
+        			<RowDefinition Height="0.107*"/>
+        			<RowDefinition Height="0.092*"/>
+        			<RowDefinition Height="0.103*"/>
+        			<RowDefinition Height="0.151*"/>
+        			<RowDefinition Height="0.178*"/>
+        			<RowDefinition Height="0.093*"/>
+        			<RowDefinition Height="0.103*"/>
+        		</Grid.RowDefinitions>
+        		<Grid.ColumnDefinitions>
+        			<ColumnDefinition Width="212"/>
+        			<ColumnDefinition Width="268"/>
+        		</Grid.ColumnDefinitions>
+        		<TextBox x:Name="PatNameEdit" Foreground="#FF0BD47C" BorderBrush="#FF1BA1E2" Margin="8,0,20,0" Grid.Column="1" d:LayoutOverrides="Height"/>
+        		<TextBox x:Name="PatFirstnameEdit" Foreground="#FF0BD47C" BorderBrush="#FF1BA1E2" Margin="8,0,20,8" Grid.Column="1" Grid.Row="1" d:LayoutOverrides="Height"/>
+        		<toolkit:DatePicker x:Name="DateOfBirth"  VerticalAlignment="Top" BorderThickness="0" BorderBrush="Black" Foreground="White" ValueChanged="DateOfBirth_ValueChanged" Background="#FF6D5592" Margin="40,0,36,0" Grid.Column="1" Grid.Row="2" Height="80"/>
+        		<TextBox x:Name="PatSexEdit" Text="type: m or f" Foreground="#FF0BD47C" BorderBrush="#FF1BA1E2" Margin="8,0,20,0" Grid.Column="1" Grid.Row="3"/>
+        		<TextBox x:Name="PatEmailEdit" Foreground="#FF0BD47C" BorderBrush="#FF1BA1E2" Margin="8,0,20,0" Grid.Column="1" Grid.Row="4"/>
+        		<TextBox x:Name="PatSsnEdit" Foreground="#FF0BD47C" BorderBrush="#FF1BA1E2" Margin="8,0,20,0" Grid.Column="1" Grid.Row="5"/>
+        		<TextBox x:Name="PatAddress" Foreground="#FF0BD47C" BorderBrush="#FF1BA1E2" Margin="8,0,20,0" Grid.Column="1" Grid.Row="6"/>
+        		<TextBox x:Name="PatPhoneNumber" Text="" Foreground="#FF0BD47C" BorderBrush="#FF1BA1E2" Margin="8,0,20,0" Grid.Column="1" Grid.Row="7" Height="72" VerticalAlignment="Top"/>
+        		<ContentControl BorderThickness="2" Margin="0,24,5,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.Row="7"/>
+        		<Button Content="Register Patient" Margin="8,16,20,0" Click="Register_Click" Background="Transparent" BorderBrush="#FFC7DA1B" Foreground="#FF3FC1DF" Grid.Row="8" Height="72" VerticalAlignment="Top" d:LayoutOverrides="HorizontalAlignment" Grid.ColumnSpan="2" />
+        		<TextBlock Margin="8" TextWrapping="Wrap" Foreground="#FF6DA7E7" FontWeight="Bold" VerticalAlignment="Center" FontSize="26.667"><Run Text="Last "/><Run Text="n"/><Run Text="ame: "/></TextBlock>
+        		<TextBlock Margin="8,8,8,14" TextWrapping="Wrap" Foreground="#FF6DA7E7" FontWeight="Bold" Grid.Row="1" VerticalAlignment="Center" FontSize="26.667"><Run Text="First "/><Run Text="n"/><Run Text="ame: "/></TextBlock>
+        		<TextBlock Margin="8,8,8,20" TextWrapping="Wrap" Foreground="#FF6DA7E7" FontWeight="Bold" Grid.Row="2" Text="Date of birth:" VerticalAlignment="Center" FontSize="26.667"/>
+        		<TextBlock Margin="8,8,8,18" TextWrapping="Wrap" Foreground="#FF6DA7E7" FontWeight="Bold" Grid.Row="3" Text="Gender:" VerticalAlignment="Center" FontSize="26.667"/>
+        		<TextBlock Margin="8,8,8,17" TextWrapping="Wrap" Foreground="#FF6DA7E7" FontWeight="Bold" Grid.Row="4" Text="Email address:" VerticalAlignment="Center" FontSize="26.667"/>
+        		<TextBlock Margin="8,8,8,17" TextWrapping="Wrap" Foreground="#FF6DA7E7" FontWeight="Bold" Grid.Row="5" Text="Social security number:" VerticalAlignment="Center" FontSize="26.667"/>
+        		<TextBlock Margin="8" TextWrapping="Wrap" Foreground="#FF6DA7E7" FontWeight="Bold" Grid.Row="6" VerticalAlignment="Center" FontSize="26.667"><Run Text="Full address"/><LineBreak/><Run Text="(street, postcode, country)"/></TextBlock>
+        		<TextBlock Margin="8,8,8,17" TextWrapping="Wrap" Foreground="#FF6DA7E7" FontWeight="Bold" Grid.Row="7" Text="Phonenumber:" VerticalAlignment="Center" FontSize="26.667"/>
                     
-            </Grid>
+        	</Grid>
+        </ScrollViewer>
 
             
-        </ScrollViewer>
+        <!--TitlePanel contains the name of the application and page title-->
+
+        <!--ContentPanel - place additional content here-->
                
     </Grid>
 
-    <phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
-            <!--<shell:ApplicationBarIconButton IconUri="/Images/appbar_button1.png" Text="Button 1"/>
-            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button2.png" Text="Button 2"/>-->
-            <shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem Text="Add Patient" Click="AddPatientMenuItem_OnClick"/>
-            </shell:ApplicationBar.MenuItems>
-        </shell:ApplicationBar>
-    </phone:PhoneApplicationPage.ApplicationBar>
-
+    
 </phone:PhoneApplicationPage>

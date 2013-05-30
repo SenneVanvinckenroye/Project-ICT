@@ -93,7 +93,7 @@
 					</Rectangle.RenderTransform>
 				</Rectangle>
 			</ControlTemplate>
-			<Color x:Key="Backgrounds and Texts">#FF6D5592</Color>
+			<Color x:Key="Backgrounds and Texts">#FFD9D3E2</Color>
 			<Color x:Key="Borders">#FF7AC843</Color>
 			<Style x:Key="SliderStyle1" TargetType="Slider">
 				<Setter Property="BorderThickness" Value="0"/>

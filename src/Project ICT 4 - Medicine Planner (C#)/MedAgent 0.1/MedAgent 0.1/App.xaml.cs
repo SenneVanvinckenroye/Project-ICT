@@ -108,7 +108,7 @@ namespace MedAgent_0_1
                                 {
                                     Reminder r = new Reminder("Rem" + remNum)
                                     {
-                                        Content = "Click for more info",
+                                        Content = medication.Description+"\nClick for more info",
                                         BeginTime = dt,
                                         Title = medication.Name,
                                         NavigationUri = new Uri("/MedConfirmationPage.xaml", UriKind.Relative),

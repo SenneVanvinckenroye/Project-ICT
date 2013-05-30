@@ -14,6 +14,10 @@ namespace MedAgent_0_1
 {
     public partial class MedConfirmationPage : PhoneApplicationPage
     {
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            MessageBox.Show("MedConfirmationPage");
+        }
         MedCareCloudServiceReference.MedPlanServiceClient client;
         public MedConfirmationPage()
         {
